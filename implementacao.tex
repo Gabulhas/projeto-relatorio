@@ -1,0 +1,82 @@
+\chapter{Implementação}
+\label{chap:imp}
+
+\section{Introdução}
+\label{chap4:sec:intro}
+
+
+\section{Escolhas de Implementação}
+\label{chap4:escolhas_implementacao}
+% Explicar o uso das bibliotecas
+% Pôr a visualização à parte
+% Explicar o uso de pedidos HTTP (por ser um contexto distribuido, e HTTP ser um dos protocolos mais usados
+% Explicar uso de Containers Docker
+
+\section{Detalhes de Implementação}
+% problemas da concorrência
+% Explicar a divisão em Modulos e em ficheiros
+
+\section{Classe \emph{Node}}
+A Classe \emph{Node} desempenha a função de armazenar o estado atual do próprio \emph{Node}, define os métodos/procedimentos que este pode executar, e uma enumeração dos 5 diferentes tipos de \emph{Nodes}.
+
+Nesta Implementação, esta classe está incluida num módulo \emph{Go} ``Nodes'' (Ou seja, num diretório com o mesmo nome), e é consituído por 5 ficheiros, sendo que as várias (funcionalidades ?) estão distribuídas por estes ficheiros.
+
+Estes são:
+\begin{itemize}
+    \item Node.go - Contém \emph{Struct} que define os \textbf{atributos}.
+    \item NodeBehaviours.go - Define os possíveis \textbf{comportamentos}.
+    \item NodeCommunications.go - Conjunto de \textbf{métodos de comunicação} de informação para outros \emph{Nodes}.
+    \item NodeTranformations.go - \textbf{Transformações}/Mudanças de tipo que o \emph{Node} pode sofrer.
+    \item NodeType.go - Enumeração dos \textbf{tipos} que o \emph{Node} pode ser.
+\end{itemize} 
+
+
+\subsection{Atributos da Classe}
+Como referido no capítulo de Especificação \ref{especificacao:atr:section}, um \emph{Node} tem, no máximo 5 atributos, no entanto, na sua implementação este incluí no total 8.
+Esta é a definição da \emph{Struct} dos atributos do \emph{Node}.
+
+
+\begin{lstlisting}[caption={Definição da estrutura \emph{Node}},language=Go]
+type Node struct {
+	Type       NodeType //Tipo do Node, ver Tipos de Nodes
+	MyChan     string   //Channel onde recebe acesso ao objeto
+	Find       string   //Channel onde recebe pedidos
+	Link       string   //Ligação para o child Node
+	WaiterChan string   //Channel do Node que está na posição seguinte da fila
+	MyAddress  string   //Endereço do Node
+	VisAddress string   //Endereço para onde envia o seu estado atual para a atualização da visualização
+	Obj        bool     //Se tem objeto ou não 
+}
+
+\end{lslisting}
+Na \emph{Struct} estão definidos todos os atributos que o \emph{Node} pode deter, porém, quando um atributo é ``inexistente'', este é definido como vazio, ou seja, os atributos ``WaiterChan'', ``VisAddress'' e ``Link'' podem ser \emph{strings} vazias.
+
+
+\subsection{Comportamentos}
+Como referido no capítulo de Especificação \ref{especificacao:atr:section},
+
+\subsubsection{Receção de um pedido Access Request}
+\subsubsection{Cedência do Objeto}
+\subsubsection{Realização de um pedido de acesso}
+\subsubsection{Receção acesso ao objeto}
+
+\subsection{Tranformações dos \emph{Nodes}}
+\subsection{Tipos de Nodes}
+\label{chap:imp:node:tipos}
+
+
+\section{Inicialização do \emph{``Self'' Node}}
+
+\section{Comunicação entre Nodes}
+\section{Classes de \emph{Channels}}
+
+
+
+\section{Implementação da Visualização}
+% como os dados são atualizados
+% como os dados são passados para a página
+% como os dados são demonstrados no grafo
+% como a queue é formada
+% como o histórico é formado
+
+\section{Conclusões}

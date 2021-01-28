@@ -1,0 +1,213 @@
+%Mudar o nome Talvez
+\chapter{Especificação}
+% OU \chapter{Trabalhos Relacionados}
+% OU \chapter{Engenharia de Software}
+% OU \chapter{Tecnologias e Ferramentas Utilizadas}
+\label{chap:especificacao}
+
+\section{Introdução}
+\label{especificacao:sec:intro}
+\section{\emph{Node}}
+Neste capítulo serão descritos os tipos de \emph{Nodes} presentes no directório, tais como os seus atributos, que estão definidos em detalhe no capítulo seguinte \ref{especificacao:atr:section}.
+
+O tipo de cada \emph{Node} depende dos seguintes fatores:
+\begin{itemize}
+    \item Detem o (acesso ao) objeto. - \emph{Owner}/Dono do objeto.
+    \item Efetuou um pedido de aquisição do (acesso ao) objeto. - \emph{Waiter}/\emph{Node} em espera.
+    \item Tem um pedido em espera. - \emph{With Request}/Com Pedido.
+    \item Nenhum dos anteriores. - \emph{Idle}/Inativo.
+\end{itemize}
+Também serão descritos os comportamentos que cada tipo pode manifestar e tranformações que estes podem sofrer, como a atualização de atríbutos e mudança de tipo:
+
+
+%-------------------------
+\subsection{\emph{Owner Terminal}}
+\label{especificacao:nodes:owner_terminal}
+
+
+\emph{Node} que detem o objeto e não tem pedido em espera.
+
+Atributos:
+\begin{itemize}
+    \item Find \ref{especificacao:atr:find} 
+    \item MyChan \ref{especificacao:atr:mychan} 
+    \item Obj \ref{especificacao:atr:obj} 
+\end{itemize}
+
+
+\subsubsection{Receção de um pedido Access Request}
+O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Channel \textbf{Find}}, que foi remetido pelo seu \emph{Parent Node}.
+
+
+Como o \emph{Node} é o detentor do acesso ao objeto, este tranforma-se em \emph{\textbf{Owner With Request}}, e atualiza o \textbf{\emph{Link}} (para \textbf{\emph{NewLink}}), que aponta para o \textbf{Find} do seu \emph{Parent Node} (Esta informação provêm informação comunicada do pedido) -\textbf{ OwnerWithRequest(find, MyChan, Obj, NewLink, WaiterChan)}.
+
+
+
+
+%-------------------------
+\subsection{\emph{Owner With Request}}
+\label{especificacao:nodes:owner_with_request}
+
+\emph{Node} que detem o objeto e tem um pedido em espera.
+
+Atributos:
+\begin{itemize}
+    \item Find \ref{especificacao:atr:find} 
+    \item MyChan \ref{especificacao:atr:mychan} 
+    \item Link \ref{especificacao:atr:link} 
+    \item Obj \ref{especificacao:atr:obj} 
+    \item WaiterChan \ref{especificacao:atr:waiterchan} 
+\end{itemize}
+
+\subsubsection{Receção de um pedido Access Request}
+O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Channel \textbf{Find}}, que foi remetido pelo seu \emph{Parent Node}.
+
+Este envia pelo \textbf{\emph{Link}} o \textbf{\emph{WaiterChan}} do pedido \emph{\textbf{Access Request}} e o seu \emph{Channel \textbf{Find}}.
+
+Como o \emph{Node} já tem em espera um pedido de acesso, este mantem-se como \emph{\textbf{Owner With Request}}, e atualiza o \textbf{\emph{Link}} (para \textbf{\emph{NewLink}}), que aponta para o \textbf{Find} do seu \emph{Parent Node} (Esta informação provêm informação comunicada do pedido) - \textbf{OwnerWithRequest(find, MyChan, Obj, NewLink, WaiterChan)}.
+
+
+\subsubsection{Cedência do Objeto}
+Após a receção de um pedido \emph{\textbf{Access Requesst}}, o \emph{Node} pode ceder o acesso ao objeto ao \emph{Node} que fez o pedido.
+Para tal, este envia pelo \emph{Channel \textbf{WaiterChan}} (O \emph{MyChan} do \emph{Node} que fez o pedido) um \emph{Channel \textbf{Give Access}}.
+
+Como o node não detem o objeto, este transforma-se em \emph{\textbf{Idle}} - \textbf{Idle(find, MyChan, Link)}.
+
+
+
+
+
+%-------------------------
+\subsection{\emph{Idle}}
+\label{especificacao:nodes:idle}
+
+\emph{Node} não detem o objeto, nem fez qualquer pedido. 
+
+Atributos:
+\begin{itemize}
+    \item Find \ref{especificacao:atr:find} 
+    \item MyChan \ref{especificacao:atr:mychan} 
+    \item Link \ref{especificacao:atr:mychan}  
+\end{itemize}
+
+\subsubsection{Receção de um pedido Access Request}
+O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Channel \textbf{Find}}, que foi remetido pelo seu \emph{Parent Node}.
+
+Este envia pelo \textbf{\emph{Link}} o \textbf{\emph{WaiterChan}} do pedido \emph{\textbf{Access Request}} e o seu \emph{Channel \textbf{Find}}.
+
+Como o \emph{Node} não tem o acesso ao objeto, este mantem-se como \emph{\textbf{Idle}}, e atualiza o \textbf{\emph{Link}} (para \textbf{\emph{NewLink}}), que aponta para o \textbf{Find} do seu \emph{Parent Node} (Esta informação provêm informação comunicada do pedido) - \textbf{Idle(find, MyChan, NewLink)}.
+
+
+
+\subsubsection{Realização de um pedido de acesso}
+O \emph{Node} envia no \textbf{\emph{Link}} o \textbf{\emph{MyChan}} e o \textbf{\emph{Find}} para o \emph{Child Node}.
+
+Como fez um pedido, este transforma-se em \emph{\textbf{Waiter Terminal}}, e deixa de apresentar o \textbf{\emph{Link}} - \textbf{WaiterTerminal(find, MyChan)}.
+
+%-------------------------
+\subsection{\emph{Waiter Terminal}}
+\label{especificacao:nodes:waiter_terminal}
+
+\emph{Node} aguarda pelo acesso ao objeto.
+
+Atributos:
+\begin{itemize}
+    \item Find \ref{especificacao:atr:find} 
+    \item MyChan \ref{especificacao:atr:mychan} 
+\end{itemize}
+
+\subsubsection{Receção de um pedido Access Request}
+O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Channel \textbf{Find}}, que foi remetido pelo seu \emph{Parent Node}.
+
+Este envia pelo \textbf{\emph{Link}} o \textbf{\emph{WaiterChan}} do pedido \emph{\textbf{Access Request}} e o seu \emph{Channel \textbf{Find}}.
+
+Como o \emph{Node} não tem o acesso ao objeto mas aguarda pelo acesso ao objeto, este transforma-se em \emph{\textbf{Waiter With Request}}, atualiza o \textbf{\emph{Link}} (para \textbf{\emph{NewLink}}), que aponta para o \textbf{Find} do seu \emph{Parent Node}, e atualiza o \textbf{\emph{WaiterChan}} (para \textbf{NewWaiterChan}) (Esta informação provêm informação comunicada do pedido) - \textbf{WaiterWithRequest(find, MyChan, NewLink, NewWaiterChan)}.
+
+
+\subsubsection{Receção acesso ao objeto}
+O \emph{Node} recebe acesso ao objeto (\textbf{Obj}) no seu \emph{Channel \textbf{MyChan}}.
+Como o \emph{Node} não tem pedidos, este transforma-se em \textbf{\emph{Owner Terminal}} - \textbf{ OwnerTerminal(find, MyChan, Obj) }.
+
+
+
+
+%-------------------------
+\subsection{\emph{Waiter With Request}}
+\label{especificacao:nodes:waiter_with_request}
+
+\emph{Node} aguarda pelo acesso ao objeto e tem um pedido em espera.
+
+Atributos:
+\begin{itemize}
+    \item Find \ref{especificacao:atr:find} 
+    \item MyChan \ref{especificacao:atr:mychan} 
+    \item Link \ref{especificacao:atr:link} 
+    \item WaiterChan \ref{especificacao:atr:waiterchan} 
+\end{itemize}
+
+
+
+\subsubsection{Receção de um pedido Access Request}
+O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Channel \textbf{Find}}, que foi remetido pelo seu \emph{Parent Node}.
+
+Este envia pelo \textbf{\emph{Link}} o \textbf{\emph{WaiterChan}} do pedido \emph{\textbf{Access Request}} e o seu \emph{Channel \textbf{Find}}.
+
+Como o \emph{Node} não tem o acesso ao objeto, aguarda pelo acesso ao objeto e tem um pedido em espera, este mantem-se como \emph{\textbf{Waiter With Request}}, e atualiza o \textbf{\emph{Link}} (para \textbf{\emph{NewLink}}), que aponta para o \textbf{Find} do seu \emph{Parent Node} (Esta informação provêm informação comunicada do pedido) - \textbf{WaiterWithRequest(find, MyChan, NewLink, NewWaiterChan)}.
+
+
+\subsubsection{Receção acesso ao objeto}
+O \emph{Node} recebe acesso ao objeto (\textbf{Obj}) no seu \emph{Channel \textbf{MyChan}}.
+Como o \emph{Node} tem pedidos, este transforma-se em \textbf{\emph{Owner With Request}} - \textbf{OwnerWithRequest(find, MyChan, Obj, Link, WaiterChan)}.
+
+
+
+\section{Atributos do \emph{Node}}
+\label{especificacao:atr:section}
+% Pouca informação
+Neste secção serão descritos os atributos que podem constituir um \emph{Node}.
+
+\subsection{Find}
+\label{especificacao:atr:find}
+    Este atributo representa o \emph{Channel} por onde o \emph{Parent Node} difunde os pedidos de acesso para o \emph{Node}.
+    Está presente em todos os \emph{Nodes}.
+
+\subsection{MyChan}
+\label{especificacao:atr:mychan}
+    Este atributo representa o \emph{Channel} do \emph{Node} para o qual é transmitido o objeto.
+    Está presente em todos os \emph{Nodes}.
+
+\subsection{Link}
+\label{especificacao:atr:link}
+    Este atributo representa a ligação do \emph{Node} para o seu \emph{Child Node}.
+    Contém o \emph{Channel Find} do \emph{Child Node}.
+
+
+\subsection{Obj}
+\label{especificacao:atr:obj}
+    Este atributo representa o acesso ao objeto por parte do \emph{Node}.
+    Em qualquer estado da rede, apenas um \emph{Node} dispões deste atributo.
+
+\subsection{WaiterChan}
+\label{especificacao:atr:waiterchan}
+    Este atributo representa o \emph{Channel} do \emph{Node} sucessor da fila.
+    Contém o \emph{MyChan} do \emph{Node} em espera.
+
+
+\section{\emph{Channels}}
+\label{especificacao:sec:Channels}
+Nesta especificação foram apenas definidos dois tipos de \emph{Channels}. A comunicação entre os \emph{Nodes} é feita por canais, pelos quais são comunicados canais.
+Neste capítulo serão descritos os \emph{Channels}:
+
+
+\subsection{Access Request}
+Este tipo de \emph{Channel} é usado para fazer chegar o pedido ao último elemento da fila de espera (de acesso ao objeto). Para tal, neste \emph{Channel} são comunicados dois tipos de \emph{Channels}:
+\begin{itemize}
+    \item O \emph{Channel \textbf{MyChan}} do \emph{Node} que fez o pedido.
+    \item O \emph{Channel} que identifica quem fez chegar o pedido, ou seja, o \emph{\textbf{Find}} do \textbf{Parent Node}.
+\end{itemize}
+
+
+\subsection{Give Access}
+No entanto, há um tipo de \emph{Channel} que é usado para dar acesso ao objeto a quem fez o pedido, por outras palavras, é usado pelo atual \emph{\textbf{Owner}} para transmitir o acesso ao \emph{Waiter} que estava na posição da fila de espera.
+
+\section{Conclusões}
