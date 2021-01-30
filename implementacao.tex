@@ -1,3 +1,6 @@
+
+
+
 \chapter{Implementação}
 \label{chap:imp}
 
@@ -15,11 +18,13 @@
 \section{Detalhes de Implementação}
 % problemas da concorrência
 % Explicar a divisão em Modulos e em ficheiros
+% referir o uso de um Mutex global
+% referir o uso de um objeto ``SelfNode''
 
 \section{Classe \emph{Node}}
 A Classe \emph{Node} desempenha a função de armazenar o estado atual do próprio \emph{Node}, define os métodos/procedimentos que este pode executar, e uma enumeração dos 5 diferentes tipos de \emph{Nodes}.
 
-Nesta Implementação, esta classe está incluida num módulo \emph{Go} ``Nodes'' (Ou seja, num diretório com o mesmo nome), e é consituído por 5 ficheiros, sendo que as várias (funcionalidades ?) estão distribuídas por estes ficheiros.
+Nesta Implementação, esta classe está incluída num módulo \emph{Go} ``Nodes'' (Ou seja, num diretório com o mesmo nome), e é constituído por 5 ficheiros, sendo que as várias (funcionalidades ?) estão distribuídas por estes ficheiros.
 
 Estes são:
 \begin{itemize}
@@ -31,9 +36,10 @@ Estes são:
 \end{itemize} 
 
 
-\subsection{Atributos da Classe}
-Como referido no capítulo de Especificação \ref{especificacao:atr:section}, um \emph{Node} tem, no máximo 5 atributos, no entanto, na sua implementação este incluí no total 8.
+\section{Atributos da Classe}
+Como referido no capítulo de Especificação, um \emph{Node} tem, no máximo 5 atributos, no entanto, na sua implementação este incluí no total 8, tendo a mais os atributos ``MyAddress'', ``Type'' e ``VisAddress''.
 Esta é a definição da \emph{Struct} dos atributos do \emph{Node}.
+
 
 
 \begin{lstlisting}[caption={Definição da estrutura \emph{Node}},language=Go]
@@ -41,31 +47,220 @@ type Node struct {
 	Type       NodeType //Tipo do Node, ver Tipos de Nodes
 	MyChan     string   //Channel onde recebe acesso ao objeto
 	Find       string   //Channel onde recebe pedidos
-	Link       string   //Ligação para o child Node
-	WaiterChan string   //Channel do Node que está na posição seguinte da fila
-	MyAddress  string   //Endereço do Node
-	VisAddress string   //Endereço para onde envia o seu estado atual para a atualização da visualização
-	Obj        bool     //Se tem objeto ou não 
+	Link       string   //Ligacao para o child Node
+	WaiterChan string   //Channel do Node que esta na posicao seguinte da fila
+	MyAddress  string   //Endereco do Node
+	VisAddress string   //Endereco para onde envia o seu estado atual para a atualizacao da visualizacao
+	Obj        bool     //Se tem objeto ou nao 
 }
 
-\end{lslisting}
-Na \emph{Struct} estão definidos todos os atributos que o \emph{Node} pode deter, porém, quando um atributo é ``inexistente'', este é definido como vazio, ou seja, os atributos ``WaiterChan'', ``VisAddress'' e ``Link'' podem ser \emph{strings} vazias.
+\end{lstlisting}
+Na \emph{Struct} estão definidos todos os atributos que o \emph{Node} pode ter, porém, quando um atributo é inexistente, este é definido como vazio, ou seja, os atributos ``WaiterChan'', ``VisAddress'' e ``Link'' podem ser \emph{strings} vazias.
+
+O atributo \textbf{``MyChan''} é o \emph{Channel} do \emph{Node} onde este vai receber o acesso ao objeto.
+Também é usado na construção da \emph{Struct} que irá ser enviada para o \emph{Child} node quando este decide pedir o acesso ao objeto.
+
+O atributo \textbf{``Find''} é o \emph{Channel} do \emph{Node} onde este vai receber pedidos de acesso de outros \emph{Nodes}. 
+Também é usado na construção dos dois tipos de pedidos, no pedido de \emph{AccessRequest} quando o \emph{Node} decide fazer um pedido e quando este reencaminha um pedido para o \emph{Child Node}, ao construir um novo pedido de \emph{AccessRequest}, mantendo o ``WaiterChan'' mas substituindo o ``Link'' do pedido pelo seu ``Find''.
+
+O atributo \textbf{``Link''} é o \emph{Channel ``Find''} do \emph{Child Node}. Pode existir ou não, caso não exista este é representado como uma \emph{string} vazia.
+Este é usado para o reencaminhamento e difusão de quaisquer pedidos ``AccessRequest'', quer estes sejam construídos pelo \emph{Node} ou pedidos que chegaram ao seu ``Find''.
+
+O atributo \textbf{``WaiterChan''} é o \emph{Channel ``MyChan''} do \emph{Node} que espera pelo acesso ao objeto. Pode existir ou não, caso não exista este é representado como uma \emph{string} vazia.
+Este é usado na atribuição do objeto ao \emph{Node} que está à espera do acesso ao objeto, por parte do \emph{Node}.
+
+O atributo \textbf{``MyAddress''} é o endereço \acs{IP} do próprio Node. 
+Este é usado para identificação do \emph{Node} na rede e para a construção dos \emph{Channels ``Find''} e \emph{``MyChan''},
+pois este é usado na inicialização do servidor \acs{HTTP} do \emph{Node}.
+
+O atributo \textbf{``VisAddress''} é o \acs{URL} usado para a atualização do estado do \emph{Node} na visualização.
+
+O atributo \textbf{``Obj''} apenas indica se o \emph{Node} tem acesso ou não ao objeto.
+Este atributo é redundante, pois a mesma informação pode ser adquirida a partir do tipo do node (``Type''), 
+em que, caso o \emph{Node} seja do tipo \emph{OwnerTerminal} ou \emph{OwnerWithRequest}, este tem o acesso ao objeto.
+
+\section{Inicialização do objeto ``Self Node''}
+
+\section{Comportamentos}
+Como referido no capítulo de Especificação \ref{especificacao:atr:section}, 
+o \emph{Node} pode ter vários comportamentos, 
+que dependem do seu tipo e de fatores que os desencadeiam, como por exemplo receber um pedido de acesso ou o acesso ao objeto e 
+o próprio \emph{Node} (no caso desta implementação) tomar decisões, como ceder o acesso ao objeto ou pedir o mesmo.
 
 
-\subsection{Comportamentos}
-Como referido no capítulo de Especificação \ref{especificacao:atr:section},
+\subsection{Receção de um pedido Access Request}
+Todos os tipos de \emph{Nodes} têm a possibilidade de receber um pedido de \emph{AccessRequest}, no entanto, o comportamento (e transformação) desencadeado por este evento é diferente entre tipos.
 
-\subsubsection{Receção de um pedido Access Request}
-\subsubsection{Cedência do Objeto}
-\subsubsection{Realização de um pedido de acesso}
-\subsubsection{Receção acesso ao objeto}
+% Referir a outra secção
+Quando o \emph{Node} recebe um pedido \emph{Access Request} (\emph{Handler} ``findRoute'' no ficheiro ``controller.go''), e método ``HandleFind'' do objeto \emph{selfNode} é executado.
 
-\subsection{Tranformações dos \emph{Nodes}}
-\subsection{Tipos de Nodes}
+Na implementação deste método, foi usada a estrutura condicional ``Switch'' para escolher que comportamento será tomado dependendo do tipo atual do ``selfNode'':
+
+% Referir a outra secção
+O acesso à secção crítica deste método é sincronizada com o uso do \emph{Mutex} ``Mutex'', ou seja, o acesso ao estado atual do ``selfNode'' só é adquirido por uma \emph{goroutine} de cada vez.
+
+O pedido de \emph{Access Request} recebido, ``accessRequest'' é copiado para um novo objeto ``newAccessRequest'', quer irá ser utilizado na construção de um novo ``AccessRequest'', caso o \emph{Node} redirecione o pedido para o seu \emph{Child Node}.
+
+% Referir a outra secção
+O último procedimento a ser executado neste método é o método ``UpdateVisualization'' da classe ``Node'', em uma nova \emph{goroutine}.
+Este método é usado para atualizar o estado atual do \emph{Node} na visualização.
+
+\begin{lstlisting}[caption={\emph{Switch} de decisão do comportamento.},language=Go]
+Mutex.Lock() // fecho do Mutex
+defer Mutex.Unlock() // a primitiva defer indica que o codigo de abertura do Mutex sera corrido caso a execucao deste metodo termine
+
+newAccessRequest := accessRequest // copia do pedido
+
+// Decisao do comportamento que depende do tipo "Type" atual do Node
+switch node.Type {
+	case OWNER_TERMINAL:
+	case OWNER_WITH_REQUEST:
+	case IDLE:
+	case WAITER_TERMINAL:
+	case WAITER_WITH_REQUEST:
+	}
+go node.UpdateVisualization()
+\end{lstlisting}
+
+Será feita uma descrição de cada comportamento que cada tipo de \emph{Node} toma, ou seja, a implementação do código em cada caso do ``Switch''.
+
+\subsubsection*{Caso OWNER\textunderscore TERMINAL}
+% Referir a outra secção
+Caso o tipo seja ``OWNER\textunderscore TERMINAL'', o \emph{Node} irá sofrer uma transformação. O método ``OwnerWithRequest'' da classe \emph{Node} irá ser executado.
+
+Os parâmetros de entrada serão o ``Link'' e ``WaiterChan'' da parte ``GiveAccess'' do pedido, que correspondem ao ``Find'' do \emph{Parent Node} e ao ``MyChan'' do \emph{Node} que fez o pedido, respetivamente.
+% Referir a outra secção
+Após a transformação, será executado o método ``releaseObj'' do \emph{Node}, que irá despoletar o comportamento de Cedência do Objeto, em uma nova \emph{}{goroutine}.
+
+
+\begin{lstlisting}[caption={Comportamento do \emph{Node} tipo \emph{Owner Terminal} caso receba um pedido \emph{Access Request} no \emph{Channel ``Find''}},language=Go]
+node.OwnerWithRequest(accessRequest.Link, accessRequest.GiveAccess.WaiterChan) // transfomacao em Owner With Request
+go node.releaseObj() //comportamento de Cedencia do Objeto
+\end{lstlisting}
+
+
+
+\subsubsection*{Caso OWNER\textunderscore WAITER\textunderscore TERMINAL}
+Caso o tipo seja ``OWNER\textunderscore WAITER\textunderscore TERMINAL'', o Atributo ``Link'' do objeto ``newAccessRequest'' será substituído pelo ``Find'' do \emph{Node}.
+
+Após feita esta alteração do objeto, o \emph{Node} envia o objeto ``newAccessRequest'' pelo seu ``Link'' para o seu \emph{Child Node}.
+
+Por último, este sofre uma transformação. O método ``OwnerWithRequest'' da classe \emph{Node} irá ser executado, 
+em que é feita uma alteração do seu ``Link'' para o ``Find'' que provêm do pedido ``Access Request'' que recebeu, ou seja, para o ``Find'' do seu \emph{Parent Node}, 
+mas mantêm o \emph{WaiterChan} porque o \emph{Node} que fez o pedido ainda não tem o acesso ao objeto.
+
+
+\begin{lstlisting}[caption={Comportamento do \emph{Node} tipo \emph{Owner Terminal} caso receba um pedido \emph{Access Request} no \emph{Channel ``Find''}},language=Go]
+newAccessRequest.Link = node.Find
+node.SendThroughLink(newAccessRequest)
+node.OwnerWithRequest(accessRequest.Link, node.WaiterChan)
+\end{lstlisting}
+
+
+
+\subsubsection*{Caso IDLE}
+Caso o tipo seja ``IDLE'', o Atributo ``Link'' do objeto ``newAccessRequest'' será substituído pelo ``Find'' do \emph{Node}.
+
+Após feita esta alteração do objeto, o \emph{Node} envia o objeto ``newAccessRequest'' pelo seu ``Link'' para o seu \emph{Child Node}.
+
+Por último, este sofre uma transformação. O método ``Idle'' da classe \emph{Node} irá ser executado,
+em que é feita a alteração do seu ``Link'' para o ``Find'' que provêm do pedido ``Access Request'' que recebeu, ou seja, para o ``Find'' do seu \emph{Parent Node}.
+
+\begin{lstlisting}[caption={Comportamento do \emph{Node} tipo \emph{Owner Terminal} caso receba um pedido \emph{Access Request} no \emph{Channel ``Find''}},language=Go]
+newAccessRequest.Link = node.Find
+node.SendThroughLink(newAccessRequest)
+node.OwnerWithRequest(accessRequest.Link, node.WaiterChan)
+\end{lstlisting}
+
+
+\subsubsection*{Caso WAITER\textunderscore TERMINAL}
+Caso o tipo seja ``WAITER\textunderscore TERMINAL'', o \emph{Node} apenas vai sofrer uma transformação. O método ``WaiterWithRequest'' do \emph{Node} será executado.
+%\subsubsection*{Owner Terminal - Caso OWNER_TERMINAL}
+Os parâmetros de entrada serão o ``Link'' e ``WaiterChan'' da parte ``GiveAccess'' do pedido, que correspondem ao ``Find'' do \emph{Parent Node} e ao ``MyChan'' do \emph{Node} que fez o pedido, respetivamente.
+
+\begin{lstlisting}[caption={Comportamento do \emph{Node} tipo \emph{Owner Terminal} caso receba um pedido \emph{Access Request} no \emph{Channel ``Find''}},language=Go]
+node.WaiterWithRequest(accessRequest.Link, accessRequest.GiveAccess.WaiterChan)
+\end{lstlisting}
+
+
+\subsubsection*{Caso WAITER\textunderscore WITH \textunderscore REQUEST}	
+Caso o tipo seja ``WAITER\textunderscore WITH \textunderscore REQUEST'', o Atributo ``Link'' do objeto ``newAccessRequest'' será substituído pelo ``Find'' do \emph{Node}.
+
+Após feita esta alteração do objeto, o \emph{Node} envia o objeto ``newAccessRequest'' pelo seu ``Link'' para o seu \emph{Child Node}.
+
+Por último, este sofre uma transformação. O método ``WaiterWithRequest'' da classe \emph{Node} irá ser executado, 
+em que é feita uma alteração do seu ``Link'' para o ``Find'' que provêm do pedido ``Access Request'' que recebeu, ou seja, para o ``Find'' do seu \emph{Parent Node}, 
+mas mantêm o \emph{WaiterChan} porque o \emph{Node} que fez o pedido ainda não tem o acesso ao objeto.
+
+\begin{lstlisting}[caption={Comportamento do \emph{Node} tipo \emph{Owner Terminal} caso receba um pedido \emph{Access Request} no \emph{Channel ``Find''}},language=Go]
+newAccessRequest.Link = node.Find // Alteracao do atributo Find do objeto newAccessRequest para o Find do Node
+node.SendThroughLink(newAccessRequest) // Envio do objeto newAccessRequest pelo link
+node.WaiterWithRequest(accessRequest.Link, node.WaiterChan) //transformacao do Node. Mantem-se o WaiterChan mas altera-se o Link
+\end{lstlisting}
+
+\subsection{Cedência do Objeto}
+No caso do \emph{Node} ser do tipo ``WAITER\textunderscore TERMINAL'' e receber um pedido ``Access Request'', 
+este sofre uma transformação, muda de tipo para ``WAITER\textunderscore WITH\textunderscore REQUEST'' e passou a deter o atributo ``WaiterChan'' (``MyChan'' do \emph{Node} que fez o pedido).
+
+% forma como esta frase está construída pode não estar bem
+Esta secção de código é executada concorrentemente (numa \emph{goroutine}) com qualquer outras \emph{goroutines} que são inicializadas depois,
+isto para permitir que o \emph{Node} receba outros pedidos, que os redirecione, e que outros comportamentos ou transformações possam ocorrer enquanto este espera para ceder o acesso.
+
+
+Num exemplo real, o \emph{Node} transmitiria o objeto a partir do \emph{Channel ``WaiterChan''}, quando por exemplo, o acesso a este não fosse mais necessário.
+
+No entanto, por questões de se pretender criar uma simulação deste protocolo, o \emph{Node} decide ceder o acesso ao objeto após um tempo aleatório (entre 1 a 2 segundos)
+depois de receber o pedido para o seu acesso.
+
+\begin{lstlisting}[caption={\emph{Node} espera 1 ou 2 segundos antes de ceder o objeto.},language=Go]
+	randomSleep := utils.RandomRange(1, 2)
+	time.Sleep(time.Second * time.Duration(randomSleep))
+\end{lstlisting}
+
+De seguida é criado um objeto da classe/tipo ``GiveAccess'' que será transmitido para o \emph{Node} em espera 
+através do ``WaiterChan''.
+
+\begin{lstlisting}[caption={Criação do objeto ``accessObject'', da classe ``GiveAccess''},language=Go]
+	accessObject := Channels.GiveAccess{WaiterChan: node.WaiterChan}
+\end{lstlisting}
+
+
+O método ``releaseObj'', o procedimento que implementa o que foi anteriormente referido, contém uma secção crítica,
+pois acede ao objeto ``selfNode''. 
+
+O acesso à secção crítica deste método é sincronizada com o uso do \emph{Mutex} ``Mutex'', ou seja,
+o acesso ao estado atual do ``selfNode'' só é adquirido por uma \emph{goroutine} de cada vez.
+
+Quando tiver a possibilidade de aceder à secção crítica, este irá transmitir o acesso do objeto. 
+De seguida, como já não possui o acesso ao objeto, este sofre um transformação, mudando-se para um \emph{Node}
+do tipo ``IDLE'', mantendo o ``Link''.
+
+Como o \emph{Node}, é inicializada uma \emph{goroutine} que executará o método ``AutoRequest''.
+Este método desempenha a função de decidir se o \emph{Node} faz um pedido de acesso. 
+%Referir mais à frente o autoRequest
+No entanto, este é descrito num capítulo diferente.
+
+O último procedimento a ser executado neste método é o método ``UpdateVisualization'' da classe ``Node'', em uma nova \emph{goroutine}.
+Este método é usado para atualizar o estado atual do \emph{Node} na visualização.
+
+\begin{lstlisting}[caption={Acesso à secção crítica, transmição do Objeto, transformação em \emph{Node} ``IDLE'', \emph{goroutine} de decisão de pedido, e atualização na visualização},language=Go]
+	Mutex.Lock() //Pedido de acesso a seccao critica
+	node.SendObjectAccess(accessObject) //Transmissao do objeto, atraves do envio do objeto ``accessObject''
+	node.Idle(node.Link) //transformacao em ``IDLE'', mas mantendo o ``Link''
+	go node.AutoRequest() // goroutine que decidira se o \emph{Node} faz um pedido de acesso
+	go node.UpdateVisualization() // atualiza o estado do Node na visualizacao
+
+\end{lstlisting}
+
+
+\subsection{Realização de um pedido de acesso}
+\subsection{Receção acesso ao objeto}
+
+\section{Transformações do \emph{Node}}
+\section{Tipos de Nodes}
 \label{chap:imp:node:tipos}
 
 
-\section{Inicialização do \emph{``Self'' Node}}
 
 \section{Comunicação entre Nodes}
 \section{Classes de \emph{Channels}}

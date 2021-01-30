@@ -1,13 +1,14 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.1.25)  30 JAN 2021 16:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.1.25)  29 JAN 2021 00:13
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.tex
-(/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.tex
+**relatorio-projeto.tex
+(./relatorio-projeto.tex
 LaTeX2e <2020-10-01> patch level 2
-L3 programming layer <2020-12-03> xparse <2020-03-03> (/usr/share/texmf-dist/tex/latex/memoir/memoir.cls
-Document Class: memoir 2020/10/04 v3.7n configurable book, report, article document class
+L3 programming layer <2020-12-03> xparse <2020-03-03>
+(/usr/share/texmf-dist/tex/latex/memoir/memoir.cls
+Document Class: memoir 2020/10/04 v3.7n configurable book, report, article docu
+ment class
 \onelineskip=\skip47
 \lxvchars=\skip48
 \xlvchars=\skip49
@@ -20,7 +21,8 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \stockwidth=\skip51
 \trimtop=\skip52
 \trimedge=\skip53
- (/usr/share/texmf-dist/tex/latex/memoir/mem12.clo
+
+(/usr/share/texmf-dist/tex/latex/memoir/mem12.clo
 File: mem12.clo 2010/10/19 v0.4b memoir class 12pt size option
 )
 \binding=\skip54
@@ -110,7 +112,8 @@ File: mem12.clo 2010/10/19 v0.4b memoir class 12pt size option
 \beforePoemTitleskip=\skip114
 \midPoemTitleskip=\skip115
 \afterPoemTitleskip=\skip116
- (/usr/share/texmf-dist/tex/latex/tools/array.sty
+
+(/usr/share/texmf-dist/tex/latex/tools/array.sty
 Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
 \col@sep=\dimen143
 \ar@mcellbox=\box47
@@ -119,11 +122,14 @@ Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
 \extratabsurround=\skip117
 \backup@length=\skip118
 \ar@cellbox=\box48
-) (/usr/share/texmf-dist/tex/latex/tools/dcolumn.sty
+)
+(/usr/share/texmf-dist/tex/latex/tools/dcolumn.sty
 Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
-) (/usr/share/texmf-dist/tex/latex/tools/delarray.sty
+)
+(/usr/share/texmf-dist/tex/latex/tools/delarray.sty
 Package: delarray 2014/10/28 v1.01 array delimiter package (DPC)
-) (/usr/share/texmf-dist/tex/latex/tools/tabularx.sty
+)
+(/usr/share/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
 \TX@col@width=\dimen145
 \TX@old@table=\dimen146
@@ -282,7 +288,8 @@ LaTeX Info: Redefining \emph on input line 7686.
 \c@sheetsequence=\count294
 \c@lastsheet=\count295
 \c@lastpage=\count296
- (/usr/share/texmf-dist/tex/latex/textcase/textcase.sty
+
+(/usr/share/texmf-dist/tex/latex/textcase/textcase.sty
 Package: textcase 2019/09/14 v1.00 Text only upper/lower case changing (DPC)
 )
 \c@figure=\count297
@@ -326,52 +333,69 @@ Package tocloft [2008/07/23] emulated by memoir.
 Package tocvsec2 [2008/07/23] emulated by memoir.
 Package verbatim [2008/07/23] emulated by memoir.
 Package verse [2008/07/23] emulated by memoir.
-) (/usr/share/texmf-dist/tex/generic/babel/babel.sty
+)
+(/usr/share/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2020/10/27 3.51 The Babel package
- (/usr/share/texmf-dist/tex/generic/babel/babel.def
+
+(/usr/share/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2020/10/27 3.51 Babel common definitions
 \babel@savecnt=\count301
 \U@D=\dimen183
 \l@babelnohyphens=\language86
- (/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
+
+(/usr/share/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read3
 )
 \bbl@dirlevel=\count302
- (/usr/share/texmf-dist/tex/generic/babel-portuges/portuguese.ldf
+
+(/usr/share/texmf-dist/tex/generic/babel-portuges/portuguese.ldf
 Language: portuges 2020/05/04 v1.2r Portuguese support from the babel system
 Package babel Info: Making " an active character on input line 143.
-)) (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+))
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
-) (/usr/share/texmf-dist/tex/latex/tools/xspace.sty
+)
+(/usr/share/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-) (/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
+
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks23
-) (/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+)
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
- (/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+)
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
- (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
+
+(/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen184
 \Gin@req@width=\dimen185
-) (/usr/share/texmf-dist/tex/latex/graphics/color.sty
+)
+(/usr/share/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2020/02/24 v1.2b Standard LaTeX Color (DPC)
- (/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
+
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
-) (/usr/share/texmf-dist/tex/latex/psnfss/times.sty
+)
+(/usr/share/texmf-dist/tex/latex/psnfss/times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
-) (/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footers
+)
+(/usr/share/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footer
+s
 \f@nch@headwidth=\skip191
 \f@nch@O@elh=\skip192
 \f@nch@O@erh=\skip193
@@ -381,21 +405,25 @@ Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footers
 \f@nch@O@erf=\skip197
 \f@nch@O@olf=\skip198
 \f@nch@O@orf=\skip199
-) (/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/09/23 v2.17i AMS math features
 \@mathmargin=\skip256
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
- (/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
+
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks24
 \ex@=\dimen186
-)) (/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
+))
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen187
-) (/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+)
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count303
@@ -435,30 +463,37 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \mathdisplay@stack=\toks28
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
-) (/usr/share/texmf-dist/tex/latex/base/latexsym.sty
+)
+(/usr/share/texmf-dist/tex/latex/base/latexsym.sty
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
-) (/usr/share/texmf-dist/tex/latex/acronym/acronym.sty
+)
+(/usr/share/texmf-dist/tex/latex/acronym/acronym.sty
 Package: acronym 2020/04/17 v1.47 Support for acronyms (Tobias Oetiker)
- (/usr/share/texmf-dist/tex/latex/bigfoot/suffix.sty
+
+(/usr/share/texmf-dist/tex/latex/bigfoot/suffix.sty
 Package: suffix 2006/07/15 1.5a Variant command support
-) (/usr/share/texmf-dist/tex/generic/xstring/xstring.sty (/usr/share/texmf-dist/tex/generic/xstring/xstring.tex
+)
+(/usr/share/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texmf-dist/tex/generic/xstring/xstring.tex
 \integerpart=\count315
 \decimalpart=\count316
 )
 Package: xstring 2019/02/06 v1.83 String manipulations (CT)
 )
 \AC@clearlist=\toks29
-) (/usr/share/texmf-dist/tex/latex/float/float.sty
+)
+(/usr/share/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count317
 \float@exts=\toks30
 \float@box=\box54
 \@float@everytoks=\toks31
 \@floatcapt=\box55
-) (/usr/share/texmf-dist/tex/latex/listings/listings.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count318
 \lst@gtempboxa=\box56
 \lst@token=\toks32
@@ -471,58 +506,76 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \lst@newlines=\count322
 \lst@lineno=\count323
 \lst@maxwidth=\dimen198
- (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 \c@lstnumber=\count324
 \lst@skipnumbers=\count325
 \lst@framebox=\box57
-) (/usr/share/texmf-dist/tex/latex/listings/listings.cfg
+)
+(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
- (/usr/share/texmf-dist/tex/latex/natbib/natbib.sty
+
+(/usr/share/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip259
 \bibsep=\skip260
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count326
-) (/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+)
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
- (/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-) (/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+)
+(/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-) (/usr/share/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+)
+(/usr/share/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
-) (/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+)
+(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+)
+(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
+)
+(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (/usr/share/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+)
+(/usr/share/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-) (/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
+)
+(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-) (/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+)
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen199
 \Hy@linkcounter=\count327
 \Hy@pagecounter=\count328
- (/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
+
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
+)
+(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-) (/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+)
+(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
 \Hy@SavedSpaceFactor=\count329
@@ -534,16 +587,20 @@ Package hyperref Info: Backreferencing OFF on input line 4484.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4717.
 \c@Hy@tempcnt=\count330
- (/usr/share/texmf-dist/tex/latex/url/url.sty
+
+(/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5076.
 \XeTeXLinkMargin=\dimen256
- (/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
+
+(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+
+(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
 ))
 \Fld@menulength=\count331
 \Field@Width=\dimen257
@@ -557,41 +614,54 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6372.
 Package hyperref Info: PDF/A mode OFF on input line 6377.
 LaTeX Info: Redefining \ref on input line 6417.
 LaTeX Info: Redefining \pageref on input line 6421.
- (/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
-Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi package
+
+(/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
+ge
 with kernel methods
 )
 \Hy@abspage=\count332
 \c@Item=\count333
 \c@Hfootnote=\count334
-) (/usr/share/texmf-dist/tex/latex/memoir/memhfixc.sty
-Package: memhfixc 2019/10/24 v1.18 nameref/hyperref package fixes for memoir class
+)
+(/usr/share/texmf-dist/tex/latex/memoir/memhfixc.sty
+Package: memhfixc 2019/10/24 v1.18 nameref/hyperref package fixes for memoir cl
+ass
 \c@memhycontfloat=\count335
 \c@Hpagenote=\count336
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
+
+(/usr/share/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
- (/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery package
+
+(/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
+e
 with kernel methods
 )
 \Fld@listcount=\count337
 \c@bookmark@seq@number=\count338
- (/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+
+(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
- (/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+
+(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
 )
 \Hy@SectionHShift=\skip261
-) (/usr/share/texmf-dist/tex/latex/base/fix-cm.sty
+)
+(/usr/share/texmf-dist/tex/latex/base/fix-cm.sty
 Package: fix-cm 2015/01/14 v1.1t fixes to LaTeX
- (/usr/share/texmf-dist/tex/latex/base/ts1enc.def
+
+(/usr/share/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
-)) (/usr/share/texmf-dist/tex/latex/fourier/fourier.sty
+))
+(/usr/share/texmf-dist/tex/latex/fourier/fourier.sty
 Package: fourier 2020/03/03 2.2 fourier-GUTenberg package
 Now handling font encoding FML ...
 ... no UTF-8 mapping file for font encoding FML
@@ -599,14 +669,19 @@ Now handling font encoding FMS ...
 ... no UTF-8 mapping file for font encoding FMS
 Now handling font encoding FMX ...
 ... no UTF-8 mapping file for font encoding FMX
- (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
+
+(/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
-LaTeX Font Info:    Trying to load font information for T1+futs on input line 112.
- (/usr/share/texmf-dist/tex/latex/fourier/t1futs.fd
+LaTeX Font Info:    Trying to load font information for T1+futs on input line 1
+12.
+
+(/usr/share/texmf-dist/tex/latex/fourier/t1futs.fd
 File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
-)) (/usr/share/texmf-dist/tex/latex/base/textcomp.sty
+))
+(/usr/share/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-) (/usr/share/texmf-dist/tex/latex/fourier/fourier-orns.sty
+)
+(/usr/share/texmf-dist/tex/latex/fourier/fourier-orns.sty
 Package: fourier-orns 2020/03/03 2.2 fourier-ornaments package
 )
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 63.
@@ -656,11 +731,13 @@ LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
 (Font)                  OMS/cmsy/b/n --> FMS/futm/m/n on input line 126.
 LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 127.
 LaTeX Font Info:    Encoding `OMX' has changed to `FMX' for symbol font
-(Font)              `largesymbols' in the math version `normal' on input line 127.
+(Font)              `largesymbols' in the math version `normal' on input line 1
+27.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
 (Font)                  OMX/cmex/m/n --> FMX/futm/m/n on input line 127.
 LaTeX Font Info:    Encoding `OMX' has changed to `FMX' for symbol font
-(Font)              `largesymbols' in the math version `bold' on input line 127.
+(Font)              `largesymbols' in the math version `bold' on input line 127
+.
 LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 (Font)                  OMX/cmex/m/n --> FMX/futm/m/n on input line 127.
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 128.
@@ -706,17 +783,25 @@ LaTeX Font Info:    Redeclaring math accent \hat on input line 267.
 LaTeX Font Info:    Redeclaring math accent \dot on input line 268.
 LaTeX Font Info:    Redeclaring math accent \mathring on input line 269.
 \symUfutm=\mathgroup6
-) (/usr/share/texmf-dist/tex/latex/psnfss/helvet.sty
+)
+(/usr/share/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-) (/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+)
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count339
 \l__pdf_internal_box=\box58
-) (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.aux (/home/guilherme/Desktop/relatorio-projeto/capa.aux) (/home/guilherme/Desktop/relatorio-projeto/agradecimentos.aux) (/home/guilherme/Desktop/relatorio-projeto/acronimos.aux) (/home/guilherme/Desktop/relatorio-projeto/introducao.aux) (/home/guilherme/Desktop/relatorio-projeto/estado-da-arte.aux) (/home/guilherme/Desktop/relatorio-projeto/especificacao.aux) (/home/guilherme/Desktop/relatorio-projeto/tecnologias.aux) (/home/guilherme/Desktop/relatorio-projeto/implementacao.aux) (/home/guilherme/Desktop/relatorio-projeto/visualizacao.aux) (/home/guilherme/Desktop/relatorio-projeto/reflexao.aux) (/home/guilherme/Desktop/relatorio-projeto/conc-trab-futuro.aux))
+)
+(build/relatorio-projeto.aux (build/capa.aux) (build/agradecimentos.aux)
+(build/acronimos.aux) (build/introducao.aux) (build/estado-da-arte.aux)
+(build/tecnologias.aux) (build/especificacao.aux) (build/implementacao.aux)
+(build/visualizacao.aux) (build/reflexao.aux) (build/conc-trab-futuro.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
 LaTeX Font Info:    ... okay on input line 125.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
@@ -734,24 +819,31 @@ LaTeX Font Info:    ... okay on input line 125.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 125.
 LaTeX Font Info:    ... okay on input line 125.
 LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 125.
-LaTeX Font Info:    Trying to load font information for FML+futm on input line 125.
- (/usr/share/texmf-dist/tex/latex/fourier/fmlfutm.fd
+LaTeX Font Info:    Trying to load font information for FML+futm on input line 
+125.
+
+(/usr/share/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
 LaTeX Font Info:    ... okay on input line 125.
 LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 125.
-LaTeX Font Info:    Trying to load font information for FMS+futm on input line 125.
- (/usr/share/texmf-dist/tex/latex/fourier/fmsfutm.fd
+LaTeX Font Info:    Trying to load font information for FMS+futm on input line 
+125.
+
+(/usr/share/texmf-dist/tex/latex/fourier/fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
 )
 LaTeX Font Info:    ... okay on input line 125.
 LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 125.
-LaTeX Font Info:    Trying to load font information for FMX+futm on input line 125.
- (/usr/share/texmf-dist/tex/latex/fourier/fmxfutm.fd
+LaTeX Font Info:    Trying to load font information for FMX+futm on input line 
+125.
+
+(/usr/share/texmf-dist/tex/latex/fourier/fmxfutm.fd
 File: fmxfutm.fd futm-extension
 )
 LaTeX Font Info:    ... okay on input line 125.
- (/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count340
 \scratchdimen=\dimen259
@@ -766,23 +858,31 @@ LaTeX Font Info:    ... okay on input line 125.
 \everyMPtoPDFconversion=\toks34
 ) (/usr/share/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
- (/usr/share/texmf-dist/tex/latex/grfext/grfext.sty
+
+(/usr/share/texmf-dist/tex/latex/grfext/grfext.sty
 Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
- (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+
+(/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
 \c@lstlisting=\count346
 Package hyperref Info: Link coloring OFF on input line 125.
- (/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
+
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
- (/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
+
+(/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+)
+(/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count347
@@ -793,28 +893,32 @@ LaTeX Info: Redefining \nameref on input line 125.
 LaTeX Info: Redefining \ref on input line 125.
 LaTeX Info: Redefining \pageref on input line 125.
 LaTeX Info: Redefining \nameref on input line 125.
-(/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.out) (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.out)
+(build/relatorio-projeto.out) (build/relatorio-projeto.out)
 \@outlinefile=\write4
- (/home/guilherme/Desktop/relatorio-projeto/capa.tex
+ (./capa.tex
 <ubi-fe-di.png, id=385, 111.0549pt x 107.6823pt>
 File: ubi-fe-di.png Graphic file (type png)
 <use ubi-fe-di.png>
 Package pdftex.def Info: ubi-fe-di.png  used on input line 20.
 (pdftex.def)             Requested size: 191.0pt x 185.21156pt.
-LaTeX Font Info:    Trying to load font information for TS1+futs on input line 26.
- (/usr/share/texmf-dist/tex/latex/fourier/ts1futs.fd
+LaTeX Font Info:    Trying to load font information for TS1+futs on input line 
+26.
+
+(/usr/share/texmf-dist/tex/latex/fourier/ts1futs.fd
 File: ts1futs.fd 2003/09/14 Fontinst v1.801 font definitions for TS1/futs.
 )) [-1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/guilherme/Desktop/relatorio-projeto/ubi-fe-di.png>] [0
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./ubi-fe-di.png>] [0
 
 
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/agradecimentos.tex
+] (./agradecimentos.tex
 LaTeX Font Info:    Trying to load font information for T1+phv on input line 1.
- (/usr/share/texmf-dist/tex/latex/psnfss/t1phv.fd
+
+
+(/usr/share/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
 )
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
@@ -834,9 +938,12 @@ LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
 
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.toc
-LaTeX Font Info:    Trying to load font information for FML+futmi on input line 2.
- (/usr/share/texmf-dist/tex/latex/fourier/fmlfutmi.fd
+]
+(build/relatorio-projeto.toc
+LaTeX Font Info:    Trying to load font information for FML+futmi on input line
+ 2.
+
+(/usr/share/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
@@ -854,18 +961,22 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
  [3] [4]) [5] [6
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.lof) [7] [8
+]
+(build/relatorio-projeto.lof) [7] [8
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.lot) [9] [10
+] (build/relatorio-projeto.lot) [9]
+[10
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/acronimos.tex
+] (./acronimos.tex
 
 LaTeX Warning: Hyper reference `acro:IDE' on page xi undefined on input line 5.
 
 
+
 LaTeX Warning: Hyper reference `acro:IDE' on page xi undefined on input line 5.
+
 
 ) [11
 
@@ -875,7 +986,7 @@ LaTeX Warning: Hyper reference `acro:IDE' on page xi undefined on input line 5.
 
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/introducao.tex
+] (./introducao.tex
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 13.24796pt on input line 1.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
@@ -893,7 +1004,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
 
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/estado-da-arte.tex) [3
+] (./estado-da-arte.tex) [3
 
 
 ] [4
@@ -901,45 +1012,22 @@ LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
 
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/especificacao.tex [5
-
-
 ]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 65--66
-[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
- []
-
-[6]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 96--97
-[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
- []
-
-[7]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 122--123
-[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
- []
-
-
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 153--154
-[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
- []
-
-[8] [9]) [10] (/home/guilherme/Desktop/relatorio-projeto/tecnologias.tex [11
-
-
-
-
+(./tecnologias.tex [5
 
 
 ] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2020/03/24 1.8d listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2020/03/24 1.8d listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+)
+(/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [12] [13]
+) [6] [7]
 
 Package acronym Warning: Acronym `HTTP' is not defined on input line 122.
 
@@ -960,70 +1048,209 @@ Package acronym Warning: Acronym `IP' is not defined on input line 142.
 
 
 Overfull \hbox (1.72832pt too wide) in paragraph at lines 142--143
-[]\T1/futs/m/n/12 No en-tanto, esta tec-no-lo-gia foi uti-li-zada para si-mu-lar uma rede dis-tri-buÌda,
+[]\T1/futs/m/n/12 No en-tanto, esta tec-no-lo-gia foi uti-li-zada para si-mu-la
+r uma rede dis-tri-buÌda,
  []
 
-[14]) [15] [16
+[8]) [9] [10
 
 
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/implementacao.tex
-Overfull \hbox (6.9623pt too wide) in paragraph at lines 34--35
-[]\T1/futs/m/n/12 NodeTranformations.go - \T1/futs/b/n/12 Trans-for-ma-Áıes\T1/futs/m/n/12 /MudanÁas de tipo que o \T1/futs/m/it/12 Node
+] (./especificacao.tex [11
+
+
+]
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 65--66
+[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/
+futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess R
+e-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
+ []
+
+[12]
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 96--97
+[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/
+futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess R
+e-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
+ []
+
+[13]
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 122--123
+[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/
+futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess R
+e-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
+ []
+
+
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 153--154
+[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/
+futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess R
+e-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
+ []
+
+[14] [15]) [16] (./implementacao.tex
+Overfull \hbox (6.9623pt too wide) in paragraph at lines 32--33
+[]\T1/futs/m/n/12 NodeTranformations.go - \T1/futs/b/n/12 Trans-for-ma-Áıes\T1/
+futs/m/n/12 /MudanÁas de tipo que o \T1/futs/m/it/12 Node
  []
 
 [17
 
 
+
+
+
+
 ]
 
-Package acronym Warning: Acronym `IP' is not defined on input line 72.
+! Package inputenc Error: Invalid UTF-8 byte sequence.
 
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.47 	Link       string   //Liga√ßao 
+                                     para o child Node
+? 
 
-Package acronym Warning: Acronym `HTTP' is not defined on input line 74.
+! Package inputenc Error: Invalid UTF-8 byte "A7.
 
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.47 	Link       string   //Liga√ßao 
+                                     para o child Node
+? 
 
-Package acronym Warning: Acronym `URL' is not defined on input line 76.
+! Package inputenc Error: Invalid UTF-8 byte sequence.
 
-[18]
-Overfull \hbox (8.40034pt too wide) in paragraph at lines 97--98
-[]\T1/futs/m/n/12 Na im-ple-men-ta-Á„o deste mÈ-todo, foi usada a es-tru-tura con-di-ci-o-nal ``Switch''
- []
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.48 ...   //Channel do Node que esta na posi√ßao 
+                                                  seguinte da fila
+? 
 
+! Package inputenc Error: Invalid UTF-8 byte "A7.
 
-Overfull \hbox (2.45155pt too wide) in paragraph at lines 102--103
-\T1/futs/m/n/12 novo ``Ac-ces-s-Re-quest'', caso o \T1/futs/m/it/12 Node \T1/futs/m/n/12 re-di-re-ci-one o pe-dido para o seu \T1/futs/m/it/12 Child Node\T1/futs/m/n/12 . 
- []
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.48 ...   //Channel do Node que esta na posi√ßao 
+                                                  seguinte da fila
+? 
 
-[19]
-Overfull \hbox (1.10774pt too wide) in paragraph at lines 148--151
-[]\T1/futs/m/n/12 Por ˙l-timo, este so-fre uma trans-for-ma-Á„o. O mÈ-todo ``Ow-nerWith-Re-quest''
- []
+! Package inputenc Error: Invalid UTF-8 byte sequence.
 
-[20]
-Overfull \hbox (19.09488pt too wide) in paragraph at lines 187--188
-\T1/futs/m/n/12 Caso o tipo seja ``WAI-TER_WITH _RE-QUEST'', o Atri-buto ``Link'' do ob-jeto ``newAc-
- []
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.49 	MyAddress  string   //Endere√ßo 
+                                      do Node
+? 
 
+! Package inputenc Error: Invalid UTF-8 byte "A7.
 
-Overfull \hbox (0.42369pt too wide) in paragraph at lines 191--194
-[]\T1/futs/m/n/12 Por ˙l-timo, este so-fre uma trans-for-ma-Á„o. O mÈ-todo ``Wai-terWith-Re-quest''
- []
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.49 	MyAddress  string   //Endere√ßo 
+                                      do Node
+? 
 
-[21]
-Overfull \hbox (73.10738pt too wide) in paragraph at lines 202--204
-\T1/futs/m/n/12 cess Re-quest'', este so-fre uma trans-for-ma-Á„o, muda de tipo para ``WAI-TER_WITH_REQUEST''
- []
+! Package inputenc Error: Invalid UTF-8 byte sequence.
 
-[22])
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 	VisAddress string   //Endere√ßo 
+                                      para onde envia o seu estado atual par...
+
+? 
+
+! Package inputenc Error: Invalid UTF-8 byte "A7.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 	VisAddress string   //Endere√ßo 
+                                      para onde envia o seu estado atual par...
+
+? 
+
+! Package inputenc Error: Invalid UTF-8 byte sequence.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 ...ia o seu estado atual para a atualiza√ßao 
+                                                  da visualiza√ßao
+? 
+
+! Package inputenc Error: Invalid UTF-8 byte "A7.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 ...ia o seu estado atual para a atualiza√ßao 
+                                                  da visualiza√ßao
+? 
+
+! Package inputenc Error: Invalid UTF-8 byte sequence.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 ...atual para a atualiza√ßao da visualiza√ßao
+                                                  
+? 
+
+! Package inputenc Error: Invalid UTF-8 byte "A7.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.50 ...atual para a atualiza√ßao da visualiza√ßao
+                                                  
+? 
+)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23] [24] (/home/guilherme/Desktop/relatorio-projeto/visualizacao.tex) [25
+ [18]
+[19] [20
 
 
 
 
+] (./visualizacao.tex) [21
+
+
+] [22
+
+
+
+
+] (./reflexao.tex) [23
+
+
+] [24
+
+
+
+
+]
+(./conc-trab-futuro.tex) [25
 
 
 ] [26
@@ -1031,54 +1258,39 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-] (/home/guilherme/Desktop/relatorio-projeto/reflexao.tex) [27
-
-
-] [28
-
-
-
-
-] (/home/guilherme/Desktop/relatorio-projeto/conc-trab-futuro.tex) [29
-
-
-] [30
-
-
-
-
-] (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.bbl
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
-) [31
-
-
 ]
+No file relatorio-projeto.bbl.
 \tf@toc=\write5
 \tf@lof=\write6
 \tf@lot=\write7
- (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.aux (/home/guilherme/Desktop/relatorio-projeto/capa.aux) (/home/guilherme/Desktop/relatorio-projeto/agradecimentos.aux) (/home/guilherme/Desktop/relatorio-projeto/acronimos.aux) (/home/guilherme/Desktop/relatorio-projeto/introducao.aux) (/home/guilherme/Desktop/relatorio-projeto/estado-da-arte.aux) (/home/guilherme/Desktop/relatorio-projeto/especificacao.aux) (/home/guilherme/Desktop/relatorio-projeto/tecnologias.aux) (/home/guilherme/Desktop/relatorio-projeto/implementacao.aux) (/home/guilherme/Desktop/relatorio-projeto/visualizacao.aux) (/home/guilherme/Desktop/relatorio-projeto/reflexao.aux) (/home/guilherme/Desktop/relatorio-projeto/conc-trab-futuro.aux))
+(build/relatorio-projeto.aux (build/capa.aux) (build/agradecimentos.aux)
+(build/acronimos.aux) (build/introducao.aux) (build/estado-da-arte.aux)
+(build/tecnologias.aux) (build/especificacao.aux) (build/implementacao.aux)
+(build/visualizacao.aux) (build/reflexao.aux) (build/conc-trab-futuro.aux))
 Package rerunfilecheck Info: File `relatorio-projeto.out' has not changed.
-(rerunfilecheck)             Checksum: 99D3EED900B0427E8A99A6EEF713206A;6571.
+(rerunfilecheck)             Checksum: C1FB9E07485681CEADF16D692F6C0C9E;6657.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 14316 strings out of 479383
- 207829 string characters out of 5875830
- 982422 words of memory out of 5000000
- 30804 multiletter control sequences out of 15000+600000
+ 14205 strings out of 479383
+ 202979 string characters out of 5875830
+ 982326 words of memory out of 5000000
+ 30748 multiletter control sequences out of 15000+600000
  500219 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,12n,72p,581b,2019s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
-Output written on /home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.pdf (45 pages, 175156 bytes).
+ 66i,12n,72p,539b,2019s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fon
+ts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopi
+a/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/
+share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fo
+nts/type1/urw/helvetic/uhvbo8a.pfb>
+Output written on build/relatorio-projeto.pdf (40 pages, 153523 bytes).
 PDF statistics:
- 898 PDF objects out of 1000 (max. 8388607)
- 835 compressed objects within 9 object streams
- 258 named destinations out of 1000 (max. 500000)
+ 816 PDF objects out of 1000 (max. 8388607)
+ 759 compressed objects within 8 object streams
+ 205 named destinations out of 1000 (max. 500000)
  766 words of extra memory for PDF output out of 10000 (max. 10000000)
 
