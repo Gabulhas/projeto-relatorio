@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.1.25)  30 JAN 2021 16:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.1.25)  31 JAN 2021 22:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -796,7 +796,7 @@ LaTeX Info: Redefining \nameref on input line 125.
 (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.out) (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.out)
 \@outlinefile=\write4
  (/home/guilherme/Desktop/relatorio-projeto/capa.tex
-<ubi-fe-di.png, id=385, 111.0549pt x 107.6823pt>
+<ubi-fe-di.png, id=317, 111.0549pt x 107.6823pt>
 File: ubi-fe-di.png Graphic file (type png)
 <use ubi-fe-di.png>
 Package pdftex.def Info: ubi-fe-di.png  used on input line 20.
@@ -862,10 +862,34 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 
 ] (/home/guilherme/Desktop/relatorio-projeto/acronimos.tex
 
-LaTeX Warning: Hyper reference `acro:IDE' on page xi undefined on input line 5.
+LaTeX Warning: Hyper reference `acro:HTTP' on page xi undefined on input line 5.
 
 
-LaTeX Warning: Hyper reference `acro:IDE' on page xi undefined on input line 5.
+LaTeX Warning: Hyper reference `acro:HTTP' on page xi undefined on input line 5.
+
+
+LaTeX Warning: Hyper reference `acro:IP' on page xi undefined on input line 6.
+
+
+LaTeX Warning: Hyper reference `acro:IP' on page xi undefined on input line 6.
+
+
+LaTeX Warning: Hyper reference `acro:URL' on page xi undefined on input line 7.
+
+
+LaTeX Warning: Hyper reference `acro:URL' on page xi undefined on input line 7.
+
+
+LaTeX Warning: Hyper reference `acro:IDE' on page xi undefined on input line 8.
+
+
+LaTeX Warning: Hyper reference `acro:IDE' on page xi undefined on input line 8.
+
+
+LaTeX Warning: Hyper reference `acro:SVG' on page xi undefined on input line 9.
+
+
+LaTeX Warning: Hyper reference `acro:SVG' on page xi undefined on input line 9.
 
 ) [11
 
@@ -905,26 +929,31 @@ LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
 
 
 ]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 65--66
-[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
+Overfull \hbox (5.08356pt too wide) in paragraph at lines 59--63
+\T1/futs/m/n/12 seu \T1/futs/m/it/12 Pa-rent Node\T1/futs/m/n/12 , ha-vendo uma in-ver-são da li-ga-ção. - \T1/futs/b/n/12 Ow-nerWith-Re-quest(find,
  []
 
 [6]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 96--97
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 86--87
+[]\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
+ []
+
+
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 120--121
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
 [7]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 122--123
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 146--147
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
-
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 153--154
+[8]
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 178--179
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
-[8] [9]) [10] (/home/guilherme/Desktop/relatorio-projeto/tecnologias.tex [11
+[9]) [10] (/home/guilherme/Desktop/relatorio-projeto/tecnologias.tex [11
 
 
 
@@ -941,22 +970,7 @@ File: lstlang3.sty 2020/03/24 1.8d listings language file
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) [12] [13]
 
-Package acronym Warning: Acronym `HTTP' is not defined on input line 122.
-
-
-Package acronym Warning: Acronym `HTTP' is not defined on input line 122.
-
-
-Package acronym Warning: Acronym `HTTP' is not defined on input line 122.
-
-
-Package acronym Warning: Acronym `SVG' is not defined on input line 128.
-
-
 Package acronym Warning: Acronym `HTML' is not defined on input line 128.
-
-
-Package acronym Warning: Acronym `IP' is not defined on input line 142.
 
 
 Overfull \hbox (1.72832pt too wide) in paragraph at lines 142--143
@@ -976,73 +990,76 @@ Overfull \hbox (6.9623pt too wide) in paragraph at lines 34--35
 [17
 
 
-]
-
-Package acronym Warning: Acronym `IP' is not defined on input line 72.
-
-
-Package acronym Warning: Acronym `HTTP' is not defined on input line 74.
-
-
-Package acronym Warning: Acronym `URL' is not defined on input line 76.
-
-[18]
-Overfull \hbox (8.40034pt too wide) in paragraph at lines 97--98
+] [18]
+Overfull \hbox (8.40034pt too wide) in paragraph at lines 99--101
 []\T1/futs/m/n/12 Na im-ple-men-ta-ção deste mé-todo, foi usada a es-tru-tura con-di-ci-o-nal ``Switch''
  []
 
 
-Overfull \hbox (2.45155pt too wide) in paragraph at lines 102--103
+Overfull \hbox (2.45155pt too wide) in paragraph at lines 106--109
 \T1/futs/m/n/12 novo ``Ac-ces-s-Re-quest'', caso o \T1/futs/m/it/12 Node \T1/futs/m/n/12 re-di-re-ci-one o pe-dido para o seu \T1/futs/m/it/12 Child Node\T1/futs/m/n/12 . 
  []
 
 [19]
-Overfull \hbox (1.10774pt too wide) in paragraph at lines 148--151
-[]\T1/futs/m/n/12 Por úl-timo, este so-fre uma trans-for-ma-ção. O mé-todo ``Ow-nerWith-Re-quest''
+Overfull \hbox (4.82753pt too wide) in paragraph at lines 136--138
+\T1/futs/m/n/12 Caso o tipo seja ``OW-NER_TERMINAL'', o \T1/futs/m/it/12 Node\T1/futs/m/n/12 , o mé-todo ``Ow-nerWith-Re-quest''
+ []
+
+
+Overfull \hbox (16.1795pt too wide) in paragraph at lines 154--156
+\T1/futs/m/n/12 Caso o tipo seja ``OW-NER_WITH_REQUEST'', o Atri-buto ``Link'' do ob-jeto ``newAc-
  []
 
 [20]
-Overfull \hbox (19.09488pt too wide) in paragraph at lines 187--188
+Overfull \hbox (2.33144pt too wide) in paragraph at lines 192--194
+\T1/futs/m/n/12 Caso o tipo seja ``WAI-TER_TERMINAL'', o \T1/futs/m/it/12 Node \T1/futs/m/n/12 o mé-todo ``Wai-terWith-Re-quest''
+ []
+
+
+Overfull \hbox (5.46298pt too wide) in paragraph at lines 192--194
+\T1/futs/m/n/12 do \T1/futs/m/it/12 Node \T1/futs/m/n/12 será exe-cu-tado, que trans-forma o \T1/futs/m/it/12 Node \T1/futs/m/n/12 em \T1/futs/m/it/12 WAI-TER_WITH _RE-QUEST\T1/futs/m/n/12 . 
+ []
+
+[21]
+Overfull \hbox (19.09488pt too wide) in paragraph at lines 204--206
 \T1/futs/m/n/12 Caso o tipo seja ``WAI-TER_WITH _RE-QUEST'', o Atri-buto ``Link'' do ob-jeto ``newAc-
  []
 
 
-Overfull \hbox (0.42369pt too wide) in paragraph at lines 191--194
+Overfull \hbox (0.42369pt too wide) in paragraph at lines 209--213
 []\T1/futs/m/n/12 Por úl-timo, este so-fre uma trans-for-ma-ção. O mé-todo ``Wai-terWith-Re-quest''
  []
 
-[21]
-Overfull \hbox (73.10738pt too wide) in paragraph at lines 202--204
+
+Overfull \hbox (73.10738pt too wide) in paragraph at lines 221--223
 \T1/futs/m/n/12 cess Re-quest'', este so-fre uma trans-for-ma-ção, muda de tipo para ``WAI-TER_WITH_REQUEST''
  []
 
-[22])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [23] [24] (/home/guilherme/Desktop/relatorio-projeto/visualizacao.tex) [25
+[22] [23] [24] [25] [26]) [27] [28
 
 
 
 
-
-
-] [26
-
-
-
-
-] (/home/guilherme/Desktop/relatorio-projeto/reflexao.tex) [27
-
-
-] [28
-
-
-
-
-] (/home/guilherme/Desktop/relatorio-projeto/conc-trab-futuro.tex) [29
+] (/home/guilherme/Desktop/relatorio-projeto/visualizacao.tex) [29
 
 
 ] [30
+
+
+
+
+] (/home/guilherme/Desktop/relatorio-projeto/reflexao.tex) [31
+
+
+] [32
+
+
+
+
+] (/home/guilherme/Desktop/relatorio-projeto/conc-trab-futuro.tex) [33
+
+
+] [34
 
 
 
@@ -1051,7 +1068,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Package natbib Warning: Empty `thebibliography' environment on input line 3.
 
-) [31
+) [35
 
 
 ]
@@ -1060,25 +1077,25 @@ Package natbib Warning: Empty `thebibliography' environment on input line 3.
 \tf@lot=\write7
  (/home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.aux (/home/guilherme/Desktop/relatorio-projeto/capa.aux) (/home/guilherme/Desktop/relatorio-projeto/agradecimentos.aux) (/home/guilherme/Desktop/relatorio-projeto/acronimos.aux) (/home/guilherme/Desktop/relatorio-projeto/introducao.aux) (/home/guilherme/Desktop/relatorio-projeto/estado-da-arte.aux) (/home/guilherme/Desktop/relatorio-projeto/especificacao.aux) (/home/guilherme/Desktop/relatorio-projeto/tecnologias.aux) (/home/guilherme/Desktop/relatorio-projeto/implementacao.aux) (/home/guilherme/Desktop/relatorio-projeto/visualizacao.aux) (/home/guilherme/Desktop/relatorio-projeto/reflexao.aux) (/home/guilherme/Desktop/relatorio-projeto/conc-trab-futuro.aux))
 Package rerunfilecheck Info: File `relatorio-projeto.out' has not changed.
-(rerunfilecheck)             Checksum: 99D3EED900B0427E8A99A6EEF713206A;6571.
+(rerunfilecheck)             Checksum: 3F48EB0719A95FA36E5AE60EF8241677;5179.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 14316 strings out of 479383
- 207829 string characters out of 5875830
- 982422 words of memory out of 5000000
- 30804 multiletter control sequences out of 15000+600000
+ 14421 strings out of 479383
+ 209207 string characters out of 5875830
+ 989452 words of memory out of 5000000
+ 30818 multiletter control sequences out of 15000+600000
  500219 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,12n,72p,581b,2019s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
-Output written on /home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.pdf (45 pages, 175156 bytes).
+Output written on /home/guilherme/Desktop/relatorio-projeto/relatorio-projeto.pdf (49 pages, 193729 bytes).
 PDF statistics:
- 898 PDF objects out of 1000 (max. 8388607)
- 835 compressed objects within 9 object streams
- 258 named destinations out of 1000 (max. 500000)
- 766 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 945 PDF objects out of 1000 (max. 8388607)
+ 878 compressed objects within 9 object streams
+ 349 named destinations out of 1000 (max. 500000)
+ 630 words of extra memory for PDF output out of 10000 (max. 10000000)
 
