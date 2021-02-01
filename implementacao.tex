@@ -24,6 +24,8 @@
 \section{Classe \emph{Node}}
 A Classe \emph{Node} desempenha a função de armazenar o estado atual do próprio \emph{Node}, define os métodos/procedimentos que este pode executar, e uma enumeração dos 5 diferentes tipos de \emph{Nodes}.
 
+
+
 Nesta Implementação, esta classe está incluída num módulo \emph{Go} ``Nodes'' (Ou seja, num diretório com o mesmo nome), e é constituído por 5 ficheiros, sendo que as várias (funcionalidades ?) estão distribuídas por estes ficheiros.
 
 Estes são:
@@ -40,6 +42,8 @@ Estes são:
 Como referido no capítulo de Especificação, um \emph{Node} tem, no máximo 5 atributos, no entanto, na sua implementação este incluí no total 8, tendo a mais os atributos ``MyAddress'', ``Type'' e ``VisAddress''.
 Esta é a definição da \emph{Struct} dos atributos do \emph{Node}.
 
+
+Este código está presente no ficheiro Node.go.
 
 
 \begin{lstlisting}[caption={Definição da estrutura \emph{Node}},language=Go]
@@ -81,12 +85,18 @@ em que, caso o \emph{Node} seja do tipo \emph{OwnerTerminal} ou \emph{OwnerWithR
 
 \section{Inicialização do objeto ``Self Node''}
 
+\section{Tipos de Nodes}
+\label{chap:imp:node:tipos}
+
+
+
 \section{Comportamentos}
 Como referido no capítulo de Especificação \ref{especificacao:atr:section}, 
 o \emph{Node} pode ter vários comportamentos, 
 que dependem do seu tipo e de fatores que os desencadeiam, como por exemplo receber um pedido de acesso ou o acesso ao objeto e 
 o próprio \emph{Node} (no caso desta implementação) tomar decisões, como ceder o acesso ao objeto ou pedir o mesmo.
 
+Este código está presente no ficheiro NodeBehaviours.go .
 
 \subsection{Receção de um pedido Access Request}
 Todos os tipos de \emph{Nodes} têm a possibilidade de receber um pedido de \emph{AccessRequest}, no entanto, o comportamento (e transformação) desencadeado por este evento é diferente entre tipos.
@@ -403,8 +413,8 @@ func (node *Node) AutoRequest() {
 
 }
 \end{lstlisting}
-Este método permite que \emph{Node} realize pedidos em tempo aleatório com uma chance de 50 porcento,
-ou seja, nem sempre o \emph{Node} realiza um pedido.
+Este método permite que \emph{Node} realize pedidos em tempo aleatório com uma chance de 50\%,
+ou seja, há a possibilidade de o \emph{Node} não realizar um pedido.
 
 
 \subsection{Receção acesso ao objeto}
@@ -414,8 +424,36 @@ este pode receber o acesso ao objeto.
 Quando o \emph{Node} recebe um pedido \emph{GiveAccess} (\emph{Handler} ``myChanRoute'' no ficheiro ``controller.go'') o
 método ``ReceiveObj'' da classe \emph{Node} é executado.
 O objeto de entrada do método provêm da descodificação dos dados transmitidos pelo \emph{Owner}
-que cedeu o acesso ao objeto.
+que cedeu o acesso ao objeto, isto é, uma desserialização dos dados provenientes de um método \acs{HTTP} ``POST''
+num objeto do tipo ``GiveAccess''.
 
+
+Como neste método, é feito um acesso ao estado atual do \emph{Node} e há transformações, 
+o acesso a esta secção crítica é sincronizada com o uso de um \emph{Mutex}.
+Para tal, é executado o método ``Lock'' do objeto ``Mutex''.
+No fim da execução deste método é necessário desbloquear o ``Mutex'', para tal 
+a primitiva ``defer'' é usada, que executará o método ``Unlock'' do objeto ``Mutex''.
+
+Como este programa se trata de uma simulação, este objeto não tem qualquer uso,
+no entanto, num caso de uso,
+este objeto seria um \emph{Channel} de comunicação com um ficheiro/base de dados, ou qualquer outro
+objeto em que o seu acesso seria sincronizado.
+
+
+Quando o \emph{Node} é ``WAITER\_TERMINAL'', ao receber o acesso ao objeto,
+este transforma-se em ``OWNER\_TERMINAL'', pois não tem nenhum outro \emph{Node} em espera.
+
+
+Quando o \emph{Node} é ``WAITER\_WITH\_Request'', ao receber o acesso ao objeto,
+este transforma-se em ``OWNER\_WITH\_REQUES'', pois ainda tem outro \emph{Node} em espera.
+%Referir capitulo do release.
+Com o \emph{Node} tem outro \emph{Node} à espera do acesso, é inicializada uma \emph{goroutine}
+que irá executar o método ``releaseObj'' da classe \emph{Node}.
+
+
+Ao final, é inicializada uma \emph{goroutine} que executará 
+o método ``UpdateVisualization'', para que o estado do \emph{Node}
+seja atualizado na visualização.
 
 
 \begin{lstlisting}[caption={Método ``AutoRequest''},language=Go]
@@ -443,8 +481,88 @@ func (node *Node) ReceiveObj(giveAccess Channels.GiveAccess) {
 \end{lstlisting}
 
 \section{Transformações do \emph{Node}}
-\section{Tipos de Nodes}
-\label{chap:imp:node:tipos}
+
+% possivelmente adicionar diagrama para ficar mais completo
+% por exemplo, IDLE -> recebeu pedido -> IDLE (mas muda o LINK)
+% ou, OWNER -> cedeu o objeto -> IDLE(deixou de ter WaiterChan)
+
+
+Neste capítulo serão descritas as transformações que o \emph{Node}
+pode sofrer, tais como as suas implementações.
+
+
+% mudar o executa qualquer comportamento
+O \emph{Node} sofre transformações quando este executa qualquer comportamento, 
+no entanto, uma transformação não significa uma mudança de tipo,
+mas uma mudança de estado.
+
+Estas são as possíveis transformações que o \emph{Node} pode sofrer:
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=500pt]{state-diagram.png}
+\caption{Diagrama de Estados do \emph{Node}}
+Nota: O estado inicial do \emph{Node} não está presente porque este pode começar em qualquer estado/tipo.
+\end{figure}
+
+
+O nome dos métodos das transformações provêm do nome to tipo 
+para o qual se vai mudar ou manter.
+
+
+\subsubsection*{Idle}
+Se o \emph{Node} é do tipo ``IDLE'' e este recebe um pedido de acesso, após transmitir
+o pedido para o seu \emph{Child Node}, sofre a transformação ``Idle'' (mantém o tipo) mas atualiza o \emph{Link} para o \emph{Find} do seu \emph{Parent Node}.
+O novo ``Link'' (``NewLink'') é o parâmetro de entrada deste método.
+
+Se o \emph{Node} é do tipo ``OWNER\_WITH\_REQUEST'' mas cedeu o acesso ao objeto, visto que este já não o possui o \emph{Node}
+transforma-se em ``IDLE'', mas mantém o \emph{LINK}, isto é, o seu ``Link'' atual é usado como
+parâmetro de entrada deste método.
+
+\begin{lstlisting}[caption={Método/transformação ``Idle''},language=Go]
+func (node *Node) Idle(newLink string) {
+	node.Type = IDLE    //Alteracao do tipo para ``IDLE''
+	node.Link = newLink //Atualizacao do ``Link''
+	node.Obj = false    //Caso seja ``OWNER\_WITH\_REQUEST'', deixa de ter acesso ao obj
+	node.WaiterChan = ""//Caso seja ``OWNER\_WITH\_REQUEST'', deixa de ter o ``Node'' em espera
+}
+	
+\end{lstlisting}
+
+
+\subsubsection*{WaiterTerminal}
+
+Se o \emph{Node} é do tipo ``IDLE'' e realizar um pedido de acesso,
+este transforma-se em ``WAITER\_TERMINAL''.
+Como foi o \emph{Node} que realizou o pedido de acesso, este não aponta para nenhum outro \emph{Node} (o ``Link'' passa a vazio/nulo).
+
+
+\begin{lstlisting}[caption={Método/transformação ``Idle''},language=Go]
+func (node *Node) WaiterTerminal() {
+	node.Type = WAITER_TERMINAL //Alteracao do tipo para ``WAITER\_TERMINAL''
+	node.Link = ""       // Como foi o \emph{Node} quem realizou o pedido, este nao aponta para nenhum outro \emph{Node}
+	node.WaiterChan = "" //redundante
+}
+\end{lstlisting}
+
+
+
+\subsubsection*{OwnerTerminal}
+
+Se o \emph{Node} é do tipo ``WAITER\_TERMINAL'' e receber o acesso ao objeto, como
+não recebeu qualquer pedido, este mantém-se sem ``Link'' ou ``WaiterChan'', 
+mas transforma-se em ``OWNER\_TERMINAL''.
+
+\begin{lstlisting}[caption={Método/transformação ``Idle''},language=Go]
+func (node *Node) OwnerTerminal() {
+	node.Type = OWNER_TERMINAL //Alteracao do tipo para ``OWNER\{_}TERMINAL''
+	node.Link = ""             
+	node.Obj = true			   //Como se transformou em ``OWNER\{_}TERMINAL'' significa que passou a deter o acesso ao objeto
+	node.WaiterChan = ""       //Redundante, mas um \emph{Node} deste tipo nao tem \emph{Node} a espera do acesso ao objeto
+
+}
+\end{lstlisting}
+
 
 
 

@@ -47,33 +47,33 @@
 \contentsline {section}{\numberline {5.4}Classe \emph {Node}}{17}{section.5.4}%
 \contentsline {section}{\numberline {5.5}Atributos da Classe}{18}{section.5.5}%
 \contentsline {section}{\numberline {5.6}Inicialização do objeto ``Self Node''}{19}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Comportamentos}{19}{section.5.7}%
-\contentsline {subsection}{\numberline {5.7.1}Receção de um pedido Access Request}{19}{subsection.5.7.1}%
-\contentsline {subsection}{\numberline {5.7.2}Cedência do Objeto}{22}{subsection.5.7.2}%
-\contentsline {subsection}{\numberline {5.7.3}Realização de um pedido de acesso}{24}{subsection.5.7.3}%
-\contentsline {subsection}{\numberline {5.7.4}Receção acesso ao objeto}{26}{subsection.5.7.4}%
-\contentsline {section}{\numberline {5.8}Transformações do \emph {Node}}{27}{section.5.8}%
-\contentsline {section}{\numberline {5.9}Tipos de Nodes}{27}{section.5.9}%
-\contentsline {section}{\numberline {5.10}Comunicação entre Nodes}{27}{section.5.10}%
-\contentsline {section}{\numberline {5.11}Classes de \emph {Channels}}{27}{section.5.11}%
-\contentsline {section}{\numberline {5.12}Implementação da Visualização}{27}{section.5.12}%
-\contentsline {section}{\numberline {5.13}Conclusões}{27}{section.5.13}%
-\contentsline {chapter}{\chapternumberline {6}Visualização}{29}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Introdução}{29}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Atualização dos Dados}{29}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Representação da Rede}{29}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}\emph {Nodes}}{29}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}\emph {Links}}{29}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Fila}{29}{subsection.6.3.3}%
-\contentsline {subsection}{\numberline {6.3.4}Histórico de Pedidos}{29}{subsection.6.3.4}%
-\contentsline {subsection}{\numberline {6.3.5}Histórico de \emph {Owners}}{29}{subsection.6.3.5}%
-\contentsline {section}{\numberline {6.4}Conclusões}{29}{section.6.4}%
-\contentsline {chapter}{\chapternumberline {7}Reflexão Crítica}{31}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Introdução}{31}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Escolhas de Implementação}{31}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Detalhes de Implementação}{31}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Conclusões}{31}{section.7.4}%
-\contentsline {chapter}{\chapternumberline {8}Conclusões e Trabalho Futuro}{33}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Conclusões Principais}{33}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Trabalho Futuro}{33}{section.8.2}%
-\contentsline {chapter}{Bibliografia}{35}{chapter*.27}%
+\contentsline {section}{\numberline {5.7}Tipos de Nodes}{19}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Comportamentos}{19}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Receção de um pedido Access Request}{19}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}Cedência do Objeto}{22}{subsection.5.8.2}%
+\contentsline {subsection}{\numberline {5.8.3}Realização de um pedido de acesso}{24}{subsection.5.8.3}%
+\contentsline {subsection}{\numberline {5.8.4}Receção acesso ao objeto}{26}{subsection.5.8.4}%
+\contentsline {section}{\numberline {5.9}Transformações do \emph {Node}}{28}{section.5.9}%
+\contentsline {section}{\numberline {5.10}Comunicação entre Nodes}{30}{section.5.10}%
+\contentsline {section}{\numberline {5.11}Classes de \emph {Channels}}{30}{section.5.11}%
+\contentsline {section}{\numberline {5.12}Implementação da Visualização}{30}{section.5.12}%
+\contentsline {section}{\numberline {5.13}Conclusões}{30}{section.5.13}%
+\contentsline {chapter}{\chapternumberline {6}Visualização}{31}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introdução}{31}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Atualização dos Dados}{31}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Representação da Rede}{31}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}\emph {Nodes}}{31}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}\emph {Links}}{31}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Fila}{31}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.4}Histórico de Pedidos}{31}{subsection.6.3.4}%
+\contentsline {subsection}{\numberline {6.3.5}Histórico de \emph {Owners}}{31}{subsection.6.3.5}%
+\contentsline {section}{\numberline {6.4}Conclusões}{31}{section.6.4}%
+\contentsline {chapter}{\chapternumberline {7}Reflexão Crítica}{33}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introdução}{33}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Escolhas de Implementação}{33}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Detalhes de Implementação}{33}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Conclusões}{33}{section.7.4}%
+\contentsline {chapter}{\chapternumberline {8}Conclusões e Trabalho Futuro}{35}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Conclusões Principais}{35}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Trabalho Futuro}{35}{section.8.2}%
+\contentsline {chapter}{Bibliografia}{37}{chapter*.30}%
