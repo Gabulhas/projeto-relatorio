@@ -54,25 +54,34 @@
 \BOOKMARK [2][-]{subsection.5.8.4}{Rece\347\343o acesso ao objeto}{section.5.8}% 54
 \BOOKMARK [1][-]{section.5.9}{Transforma\347\365es do Node}{chapter.5}% 55
 \BOOKMARK [1][-]{section.5.10}{Comunica\347\343o entre Nodes}{chapter.5}% 56
-\BOOKMARK [1][-]{section.5.11}{Classes de Channels}{chapter.5}% 57
-\BOOKMARK [1][-]{section.5.12}{Implementa\347\343o da Visualiza\347\343o}{chapter.5}% 58
-\BOOKMARK [1][-]{section.5.13}{Conclus\365es}{chapter.5}% 59
-\BOOKMARK [0][-]{chapter.6}{Visualiza\347\343o}{}% 60
-\BOOKMARK [1][-]{section.6.1}{Introdu\347\343o}{chapter.6}% 61
-\BOOKMARK [1][-]{section.6.2}{Atualiza\347\343o dos Dados}{chapter.6}% 62
-\BOOKMARK [1][-]{section.6.3}{Representa\347\343o da Rede}{chapter.6}% 63
-\BOOKMARK [2][-]{subsection.6.3.1}{Nodes}{section.6.3}% 64
-\BOOKMARK [2][-]{subsection.6.3.2}{Links}{section.6.3}% 65
-\BOOKMARK [2][-]{subsection.6.3.3}{Fila}{section.6.3}% 66
-\BOOKMARK [2][-]{subsection.6.3.4}{Hist\363rico de Pedidos}{section.6.3}% 67
-\BOOKMARK [2][-]{subsection.6.3.5}{Hist\363rico de Owners}{section.6.3}% 68
-\BOOKMARK [1][-]{section.6.4}{Conclus\365es}{chapter.6}% 69
-\BOOKMARK [0][-]{chapter.7}{Reflex\343o Cr\355tica}{}% 70
-\BOOKMARK [1][-]{section.7.1}{Introdu\347\343o}{chapter.7}% 71
-\BOOKMARK [1][-]{section.7.2}{Escolhas de Implementa\347\343o}{chapter.7}% 72
-\BOOKMARK [1][-]{section.7.3}{Detalhes de Implementa\347\343o}{chapter.7}% 73
-\BOOKMARK [1][-]{section.7.4}{Conclus\365es}{chapter.7}% 74
-\BOOKMARK [0][-]{chapter.8}{Conclus\365es e Trabalho Futuro}{}% 75
-\BOOKMARK [1][-]{section.8.1}{Conclus\365es Principais}{chapter.8}% 76
-\BOOKMARK [1][-]{section.8.2}{Trabalho Futuro}{chapter.8}% 77
-\BOOKMARK [0][-]{chapter*.30}{Bibliografia}{}% 78
+\BOOKMARK [2][-]{subsection.5.10.1}{Servidor HTTP}{section.5.10}% 57
+\BOOKMARK [2][-]{subsection.5.10.2}{Pedidos HTTP do Node}{section.5.10}% 58
+\BOOKMARK [1][-]{section.5.11}{Classes de Channels}{chapter.5}% 59
+\BOOKMARK [2][-]{subsection.5.11.1}{GiveAccess}{section.5.11}% 60
+\BOOKMARK [2][-]{subsection.5.11.2}{AccessRequest}{section.5.11}% 61
+\BOOKMARK [1][-]{section.5.12}{Implementa\347\343o da Visualiza\347\343o}{chapter.5}% 62
+\BOOKMARK [2][-]{subsection.5.12.1}{Servidor HTTP}{section.5.12}% 63
+\BOOKMARK [2][-]{subsection.5.12.2}{Servir ficheiros est\341ticos}{section.5.12}% 64
+\BOOKMARK [2][-]{subsection.5.12.3}{Atualiza\347\343o da visualiza\347\343o}{section.5.12}% 65
+\BOOKMARK [2][-]{subsection.5.12.4}{Renderiza\347\343o da visualiza\347\343o}{section.5.12}% 66
+\BOOKMARK [2][-]{subsection.5.12.5}{Queue}{section.5.12}% 67
+\BOOKMARK [1][-]{section.5.13}{Conclus\365es}{chapter.5}% 68
+\BOOKMARK [0][-]{chapter.6}{Visualiza\347\343o}{}% 69
+\BOOKMARK [1][-]{section.6.1}{Introdu\347\343o}{chapter.6}% 70
+\BOOKMARK [1][-]{section.6.2}{Atualiza\347\343o dos Dados}{chapter.6}% 71
+\BOOKMARK [1][-]{section.6.3}{Representa\347\343o da Rede}{chapter.6}% 72
+\BOOKMARK [2][-]{subsection.6.3.1}{Nodes}{section.6.3}% 73
+\BOOKMARK [2][-]{subsection.6.3.2}{Links}{section.6.3}% 74
+\BOOKMARK [2][-]{subsection.6.3.3}{Fila}{section.6.3}% 75
+\BOOKMARK [2][-]{subsection.6.3.4}{Hist\363rico de Pedidos}{section.6.3}% 76
+\BOOKMARK [2][-]{subsection.6.3.5}{Hist\363rico de Owners}{section.6.3}% 77
+\BOOKMARK [1][-]{section.6.4}{Conclus\365es}{chapter.6}% 78
+\BOOKMARK [0][-]{chapter.7}{Reflex\343o Cr\355tica}{}% 79
+\BOOKMARK [1][-]{section.7.1}{Introdu\347\343o}{chapter.7}% 80
+\BOOKMARK [1][-]{section.7.2}{Escolhas de Implementa\347\343o}{chapter.7}% 81
+\BOOKMARK [1][-]{section.7.3}{Detalhes de Implementa\347\343o}{chapter.7}% 82
+\BOOKMARK [1][-]{section.7.4}{Conclus\365es}{chapter.7}% 83
+\BOOKMARK [0][-]{chapter.8}{Conclus\365es e Trabalho Futuro}{}% 84
+\BOOKMARK [1][-]{section.8.1}{Conclus\365es Principais}{chapter.8}% 85
+\BOOKMARK [1][-]{section.8.2}{Trabalho Futuro}{chapter.8}% 86
+\BOOKMARK [0][-]{chapter*.39}{Bibliografia}{}% 87

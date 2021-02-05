@@ -29,13 +29,13 @@ A Classe \emph{Node} desempenha a função de armazenar o estado atual do própr
 Nesta Implementação, esta classe está incluída num módulo \emph{Go} ``Nodes'' (Ou seja, num diretório com o mesmo nome), e é constituído por 5 ficheiros, sendo que as várias (funcionalidades ?) estão distribuídas por estes ficheiros.
 
 Estes são:
-\begin{itemize}
-    \item Node.go - Contém \emph{Struct} que define os \textbf{atributos}.
-    \item NodeBehaviours.go - Define os possíveis \textbf{comportamentos}.
-    \item NodeCommunications.go - Conjunto de \textbf{métodos de comunicação} de informação para outros \emph{Nodes}.
-    \item NodeTranformations.go - \textbf{Transformações}/Mudanças de tipo que o \emph{Node} pode sofrer.
-    \item NodeType.go - Enumeração dos \textbf{tipos} que o \emph{Node} pode ser.
-\end{itemize} 
+\begin{description}
+    \item [Node.go] - Contém \emph{Struct} que define os \textbf{atributos}.
+    \item [NodeBehaviours.go] - Define os possíveis \textbf{comportamentos}.
+    \item [NodeCommunications.go] - Conjunto de \textbf{métodos de comunicação} de informação para outros \emph{Nodes}.
+    \item [NodeTranformations.go] - \textbf{Transformações}/Mudanças de tipo que o \emph{Node} pode sofrer.
+    \item [NodeType.go] - Enumeração dos \textbf{tipos} que o \emph{Node} pode ser.
+\end{description} 
 
 
 \section{Atributos da Classe}
@@ -533,15 +533,15 @@ func (node *Node) Idle(newLink string) {
 \subsubsection*{WaiterTerminal}
 
 Se o \emph{Node} é do tipo ``IDLE'' e realizar um pedido de acesso,
-este transforma-se em ``WAITER\_TERMINAL''.
+este sofre a transformação ``WaiterTerminal''.
 Como foi o \emph{Node} que realizou o pedido de acesso, este não aponta para nenhum outro \emph{Node} (o ``Link'' passa a vazio/nulo).
 
 
-\begin{lstlisting}[caption={Método/transformação ``Idle''},language=Go]
+\begin{lstlisting}[caption={Método/transformação ``WaiterTerminal''},language=Go]
 func (node *Node) WaiterTerminal() {
 	node.Type = WAITER_TERMINAL //Alteracao do tipo para ``WAITER\_TERMINAL''
-	node.Link = ""       // Como foi o \emph{Node} quem realizou o pedido, este nao aponta para nenhum outro \emph{Node}
-	node.WaiterChan = "" //redundante
+	node.Link = ""       		// Como foi o \emph{Node} quem realizou o pedido, este nao aponta para nenhum outro \emph{Node}
+	node.WaiterChan = "" 		//redundante
 }
 \end{lstlisting}
 
@@ -551,27 +551,384 @@ func (node *Node) WaiterTerminal() {
 
 Se o \emph{Node} é do tipo ``WAITER\_TERMINAL'' e receber o acesso ao objeto, como
 não recebeu qualquer pedido, este mantém-se sem ``Link'' ou ``WaiterChan'', 
-mas transforma-se em ``OWNER\_TERMINAL''.
+então sofre a esta transformação, mudando o tipo para ``OWNER\_TERMINAL'', pois tem acesso ao objeto mas não tem qualquer pedido.
 
-\begin{lstlisting}[caption={Método/transformação ``Idle''},language=Go]
+\begin{lstlisting}[caption={Método/transformação ``OwnerTerminal''},language=Go]
 func (node *Node) OwnerTerminal() {
 	node.Type = OWNER_TERMINAL //Alteracao do tipo para ``OWNER\{_}TERMINAL''
 	node.Link = ""             
 	node.Obj = true			   //Como se transformou em ``OWNER\{_}TERMINAL'' significa que passou a deter o acesso ao objeto
 	node.WaiterChan = ""       //Redundante, mas um \emph{Node} deste tipo nao tem \emph{Node} a espera do acesso ao objeto
+}
+\end{lstlisting}
 
+\subsubsection*{OwnerWithRequest}
+
+Se o \emph{Node} é do tipo ``OWNER\_TERMINAL'' e receber um pedido de acesso, 
+como este recebeu um pedido de acesso, o ``Link'' é atualizado e
+como este é detentor do acesso ao objeto, o \emph{Node} passa a ter um pedido em espera, logo o ``WaiterChan'' é atualizado para o ``MyChan'' do \emph{Node} em espera.
+Então sofre a transformação ``OwnerWithRequest'', mudando o tipo para ``OWNER\_WITH\_REQUEST'', sendo o ``NewLink'' e o ``WaiterChan'' os valores de entrada do método.
+
+Caso o \emph{Node} seja do tipo ``OWNER\_WITH\_REQUEST'', ao receber um pedido de acesso, 
+o ``Link'' é atualizado, pois, mesmo sendo o \emph{Node} com acesso ao objeto, este objeto será cedido a outro \emph{Node} e não ao
+\emph{Node} que realizou o pedido.
+
+\begin{lstlisting}[caption={Método/transformação ``OwnerWithRequest''},language=Go]
+	func (node *Node) OwnerWithRequest(newLink string, waiterChan string) {
+		node.Type = OWNER_WITH_REQUEST
+		node.Link = newLink
+		node.Obj = true
+		node.WaiterChan = waiterChan
+	}
+
+
+\end{lstlisting}
+
+\subsubsection*{WaiterWithRequest}
+
+Se o \emph{Node} é do tipo ``WAITER\_TERMINAL'' e receber um pedido de acesso, 
+como este recebeu um pedido de acesso, o ``Link'' é atualizado e
+como este será detentor do acesso ao objeto, o \emph{Node} passa a ter um pedido em espera, logo o ``WaiterChan'' é atualizado para o ``MyChan'' do \emph{Node} em espera.
+Então sofre a transformação ``WaiterWithRequest'', mudando o tipo para ``WAITER\_WITH\_REQUEST'', sendo o ``NewLink'' e o ``WaiterChan'' os valores de entrada do método.
+
+Caso o \emph{Node} seja do tipo ``WAITER\_WITH\_REQUEST'', ao receber um pedido de acesso, 
+o ``Link'' é atualizado, pois, mesmo que este \emph{Node} terá o acesso ao objeto, este objeto será cedido a outro \emph{Node} (do primeiro pedido que transformou o \emph{Node} em` `WAITER\_WITH\_REQUEST'' ) 
+e não ao
+\emph{Node} que realizou este pedido.
+
+\begin{lstlisting}[caption={Método/transformação ``WaiterWithRequest''},language=Go]
+	func (node *Node) WaiterWithRequest(newLink string, waiterChan string) {
+		node.Type = WAITER_WITH_REQUEST
+		node.Link = newLink
+		node.WaiterChan = waiterChan
+	}
+	
+\end{lstlisting}
+
+\section{Comunicação entre Nodes}
+% Explicar o uso de HTTP - industry standard
+
+Neste capítulo serão tratadas as conexões que os \emph{Nodes} fazem entre si,
+Como referido anteriormente, é feito uso do protocolo \acs{HTTP} nas ligação/pedidos entre \emph{Nodes}, pois este é um ``industry standard'' (ou seja, o protocolo mais usado neste tipo de sistemas).
+Para tal, cada \emph{Node} inicia um servidor \acs{HTTP} que espera pela entrada de pedidos de HTTP, isto é, espera que outros \emph{Nodes} transmitam pedidos do tipo ``AccessRequest'' e ``GiveAccess''.
+A implementação do servidor \acs{HTTP} está presente no módulo ``controller'' (no ficheiro ``controller.go'').
+
+No entanto, também foram implementados métodos para permitir ao \emph{Node} a realização de pedidos, ou seja, de poder enviar informação para outros \emph{Nodes}.
+A implementação destes pedidos \acs{HTTP} está presente no módulo ``Node'' (no ficheiro ``NodeCommunications.go'').
+
+
+% acrescentar aqui mais alguma coisa
+
+\subsection{Servidor \acs{HTTP}}
+Após a inicialização do programa do \emph{Node}, é inicializado o servidor \acs{HTTP}, executando a função ``StartServer'', em que é criado um objeto do tipo ``Router'' (roteador),  
+no qual são registados os vários caminhos e \emph{Handlers}(manipuladores) destes caminhos. Isto é, são registados os métodos deste servidor e as funções que serão executadas
+caso sejam feitos pedidos em cada um desses métodos.
+
+Os métodos e \emph{Handlers} registados são:
+
+
+\begin{description}
+	\item [/find] findRoute - Saida do \emph{Channel ``Find''} do \emph{Node}
+	\item [/myChan] myChanRoute - Saida do \emph{Channel ``MyChan''} do \emph{Node}
+	\item [/remoteRequest] remoteRequest - Metodo usado na visualizacao para forcar o \emph{Node} a realizar um pedido accessRequest
+\end{description}
+
+%Mudar isto
+Por fim, é executado a função ``ListenAndServe'' do módulo ``http'', que escuta por pedidos de \emph{HTTP} de entrada.
+Os parâmetros de entrada deste método são o endereço do \emph{Node} (``MyAddress'') e o ``Router'' instanciado.
+
+
+\begin{lstlisting}[caption={Método/transformação ``WaiterWithRequest''},language=Go]
+	r := mux.NewRouter() //Instanciacao do objeto r da classe ``Router''
+
+	// Registo dos metodos e \emph{Handlers}
+	r.HandleFunc("/find", findRoute).Methods("POST")
+	r.HandleFunc("/myChan", myChanRoute).Methods("POST")
+	r.HandleFunc("/remoteRequest", remoteRequest).Methods("GET")
+
+
+	// Inicializacao do servidor
+	if err := http.ListenAndServe(selfNode.MyAddress, r); err != nil {
+		log.Fatal(err) 				
+	/* Caso ocorra um erro (err != nil), a execucao e terminada, 
+		o programa termina a execucao e e mostrado o erro.
+	*/
 }
 \end{lstlisting}
 
 
 
 
-\section{Comunicação entre Nodes}
+%Mudar isto
+De seguida, serão descritos os métodos e as funções executadas:
+
+\subsubsection*{/find}
+Este método equivale à saída do channel ``Find'' (referido na Especificação).
+Quando um \emph{Node} transmite um pedido de ``AccessRequest'' para outro \emph{Node},
+esta transmissão é feita através de um pedido \acs{HTTP} ``POST'', em que no corpo 
+do pedido está incluído a informação do pedido ``AccessRequest'', no formato ``JSON''.
+
+Este método aceita pedidos \acs{HTTP} ``POST''.
+
+Neste \emph{Handler}, é feita uma desserialização do corpo do pedido de ``JSON'' para um objeto
+do tipo ``AccessRequest'', para este ser usado como parâmetro de entrada no método ``HandleFind''
+da classe ``Node''.
+
+No final da execução deste \emph{Handler}, é feita uma resposta para o \emph{Node} que transmitiu o pedido, com o conteúdo ``Successful''
+e é fechado o corpo do pedido, usando o método ``Close'' do objeto ``Body'' do pedido ``r'',
+através do uso da primitiva ``defer'', que garante a execução deste método após a execução do ``Handler terminar''.
+
+\begin{lstlisting}[caption={\emph{Handler} ``findRoute'' do método ``/find''},language=Go]
+func findRoute(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close() //defer garante que este procedimento e executado quando a execucao deste ``Handler'' termina
+
+	//definicao que o tipo de conteudo do corpo tem o formato ``JSON''
+	w.Header().Set("Content-Type", "application/json")
+
+	// desserializacao do corpo para um objeto do tipo ``AccessRequest''
+	var accessRequest Channels.AccessRequest
+	_ = json.NewDecoder(r.Body).Decode(&accessRequest)
+
+	fmt.Printf("\nGot a find request")
+	fmt.Printf("\n%s", utils.StructToString(accessRequest))
+
+	// execucao do metodo HandleFind do node
+	selfNode.HandleFind(accessRequest)
+
+	json.NewEncoder(w).Encode("Successful") // Resposta ao ``Node'' que realizou o pedido \acs{HTTP}
+
+}
+
+\end{lstlisting}
+
+
+\subsubsection*{/myChan}
+Este método equivale à saída do channel ``MyChan'' (referido na Especificação).
+Quando um \emph{Node} transmite um pedido de ``GiveAccess'' para outro \emph{Node},
+esta transmissão é feita através de um pedido \acs{HTTP} ``POST'', em que no corpo 
+do pedido está incluído a informação do pedido ``GiveAccess'', no formato ``JSON''.
+
+Este método aceita pedidos \acs{HTTP} ``POST''.
+
+Neste \emph{Handler}, é feita uma desserialização do corpo do pedido de ``JSON'' para um objeto
+do tipo ``GiveAccess'', para este ser usado como parâmetro de entrada no método ``ReceiveObj''
+da classe ``Node''.
+
+No final da execução deste \emph{Handler}, é feita uma resposta para o \emph{Node} que transmitiu o pedido, com o conteúdo ``Successful''
+e é fechado o corpo do pedido, usando o método ``Close'' do objeto ``Body'' do pedido ``r'',
+através do uso da primitiva ``defer'', que garante a execução deste método após a execução do ``Handler terminar''.
+
+\begin{lstlisting}[caption={\emph{Handler} ``myChanRoute'' do método ``/myChan''},language=Go]
+func myChanRoute(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close() //defer garante que este procedimento e executado quando a execucao deste ``Handler'' termina
+
+	//definicao que o tipo de conteudo do corpo tem o formato ``JSON''
+	w.Header().Set("Content-Type", "application/json")
+
+	// desserializacao do corpo para um objeto do tipo ``GiveAccess''
+	var giveAccess Channels.GiveAccess
+	_ = json.NewDecoder(r.Body).Decode(&giveAccess)
+
+	fmt.Printf("\nGot Access To The Object!")
+	fmt.Printf("\n%s", utils.StructToString(giveAccess))
+
+	// execucao do metodo ReceiveObj do node
+	selfNode.ReceiveObj(giveAccess)
+
+	json.NewEncoder(w).Encode("Successful") // Resposta ao ``Node'' que realizou o pedido \acs{HTTP}
+
+}
+
+\end{lstlisting}
+
+\subsubsection*{/remoteRequest}
+
+Este método não tem qualquer uso dentro diretório.
+É apenas utilizado para forçar o \emph{Node} a realizar um pedido a partir da visualização (ou qualquer outra forma de realização de pedidos \acs{HTTP}).
+
+O método ``Request'' da classe \emph{Node} é executado, este método é usado para a realização de um pedido de acesso.
+Por último, é feita uma resposta ao ``Client'' que realizou o pedido \acs{HTTP} e a conexão é terminada com 
+o o fecho do corpo do pedido, usando o método ``Close'' do objeto ``Body'' do pedido ``r''.
+
+\begin{lstlisting}[caption={\emph{Handler} ``myChanRoute'' do método ``/myChan''},language=Go]
+	func remoteRequest(w http.ResponseWriter, r *http.Request)  {
+		defer r.Body.Close() //defer garante que este procedimento e executado quando a execucao deste ``Handler'' termina
+		selfNode.Request() //metodo de realizacao de pedidos AccessRequest
+		json.NewEncoder(w).Encode("Successful") // Resposta ao ``Client'' que realizou o pedido
+	}
+	
+
+\end{lstlisting}
+% Explicar ficheiro controller.go - recebe - servidor de HTTP
+	% inicialização do servidor
+	% channel find - findRoute
+	% channel myChan - myChanRoute
+	% remoteRequest
+
+\subsection{Pedidos \acs{HTTP} do \emph{Node}}
+% Mudar a introdução
+O \emph{Node} tem a possibilidade de realizar pedidos \emph{HTTP}, todos eles do tipo ``POST''.
+
+Para tal foram definidos 3 métodos diferentes, em que todos executam a mesma função ``sendDataTo''.
+
+Esta função ``sendDataTo'' é polimórfica, pois o segundo parâmetro de entrada é do tipo ``interface'', isto é, o segundo parâmetro
+de entrada desta função pode ser de qualquer tipo (mas que seja possível a sua serialização para o formato ``JSON'').
+
+O primeiro parâmetro é o \acs{URL} para o qual irá ser enviado o pedido ``POST''.
+
+Na existência de falhas no envio do pedido, são feitas no máximo 4 tentativas de envio, com um tempo de 4 segundos de espera entre cada tentativa.
+\begin{lstlisting}[caption={\emph{Handler} ``myChanRoute'' do método ``/myChan''},language=Go]
+
+
+// o parametro ``data'' pode ser de qualquer tipo/classe
+func sendDataTo(toURL string, data interface{}) {
+
+	//serializacao da informacao ``data'' para uma string
+	message, err := json.Marshal(data)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Contador de tentativas efetuadas
+	retries := 0
+
+	for retries < maxRetries {
+
+		resp, err := http.Post(toURL, "application/json", bytes.NewBuffer(message))
+
+		//Caso existam falhas no envio
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err)
+
+			// incrementacao do valor de tentativas efetuadas
+			retries++
+			// a \emph{goroutine} espera durante 4 segundos
+			time.Sleep(time.Second * time.Duration(4))
+
+			continue
+		}
+
+		_, err = ioutil.ReadAll(resp.Body)
+		if err != nil {
+			resp.Body.Close()
+			log.Fatal(err)
+		}
+
+		//Fecho do corpo do pedido e da conexao
+		resp.Body.Close()
+		break
+
+	}
+
+}
+
+\end{lstlisting}
+
+
+% Melhorar isto
+Os três tipos de pedidos (\acs{HTTP}) possíveis que o \emph{Node} pode realizar são:
+
+\subsubsection*{SendThroughLink}
+Envia um pedido do tipo ``AccessRequest'' para o seu \emph{Child Node}.
+Tem como parâmetro de entrada um objeto da classe ``AccessRequest''.
+Executa a função ``sendDataTo'' como valores de entrada o ``Link'' do \emph{Node}, isto é, o ``Find'' do seu \emph{Child Node}
+e o objeto da classe ``AccessRequest''.
+
+\begin{lstlisting}[caption={Método ``SendThroughLink''},language=Go]
+func (node *Node) SendThroughLink(accessRequest Channels.AccessRequest) {
+	go sendDataTo(node.Link, accessRequest)
+}
+\end{lstlisting}
+
+
+\subsubsection*{SendObjectAccess}
+Envia um pedido do tipo ``GiveAccess'' para o \emph{Node} que espera pelo acesso ao objeto.
+Tem como parâmetro de entrada um objeto da classe ``GiveAccess''.
+Executa a função ``sendDataTo'' como valores de entrada o ``WaiterChan'' do \emph{Node}, isto é, o ``MyChan'' do \emph{Node} que espera pelo acesso ao objeto
+e o objeto da classe ``GiveAccess''.
+
+\begin{lstlisting}[caption={Método ``SendObjectAccess''},language=Go]
+func (node *Node) SendObjectAccess(giveAccess Channels.GiveAccess) {
+	go sendDataTo(node.WaiterChan, giveAccess)
+}
+
+\end{lstlisting}
+
+\subsubsection*{UpdateVisualization}
+Atualiza o estado do \emph{Node} na visualização.
+Executa a função ``sendDataTo'' como valores de entrada o ``VisAddress'' do \emph{Node}, isto é, o \acs{URL} do método da visualização de atualização de dados
+e o objeto da classe ``Node''.
+
+\begin{lstlisting}[caption={Método ``UpdateVisualization''},language=Go]
+func (node *Node) UpdateVisualization(){
+	go sendDataTo(node.VisAddress, node)
+}
+\end{lstlisting}
+
+
 \section{Classes de \emph{Channels}}
+% Melhorar a introdução
+Neste capítulo serão descritos os ``Channels''/Pedidos utilizados pelos \emph{Nodes}, sendo estes ``AccessRequest'' e ``GiveAccess''.
+
+As ``Struct'' destes estão definidas no módulo ``Channels'', no ficheiro \textbf{channels.go}.
+
+
+\subsection{GiveAccess}
+%Aumentar a descrição
+Esta classe encapsula o \emph{Channel ``MyChan''} do \emph{Node} realizou o pedido de acesso.
+Num caso real, este também incluiria um \emph{Channel} que daria acesso ao objeto, ou o próprio objeto, no entanto
+como nesta implementação se pretende criar uma simulação deste protocolo, esse atributo não é necessário.
+
+\begin{lstlisting}[caption={Método ``UpdateVisualization''},language=Go]
+
+type GiveAccess struct {
+	WaiterChan string `json:"waiterChan"`
+}
+
+\end{lstlisting}
+
+
+\subsection{AccessRequest}
+Esta classe encapsula um pedido de acesso ao objeto. Os atributos são o ``Link'', que contém o ``Find'' do \emph{Node} que transmitiu o pedido e 
+o ``GiveAccess'' instanciado pelo \emph{Node} que fez o pedido.
+
+Ou seja, o atributo ``GiveAccess'' mantém-se entre transmissões dos \emph{Nodes} mas o atribuição ``Link'' é alterado em cada \emph{Node} para o 
+seu \emph{Channel ``Find''}.
+
+\begin{lstlisting}[caption={Método ``UpdateVisualization''},language=Go]
+type AccessRequest struct {
+	GiveAccess GiveAccess `json:"giveAccess"` // #2
+	Link       string     `json:"link"`       // #1
+}
+\end{lstlisting}
+
 
 
 
 \section{Implementação da Visualização}
+
+\subsection{Servidor \acs{HTTP}}
+% router
+% definição do filesystem para aceder a ficheiros estáticos
+
+% definição dos métodos da API e Handlers
+
+\subsection{Servir ficheiros estáticos}
+% método root /
+
+\subsection{Atualização da visualização}
+% método updateState /updateState
+% Cada Node envia o seu estado atual
+% o acesso ao Map que mantém todos os dados é 
+\subsection{Renderização da visualização}
+% método data /data
+% grande parte do ficheiro de JS não é relevante
+
+
+
+\subsection{Queue}
+% Método Queue
+
 % como os dados são atualizados
 % como os dados são passados para a página
 % como os dados são demonstrados no grafo
