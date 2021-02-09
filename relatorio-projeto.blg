@@ -7,9 +7,7 @@ A level-1 auxiliary file: acronimos.aux
 A level-1 auxiliary file: introducao.aux
 A level-1 auxiliary file: estado-da-arte.aux
 A level-1 auxiliary file: especificacao.aux
-A level-1 auxiliary file: tecnologias.aux
 A level-1 auxiliary file: implementacao.aux
-A level-1 auxiliary file: visualizacao.aux
 A level-1 auxiliary file: reflexao.aux
 A level-1 auxiliary file: conc-trab-futuro.aux
 The style file: unsrt.bst
@@ -17,7 +15,7 @@ I found no \citation commands---while reading file relatorio-projeto.aux
 Database file #1: bibliografia.bib
 You've used 0 entries,
             1791 wiz_defined-function locations,
-            456 strings with 3712 characters,
+            454 strings with 3681 characters,
 and the built_in function-call counts, 18 in all, are:
 = -- 0
 > -- 0

@@ -25,64 +25,45 @@
 \contentsline {section}{\numberline {3.3}Atributos do \emph {Node}}{10}{section.3.3}%
 \contentsline {section}{\numberline {3.4}\emph {Channels}}{11}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Conclusões}{12}{section.3.5}%
-\contentsline {chapter}{\chapternumberline {4}Tecnologias e Ferramentas Utilizadas}{13}{chapter.4}%
+\contentsline {chapter}{\chapternumberline {4}Implementação}{13}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introdução}{13}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Linguagens de Programação}{13}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}\emph {Go}}{13}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}\emph {JavaScript}}{15}{subsection.4.2.2}%
-\contentsline {section}{\numberline {4.3}Ferramentas de Edição de Código}{15}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Ferramentas Utilizadas}{15}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Bibliotecas}{16}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}\emph {gorilla/mux}}{16}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}\emph {D3.JS}}{16}{subsection.4.4.2}%
 \contentsline {section}{\numberline {4.5}Outras Tecnologias}{16}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}\emph {Docker}}{16}{subsection.4.5.1}%
-\contentsline {section}{\numberline {4.6}Outras Ferramentas}{17}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Github}{17}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}Lazydocker}{17}{subsection.4.6.2}%
-\contentsline {section}{\numberline {4.7}Conclusões}{17}{section.4.7}%
-\contentsline {chapter}{\chapternumberline {5}Implementação}{19}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introdução}{19}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Escolhas de Implementação}{19}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Detalhes de Implementação}{19}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Classe \emph {Node}}{19}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Atributos da Classe}{20}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Inicialização do objeto ``Self Node''}{21}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Tipos de Nodes}{21}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Comportamentos}{21}{section.5.8}%
-\contentsline {subsection}{\numberline {5.8.1}Receção de um pedido Access Request}{21}{subsection.5.8.1}%
-\contentsline {subsection}{\numberline {5.8.2}Cedência do Objeto}{24}{subsection.5.8.2}%
-\contentsline {subsection}{\numberline {5.8.3}Realização de um pedido de acesso}{26}{subsection.5.8.3}%
-\contentsline {subsection}{\numberline {5.8.4}Receção acesso ao objeto}{28}{subsection.5.8.4}%
-\contentsline {section}{\numberline {5.9}Transformações do \emph {Node}}{30}{section.5.9}%
-\contentsline {section}{\numberline {5.10}Comunicação entre Nodes}{33}{section.5.10}%
-\contentsline {subsection}{\numberline {5.10.1}Servidor \acs {HTTP}}{33}{subsection.5.10.1}%
-\contentsline {subsection}{\numberline {5.10.2}Pedidos \acs {HTTP} do \emph {Node}}{36}{subsection.5.10.2}%
-\contentsline {section}{\numberline {5.11}Classes de \emph {Channels}}{38}{section.5.11}%
-\contentsline {subsection}{\numberline {5.11.1}GiveAccess}{39}{subsection.5.11.1}%
-\contentsline {subsection}{\numberline {5.11.2}AccessRequest}{39}{subsection.5.11.2}%
-\contentsline {section}{\numberline {5.12}Implementação da Visualização}{39}{section.5.12}%
-\contentsline {subsection}{\numberline {5.12.1}Servidor \acs {HTTP}}{39}{subsection.5.12.1}%
-\contentsline {subsection}{\numberline {5.12.2}Servir ficheiros estáticos}{39}{subsection.5.12.2}%
-\contentsline {subsection}{\numberline {5.12.3}Atualização da visualização}{39}{subsection.5.12.3}%
-\contentsline {subsection}{\numberline {5.12.4}Renderização da visualização}{39}{subsection.5.12.4}%
-\contentsline {subsection}{\numberline {5.12.5}Queue}{39}{subsection.5.12.5}%
-\contentsline {section}{\numberline {5.13}Conclusões}{39}{section.5.13}%
-\contentsline {chapter}{\chapternumberline {6}Visualização}{41}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Introdução}{41}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Atualização dos Dados}{41}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Representação da Rede}{41}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}\emph {Nodes}}{41}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}\emph {Links}}{41}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Fila}{41}{subsection.6.3.3}%
-\contentsline {subsection}{\numberline {6.3.4}Histórico de Pedidos}{41}{subsection.6.3.4}%
-\contentsline {subsection}{\numberline {6.3.5}Histórico de \emph {Owners}}{41}{subsection.6.3.5}%
-\contentsline {section}{\numberline {6.4}Conclusões}{41}{section.6.4}%
-\contentsline {chapter}{\chapternumberline {7}Reflexão Crítica}{43}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Introdução}{43}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Escolhas de Implementação}{43}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Detalhes de Implementação}{43}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Conclusões}{43}{section.7.4}%
-\contentsline {chapter}{\chapternumberline {8}Conclusões e Trabalho Futuro}{45}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Conclusões Principais}{45}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Trabalho Futuro}{45}{section.8.2}%
-\contentsline {chapter}{Bibliografia}{47}{chapter*.39}%
+\contentsline {section}{\numberline {4.6}Escolhas de Implementação}{17}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Classe \emph {Node}}{17}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Atributos da Classe}{17}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Inicialização do objeto ``Self Node''}{18}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Tipos de Nodes}{20}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Comportamentos}{21}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}Receção de um pedido Access Request}{21}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}Cedência do Objeto}{24}{subsection.4.11.2}%
+\contentsline {subsection}{\numberline {4.11.3}Realização de um pedido de acesso}{25}{subsection.4.11.3}%
+\contentsline {subsection}{\numberline {4.11.4}Receção acesso ao objeto}{28}{subsection.4.11.4}%
+\contentsline {section}{\numberline {4.12}Transformações do \emph {Node}}{29}{section.4.12}%
+\contentsline {section}{\numberline {4.13}Comunicação entre Nodes}{32}{section.4.13}%
+\contentsline {subsection}{\numberline {4.13.1}Servidor \acs {HTTP}}{33}{subsection.4.13.1}%
+\contentsline {subsection}{\numberline {4.13.2}Pedidos \acs {HTTP} do \emph {Node}}{36}{subsection.4.13.2}%
+\contentsline {section}{\numberline {4.14}Classes de \emph {Channels}}{38}{section.4.14}%
+\contentsline {subsection}{\numberline {4.14.1}GiveAccess}{38}{subsection.4.14.1}%
+\contentsline {subsection}{\numberline {4.14.2}AccessRequest}{39}{subsection.4.14.2}%
+\contentsline {section}{\numberline {4.15}Implementação da Visualização}{39}{section.4.15}%
+\contentsline {subsection}{\numberline {4.15.1}Servidor \acs {HTTP}}{39}{subsection.4.15.1}%
+\contentsline {subsection}{\numberline {4.15.2}Atualização da visualização}{40}{subsection.4.15.2}%
+\contentsline {subsection}{\numberline {4.15.3}Renderização da visualização}{41}{subsection.4.15.3}%
+\contentsline {subsection}{\numberline {4.15.4}Queue}{42}{subsection.4.15.4}%
+\contentsline {subsection}{\numberline {4.15.5}\emph {Request All}}{43}{subsection.4.15.5}%
+\contentsline {section}{\numberline {4.16}Uso de \emph {containers Docker}}{45}{section.4.16}%
+\contentsline {section}{\numberline {4.17}Conclusões}{46}{section.4.17}%
+\contentsline {chapter}{\chapternumberline {5}Reflexão Crítica}{47}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introdução}{47}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Escolhas de Implementação}{47}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Detalhes de Implementação}{47}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Conclusões}{47}{section.5.4}%
+\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{49}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusões Principais}{49}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Trabalho Futuro}{49}{section.6.2}%
+\contentsline {chapter}{Bibliografia}{51}{chapter*.46}%
