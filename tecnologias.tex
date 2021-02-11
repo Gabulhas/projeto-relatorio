@@ -1,0 +1,154 @@
+\chapter{Tecnologias e Ferramentas Utilizadas}
+\label{chap:tecno-ferra}
+
+\section{Introdução}
+\label{chap3:sec:intro}
+\section{Linguagens de Programação}
+\label{chap3:linguagens}
+Tal como o título deste projeto sugere, \textbf{\emph{Go}} (frequentemente referido como \emph{Golang}) é a linguagem usada na implementação do protocolo. Para além de \emph{Go}, também foi utilizada \textbf{\emph{JavaScript}} como linguagem de implementação da visualização.
+
+De seguida serão descritas as razões de utilização da linguagem Go e brevemente detalhes sobre o uso de \emph{JavaScript}:
+
+
+
+\subsection{\emph{Go}}
+
+Ao contrário de outras linguagens, a implementação de \textbf{sistemas concorrentes} em \emph{Go} é \textbf{simples}, sendo uma das razões para a utilização desta tecnologia. É simples ``ao ponto'' de adicionando a palavra ``\emph{go}'' antes de qualquer procedimento, esse procedimento irá correr em uma nova \emph{Goroutine}, ou seja, de forma concorrente em relação a todas as outras \emph{Goroutines} já em execução.
+Uma ``Goroutine'' é um \emph{lightweight \textbf{thread}} gerido pelo \emph{runtime} do \emph{Go}.
+
+
+% Mudar, pouco informativo
+Outras razões são:
+\begin{itemize}
+    \item Simplicidade - tem poucas funcionalidades que por si são simples.
+    \item Rapidez - o código é compilado em apenas um ficheiro executável.
+    \item Transparência - há poucas formas de resolver o mesmo problema, ou seja, 
+\end{itemize}
+
+
+Por exemplo, comparando (parcialmente) \emph{Go} e \emph{Java}, um programa concorrente que mostra os números inteiros de 0 a 10:
+\begin{lstlisting}[caption={Exemplo em \emph{Go}, usando a \emph{keyword} ``go'' para começar uma \emph{Goroutine}.},language=Go]
+func main() {
+	var wg sync.WaitGroup
+	wg.Add(2)
+	go count(&wg, "Goroutine-1")
+	go count(&wg, "Goroutine-2")
+	wg.Wait()
+}
+
+func count(wg *sync.WaitGroup, goroutineName string) {
+	defer wg.Done()
+	for i := 0; i < 10; i++ {
+		fmt.Printf("Thread %s, %d\n", goroutineName, i)
+		time.Sleep(time.Second * 40)
+	}
+}
+\end{lstlisting}
+
+% adicionar à biografia https://www.tutorialspoint.com/java/java_multithreading.htm
+
+\begin{lstlisting}[caption={Exemplo em \emph{Java}, usando a \emph{interface} ``Runnable'' e uma classe``RunnableDemo'' para começar \emph{threads}.},language=Java]
+class RunnableDemo implements Runnable {
+   private Thread t;
+   private String threadName;
+   
+   RunnableDemo( String name) {
+      threadName = name;
+   }
+   public void run() {
+      try {
+         for(int i = 10; i < 10; i++) {
+            System.out.println("Thread: " + threadName + ", " + i);
+            Thread.sleep(40);
+         }
+      } catch (InterruptedException e) {
+         System.out.println("Thread " +  threadName + " interrupted.");
+      }
+   }
+   public void start () {
+      if (t == null) {
+         t = new Thread (this, threadName);
+         t.start ();
+      }
+   }
+}
+
+public class TestThread {
+
+   public static void main(String args[]) {
+      RunnableDemo R1 = new RunnableDemo( "Thread-1");
+      R1.start();
+      
+      RunnableDemo R2 = new RunnableDemo( "Thread-2");
+      R2.start();
+   }   
+}
+
+\end{lstlisting}
+
+Além da simplicidade de execução de procedimentos concorrentes, a linguagem oferece bibliotecas de apoio a problemas concorrentes, como a biblioteca ``sync'' que disponibiliza primitivas de sincronização simples (como por exemplo \emph{WaitGroups} e \emph{Mutex Locks}), e canais que permitem a comunicação e partilha de dados entre \emph{Goroutines}.
+
+% Escrever mais sobre a concorrencia no Go
+
+
+% mudar "grande relevância"
+A concorrência é um assunto de grande relevância em problemas de sistemas distribuídos, pois o próprio sistema funciona num paradigma concurrente, visto que os vários elementos executam de forma independente e em simultâneo.
+
+Um exemplo relacionado com o tema deste projeto seria o caso em que um \emph{Node} recebe vários pedidos de outros \emph{Nodes}. De forma a manter o sistema consistente (ou o diretório), o \emph{Node} que recebeu os pedidos terá de os tratar de forma sincronizada, isto é, tem de abordar um pedido de cada vez.
+
+% acabar ou remover
+Estas são razões que induzem a liguagem \emph{Go} a ser uma ótima escolha para a resolução de problemas num contexto distribuído, pois esta oferece múltiplas ferramentas concorrência de origem.
+
+\subsection{\emph{JavaScript}}
+Para a implementação da visualização foi usado \textbf{JavaScript}.
+Esta linguagem permite que a informação de páginas \emph{Web} seja alterada após a sua renderização/carregamento.
+É nos útil no desenho de grafos e alteração de tabelas que dispõe a informação sobre a visualização da rede.
+
+
+
+\section{Ferramentas de Edição de Código}
+Neste capítulo serão descritas ferramentas que foram usadas para escrita de código de forma mais eficiente:
+\begin{itemize}
+    \item \emph{GoLand} - \acs{IDE} especializado para \emph{Go}. Inclui \emph{Plugins} de \emph{Debugging}, sugestão de código, etc.
+    \item \emph{VIM} - Editor de texto/conjunto de atalhos de teclado. Permite escrever texto de forma eficiente e apenas usando o teclado. Pode ser usado como \emph{Plugin} no \acs{IDE} \emph{GoLand}.
+\end{itemize}
+
+% Perguntar se é preciso adicionar bibliotecas não exteriores (tipo "time", "math/rand", etc)
+\section{Bibliotecas}
+\label{chap3:bibliotecas}
+Nesta secção irão ser referidas bibliotecas utilizadas na implementação e as suas funcionalidades.
+
+\subsection{\emph{gorilla/mux}}
+Multiplexador de pedidos \acs{HTTP}. Esta biblioteca da linguagem \emph{Go} foi utilizada para simplificar a declaração de métodos do servidor \acs{HTTP}. É usada nos \emph{Nodes} e no servidor \acs{HTTP} da visualização.
+
+\subsection{\emph{D3.JS}}
+A biblioteca \emph{D3.JS}, em que \emph{D3} significa ``\emph{\textbf{D}ata-\textbf{D}riven \textbf{D}ocuments}'', em português, ``documentos baseados em dados'', é usada para a representar gráficamente dados.
+No contexto deste projeto, esta é utilizada para a visualização da rede que estamos a testar, sendo que esta é representada como um grafo.
+Esta biblioteca permite a atualização periódica da representação do estado da rede de forma simples.
+Faz uso do elemento \emph{\acs{SVG}} do \emph{\acs{HTML}}, que é um \emph{Standard}, o que permite a funcionalidade desta em grande maioria dos \emph{Browsers} modernos, e é ``leve'', a qual nos possibilita uma grande taxa de atualização do grafo com dados mais recentes.
+
+\section{Outras Tecnologias}
+\label{chap3:outras_tecnologias}
+\subsection{\emph{Docker}}
+
+% Por esta descrição mais completa.
+Docker é uma plataforma aberta/ferramenta construída de forma a tornar mais acessível a criação e execução de programas  usando \emph{containers}.
+
+% explicar melhor containers
+
+Estes \emph{containers} podem ser comparados com \emph{Virtual Machines}, ambos tendo o mesmo propósito, mas os \emph{containers} \emph{Docker} são mais leves, mais rápidos e portáveis, e mantendo as aplicações isoladas do sistema hospedeiro.
+
+
+No entanto, esta tecnologia foi utilizada para simular uma rede distribuída, em que cada \emph{container} simula um \emph{Node} ou uma máquina que cada um tem uma instância do programa a correr, o seu próprio endereço \acs{IP} e que podem comunicar entre si.
+
+
+
+
+\section{Outras Ferramentas}
+\label{chap3:outras_ferramentas}
+Nesta secção irão ser mencionadas ferramentas de menor destaque na elaboração do projeto. Estas serviram de auxílio 
+\subsection{Github}
+\subsection{Lazydocker}
+
+\section{Conclusões}
+\label{chap3:sec:concs}

@@ -1,0 +1,127 @@
+% porque
+\chapter{Motivação}
+\label{chap:estado-da-arte}
+
+\section{Introdução}
+\label{chap2:sec:intro}
+
+
+% explicar que o mundo cada vez mais requer programas distribuídos devido à escalabilidade destes
+% aumento de cores no CPU
+% aumento da infraestruturas das grandes empresas
+% A internet é cada vez mais global, logo é necessário distribuir os sistemas por várias partes do mundo
+Atendendo à crescente utilização de grandes infraestruturas, como redes sociais, grandes empresas e a demanda de maior capacidade de processamento, como por exemplo, o aumento do número de núcloes nos processadores, a necessidade do uso de sistemas distribuídos tem vindo a aumentar.
+%https://www.oreilly.com/content/distributed-systems-a-quick-and-simple-definition/
+Das várias vantagens no uso de sistemas distribuídos, as que mais se destacam são as seguintes.
+% maior runtime
+% fault tolearnce
+% mais baratos porque escabilidade horizontal
+% mais eficientes, porque é possivel várias máquinas trabalharem
+% Acabar
+\begin{description}
+    \item [Escalabilidade Horizontal] Os sistemas distribuídos permitem que se aumente a capacidade de processamento e armazenamento ao introduzir máquinas no sistema, ao invés de melhorar uma única máquina.
+	Exemplo: É mais dispendioso adquirir uma máquina de uma grande capacidade de processamento do que várias de uma capacidade menor para obter a mesma capacidade em conjunto.
+
+
+    \item [Maior tolerância a erros]Quando o processamento está distribuído por vários nós, a falha de um único nó não levará a que o sistema num todo falhe.
+
+	Exemplo: Em uma Base De Dados distribuída, caso um dos nós falhe e haja perda de informação, existem outras Bases de Dados (réplicas) que contém a mesma informação que esta.
+
+
+    \item [Mais eficientes] O uso de algoritmos distribuídos permite um maior número de máquinas em execução concorrente, e consequentemente, a divisão do trabalho pelas várias máquinas.
+	Também é possível a distribuição da localização física das máquinas, o que permite conexões de maior velocidade em outros locais no mundo.
+
+	Por exemplo: Uma rede social, à qual se conectam milhões de utilizadores, seria provável que o servidor (ou monólito) não tivesse capacidade de processar todos os pedidos concorrentes de forma eficaz, logo o processamento de novos pedidos seria demorado. Também é benéfico que o sistema esteja distribuído pelo mundo para que independentemente da localização do utilizador, este tenha um acesso rápido à rede.
+
+
+
+\end{description}
+
+No entanto, os sistemas distribuídos, que inerentemente são concorrentes, têm uma complexidade maior no desenvolvimento em comparação com sistemas e programas sequênciais.
+A falta de um relógio central, a possibilidade de vários processos necessitarem de aceder ao mesmo recurso ao mesmo tempo, ordem indeterminada de quais quer pedidos, a necessidade de se usar uma rede para comunicar informação entre os nós e dificuldade de controlar os vários sistemas independentes pertencentes ao sistema distribuídos são alguns dos fatores para esta complexidade.
+
+
+\section{Descrição do Protocolo}
+
+Nesta secção será descrito o funcionamento e estrutura do \textit{Arrow Distributed Directory Protocol} (\emph{Arrow}). 
+
+Este sistema consiste numa rede, que permite o envio assíncrono de mensagens entre os nós, e um diretório, que permite localizar um objeto na rede e garantir o acesso exclusivo a este. 
+
+O objeto é considerado ``móvel'', porque há a possibilidade de este se movimentar na rede entre os nós.
+O objeto pode ser considerado um processo, um ficheiro ou qualquer outra estrutura de dados.
+
+Cada nó tem uma só ligação, deste para outro nó, no entanto pode haver qualquer número de nós com ligação a um único.
+
+Quando um nó pretende aceder ao objeto, este envia um pedido de acesso pela sua ligação e
+caso um nó receba um pedido de acesso, a ligação deste passa a apontar para o nó vizinho que lhe fez chegar o pedido, ou seja, por onde passa o pedido há uma inversão do sentido da ligação.
+
+Numa vista global sobre a rede, quando um nó realiza um pedido, as ligações dos nós por onde esse pedido passou passam a indicar onde é que futuramente estará o objeto.
+
+Se um novo nó, que foi afetado pela passagem do pedido, realizar um pedido de acesso, este chegará ao nó que anteriormente fez o pedido.
+
+Esta inversão das ligações permite que, o nó apenas detendo uma ligação, faça chegar o seu pedido ao nó que detém o objeto ou a um nó que deterá o objeto mas que espera por ele.
+
+Caso um nó que espera pelo objeto, quer porque o seu pedido ainda está em circulação na rede ou o nó detentor do objeto ainda não o cedeu, receba um pedido de acesso de outro nó, então este armazena o uma ligação nó que realizou o pedido.
+
+Quando o nó detém o objeto,se recebe um pedido ou tem em espera um outro nó, o objeto é cedido através de uma ligação direta entre dois nós, evitando a passagem do objeto pelo diretório.
+
+A particularidade deste protocolo deve-se à mudança tanto da localização do objeto como a sua origem, pois esta muda-se para o nó que tem o acesso ao objeto, e não há um único nó que detém a localização atual do objeto, mas a disposição de todas as ligações permite a localização do objeto por todos os nós.
+
+O facto da origem do objeto estar em constante alteração evita que apenas um nó detenha o acesso ao objeto, ou seja, o acesso exclusivo, e que e que nenhum nó se torne num foco, ou seja, que nenhum nó receba demasiados pedidos em relação a outros nós, provocado um engarrafamento/\emph{bottleneck} no acesso ao objeto.
+
+% notas paper
+% explicar o nome
+% explicar que ao seguirmos as setas chegamos sempre ao objeto ou alguém que terá acesso ao mesmo
+% explicar o que é um diretório
+% dar uma vista global sobre
+% - Objeto Movível
+% O objeto move-se pelo diretório dependendo se houve pedidos por parte de Nodes
+
+
+
+\subsection{Estrutura do Diretório}
+
+
+O diretório constitui um grafo, mais especificamente uma árvore de extensão mínima, em que os vértices são os nós pertencentes ao diretório e as arestas as ligações entre os nós.
+
+
+\begin{comment}
+     elementos
+     - Nodes
+    vértices do grafo
+     
+
+     - Ligações entre os nodes (ligação de finds e ligação do MyChan, ver ARVY)
+     explicar porque é que as ligações viram
+     - envios do obj são diretos
+\end{comment}
+
+\subsection{Estruturas de Dados}
+%MST
+%queue
+
+
+\section{Trabalhos relacionados}
+%Ivy e Arvy
+De muitos algoritmos distribuídos e suas implementações, há dois trabalhos muito relacionados com o protocolo tratado neste projeto. Estes são, o \emph{Ivy} \cite{Ivy} e o \emph{Arvy} \cite{Arvy}.
+O \emph{Ivy} apresenta um funcionamento muito similar ao \emph{Arrow}, em que a origem do objeto muda com a posição atual deste, isto é, 
+
+
+Na implementação do mesmo protocolo retratado neste projeto existe apenas...
+
+
+% comparar este algoritmo com outros (ver http://cs.brown.edu/people/mph/DemmerH98/disc.pdf)
+
+% saber explicar as dificuldades da implementação do AADP (não a minha em específico, mas em geral), os seus usos e 
+% porque é que é um problema relevante
+% explicar benefícios da visualiazção (ponto importante, que até está no nome do AADP, as Setas)
+% motivação do trabalho, porque é que é giro de se fazer
+% explicar a utilidade/problemas resolvidos com este protocolo
+% que problemas estamos a resolver
+  % definição do problema
+  % a forma como vamos resolver os problemas
+% Qual é o interesse em fazer este trabalho
+% quais os desafios/interesses ao fazer o projeto
+
+\section{Conclusões}
+\label{chap2:sec:concs}
