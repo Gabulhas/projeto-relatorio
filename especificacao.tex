@@ -5,61 +5,107 @@
 \label{especificacao:sec:intro}
 \section{\emph{Node}}
 
+\begin{comment}
+\end{comment}
 
 
-\section{MUDAR ESTE DE SÍTIO}
-Neste capítulo serão descritos os diferentes \emph{Nodes} presentes no diretório, tais como os seus atributos, 
-que estão definidos em detalhe no capítulo seguinte \ref{especificacao:atr:section}.
+Neste diretório existe apenas um \emph{Node} que detém o acesso ao objeto, pois um dos propósitos deste protocolo é garantir o acesso exclusivo a este. 
 
-Existem vários fatores que diferenciam os \emph{Nodes}: 
+
+No entanto podem existir outros \emph{Nodes} que pretendem ter acesso ao objeto, e que ficam à espera deste. 
+
+Também é possível que \emph{Nodes} detenham ou que esperam pelo acesso ao objeto, recebam um pedido de acesso de outro \emph{Node}, ou seja, os \emph{Nodes} podem ter pedidos em espera.
+
+Ou seja, é possível que um \emph{Node} detenha o acesso ao objeto ou futuramente deterá e ter um outro \emph{Node} à espera que este ceda o acesso.
+
+Estes fatores diferenciam os vários \emph{Nodes} no diretório,
+e de seguida será feita uma enumeração destes fatores, sendo que estes podem coexistir:
+
 \begin{itemize}
-    \item Detém o acesso ao objeto. - \emph{Owner}/Dono do objeto.
-    \item Efetuou um pedido de aquisição do acesso ao objeto. - \emph{Waiter}/\emph{Node} em espera.
-    \item Tem um pedido em espera. - \emph{With Request}/Com Pedido.
-    \item Nenhum dos anteriores. - \emph{Idle}/Inativo.
+    \item Se o \emph{Node} detém o acesso ao objeto - \textbf{\emph{Owner}/Dono}
+    \item Efetuou um pedido acesso ao objeto. - \textbf{\emph{Waiter}/\emph{Node} em espera. }
+
+    \item Não tem pedidos em espera. - \textbf{\emph{Terminal}}
+    \item Tem um pedido em espera. - \textbf{\emph{With Request}/Com Pedido.}
+
+    \item Nenhum dos anteriores. - \textbf{\emph{Idle}/Inativo.}
 \end{itemize}
 
 
+A partir da combinação destes fatores temos os seguintes tipos de \emph{Nodes}:
 
-Algumas regras de funcionamento do diretório incluem:
+\begin{description}
+    \item [Owner Terminal] - \\ \emph{Node} que detém o acesso ao objeto e não tem pedidos em espera.
+    \item [Owner With Request] - \\ \emph{Node} que detém o acesso ao objeto mas tem um pedido em espera.
+    \item [Waiter Terminal] - \\ \emph{Node} que efetuou um pedido de acesso ao objeto mas não tem pedidos em espera.
+    \item [Waiter With Request] - \\ \emph{Node} que efetuou um pedido de acesso ao objeto mas tem um pedido em espera.
+    \item [Idle] - \\ \emph{Node} que não detém o acesso ao objeto nem efetuou pedido de acesso.
+\end{description}
 
+
+
+\section{Ligações}
+
+Os \emph{Nodes} têm a possibilidade de comunicar entre si, quer usando o diretório, quando estes pretendem pedir o acesso ao objeto, ou diretamente, quando estes transmitem o acesso ao objeto para outro \emph{Node}.
+
+As ligações (ou comunicações) entre os \emph{Nodes} são feitas a partir de \emph{Channels} (canais). Estes \emph{Channels} funcionam como caixa de entrada ou endereços dos \emph{Nodes}, em que podem ser enviados para outros \emph{Nodes}, e que, caso um \emph{Node} decide transmitir alguma mensagem para o outro \emph{Node}, esta transmissão é feita usando um \emph{Channel} do recetor da mensagem.
+
+% provavelmente remover
+Uma outra forma de definir o uso dos \emph{Channels} seria que este é formado por duas partes, a entrada e a saída, em que a entrada é usada pelo \emph{Node} transmissor e a saída está no \emph{Node} recetor.
+
+Os \emph{Channels} são usados quando um \emph{Node}:
 \begin{itemize}
-    \item As ligações entre \emph{Nodes} são realizadas através do \emph{Link} de um \emph{Node}
-    que aponta para o \emph{Channel \textbf{Find}} de um outro \emph{Node}.
-    \item Cada pedido transmitido (através do \emph{Link}) inclui o \emph{Channel \textbf{Find}} do transmissor,   
-    para que possa haver uma inversão na ligação, ou seja, para que o recetor possa atualizar 
-    o seu \emph{Link} para o \emph{Channel \textbf{Find}} do transmissor.
-    \item Caso o \emph{Node} detenha ou espera pelo acesso ao objeto e receba um pedido,
-    este atualiza o \emph{WaiterChan} que aponta para o \emph{MyChan} do \emph{Node} que fez o pedido.
-    \item Caso o \emph{Node} ceda o acesso ao objeto, este é transmitido através do \emph{WaiterChan} para o \emph{Node} em espera.
-    \item Em qualquer momento/estado do diretório existe apenas um \emph{Owner}.
+    \item Pretende enviar uma mensagem para outro \emph{Node}, este fá-lo usando o \emph{Channel} pertencente ao recetor.
+    \item Pretende receber mensagens de outros \emph{Nodes} este envia o seu \emph{Channel}.
 \end{itemize}
 
 
-\subsubsection*{Outras definições}
-% Esta secção não deve ficar bem.
-Considera-se que existe um arco/uma ligação de um \emph{Node} \textbf{X} para um \emph{Node} \textbf{Y} quando o \emph{Link} do 
-\emph{Node} \textbf{X}  é (ou aponta para) o \emph{Find} do \emph{Node} \textbf{Y}.
-\\
+\subsection*{Ligações no diretório}
 
-Um \emph{Node} \textbf{X} tem a possibilidade de ter outro \emph{Node} \textbf{Y} (ou o pedido deste) em espera. Isto significa que o \emph{WaiterChan} do 
-\emph{Node} \textbf{X} é (ou aponta para) o \emph{MyChan} do \emph{Node} \textbf{Y}.\\
+Como referido no capítulo anterior, o diretório é um grafo (mais especificamente uma árvore de extensão mínima), em que os vértices são os \emph{Nodes} e as arestas são as ligações, e cada ligação é um conjunto de uma entrada (no transmissor) e uma saída (no recetor), o que indica que este grafo é dirigido, visto que há uma direção pela qual cada mensagem é transmitida por um \emph{Channel} (da entrada para a saída).
 
-O \emph{Child Node} de um \emph{Node} é o \emph{Node} que detém o \emph{Find} para qual o \textbf{Link} do \emph{Node} aponta. 
-Isto é, existe um arco do \emph{Node} para o \emph{Child Node}, em que o \emph{Child Node} é o sucessor direto do \emph{Node}.
-Cada \emph{Node} no diretório tem no máximo 1 \emph{Child Node}. \\
+Neste tipo de ligação no diretório foram definidas duas partes nas ligações, o ``Link'', parte de entrada da ligação que está presente no transmissor, que se liga a um ``Find'' de um \emph{Node}, esta sendo a parte da saída das mensagens, que está presente no recetor.
 
-Os \emph{Parent Nodes} de um \emph{Node} são os \emph{Nodes} cujo o seu \textbf{Link} aponta para o \textbf{Find} do \emph{Node}.
-Isto é, existe um arco de cada \emph{Parent Node} para o \emph{Node}, em que o \emph{Node} é o sucessor direto dos \emph{Parent Nodes}.
-Não há qualquer limite de \emph{Parent Nodes}. \\
+Então, no grafo que representa o diretório, considera-se que existe uma ligação/um arco de um \emph{Node} \textbf{X} para um \emph{Node} \textbf{Y} quando o ``Link'' do 
+\emph{Node} \textbf{X}  é (ou aponta para) o ``Find'' do \emph{Node} \textbf{Y}.
 
+Então o \emph{Node} \textbf{Y} é o \emph{Child Node} do \textbf{X}, e o \emph{Node} \textbf{X} é o \emph{Parent Node} do \textbf{Y}.
+
+Estas ligações do diretório são usadas apenas para a transmissão e circulação dos pedidos de acesso ao objeto, visto que um \emph{Node} não tem informação da localização deste mas tem informação sobre a ligação para o seu \emph{Child Node},
+e o conjunto das ligações aponta sempre para a localização atual (o \emph{Owner}) ou uma futura localização (um \emph{Waiter}), ou seja, o \emph{Node} não tem informação sobre a localização atual ou uma futura, mas o conjunto de todas as ligações forma essa informação.
+
+Estes dois tópicos serão retratados em subcapítulos seguintes, mas é necessário mencioná-los:
+\begin{itemize}
+    \item Quando um \emph{Node} recebe um pedido de acesso, a ligação entre este e o \emph{Node} que lhe transmitiu é invertida. Esta inversão é desempenhada para que as ligações dos \emph{Nodes} tenham sempre a direção para onde está ou estará o objeto.
+
+    \item Os pedidos de acesso contém informação necessária para a inversão das ligações e para que seja possível o envio do objeto do atual \emph{Owner} para o \emph{Node} que realizou o pedido.
+\end{itemize}
+
+% para que servem
+% Quais é que são os canais
+% Qual é a entrada e a saída
+% o que é transmitido
+
+\subsection*{Ligação direta}
+É possível que um \emph{Node} tenha outro \emph{Node} à espera que lhe envie o acesso ao objeto. No entanto para que este tenha um pedido em espera é necessário que este seja o detentor do objeto ou que futuramente tenha o acesso (\emph{Waiter}).
+
+Quando o \emph{Node} tem outro \emph{Node} em espera, há uma ligação direta entre estes.
+Esta ligação é utilizada no envio do acesso ao objeto, pois o \emph{Node} quando receber o acesso, este poderá ceder ao \emph{Node} que espera através desta ligação.
+
+Neste tipo de ligação são definidas duas partes, o ``WaiterChan'', parte de entrada da ligação que está presente no transmissor, que se liga ao ``MyChan'' de um \emph{Node}, sendo esta a parte da saída do acesso ao objeto, que está presente no recetor.
+
+Com a mudança das ligações no diretório e o facto de que um \emph{Node} pode ter um (e apenas um) outro \emph{Node} à espera, isto resulta na circulação de um pedido até este chegar a um \emph{Node} que detém ou futuramente deterá (mas que espera) o acesso ao objeto e que não tenha qualquer outro pedido.
+
+Neste sistema é possível a existência de \emph{Nodes} à espera de outros \emph{Nodes} que também estão à espera, e cada um tem no máximo um outro \emph{Node} à espera. 
+Este comportamento dos \emph{Nodes} provoca a criação de uma fila (\emph{Queue}), pois o \emph{Node} que espera pelo atual detentor do objeto irá ser o primeiro da fila e posteriormente enviará o acesso ao objeto ao \emph{Node} que espera por este, e assim seguidamente.
+
+A cabeça desta fila será o atual detentor doo objeto, que está diretamente ligado a um outro \emph{Node}, e o último elemento da fila será o \emph{Node} na fila que não tem qualquer outro \emph{Node} à sua espera.
 
 
 
 
 \section{Atributos do \emph{Node}}
 \label{especificacao:atr:section}
-% Pouca informação
 Neste secção serão descritos os atributos que podem constituir um \emph{Node}.
 
 \subsection*{Find}
@@ -74,19 +120,17 @@ Neste secção serão descritos os atributos que podem constituir um \emph{Node}
 
 \subsection*{Link}
 \label{especificacao:atr:link}
-    Este atributo representa a ligação do \emph{Node} para o seu \emph{Child Node}.
-    Contém o \emph{Channel Find} do \emph{Child Node}.
+Este atributo representa a ligação do \emph{Node} para o ``Find'' de um outro \emph{Node}, ou seja, uma ligação para o seu \emph{Child Node}.
 
+\subsection*{WaiterChan}
+\label{especificacao:atr:waiterchan}
+    Este atributo representa o \emph{Channel} para o ``MyChan'' de um outro \emph{Node}, ou seja, o seu sucessor na fila.
 
 \subsection*{Obj}
 \label{especificacao:atr:obj}
     Este atributo representa o acesso ao objeto por parte do \emph{Node}.
     Em qualquer estado da rede, apenas um \emph{Node} dispões deste atributo.
 
-\subsection*{WaiterChan}
-\label{especificacao:atr:waiterchan}
-    Este atributo representa o \emph{Channel} do \emph{Node} sucessor da fila.
-    Contém o \emph{MyChan} do \emph{Node} em espera.
 
 
 \section{\emph{Channels}}
