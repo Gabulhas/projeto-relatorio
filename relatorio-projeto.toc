@@ -18,10 +18,9 @@
 \contentsline {section}{\numberline {3.2}\emph {Node}}{7}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Ligações}{8}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Atributos do \emph {Node}}{10}{section.3.4}%
-\contentsline {section}{\numberline {3.5}\emph {Channels}}{11}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Tipos de mensagens}{11}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Comportamentos dos \emph {Nodes}}{11}{section.3.7}%
-\contentsline {section}{\numberline {3.8}Conclusões}{15}{section.3.8}%
+\contentsline {section}{\numberline {3.5}Tipos de mensagens}{12}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Comportamentos dos \emph {Nodes}}{12}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Conclusões}{15}{section.3.7}%
 \contentsline {chapter}{\chapternumberline {4}Implementação}{17}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introdução}{17}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Linguagens de Programação}{17}{section.4.2}%
@@ -45,4 +44,4 @@
 \contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{53}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Conclusões Principais}{53}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Trabalho Futuro}{53}{section.6.2}%
-\contentsline {chapter}{Bibliografia}{55}{chapter*.70}%
+\contentsline {chapter}{Bibliografia}{55}{chapter*.76}%

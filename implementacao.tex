@@ -27,7 +27,7 @@ Uma ``Goroutine'' é um \emph{lightweight \textbf{thread}} gerido pelo \emph{run
 %\end{description}
 
 
-Por exemplo, comparando (parcialmente) \emph{Go} e \emph{Java}, um programa concorrente que mostra os números inteiros de 0 a 10:
+Por exemplo, comparando (parcialmente) dois programas concorrentes, um em \emph{Go} e outro em \emph{Java}, que mostram os números inteiros de 0 a 10:
 \begin{lstlisting}[caption={Exemplo em \emph{Go}, usando a \emph{keyword} ``go'' para começar uma \emph{Goroutine}.},language=Go]
 func main() {
 	var wg sync.WaitGroup
@@ -94,12 +94,9 @@ Além da simplicidade de especificação de procedimentos concorrentes, a lingua
 
 A concorrência é inerente aos sistemas distribuídos, visto que os vários elementos do sistema executam de forma independente e em simultâneo.
 
-Um exemplo relacionado com o tema deste projeto seria o caso em que um \emph{Node} recebe vários pedidos de outros \emph{Nodes}. De forma a manter o sistema (ou o diretório) consistente , o \emph{Node} que recebeu os pedidos terá de os tratar de forma sincronizada, isto é, tem de abordar um pedido de cada vez.
+Um exemplo relacionado com o tema deste projeto seria o caso em que um \emph{Node} recebe vários pedidos de outros \emph{Nodes}. De forma a manter o sistema (ou o diretório) consistente , o \emph{Node} que recebeu os pedidos terá de os tratar de forma sincronizada, isto é, tem de endereçar um pedido de cada vez.
 
-Na implementação fez-se uso de servidores e pedidos \acs{HTTP}. Por omissão, todos os pedidos \acs{HTTP} que o servidor recebe são tratados em \emph{goroutines} diferente, o que permite a receção dos vários pedidos e para a sincronização das \emph{goroutines} usou-se um ``Mutex'' proveniente da biblioteca ``sync''.
-
-%Também é possível que vários elementos enviem pedidos ao mesmo tempo, e cada \emph{Node} age de forma independente e não tem informação sobre o resto do sistema (excepto os vizinhos), então executa em simultâneo com outros \emph{Nodes}.
-
+Na implementação fez-se uso de servidores e pedidos \acs{HTTP} que, por omissão, todos os pedidos \acs{HTTP} que o servidor recebe são tratados em \emph{goroutines} diferente, de forma concorrente, o que permite a receção de vários pedidos e para a sincronização das \emph{goroutines} usou-se um ``Mutex'' proveniente da biblioteca ``sync''.
 
 
 \subsection*{\emph{JavaScript}}
@@ -166,7 +163,7 @@ Nesta Implementação, esta classe está incluída num módulo \emph{Go} ``Nodes
     \item [Node.go] - Contém \emph{Struct} que define os \textbf{atributos}.
     \item [NodeBehaviours.go] - Define os possíveis \textbf{comportamentos}.
     \item [NodeCommunications.go] - Conjunto de \textbf{métodos de comunicação} de informação para outros \emph{Nodes}.
-    \item [NodeTranformations.go] - \textbf{Transformações}/Mudanças de tipo que o \emph{Node} pode sofrer.
+    \item [NodeTranformations.go] - \textbf{Transformações}/Mudanças de tipo que o \emph{Node} pode sofrer. A diferenciação destes comportamentos deve-se ao facto de estes mudarem o estado atual do \emph{Node}.
     \item [NodeType.go] - Enumeração dos \textbf{tipos} que o \emph{Node} pode ser.
 \end{description} 
 
@@ -195,7 +192,7 @@ type Node struct {
 Na \emph{Struct} estão definidos todos os atributos que o \emph{Node} pode ter, porém, quando um atributo é inexistente, este é definido como vazio, ou seja, os atributos ``WaiterChan'', ``VisAddress'' e ``Link'' podem ser \emph{strings} vazias.
 
 O atributo \textbf{``MyChan''} é o \emph{Channel} do \emph{Node} onde este vai receber o acesso ao objeto.
-Também é usado na construção da \emph{Struct} que irá ser enviada para o \emph{Child} node quando este decide pedir o acesso ao objeto.
+Assim, é um dos componentes da mensagem (\emph{Struct}) que irá ser enviada para o \emph{Child Node} quando este decide pedir o acesso ao objeto.
 
 O atributo \textbf{``Find''} é o \emph{Channel} do \emph{Node} onde este vai receber pedidos de acesso de outros \emph{Nodes}. 
 Também é usado na construção dos dois tipos de pedidos, no pedido de \emph{AccessRequest} quando o \emph{Node} decide fazer um pedido e quando este reencaminha um pedido para o \emph{Child Node}, ao construir um novo pedido de \emph{AccessRequest}, mantendo o ``WaiterChan'' mas substituindo o ``Link'' do pedido pelo seu ``Find''.

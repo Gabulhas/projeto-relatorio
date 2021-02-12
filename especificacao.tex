@@ -96,8 +96,8 @@ Neste tipo de ligação são definidas duas partes, o ``WaiterChan'', parte de e
 
 Com a mudança das ligações no diretório e o facto de que um \emph{Node} pode ter um (e apenas um) outro \emph{Node} à espera, isto resulta na circulação de um pedido até este chegar a um \emph{Node} que detém ou futuramente deterá (mas que espera) o acesso ao objeto e que não tenha qualquer outro pedido.
 
-Neste sistema é possível a existência de \emph{Nodes} à espera de outros \emph{Nodes} que também estão à espera, e cada um tem no máximo um outro \emph{Node} à espera. 
-Este comportamento dos \emph{Nodes} provoca a criação de uma fila (\emph{Queue}), pois o \emph{Node} que espera pelo atual detentor do objeto irá ser o primeiro da fila e posteriormente enviará o acesso ao objeto ao \emph{Node} que espera por este, e assim seguidamente.
+Neste sistema é possível existirem \emph{Nodes} à espera de outros \emph{Nodes} que também estão à espera, e cada um tem no máximo um outro \emph{Node} à espera. 
+Este comportamento dos \emph{Nodes} origina a criação de uma fila (\emph{Queue}), pois o \emph{Node} que espera pelo atual detentor do objeto irá ser o primeiro da fila e posteriormente enviará o acesso ao objeto ao \emph{Node} que espera por este, e assim seguidamente.
 
 A cabeça desta fila será o atual detentor doo objeto, que está diretamente ligado a um outro \emph{Node}, e o último elemento da fila será o \emph{Node} na fila que não tem qualquer outro \emph{Node} à sua espera.
 
@@ -132,42 +132,72 @@ Este atributo representa a ligação do \emph{Node} para o ``Find'' de um outro 
     Em qualquer estado da rede, apenas um \emph{Node} dispões deste atributo.
 
 
-
-\section{\emph{Channels}}
-\label{especificacao:sec:Channels}
-Nesta especificação foram apenas definidos dois \emph{Channels}. A comunicação entre os \emph{Nodes} é feita por canais, pelos quais são comunicados canais.
-Neste capítulo serão descritos os \emph{Channels}:
+\subsection*{Atributos de cada tipo de \emph{Node}}
+Neste subcapítulo serão definidos os atributos que cada tipo de \emph{Node} apresenta.
 
 
-\subsection*{Access Request}
-Este tipo de \emph{Channel} é usado para fazer chegar o pedido ao último elemento da fila de espera (de acesso ao objeto). 
-Para tal, neste \emph{Channel} são comunicados dois \emph{Channels}:
-\begin{itemize}
-    \item O \emph{Channel \textbf{MyChan}} do \emph{Node} que fez o pedido.
-    \item O \emph{Channel} que identifica quem fez chegar o pedido, ou seja, o \emph{\textbf{Find}} do \textbf{Parent Node}.
-\end{itemize}
+\subsubsection*{\emph{Owner Terminal}}
 
-
-\subsection*{Give Access}
-No entanto, há um tipo de \emph{Channel} que é usado para dar acesso ao objeto a quem fez o pedido, por outras palavras, é usado pelo atual \emph{\textbf{Owner}} para transmitir o acesso ao \emph{Waiter} que estava na posição da fila de espera.
-
-\section{Tipos de mensagens}
-
-
-\section{Comportamentos dos \emph{Nodes}}
-%-------------------------
-\subsection*{\emph{Owner Terminal}}
-\label{especificacao:nodes:owner_terminal}
-
-
-\emph{Node} que detém o objeto e não tem pedido em espera.
-
-Atributos:
 \begin{itemize}
     \item Find
     \item MyChan
     \item Obj
 \end{itemize}
+\subsubsection*{\emph{Owner With Request}}
+\begin{itemize}
+    \item Find
+    \item MyChan
+    \item Link
+    \item Obj
+    \item WaiterChan
+\end{itemize}
+\subsubsection*{\emph{Idle}}
+\begin{itemize}
+    \item Find
+    \item MyChan
+    \item Link
+\end{itemize}
+\subsubsection*{\emph{Waiter Terminal}}
+\begin{itemize}
+    \item Find
+    \item MyChan
+\end{itemize}
+\subsubsection*{\emph{Waiter With Request}}
+\begin{itemize}
+    \item Find 
+    \item MyChan 
+    \item Link 
+    \item WaiterChan 
+\end{itemize}
+
+
+
+\section{Tipos de mensagens}
+\label{especificacao:sec:Channels}
+Nesta especificação foram apenas definidos dois \emph{Channels}. A comunicação entre os \emph{Nodes} é feita por canais, pelos quais são comunicados canais (as mensagens).
+
+
+\subsection*{Access Request}
+Este tipo de \emph{Channel} é usado para fazer chegar o pedido a um \emph{Node} que detém ou futuramente irá deter o acesso ao objeto. O \emph{Node} de destino depende da estrutura atual do diretório, no entanto o \emph{Node} que realizou o pedido não terá informação sobre o destino, mas o recetor de destino terá a informação necessária para que este tenha a possibilidade de ceder o acesso ao objeto ao \emph{Node} que realizou o pedido.
+
+Para tal, neste \emph{Channel} são comunicados dois \emph{Channels}:
+\begin{itemize} \item O \emph{Channel \textbf{MyChan}} do \emph{Node} que fez o pedido.
+    \item O \emph{Channel} que identifica quem fez chegar o pedido, ou seja, o \emph{\textbf{Find}} do \textbf{Parent Node}.
+\end{itemize}
+
+
+\subsection*{Give Access}
+No entanto, há um tipo de \emph{Channel} que é usado para ceder o acesso ao objeto a quem fez o pedido, por outras palavras, é usado pelo atual \emph{\textbf{Owner}} para transmitir o acesso ao \emph{Waiter} que estava à sua espera, ou seja, ao primeiro da \emph{Queue}.
+
+
+
+\section{Comportamentos dos \emph{Nodes}}
+%-------------------------
+
+Neste capítulo serão 
+
+\subsection*{\emph{Owner Terminal}}
+\label{especificacao:nodes:owner_terminal}
 
 
 \subsubsection*{Receção de um pedido Access Request}
@@ -190,17 +220,6 @@ O \emph{Node} sofre a transformação \textbf{OwnerWithRequest(Find, MyChan, Obj
 %-------------------------
 \subsection*{\emph{Owner With Request}}
 \label{especificacao:nodes:owner_with_request}
-
-\emph{Node} que detém o objeto e tem um pedido em espera.
-
-Atributos:
-\begin{itemize}
-    \item Find
-    \item MyChan
-    \item Link
-    \item Obj
-    \item WaiterChan
-\end{itemize}
 
 \subsubsection*{Receção de um pedido Access Request}
 O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Channel \textbf{Find}},
@@ -232,14 +251,6 @@ mantém o \emph{Find}, o \emph{MyChan} e o \emph{Link}.
 \subsection*{\emph{Idle}}
 \label{especificacao:nodes:idle}
 
-\emph{Node} não detém o objeto, não tem pedidos em espera e nem fez qualquer pedido. 
-
-Atributos:
-\begin{itemize}
-    \item Find
-    \item MyChan
-    \item Link
-\end{itemize}
 
 \subsubsection*{Receção de um pedido Access Request}
 O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Channel \textbf{Find}}, que foi remetido pelo seu \emph{Parent Node}.
@@ -263,13 +274,6 @@ Como fez um pedido, este transforma-se em \emph{\textbf{Waiter Terminal}}, e dei
 \subsection*{\emph{Waiter Terminal}}
 \label{especificacao:nodes:waiter_terminal}
 
-\emph{Node} aguarda pelo acesso ao objeto.
-
-Atributos:
-\begin{itemize}
-    \item Find
-    \item MyChan
-\end{itemize}
 
 \subsubsection*{Receção de um pedido Access Request}
 O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Channel \textbf{Find}}, que foi remetido pelo seu \emph{Parent Node}.
@@ -297,18 +301,6 @@ Como o \emph{Node} é detentor do objeto, deixam de existir ligações a partir 
 %-------------------------
 \subsection*{\emph{Waiter With Request}}
 \label{especificacao:nodes:waiter_with_request}
-
-\emph{Node} aguarda pelo acesso ao objeto e tem um pedido em espera.
-
-
-Atributos:
-\begin{itemize}
-    \item Find 
-    \item MyChan 
-    \item Link 
-    \item WaiterChan 
-\end{itemize}
-
 
 
 \subsubsection*{Receção de um pedido Access Request}
