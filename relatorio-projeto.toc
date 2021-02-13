@@ -24,24 +24,24 @@
 \contentsline {chapter}{\chapternumberline {4}Implementação}{17}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introdução}{17}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Linguagens de Programação}{17}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Ferramentas e Bibliotecas utilizadas}{19}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Ferramentas e Bibliotecas utilizadas}{20}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Classe \emph {Node}}{21}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Atributos da Classe}{21}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Inicialização do objeto ``Self Node''}{22}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Tipos de Nodes}{24}{section.4.7}%
+\contentsline {section}{\numberline {4.6}Inicialização do objeto ``Self Node''}{23}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Tipos de Nodes}{25}{section.4.7}%
 \contentsline {section}{\numberline {4.8}Comportamentos}{25}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Transformações do \emph {Node}}{33}{section.4.9}%
+\contentsline {section}{\numberline {4.9}Transformações do \emph {Node}}{34}{section.4.9}%
 \contentsline {section}{\numberline {4.10}Comunicação entre Nodes}{37}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{42}{section.4.11}%
+\contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{43}{section.4.11}%
 \contentsline {section}{\numberline {4.12}Implementação da Visualização}{43}{section.4.12}%
 \contentsline {section}{\numberline {4.13}Uso de \emph {containers Docker}}{49}{section.4.13}%
-\contentsline {section}{\numberline {4.14}Conclusões}{50}{section.4.14}%
-\contentsline {chapter}{\chapternumberline {5}Reflexão Crítica}{51}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introdução}{51}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Escolhas de Implementação}{51}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Detalhes de Implementação}{51}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Conclusões}{51}{section.5.4}%
-\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{53}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Conclusões Principais}{53}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Trabalho Futuro}{53}{section.6.2}%
-\contentsline {chapter}{Bibliografia}{55}{chapter*.76}%
+\contentsline {section}{\numberline {4.14}Conclusões}{51}{section.4.14}%
+\contentsline {chapter}{\chapternumberline {5}Reflexão Crítica}{53}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introdução}{53}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Escolhas de Implementação}{53}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Detalhes de Implementação}{53}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Conclusões}{53}{section.5.4}%
+\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{55}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusões Principais}{55}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Trabalho Futuro}{55}{section.6.2}%
+\contentsline {chapter}{Bibliografia}{57}{chapter*.76}%

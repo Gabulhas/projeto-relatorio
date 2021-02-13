@@ -6,35 +6,27 @@
 \label{chap2:sec:intro}
 
 
+
 % explicar que o mundo cada vez mais requer programas distribuídos devido à escalabilidade destes
 % aumento de cores no CPU
 % aumento da infraestruturas das grandes empresas
 % A internet é cada vez mais global, logo é necessário distribuir os sistemas por várias partes do mundo
-Atendendo à crescente utilização de grandes infraestruturas, como redes sociais, grandes empresas e a demanda de maior capacidade de processamento, como por exemplo, o aumento do número de núcloes nos processadores, a necessidade do uso de sistemas distribuídos tem vindo a aumentar.
+Atendendo à crescente utilização de grandes infraestruturas, como em redes sociais, grandes empresas e a demanda de maior capacidade de processamento, como por exemplo, o aumento do número de núcloes nos processadores ou a conveniência de várias máquinas trabalharem em conjunto, a necessidade do uso de sistemas distribuídos tem vindo a aumentar ao longo dos anos.
 %https://www.oreilly.com/content/distributed-systems-a-quick-and-simple-definition/
-Das várias vantagens no uso de sistemas distribuídos, as que mais se destacam são as seguintes.
 % maior runtime
 % fault tolearnce
 % mais baratos porque escabilidade horizontal
 % mais eficientes, porque é possivel várias máquinas trabalharem
 
+Das várias vantagens no uso de sistemas distribuídos, as que mais se destacam são as seguintes.
 % remover, demasiada informação desnecessária, não o ponto principal da motivação
 \begin{description}
     \item [Escalabilidade Horizontal] Os sistemas distribuídos permitem que se aumente a capacidade de processamento e armazenamento ao introduzir máquinas no sistema, ao invés de melhorar uma única máquina.
-	Exemplo: É mais dispendioso adquirir uma máquina de uma grande capacidade de processamento do que várias de uma capacidade menor para obter a mesma capacidade em conjunto.
-
-
+	
     \item [Maior tolerância a erros]Quando o processamento está distribuído por vários nós, a falha de um único nó não levará a que o sistema num todo falhe.
-
-	Exemplo: Em uma Base De Dados distribuída, caso um dos nós falhe e haja perda de informação, existem outras Bases de Dados (réplicas) que contém a mesma informação que esta.
-
 
     \item [Mais eficientes] O uso de algoritmos distribuídos permite um maior número de máquinas em execução concorrente, e consequentemente, a divisão do trabalho pelas várias máquinas.
 	Também é possível a distribuição da localização física das máquinas, o que permite conexões de maior velocidade em outros locais no mundo.
-
-	Por exemplo: Uma rede social, à qual se conectam milhões de utilizadores, seria provável que o servidor (ou monólito) não tivesse capacidade de processar todos os pedidos concorrentes de forma eficaz, logo o processamento de novos pedidos seria demorado. Também é benéfico que o sistema esteja distribuído pelo mundo para que independentemente da localização do utilizador, este tenha um acesso rápido à rede.
-
-
 
 \end{description}
 
@@ -55,11 +47,12 @@ Cada nó tem uma só ligação, deste para outro nó, no entanto pode haver qual
 
 Quando um nó pretende aceder ao objeto, este envia um pedido de acesso pela sua ligação. 
 
-Caso um nó receba um pedido de acesso, e este não seja o atual d
+Caso um nó receba um pedido de acesso,a ligação deste passa a apontar para o nó vizinho que lhe fez chegar o pedido, ou seja, por onde passa o pedido há uma inversão do sentido da ligação.
 
-,a ligação deste passa a apontar para o nó vizinho que lhe fez chegar o pedido, ou seja, por onde passa o pedido há uma inversão do sentido da ligação.
+Se um nó recebeu um pedido de acesso e este detém ou espera pelo acesso ao objeto, o nó que realizou o pedido passa a estar à espera que este nó que recebeu lhe ceda o objeto e a circulação do pedido termina.
 
-Numa vista global sobre a rede, quando um nó realiza um pedido, as ligações dos nós por onde esse pedido passou passam a indicar onde é que futuramente estará o objeto.
+
+Numa vista global sobre a rede, quando um nó realiza um pedido, as ligações dos nós por onde esse pedido passou passam a indicar onde é que futuramente estará o objeto, mas é possível a circulação de vários pedidos na rede, o que 
 
 Se um novo nó, que foi afetado pela passagem do pedido, realizar um pedido de acesso, este chegará ao nó que anteriormente fez o pedido.
 
