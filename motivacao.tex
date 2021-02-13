@@ -46,15 +46,18 @@ A falta de um relógio central, a possibilidade de vários processos necessitare
 
 Nesta secção será descrito o funcionamento e estrutura do \textit{Arrow Distributed Directory Protocol} (\emph{Arrow}). 
 
-Este sistema consiste numa rede, que permite o envio assíncrono de mensagens entre os nós, e um diretório, que permite localizar um objeto na rede e garantir o acesso exclusivo a este. 
+Este sistema consiste numa rede, que permite o envio assíncrono de mensagens (ou a comunicação) entre os nós, e um diretório, que permite localizar um objeto na rede e garantir o acesso exclusivo a este. 
 
 O objeto é considerado ``móvel'', porque há a possibilidade de este se movimentar na rede entre os nós.
 O objeto pode ser considerado um processo, um ficheiro ou qualquer outra estrutura de dados.
 
 Cada nó tem uma só ligação, deste para outro nó, no entanto pode haver qualquer número de nós com ligação a um único.
 
-Quando um nó pretende aceder ao objeto, este envia um pedido de acesso pela sua ligação e
-caso um nó receba um pedido de acesso, a ligação deste passa a apontar para o nó vizinho que lhe fez chegar o pedido, ou seja, por onde passa o pedido há uma inversão do sentido da ligação.
+Quando um nó pretende aceder ao objeto, este envia um pedido de acesso pela sua ligação. 
+
+Caso um nó receba um pedido de acesso, e este não seja o atual d
+
+,a ligação deste passa a apontar para o nó vizinho que lhe fez chegar o pedido, ou seja, por onde passa o pedido há uma inversão do sentido da ligação.
 
 Numa vista global sobre a rede, quando um nó realiza um pedido, as ligações dos nós por onde esse pedido passou passam a indicar onde é que futuramente estará o objeto.
 

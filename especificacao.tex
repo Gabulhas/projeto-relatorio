@@ -99,7 +99,7 @@ Com a mudança das ligações no diretório e o facto de que um \emph{Node} pode
 Neste sistema é possível existirem \emph{Nodes} à espera de outros \emph{Nodes} que também estão à espera, e cada um tem no máximo um outro \emph{Node} à espera. 
 Este comportamento dos \emph{Nodes} origina a criação de uma fila (\emph{Queue}), pois o \emph{Node} que espera pelo atual detentor do objeto irá ser o primeiro da fila e posteriormente enviará o acesso ao objeto ao \emph{Node} que espera por este, e assim seguidamente.
 
-A cabeça desta fila será o atual detentor doo objeto, que está diretamente ligado a um outro \emph{Node}, e o último elemento da fila será o \emph{Node} na fila que não tem qualquer outro \emph{Node} à sua espera.
+A cabeça desta fila será o atual detentor do objeto, que está diretamente ligado a um outro \emph{Node}, e o último elemento da fila será o \emph{Node} na fila que não tem qualquer outro \emph{Node} à sua espera.
 
 
 
@@ -137,7 +137,6 @@ Neste subcapítulo serão definidos os atributos que cada tipo de \emph{Node} ap
 
 
 \subsubsection*{\emph{Owner Terminal}}
-
 \begin{itemize}
     \item Find
     \item MyChan
