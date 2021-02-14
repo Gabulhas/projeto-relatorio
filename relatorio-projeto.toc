@@ -9,39 +9,39 @@
 \contentsline {chapter}{\chapternumberline {2}Motivação}{3}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Introdução}{3}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Descrição do Protocolo}{4}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Estrutura do Diretório}{5}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Estruturas de Dados}{5}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}Trabalhos relacionados}{6}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Conclusões}{6}{section.2.4}%
-\contentsline {chapter}{\chapternumberline {3}Especificação}{7}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introdução}{7}{section.3.1}%
-\contentsline {section}{\numberline {3.2}\emph {Node}}{7}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Ligações}{8}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Atributos do \emph {Node}}{10}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Tipos de mensagens}{12}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Comportamentos dos \emph {Nodes}}{12}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Conclusões}{15}{section.3.7}%
-\contentsline {chapter}{\chapternumberline {4}Implementação}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Introdução}{17}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Linguagens de Programação}{17}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Ferramentas e Bibliotecas utilizadas}{20}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Classe \emph {Node}}{21}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Atributos da Classe}{21}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Inicialização do objeto ``Self Node''}{23}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Tipos de Nodes}{25}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Comportamentos}{25}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Transformações do \emph {Node}}{34}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Comunicação entre Nodes}{37}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{43}{section.4.11}%
-\contentsline {section}{\numberline {4.12}Implementação da Visualização}{43}{section.4.12}%
-\contentsline {section}{\numberline {4.13}Uso de \emph {containers Docker}}{49}{section.4.13}%
-\contentsline {section}{\numberline {4.14}Conclusões}{51}{section.4.14}%
-\contentsline {chapter}{\chapternumberline {5}Reflexão Crítica}{53}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introdução}{53}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Escolhas de Implementação}{53}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Detalhes de Implementação}{53}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Conclusões}{53}{section.5.4}%
-\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{55}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Conclusões Principais}{55}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Trabalho Futuro}{55}{section.6.2}%
-\contentsline {chapter}{Bibliografia}{57}{chapter*.78}%
+\contentsline {subsection}{\numberline {2.2.1}Estrutura do Diretório}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Estruturas de Dados}{8}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Trabalhos relacionados}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Conclusões}{8}{section.2.4}%
+\contentsline {chapter}{\chapternumberline {3}Especificação}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introdução}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}\emph {Node}}{9}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Ligações}{10}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Atributos do \emph {Node}}{12}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Tipos de mensagens}{14}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Comportamentos dos \emph {Nodes}}{14}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Conclusões}{17}{section.3.7}%
+\contentsline {chapter}{\chapternumberline {4}Implementação}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introdução}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Linguagens de Programação}{19}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Ferramentas e Bibliotecas utilizadas}{22}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Classe \emph {Node}}{23}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Atributos da Classe}{23}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Inicialização do objeto ``Self Node''}{25}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Tipos de Nodes}{27}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Comportamentos}{27}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Transformações do \emph {Node}}{36}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Comunicação entre Nodes}{39}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{45}{section.4.11}%
+\contentsline {section}{\numberline {4.12}Implementação da Visualização}{45}{section.4.12}%
+\contentsline {section}{\numberline {4.13}Uso de \emph {containers Docker}}{51}{section.4.13}%
+\contentsline {section}{\numberline {4.14}Conclusões}{53}{section.4.14}%
+\contentsline {chapter}{\chapternumberline {5}Reflexão Crítica}{55}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introdução}{55}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Escolhas de Implementação}{55}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Detalhes de Implementação}{55}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Conclusões}{55}{section.5.4}%
+\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{57}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusões Principais}{57}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Trabalho Futuro}{57}{section.6.2}%
+\contentsline {chapter}{Bibliografia}{59}{chapter*.79}%

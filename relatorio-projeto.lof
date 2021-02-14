@@ -1,8 +1,13 @@
 \babel@toc {portuguese}{}
 \addvspace {10pt}
 \addvspace {10pt}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Estado inicial do diretório}}{5}{figure.2.1}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Estado do diretório após o pedido chegar ao nó \textbf {F}}}{5}{figure.2.2}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Estado do diretório após o pedido do nó \textbf {A} chegar ao nó \textbf {F}, as etiquetas com ``Pedido'' indicam onde o pedido de cada nó se encontra no atual estado.}}{6}{figure.2.3}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Estado do diretório após o pedido do nó \textbf {D} chegar ao nó \textbf {F}}}{6}{figure.2.4}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Estado do diretório após o pedido do nó \textbf {D} chegar ao nó \textbf {B}}}{7}{figure.2.5}%
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de Estados do \emph {Node}}}{35}{figure.4.1}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de Estados do \emph {Node}}}{37}{figure.4.1}%
 \addvspace {10pt}
 \addvspace {10pt}

@@ -51,17 +51,97 @@ Nesta secção será descrito o funcionamento e estrutura do \textit{Arrow Distr
 
 Este sistema consiste numa rede, que permite o envio assíncrono de mensagens (ou a comunicação) entre os nós, e um diretório, que permite localizar um objeto na rede e garantir o acesso exclusivo a este. 
 
+O diretório pode ser considerado como um grafo ou uma árvore de extensão mínima (\acs{MST}).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{comment}
+Rever pois isto não é bem verdade. o facto de ser “móvel” ou não depende do objecto em si, aquilo que é “móvel” pode ser simplesmente o “canal” de acesso ao objecto (imóvel). Trata-se de uma abstracção e se quiser pode explicar como tal “Consideremos que… para abstrair …” 
+\end{comment}
+
 O objeto é considerado ``móvel'', porque há a possibilidade de este se movimentar na rede entre os nós.
 O objeto pode ser considerado um processo, um ficheiro ou qualquer outra estrutura de dados.
 
 Cada nó tem uma só ligação, deste para outro nó, no entanto podem existir vários nós com ligação a um único nó.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Quando um nó pretende aceder ao objeto, este envia um pedido de acesso pela sua ligação. 
+
+
+
+Reconsideremos que a noção que o diretório é uma árvore de extensão mínima, e consideremos que o acesso ao objeto (ou o nó que o detém) está localizado na raíz da àrvore e as todas as ligações apontam em direção à raíz.
+
+Quando é realizado um pedido, este irá chegar à raíz, pois todas as ligações apontam para esta. No final da circulação do pedido, todas as ligações por onde passou o pedido estam invertidas, para que estas passam a apontar para o nó que fez o pedido. \\
 
 Caso um nó receba um pedido de acesso,a ligação deste passa a apontar para o nó vizinho que lhe fez chegar o pedido, ou seja, por onde passa o pedido há uma inversão do sentido da ligação.
 
-Se um nó recebeu um pedido de acesso e este detém ou espera pelo acesso ao objeto, o nó que realizou o pedido passa a estar à espera que este nó que recebeu lhe ceda o objeto e a circulação do pedido termina.
 
+
+\subsection*{Exemplo}
+
+Vejamos o seguinte exemplo da rede, em que o (acesso ao) objeto se encontra atualmente no nó \textbf{H}.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250pt]{um_pedido_1.png}
+\caption{Estado inicial do diretório}
+\end{figure}
+
+O nó \textbf{A} pretende obter o acesso ao objeto, e para tal envia um pedido através da sua ligação (para o nó \textbf{B}).
+O pedido passará pelos nós \textbf{B}, \textbf{F} e \textbf{H}, por esta ordem.
+
+Vejamos o estado após o pedido chegar ao nó \textbf{F}:
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250pt]{um_pedido_2.png}
+\caption{Estado do diretório após o pedido chegar ao nó \textbf{F}}
+Note que as ligações por onde o pedido do nó \textbf{A} passou inverteram-se.
+
+\end{figure}
+
+
+Quando o nó \textbf{A} faz o pedido e este chega ao \textbf{H} este passa a ser a raíz da árvore, e os seguintes pedidos serão direcionados até ao \textbf{A}.\\
+
+
+
+Vejamos agora outro exemplo, em que exploramos o caso de existirem mais do que uma mensagem a circular no diretório:
+
+Consideremos que cada passo é uma transmissão de pedidos entre nós, e que os passos que cada pedido executa são sincronizados com os restnates, algo que não é garantido na rede, mas que temos em conta para se demonstrar com maior simplicidade este processo.
+
+Consideremos o mesmo estado anteriormente referido, o estado do diretório após o pedido do nó \textbf{A} chegar ao nó \textbf{F}, e que ao mesmo tempo o nó \textbf{D} pretende obter o acesso, que para tal este enviou um pedido de acesso que atualmente se encontra no nó \textbf{E}.
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250pt]{dois_pedidos_1.png}
+\caption{Estado do diretório após o pedido do nó \textbf{A} chegar ao nó \textbf{F}, as etiquetas com ``Pedido'' indicam onde o pedido de cada nó se encontra no atual estado.}
+
+\end{figure}
+
+Como o nó \textbf{F} aponta/está ligado ao nó \textbf{B}, o pedido do nó \textbf{D} será então trasmitido para este ao invés do \textbf{H}.
+Vejamos o passo seguinte deste estado:
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250pt]{dois_pedidos_2.png}
+\caption{Estado do diretório após o pedido do nó \textbf{D} chegar ao nó \textbf{F}}
+\end{figure}
+
+\textbf{Nota:} Caso os dois pedidos chegassem ao mesmo tempo ao nó \textbf{F}, este nó teria que decidir qual deles processar primeiro. Se o pedido do nó \textbf{A} fosse o primeiro a ser processado, este seria transmitido para o \textbf{H} e o pedido do \textbf{D} continuava a circulação em direção ao \textbf{A} e vice-versa. \\
+
+No passo seguinte, o pedido do \textbf{D} encontra-se no nó \textbf{B}:
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250pt]{dois_pedidos_3.png}
+\caption{Estado do diretório após o pedido do nó \textbf{D} chegar ao nó \textbf{B}}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Numa vista global sobre a rede, quando um nó realiza um pedido, as ligações dos nós por onde esse pedido passou passam a indicar onde é que futuramente estará o objeto, ou seja, na direção do nó que fez o pedido e que espera pelo acesso ao objeto. 
 
