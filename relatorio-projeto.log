@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.2.10)  13 FEB 2021 16:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.2.10)  14 FEB 2021 00:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -925,48 +925,47 @@ Overfull \hbox (7.34254pt too wide) in paragraph at lines 24--25
 
 
 
-] [4]
+] [4] [5]
 
-Package natbib Warning: Citation `Ivy' on page 5 undefined on input line 101.
-
-
-Package natbib Warning: Citation `Arvy' on page 5 undefined on input line 101.
+Package natbib Warning: Citation `Ivy' on page 6 undefined on input line 117.
 
 
-Overfull \hbox (3.4444pt too wide) in paragraph at lines 105--106
+Package natbib Warning: Citation `Arvy' on page 6 undefined on input line 117.
+
+
+Overfull \hbox (3.4444pt too wide) in paragraph at lines 121--122
 []\T1/futs/m/n/12 Na im-ple-men-ta-ção do mesmo pro-to-colo re-tra-tado neste pro-jeto existe ape-
  []
 
-) [5] [6
+) [6] (./especificacao.tex [7
 
 
 
 
-] (./especificacao.tex [7
 
 
 ] [8] [9]
-Overfull \hbox (5.70357pt too wide) in paragraph at lines 113--115
+Overfull \hbox (5.70357pt too wide) in paragraph at lines 116--118
 \T1/futs/m/n/12 Este atri-buto re-pre-senta o \T1/futs/m/it/12 Chan-nel \T1/futs/m/n/12 do \T1/futs/m/it/12 Node \T1/futs/m/n/12 onde este re-cebe pe-di-dos de acesso
  []
 
 [10] [11] [12]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 227--230
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 230--233
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
 [13]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 257--260
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 260--263
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
 
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 280--281
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 283--284
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
 [14]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 308--309
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 311--312
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
@@ -1052,7 +1051,7 @@ Overfull \hbox (73.10738pt too wide) in paragraph at lines 470--472
  []
 
 [28] [29] [30] [31] [32] [33]
-<state-diagram.png, id=755, 958.58125pt x 393.47pt>
+<state-diagram.png, id=757, 958.58125pt x 393.47pt>
 File: state-diagram.png Graphic file (type png)
 <use state-diagram.png>
 Package pdftex.def Info: state-diagram.png  used on input line 742.
@@ -1144,25 +1143,25 @@ Package natbib Warning: There were undefined citations.
 \tf@lot=\write7
  (./relatorio-projeto.aux (./capa.aux) (./agradecimentos.aux) (./acronimos.aux) (./introducao.aux) (./motivacao.aux) (./especificacao.aux) (./implementacao.aux) (./reflexao.aux) (./conc-trab-futuro.aux))
 Package rerunfilecheck Info: File `relatorio-projeto.out' has not changed.
-(rerunfilecheck)             Checksum: 8D8E203DD60DCA366D3B6BD2B8675766;2993.
+(rerunfilecheck)             Checksum: 48331D5DF124BE7DB787AD8347433F30;2993.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15135 strings out of 479383
- 215017 string characters out of 5875830
- 1006859 words of memory out of 5000000
+ 15137 strings out of 479383
+ 215039 string characters out of 5875830
+ 1006861 words of memory out of 5000000
  31158 multiletter control sequences out of 15000+600000
  500219 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,12n,72p,516b,2019s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,12n,72p,550b,2019s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
-Output written on relatorio-projeto.pdf (69 pages, 315385 bytes).
+Output written on relatorio-projeto.pdf (69 pages, 317476 bytes).
 PDF statistics:
- 1379 PDF objects out of 1440 (max. 8388607)
- 1285 compressed objects within 13 object streams
- 737 named destinations out of 1000 (max. 500000)
+ 1382 PDF objects out of 1440 (max. 8388607)
+ 1288 compressed objects within 13 object streams
+ 739 named destinations out of 1000 (max. 500000)
  379 words of extra memory for PDF output out of 10000 (max. 10000000)
 
