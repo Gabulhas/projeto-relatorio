@@ -4,43 +4,55 @@
 \BOOKMARK [0][-]{chapter.1}{Introdu\347\343o}{}% 4
 \BOOKMARK [1][-]{section.1.1}{Enquadramento}{chapter.1}% 5
 \BOOKMARK [1][-]{section.1.2}{Objetivos}{chapter.1}% 6
-\BOOKMARK [1][-]{section.1.3}{Organiza\347\343o do Documento}{chapter.1}% 7
-\BOOKMARK [0][-]{chapter.2}{Motiva\347\343o}{}% 8
-\BOOKMARK [1][-]{section.2.1}{Introdu\347\343o}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.2}{Descri\347\343o do Protocolo}{chapter.2}% 10
-\BOOKMARK [2][-]{subsection.2.2.1}{Estrutura do Diret\363rio}{section.2.2}% 11
-\BOOKMARK [2][-]{subsection.2.2.2}{Estruturas de Dados}{section.2.2}% 12
-\BOOKMARK [1][-]{section.2.3}{Trabalhos relacionados}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.4}{Conclus\365es}{chapter.2}% 14
-\BOOKMARK [0][-]{chapter.3}{Especifica\347\343o}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Introdu\347\343o}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.2}{Node}{chapter.3}% 17
-\BOOKMARK [1][-]{section.3.3}{Liga\347\365es}{chapter.3}% 18
-\BOOKMARK [1][-]{section.3.4}{Atributos do Node}{chapter.3}% 19
-\BOOKMARK [1][-]{section.3.5}{Tipos de mensagens}{chapter.3}% 20
-\BOOKMARK [1][-]{section.3.6}{Comportamentos dos Nodes}{chapter.3}% 21
-\BOOKMARK [1][-]{section.3.7}{Conclus\365es}{chapter.3}% 22
-\BOOKMARK [0][-]{chapter.4}{Implementa\347\343o}{}% 23
-\BOOKMARK [1][-]{section.4.1}{Introdu\347\343o}{chapter.4}% 24
-\BOOKMARK [1][-]{section.4.2}{Linguagens de Programa\347\343o}{chapter.4}% 25
-\BOOKMARK [1][-]{section.4.3}{Ferramentas e Bibliotecas utilizadas}{chapter.4}% 26
-\BOOKMARK [1][-]{section.4.4}{Classe Node}{chapter.4}% 27
-\BOOKMARK [1][-]{section.4.5}{Atributos da Classe}{chapter.4}% 28
-\BOOKMARK [1][-]{section.4.6}{Inicializa\347\343o do objeto ``Self Node''}{chapter.4}% 29
-\BOOKMARK [1][-]{section.4.7}{Tipos de Nodes}{chapter.4}% 30
-\BOOKMARK [1][-]{section.4.8}{Comportamentos}{chapter.4}% 31
-\BOOKMARK [1][-]{section.4.9}{Transforma\347\365es do Node}{chapter.4}% 32
-\BOOKMARK [1][-]{section.4.10}{Comunica\347\343o entre Nodes}{chapter.4}% 33
-\BOOKMARK [1][-]{section.4.11}{Classes de Channels}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.12}{Implementa\347\343o da Visualiza\347\343o}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.13}{Uso de containers Docker}{chapter.4}% 36
-\BOOKMARK [1][-]{section.4.14}{Conclus\365es}{chapter.4}% 37
-\BOOKMARK [0][-]{chapter.5}{Reflex\343o Cr\355tica}{}% 38
-\BOOKMARK [1][-]{section.5.1}{Introdu\347\343o}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.2}{Escolhas de Implementa\347\343o}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.3}{Detalhes de Implementa\347\343o}{chapter.5}% 41
-\BOOKMARK [1][-]{section.5.4}{Conclus\365es}{chapter.5}% 42
-\BOOKMARK [0][-]{chapter.6}{Conclus\365es e Trabalho Futuro}{}% 43
-\BOOKMARK [1][-]{section.6.1}{Conclus\365es Principais}{chapter.6}% 44
-\BOOKMARK [1][-]{section.6.2}{Trabalho Futuro}{chapter.6}% 45
-\BOOKMARK [0][-]{chapter*.79}{Bibliografia}{}% 46
+\BOOKMARK [1][-]{section.1.3}{Resultados Atingidos}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.4}{Organiza\347\343o do Documento}{chapter.1}% 8
+\BOOKMARK [0][-]{chapter.2}{Motiva\347\343o}{}% 9
+\BOOKMARK [1][-]{section.2.1}{Introdu\347\343o}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.2}{Descri\347\343o do Protocolo}{chapter.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.1}{Estrutura do Diret\363rio}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.2}{Estruturas de Dados}{section.2.2}% 13
+\BOOKMARK [1][-]{section.2.3}{Trabalhos relacionados}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.4}{Conclus\365es}{chapter.2}% 15
+\BOOKMARK [0][-]{chapter.3}{Especifica\347\343o}{}% 16
+\BOOKMARK [1][-]{section.3.1}{Introdu\347\343o}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.2}{Node}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.3}{Liga\347\365es}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.4}{Atributos do Node}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.5}{Tipos de mensagens}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.6}{Comportamentos dos Nodes}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.7}{Conclus\365es}{chapter.3}% 23
+\BOOKMARK [0][-]{chapter.4}{Implementa\347\343o}{}% 24
+\BOOKMARK [1][-]{section.4.1}{Introdu\347\343o}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.2}{Linguagens de Programa\347\343o}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.3}{Ferramentas e Bibliotecas utilizadas}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.4}{Classe Node}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.5}{Atributos da Classe}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.6}{Inicializa\347\343o do objeto ``Self Node''}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.7}{Tipos de Nodes}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.8}{Comportamentos}{chapter.4}% 32
+\BOOKMARK [1][-]{section.4.9}{Transforma\347\365es do Node}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.10}{Comunica\347\343o entre Nodes}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.11}{Classes de Channels}{chapter.4}% 35
+\BOOKMARK [1][-]{section.4.12}{Implementa\347\343o da Visualiza\347\343o}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.13}{Uso de containers Docker}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.14}{Conclus\365es}{chapter.4}% 38
+\BOOKMARK [0][-]{chapter.5}{Visualiza\347\343o}{}% 39
+\BOOKMARK [1][-]{section.5.1}{Introdu\347\343o}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.2}{Atualiza\347\343o dos Dados}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.3}{Representa\347\343o da Rede}{chapter.5}% 42
+\BOOKMARK [2][-]{subsection.5.3.1}{Nodes}{section.5.3}% 43
+\BOOKMARK [2][-]{subsection.5.3.2}{Links}{section.5.3}% 44
+\BOOKMARK [2][-]{subsection.5.3.3}{Fila}{section.5.3}% 45
+\BOOKMARK [2][-]{subsection.5.3.4}{Hist\363rico de Pedidos}{section.5.3}% 46
+\BOOKMARK [2][-]{subsection.5.3.5}{Hist\363rico de Owners}{section.5.3}% 47
+\BOOKMARK [1][-]{section.5.4}{Conclus\365es}{chapter.5}% 48
+\BOOKMARK [0][-]{chapter.6}{Reflex\343o Cr\355tica}{}% 49
+\BOOKMARK [1][-]{section.6.1}{Introdu\347\343o}{chapter.6}% 50
+\BOOKMARK [1][-]{section.6.2}{Escolhas de Implementa\347\343o}{chapter.6}% 51
+\BOOKMARK [1][-]{section.6.3}{Detalhes de Implementa\347\343o}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.4}{Conclus\365es}{chapter.6}% 53
+\BOOKMARK [0][-]{chapter.7}{Conclus\365es e Trabalho Futuro}{}% 54
+\BOOKMARK [1][-]{section.7.1}{Reflexao Cr\355tica}{chapter.7}% 55
+\BOOKMARK [1][-]{section.7.2}{Conclus\365es Principais}{chapter.7}% 56
+\BOOKMARK [1][-]{section.7.3}{Trabalho Futuro}{chapter.7}% 57
+\BOOKMARK [0][-]{chapter*.81}{Bibliografia}{}% 58

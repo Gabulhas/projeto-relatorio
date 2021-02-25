@@ -48,19 +48,12 @@ A partir da combinação destes fatores temos os seguintes tipos de \emph{Nodes}
 
 \section{Ligações}
 
-Os \emph{Nodes} têm a possibilidade de comunicar entre si, quer usando o diretório (grafo), quando estes pretendem pedir o acesso ao objeto, ou diretamente, quando estes transmitem o acesso ao objeto para outro \emph{Node}.
+Os \emph{Nodes} têm a possibilidade de comunicar entre si, quer através das ligações o diretório (grafo), quando estes pretendem pedir o acesso ao objeto, ou diretamente, sem recurso às ligações do diretório, quando estes transmitem o acesso ao objeto para outro \emph{Node}.
 
 As ligações (ou comunicações) entre os \emph{Nodes} são feitas a partir de \emph{Channels} (canais). Estes \emph{Channels} funcionam como caixa de entrada ou endereços dos \emph{Nodes}, que podem ser enviados para outros \emph{Nodes}, e que, caso um \emph{Node} decide transmitir alguma mensagem para o outro \emph{Node}, esta é feita usando um \emph{Channel} do \emph{Node} de destino.
 
 % provavelmente remover
-Uma outra forma de definir o uso dos \emph{Channels} seria que este é formado por duas partes, a entrada e a saída, em que a entrada é usada pelo \emph{Node} transmissor e a saída está no \emph{Node} recetor.
-
-Os \emph{Channels} são usados quando um \emph{Node}:
-\begin{itemize}
-    \item Pretende enviar uma mensagem para outro \emph{Node}, este fá-lo usando a entrada do \emph{Channel}.
-    \item Pretende receber mensagens de outros \emph{Nodes}, este envia o seu \emph{Channel}.
-\end{itemize}
-
+Uma outra forma de definir o uso dos \emph{Channels} seria que este é formado por duas partes, a entrada e a saída, em que a entrada é usada pelo \emph{Node} transmissor e a saída está no \emph{Node} recetor, o ponto de saída corresponde assim à caixa de entrada do \emph{Node}, enquanto que o ponto de entrada é detido por quem envia mensagens.
 
 \subsection*{Ligações no diretório}
 
@@ -74,7 +67,7 @@ Então, no grafo que representa o diretório, considera-se que existe uma ligaç
 Então o \emph{Node} \textbf{Y} é o \emph{Parent Node} do \textbf{X}, e o \emph{Node} \textbf{X} é o \emph{Child Node} do \textbf{Y}.
 
 Estas ligações do diretório são usadas apenas para a transmissão e circulação dos pedidos de acesso ao objeto, visto que um \emph{Node} não tem informação da localização deste mas tem informação sobre a ligação para o seu \emph{Parent Node},
-e o conjunto das ligações aponta sempre para a localização atual (o \emph{Owner}) ou uma futura localização (um \emph{Waiter}), ou seja, o \emph{Node} não tem informação sobre a localização atual ou uma futura, mas o conjunto de todas as ligações forma essa informação.
+e o conjunto das ligações aponta sempre para a localização atual (o \emph{Owner}) ou uma futura localização (um \emph{Waiter}), ou seja, o \emph{Node} não tem informação sobre a localização atual ou uma futura, mas o conjunto de todas as ligações fornece essa informação.
 
 Estes dois tópicos serão retratados em subcapítulos seguintes, mas é necessário mencioná-los:
 \begin{itemize}
@@ -90,21 +83,16 @@ Estes dois tópicos serão retratados em subcapítulos seguintes, mas é necess�
 
 % ou exterior
 \subsection*{Ligação na fila}
-É possível que um \emph{Node} tenha outro \emph{Node} à espera que lhe envie o acesso ao objeto. No entanto para que este tenha um pedido em espera é necessário que este seja o detentor do objeto ou que futuramente tenha o acesso (\emph{Waiter}).
+Um \emph{Node} que seja o detentor do acesso ao objeto ou que espera por este pode receber um pedido de acesso. Quando isto acontece, o \emph{Node} que realizou o pedido de acesso aguarda que o \emph{Node} que recebeu o pedido lhe transmita o acesso, passando a haver uma ligação direta entre estes (sem fazendo uso do diretório).
 
-Quando o \emph{Node} tem outro \emph{Node} em espera, há uma ligação direta entre estes.
-Esta ligação é utilizada no envio do acesso ao objeto, pois o \emph{Node} quando receber o acesso, este poderá ceder ao \emph{Node} que espera através desta ligação.
+Neste tipo de ligação no diretório foram definidas duas partes nas ligações. Denominamos de  ``WaiterChan'' a parte de entrada da ligação que está presente no transmissor e denominamos de ``MyChan'' a parte da saída do acesso ao objeto, que está presente no recetor.
 
-Neste tipo de ligação no diretório foram definidas duas partes nas ligações. Denominamos de  ``WaiterChan'' a parte de entrada da ligação que está presente no transmissor e denominamos de ``MyChan'' a parte da saída do acesso ao objeto.
-
-Com a mudança das ligações no diretório e o facto de que um \emph{Node} pode ter um (e apenas um) outro \emph{Node} à espera, isto resulta na circulação de um pedido até este chegar a um \emph{Node} que detém ou futuramente deterá (mas que espera) o acesso ao objeto e que não tenha qualquer outro pedido.
+Com a mudança das ligações no diretório e o facto de que um \emph{Node} pode ter um (e diretamente apenas um) outro \emph{Node} à espera, isto resulta na circulação de um pedido até este chegar a um \emph{Node} que detém ou futuramente deterá (que está à espera) o acesso ao objeto e que não tenha qualquer outro pedido.
 
 Neste sistema é possível existirem \emph{Nodes} à espera de outros \emph{Nodes} que também estão à espera, e cada um tem no máximo um outro \emph{Node} à espera. 
 Este comportamento dos \emph{Nodes} origina a criação de uma fila (\emph{Queue}), pois o \emph{Node} que espera pelo atual detentor do objeto irá ser o primeiro da fila e posteriormente enviará o acesso ao objeto ao \emph{Node} que espera por este, e assim seguidamente.
 
-A cabeça desta fila será o atual detentor do objeto, que está diretamente ligado a um outro \emph{Node}, e o último elemento da fila será o \emph{Node} na fila que não tem qualquer outro \emph{Node} à sua espera.
-
-
+A cabeça desta fila será \emph{Node} ao qual o detentor do objeto está ligado (com este tipo e ligações), o último elemento da fila será o \emph{Node} na fila que não tem qualquer outro \emph{Node} à sua espera e esta fila está vazia quando não há nenhum \emph{Node} à espera no atual detentor do objeto.
 
 
 \section{Atributos do \emph{Node}}
@@ -196,7 +184,7 @@ No entanto, há um tipo de \emph{Channel} que é usado para ceder o acesso ao ob
 \section{Comportamentos dos \emph{Nodes}}
 %-------------------------
 
-Neste capítulo serão 
+Neste capítulo serão descritos os comportamentos que os \emph{Nodes} podem ter, tais como as razões que despoletam estes comportamentos.
 
 \subsection*{\emph{Owner Terminal}}
 \label{especificacao:nodes:owner_terminal}
@@ -327,4 +315,4 @@ Como o \emph{Node} tem pedidos, este transforma-se em \textbf{\emph{Owner With R
 \section{Conclusões}
 Neste capítulo foram estudados todos os elementos que pertencem ao sistema,
 tais como os seus comportamentos e utilizades.
-A separação das várias propriedades destes elementos definidas na descrição serviu de auxílio para a implementação deste, com principal destaque o comportamento de cada tipo de nó e a mudança de estado após a despoletação deste.  
+A separação das várias propriedades destes elementos definidas na descrição serviu de base para a implementação deste, com principal destaque ao comportamento de cada tipo de nó e a mudança de estado após a despoletação deste.  

@@ -43,11 +43,9 @@ Este é um dos vários problemas do acesso não exclusivo por parte de vários p
 No protocolo estudado, estes problemas são evitados através da criação de uma fila, esta distribuída, que ordena/sincroniza o acesso ao objeto por parte dos vários nós do sistema.
 A formação desta fila é descrita com maior pormenor na secção seguinte. 
 
-Batat
-
 \section{Descrição do Protocolo}
 
-Nesta secção será descrito o funcionamento e estrutura do \textit{Arrow Distributed Directory Protocol} (\emph{Arrow}). 
+Nesta secção será descrito o funcionamento e estrutura do \textit{Arrow Distributed Directory Protocol} (\emph{Arrow}) \cite{Arrow}. 
 
 Este sistema consiste numa rede, que permite o envio assíncrono de mensagens (ou a comunicação) entre os nós, e um diretório, que permite localizar um objeto na rede e garantir o acesso exclusivo a este. 
 
@@ -58,8 +56,9 @@ O diretório pode ser considerado como um grafo ou uma árvore de extensão mín
 Rever pois isto não é bem verdade. o facto de ser “móvel” ou não depende do objecto em si, aquilo que é “móvel” pode ser simplesmente o “canal” de acesso ao objecto (imóvel). Trata-se de uma abstracção e se quiser pode explicar como tal “Consideremos que… para abstrair …” 
 \end{comment}
 
-O objeto é considerado ``móvel'', porque há a possibilidade de este se movimentar na rede entre os nós.
-O objeto pode ser considerado um processo, um ficheiro ou qualquer outra estrutura de dados.
+Consideramos que o objeto é ``móvel'', no entanto esta é uma abstração do \textbf{acesso} ao objeto, e este acesso tem a possibilidade de se movimentar na rede entre os nós.
+
+O objeto pode ser um processo, um ficheiro ou qualquer outra estrutura de dados.
 
 Cada nó tem uma só ligação, deste para outro nó, no entanto podem existir vários nós com ligação a um único nó.
 
@@ -78,7 +77,7 @@ Caso um nó receba um pedido de acesso,a ligação deste passa a apontar para o 
 
 
 
-\subsection*{Exemplo}
+\subsection*{Exemplo da organização das ligações}
 
 Vejamos o seguinte exemplo da rede, em que o (acesso ao) objeto se encontra atualmente no nó \textbf{H}.
 
@@ -102,13 +101,13 @@ Note que as ligações por onde o pedido do nó \textbf{A} passou inverteram-se.
 \end{figure}
 
 
-Quando o nó \textbf{A} faz o pedido e este chega ao \textbf{H} este passa a ser a raíz da árvore, e os seguintes pedidos serão direcionados até ao \textbf{A}.\\
+Quando o nó \textbf{A} faz o pedido e este chega ao \textbf{H} este passa a ser a raiz da árvore, e os seguintes pedidos serão direcionados até ao \textbf{A}.\\
 
 
 
 Vejamos agora outro exemplo, em que exploramos o caso de existirem mais do que uma mensagem a circular no diretório:
 
-Consideremos que cada passo é uma transmissão de pedidos entre nós, e que os passos que cada pedido executa são sincronizados com os restnates, algo que não é garantido na rede, mas que temos em conta para se demonstrar com maior simplicidade este processo.
+Consideremos que cada passo é uma transmissão de pedidos entre nós, e que os passos que cada pedido executa são sincronizados com os restantes, algo que não é garantido na rede, mas que temos em conta para se demonstrar com maior simplicidade este processo.
 
 Consideremos o mesmo estado anteriormente referido, o estado do diretório após o pedido do nó \textbf{A} chegar ao nó \textbf{F}, e que ao mesmo tempo o nó \textbf{D} pretende obter o acesso, que para tal este enviou um pedido de acesso que atualmente se encontra no nó \textbf{E}.
 
@@ -120,7 +119,7 @@ Consideremos o mesmo estado anteriormente referido, o estado do diretório após
 
 \end{figure}
 
-Como o nó \textbf{F} aponta/está ligado ao nó \textbf{B}, o pedido do nó \textbf{D} será então trasmitido para este ao invés do \textbf{H}.
+Como o nó \textbf{F} aponta/está ligado ao nó \textbf{B}, o pedido do nó \textbf{D} será então transmitido para este ao invés do \textbf{H}.
 Vejamos o passo seguinte deste estado:
 
 
@@ -143,17 +142,45 @@ No passo seguinte, o pedido do \textbf{D} encontra-se no nó \textbf{B}:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Numa vista global sobre a rede, quando um nó realiza um pedido, as ligações dos nós por onde esse pedido passou passam a indicar onde é que futuramente estará o objeto, ou seja, na direção do nó que fez o pedido e que espera pelo acesso ao objeto. 
+Numa vista global sobre a rede, quando um nó realiza um pedido, as ligações dos nós por onde esse pedido passou passam a indicar onde é que futuramente estará o objeto, ou seja, na direção do nó que fez o pedido e que espera pelo acesso ao objeto.
+Qualquer outra ``sobreposição'' das alterações nas ligações fará com que as ligações apontem em direção dos nós que realizaram os pedidos que passaram por essas ligações, isto é, independentemente da quantidade de pedidos a circular na rede, se seguirmos as direções das ligações em qualquer estado da rede estas aponta sempre para um nó que detém ou espera pelo acesso ao objeto.
 
-Esta inversão das ligações permite que, o nó apenas detendo uma ligação, faça chegar o seu pedido ao nó que detém o objeto ou a um nó que deterá o objeto mas que espera por ele.
+Esta inversão das ligações permite que, o nó apenas detendo uma ligação, faça chegar o seu pedido ao nó que detém o objeto ou a um nó que deterá o objeto mas que espera por ele. \\
 
-Caso um nó que espera pelo objeto, quer porque o seu pedido ainda está em circulação na rede ou o nó detentor do objeto ainda não o cedeu, receba um pedido de acesso de outro nó, então este armazena o uma ligação nó que realizou o pedido.
+
+
+
+Caso um nó que espera pelo objeto, quer porque o seu pedido ainda está em circulação na rede ou o nó detentor do objeto ainda não o cedeu, receba um pedido de acesso de outro nó, então este armazena uma ligação com o nó que realizou o pedido.
 
 Quando o nó detém o objeto,se recebe um pedido ou tem em espera um outro nó, o objeto é cedido através de uma ligação direta entre dois nós, evitando a passagem do objeto pelo diretório.
 
+
+\subsection*{Exemplo da formação de uma fila de espera}
+
+Continuando o exemplo anterior. Vejamos um passo seguinte, em que o pedido do nó \textbf{D} chega ao nó \textbf{A}, o nó \textbf{H} ainda não cedeu o acesso ao nó \textbf{A}, e o nó \textbf{C} decidiu realizar um pedido que atualmente se encontra no nó \textbf{D}, que também está à espera do acesso ao objeto. 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250pt]{fila.png}
+\caption{Estado do diretório com 3 pedidos em circulação.}
+\textbf{Nota:} As ligações a tracejado representam as ligações entre os nós fora do diretório, usadas para a transmissão do acesso ao objeto.
+\end{figure}
+
+
+Temos assim os seguintes nós à espera:
+\begin{enumerate}
+    \item O nó \textbf{A} espera pelo nó \textbf{H}.
+    \item O nó \textbf{D} espera pelo nó \textbf{A}.
+    \item O nó \textbf{C} espera pelo nó \textbf{D}.
+\end{enumerate}
+Ou seja, a ordem de chegada e fila do acesso de pedidos será a \textbf{A},\textbf{D},\textbf{C}. \\
+
+
+ 
+
 A particularidade deste protocolo deve-se à mudança tanto da localização do objeto como a sua origem, pois esta muda-se para o nó que tem o acesso ao objeto, e não há um único nó que detém a localização atual do objeto, mas a disposição de todas as ligações permite a localização do objeto por todos os nós.
 
-O facto da origem do objeto estar em constante alteração garante que apenas um nó detenha o acesso ao objeto (acesso exclusivo), e que e que nenhum nó se torne num foco, isto é, que nenhum nó receba demasiados pedidos em relação a outros nós, provocado um engarrafamento/\emph{bottleneck} no acesso ao objeto.
+O facto da origem do objeto estar em constante alteração garante que apenas um nó detenha o acesso ao objeto (acesso exclusivo), e que nenhum nó se torne num foco, isto é, que nenhum nó receba demasiados pedidos em relação a outros nós, provocado um engarrafamento/\emph{bottleneck} no acesso ao objeto.
 
 % notas paper
 % explicar o nome
@@ -166,7 +193,7 @@ O facto da origem do objeto estar em constante alteração garante que apenas um
 \subsection{Estrutura do Diretório}
 
 
-O diretório constitui um grafo, mais especificamente uma árvore de extensão mínima, em que os vértices são os nós pertencentes ao diretório e as arestas as ligações entre os nós.
+
 
 
 \begin{comment}
@@ -184,21 +211,15 @@ O diretório constitui um grafo, mais especificamente uma árvore de extensão m
 Neste protocolo existem duas estruturas de dado o acesso ao objeto.
 
 \begin{description}
-    \item [Grafo] os vértices são todos os nós do sistema e as arestas são as ligações do tipo (tipo), pois neste circulam os pedidos de acesso.
+    \item [Grafo] 
     \item [Fila] os vértices são todos os nós do sistema que esperam pelo acesso ao objeto (mudar porque podem haver nós que esperam mas não estão na fila) e as arestas são as ligações do tipo (tipo), pois neste circula o acesso ao objeto.
 \end{description}
 
-\subsubsection*{Grafo}
-\subsubsection*{Fila}
-
-
 \section{Trabalhos relacionados}
 %Ivy e Arvy
-De muitos algoritmos distribuídos e suas implementações, há dois trabalhos muito relacionados com o protocolo tratado neste projeto. Estes são, o \emph{Ivy} \cite{Ivy} e o \emph{Arvy} \cite{Arvy}.
+De muitos algoritmos distribuídos e suas implementações, há dois trabalhos relacionados com o protocolo estudado neste projeto. Estes são, o \emph{Ivy} \cite{Ivy} e o \emph{Arvy} \cite{Arvy}.
 O \emph{Ivy} apresenta um funcionamento muito similar ao \emph{Arrow}, em que a origem do objeto muda com a posição atual deste, isto é, 
 
-
-Na implementação do mesmo protocolo retratado neste projeto existe apenas...
 
 
 % comparar este algoritmo com outros (ver http://cs.brown.edu/people/mph/DemmerH98/disc.pdf)

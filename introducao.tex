@@ -27,20 +27,44 @@ Inicialmente foram estabelecidos objetivos, no entanto durante a implementação
 Os objetivos no desenvolvimento do projeto foram:
 
 \begin{itemize}
-    \item Leitura do \emph{paper} oirignal e proposto e compreensão geral do protocolo.
-    \item Elaboração da espeficiação dos elementos, ligações entre estes e os seus comportamentos.
+    \item Leitura do \emph{paper} original e proposto e compreensão geral do protocolo.
+    \item Elaboração da especificação dos elementos, ligações entre estes e os seus comportamentos.
     \item Implementação inicial do programa.
     \item Execução de várias instâncias do programa com o uso da ferramenta \emph{Docker}.
     \item Implementação da visualização do grafo representativo do diretório.
     \item Implementação da visualização da fila (\emph{Queue}).
+    \item Implementação da visualização do histórico do elementos da fila e detentores do acesso ao objeto.
 
 \end{itemize}
+
+\section{Resultados Atingidos}
+Serão descritos os resultados atingidos no desenvolvimento do projeto.
+
+\begin{itemize}
+    \item Foi elaborada uma especificação de todos os elementos pertencentes ao sistema, tendo como maior foco os comportamentos dos nós no sistema. Esta especificação é também descrita neste relatório. 
+    \item Desenvolveu-se o programa dos nós, sendo o objetivo de maior importância na elaboração deste projeto, pois um conjunto destes programas representam um sistema que segue o protocolo \emph{Arrow}. Para além disso, incluído nesta implementação temos:
+
+    \begin{itemize}
+	\item Implementação dos comportamentos dos nós.
+	\item Comunicação entre nós através do protocolo \acs{HTTP}.
+	\item As transformações que os nós podem sofrer.
+	\item Definição das mensagens transmitidas entre os nós.
+    \end{itemize}
+
+\item Implementação de uma visualização gráfica das estruturas de dados distribuídas presentes na rede, como um grafo que representa o diretório da rede e uma tabela que representa a fila de chegada do acesso.
+\item O uso da ferramenta \emph{Docker} para a execução de várias instâncias do programa dos nós de forma automática e distribuída.
+\item A implementação de uma ferramenta de auxílio para a transformação de uma topologia/definição de uma rede no formato \acs{CSV} para o formato ``docker-compose.yml'', usado como ficheiro de execução da ferramenta \emph{Docker}.
+
+\end{itemize}
+
+
 
 
 \section{Organização do Documento}
 \label{sec:organ}
 % fazer ao final
 \begin{enumerate}
+\item 
 \item 
 \item 
 \item 

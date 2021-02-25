@@ -8,6 +8,7 @@ A level-1 auxiliary file: introducao.aux
 A level-1 auxiliary file: motivacao.aux
 A level-1 auxiliary file: especificacao.aux
 A level-1 auxiliary file: implementacao.aux
+A level-1 auxiliary file: visualizacao.aux
 A level-1 auxiliary file: reflexao.aux
 A level-1 auxiliary file: conc-trab-futuro.aux
 The style file: unsrt.bst
@@ -16,7 +17,7 @@ Warning--I didn't find a database entry for "Ivy"
 Warning--I didn't find a database entry for "Arvy"
 You've used 1 entry,
             1791 wiz_defined-function locations,
-            466 strings with 3848 characters,
+            467 strings with 3864 characters,
 and the built_in function-call counts, 392 in all, are:
 = -- 41
 > -- 8
