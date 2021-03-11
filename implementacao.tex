@@ -1156,7 +1156,7 @@ Para a parte gráfica desta secção fez-se uso de uma página \emph{Web}, que �
 pedidos \emph{HTTP} feitos ao \emph{Node} da visualização, que devolve a informação do diretório.
 
 A componente da visualização, mesmo que útil, a sua implementação é de pouca relevância ao contexto do projeto, ou seja, a parte do projeto implementada em \emph{JavaScript}.
-Por isso serão apenas tratados os conteúdo de maior interesse, como os métodos/caminhos do servidor \acs{HTTP} do \emph{Node} de visualização e como cada um trata/cálcula a informação necessária, como, por exemplo, o \emph{Node} de visualização tem acesso à informação atual do diretório e a formação da ``Queue''.
+Por isso serão apenas tratados os conteúdo de maior interesse, como os métodos/caminhos do servidor \acs{HTTP} do \emph{Node} de visualização e como cada um processa a informação necessária, como, por exemplo, o \emph{Node} de visualização tem acesso à informação atual do diretório e a formação da ``Queue''.
 
 
 
@@ -1177,55 +1177,61 @@ Os caminhos, handlers, tipos e as suas funcionalidades são:
 No entanto, esta implementação tem defeitos. 
 \begin{itemize}
 	\item 
-A sincronização do acesso ao ``Map'' causa um efeito de bottleneck e não garante que o acesso seja ordenado.
+A atualização por parte dos \emph{Nodes} não garante a ordem de chegada da informação, pois a rede (não o diretório) usada
+na comunicação de pedidos \acs{HTTP} não garante a ordem de, por exemplo, o tempo de chegada de um pedido ao \emph{Node} de visualização
+pode variar entre \emph{Nodes}, e se há muita informação a circular na rede pode haver um constragimento no envio de atualizações.
 
 	\item 
-A atualização por parte dos \emph{Nodes} também não garante a ordem de chegada da informação, pois a rede (não o diretório) usada
-na comunicação de pedidos \acs{HTTP} não garante a ordem, por exemplo o, o tempo de chegada de um pedido ao \emph{Node} de visualização
-pode variar entre \emph{Nodes}.
+O método de atualiação dos \emph{Nodes} é executada numa \emph{goroutine}, o que não garante que a execução deste método 
+ocorra o mais rápido/cedo possível.
 
 	\item 
-Por último, o método de atualiação dos \emph{Nodes} é executada numa \emph{goroutine}, o que não garante que a execução deste método 
-ocorra o mais rápido possível.
+Com todos os contragimentos referidos anteriormente é necessário sincronizar a atualização da informação sobre as várias filas possivelmente existentes no sistema, provocando uma alteração da ordem do processamento das várias atualizações.
 
 \end{itemize}
+
+Mesmo com os defeitos referidos, é possível apresentar uma aproximação do estado da rede, usando vários mecanismos, que serão retratados nos subcapítulos seguintes.
 
 \subsection*{Atualização da visualização}
 %Alterar caso a implementação mude
 Para que o \emph{Node} da visualização armazene a informação mais recente do diretório, como referido anteriormente,
 cada \emph{Node} transmite o seu estado atual para este \emph{Node}.
 
-Esta informação é armazenada numa estrutura de dados ``Map'', em que as chaves deste são os endereços (``MyAddress'') de cada 
-\emph{Node} e o valor é o estado do \emph{Node} a qual o endereço corresponde à chave.
+Esta informação é armazenada numa estrutura de dados ``Map'', da biblioteca ``sync'', em que as chaves deste são os endereços (``MyAddress'') de cada 
+\emph{Node} e o valor é o estado do \emph{Node} a qual o endereço corresponde à chave. Este ``Map'' permite a leitura e escrita concorrente de dados por várias \emph{goroutines} (estas que são inicializadas a cada pedido neste método), o que leva a uma atualiação da visualização de forma mais fluída e rápida.
 
-O \emph{handler} que implementa esta atualização de dados é 
+Caso o estado contido na atualização seja de um \emph{Node} do tipo ``Idle'' (2), esta atualização é ignorada.
+
+Faz-se uso de um \emph{Buffered Channel} ``ChangeChannel'', uma primitiva da linguagem ``\emph{go}'', que permite o envio das atualizações das várias \emph{goroutines} que processam a atualização do ``Map'' para uma \emph{goroutine}.
+A razão de utilização de um \emph{Channel} deve-se à propriedade de sincronização ordendado que estes dispõe. Como referido anteriormente, não é garantido que as atualizações chegam de forma ordenada, mas este mecanismo permite, pelo menos, a ordenação das atualizações por parte das \emph{goroutines}.
 
 \begin{lstlisting}[caption={\emph{Handler} ``updateState'' do método ``/updateState''},language=Go]
 	func updateState(w http.ResponseWriter, r *http.Request) {
+
 	defer r.Body.Close()
 
 	w.Header().Set("Content-Type", "application/json")
 
-	// desserializacao do estado de JSON para o tipo ``elements.Node''
+
 	var update elements.Node
-	_ = json.NewDecoder(r.Body).Decode(&update)
+	_ = json.NewDecoder(r.Body).Decode(&update)  //desserializacao da atualizacao numa struct do tipo Node
 
-	Mutex.Lock()
-	AllUpdates = append(AllUpdates, update)
-
-	//uso de \emph{RegEx} para remover ``http://'' e ``/find'' do ``Link'' da atualizacao
+	// Remocao das prefixos e Sufixo http:// e metodo
 	update.Link = re.ReplaceAllString(update.Link, ``)
+	update.WaiterChan = re.ReplaceAllString(update.WaiterChan, ``)
 
-	// Alteracao do valor da chave correspondente ao endereco do \emph{Node} que fez atualizacao com o seu novo estado
-	Nodes[update.MyAddress] = update
+	
+	//Armazenamento no Map
+	Nodes.Store(update.MyAddress, update)
 
-	if update.Type == 4 {
-		requestHistory = append(requestHistory, update.MyAddress)
-	}
-
-	Mutex.Unlock()
 	json.NewEncoder(w).Encode("Successful")
 
+	//Caso o estado da atualizacao que chegou seja de um Node nao IDLE (2)
+	if update.Type != 2 {
+
+		
+		ChangeChannel <- update
+	}
 }
 
 \end{lstlisting}
@@ -1242,45 +1248,55 @@ pedidos constantes efetuados ao caminho \textbf{/data} do servidor \acs{HTTP}.
 Este devolve duas listas, uma contendo o estado de todos os \emph{Nodes} armazenados no \emph{Node} de visualização, 
 outra contendo todos os arcos do grafo (dirigido), ou seja, pares de endereços, ``Source'' e ``Target'' (classe ``elements.Link''). 
 
-É feita uma iteração pelo ``Map'', em que caso um \emph{Node} tenha o atributo ``Link'', é instanciado um objeto da classe
-``elements.Link'' tendo como atributos o endereço desse \emph{Node} (``Source'') e o ``Link'' (``Target''), que ao final é 
-adicionado à lista dos ``Links''.
+É feita uma iteração pelo ``Map'', em que caso um \emph{Node} tenha uma ligação, seja esta uma ligação no diretório ou na fila, é instanciado 
+um objeto do tipo 
+``elements.Connection'' tendo como atributos o endereço desse \emph{Node} (``Source'') e o ``Link'' ou o ``WaiterChan'' (``Target''), que ao final é 
+adicionado à lista dos ``tempLinks'' ou ``tempQueueCons'', dependo do tipo de ligação (do diretório ou da fila).
 
 
 \begin{lstlisting}[caption={Iteração pelo ``Map'' ``Nodes'', instanciação do objeto e adicionado à lista },language=Go]
-	for _, v := range Nodes {
+	response := new(elements.VisResponse)
+
+	var tempNodes []elements.Node
+	var tempLinks []elements.Connection
+	var tempQueueCons []elements.Connection
+
+	Nodes.Range(func(key, value interface{}) bool {
+		v := value.(elements.Node)
 		tempNodes = append(tempNodes, v)
 
 		if v.Link != "" {
-			tempLinks = append(tempLinks, elements.Link{
+			tempLinks = append(tempLinks, elements.Connection{
 				Source: v.MyAddress,
 				Target: v.Link,
 			})
 		}
-	}
+		if v.WaiterChan != "" {
+			tempQueueCons = append(tempQueueCons, elements.Connection{
+				Source: v.MyAddress,
+				Target: v.WaiterChan,
+			})
+		}
+
+		return true
+	},
+	)
+
+	response.Nodes = tempNodes
+	response.Links = tempLinks
+	response.QueueCons = tempQueueCons
+
 \end{lstlisting}
 
+Esta informação é serializada para o formato ``JSON'', que é enviada como resposta deste pedido \acs{HTTP}.
+Este método é utilizado pela página \emph{Web} para obter os dados a mostrar.
 
-
-
-% método data /data
-% grande parte do ficheiro de JS não é relevante
-
-
-%ACABAR
 \subsection*{Queue}
 A implementação desta secção tem falhas, tais como as referidas na introdução desta secção.
 pois a qualquer momento não é possível saber com exatidão quais os verdadeiros estados dos \emph{Nodes},
 logo não é possível saber o estado atual da \emph{Queue}.
 
 Há duas soluções para o cálculo da fila, sendo que essas soluções têm os seus problemas, provocados pelos defeitos da atualização dos estados do \emph{Nodes} referidos na introdução deste capítulo.
-
-
-É possível saber quais os \emph{Nodes} que estão e entraram na \emph{Queue}. A \emph{Queue} começa quando o \emph{Owner Terminal} se transforma em \emph{Owner With Request}, pois o seu ``WaiterChan'' aponta para o primeiro
-elemento \emph{Queue}. O último elemento da \emph{Queue} é o \emph{Waiter Terminal}, e quando um novo \emph{Node} entra na \emph{Queue}, o \emph{Waiter Terminal} transforma-se em \emph{Waiter With Request}, ou seja, o ``WaiterChan'' do \emph{Node} que se transformou aponta para o novo elemento. Mas é necessário que esta ``Queue'' comece no \emph{Owner}, pois é possível a existência de múltiplas filas no diretório.
-
-Por exemplo, um \emph{Node} \textbf{X} realizou um pedido de acesso. Logo de seguida, o seu \emph{Parent Node} \textbf{Y}  realiza também o pedido de acesso, mas o pedido do \emph{Node} \textbf{X} ainda não chegou ao último \emph{Node} da ``Queue'' que começa no \emph{Owner}, ou seja, é formada uma nova ``Queue'' que não está ligada à ``Queue'' que começa no \emph{Owner}.
-
 
 As duas soluções (cada uma com os seus defeitos) são:
 
@@ -1294,32 +1310,309 @@ no estado armazenado, caso a atualização de um \emph{Node} que se transformou 
 
 \subsubsection*{Através das atualizações dos \emph{Nodes}.}
 
-Caso sigamos o traço das atualizações dos \emph{Nodes} que se transformaram de \emph{Waiter Terminal} para \emph{Waiter With Request}, que indica que um novo elemento entrou na ``Queue'', e dos \emph{Nodes}  que se transformaram de \emph{Owner Terminal} em \emph{Owner With Request}, que indica que uma nova ``Queue'' começou e qual o primeiro elemento, é possível seguirmos a formação das ``Queues''.
+A atualização dos \emph{Nodes} permite a reconstrução das \emph{Queues} existentes no sistema, apenas usando o estado da atualização.
 
-Porém, o traço conhecido pelo \emph{Node} da visualização poderá estar momentaneamente desatualizado, e mesmo sendo mais preciso que a solução anterior, a ``Queue'' demonstrada não estará condizente com o grafo demonstrado.
+Esta é a informação que é possível retirar a partir de cada tipo de \emph{Node} das atualizações, como por exemplo, a formação de novas \emph{Queues}, a concatenação de duas \emph{Queues} usando a informação do ``WaiterChan'' da atualização e a remoção de \emph{Nodes} da \emph{Queue} ``Principal'', quando o \emph{Node} se transforma em \emph{Owner}.
 
-No entanto, fez-se uso da primeira solução, pois a ``Queue'' demonstrada estará de acordo com o grafo.
 
-Para tal, é feito uma procura do \emph{Owner} atual no ``Map'' que contém os estados conhecidos dos \emph{Nodes}.
 
-\begin{lstlisting}[caption={Iteração pelo ``Map'' ``Nodes'', para procurar o atual \emph{Owner} },language=Go]
-	for _, node := range Nodes {
-		if node.Type < 2 {
-			currentOwner = node.MyAddress
+\begin{comment}
+
+\end{comment}
+
+
+Porém, o traço conhecido pelo \emph{Node} da visualização poderá estar momentaneamente desatualizado, e mesmo sendo mais preciso que a solução anterior, a ``Queue'' demonstrada não estará de acordo com o grafo que demonstra o diretório. Além disso é necessário a implementação de mecanismos para garantir que a desordenação da chegada dos dados não reconstrua as várias \emph{Queues} de forma errada, e estes mecanismos podem não assegurar que uma grande discrepância na chegada de uma atualização não terá consequências no seu funcionamento.\\
+
+
+No entanto, fez-se uso desta última solução, pois é a que demonstra a informação mas precisa.
+
+
+\subsection*{Reconstrução das \emph{Queues} através das atualizações dos \emph{Nodes}}
+
+Todas as atualizações dos \emph{Nodes}, à exceção das atualizações cujo o tipo do \emph{Node} é ``IDLE'', são transmitidas para uma \emph{goroutine} que executa uma função ``NodeChange'' de forma contínua, através de \emph{channels} da linguagem \emph{``Go``}. A inicialização da \emph{goroutine} e execução da função é iniciada no iniciar do \emph{Node} de visualização.
+\begin{lstlisting}[caption={Função ``NodeChange'' executada por uma ``goroutine'' e recebe as atualizações através de um \emph{Channel}},language=Go]
+func nodeChange() {
+	for { //ciclo infinito
+		select {
+		case newChange := <-ChangeChannel: //Leitura dos valores de um \emph{channel}
+			QueuesMutex.Lock()  //Bloqueio e Desbloqueio de um \emph{Mutex} para a escrita
+			updateQueues(newChange)  
+			QueuesMutex.Unlock()
+
+		    .
+		    .
+		    .
+		    .
 		}
 	}
+}
+
 
 \end{lstlisting}
 
-Depois de obtermos o atual \emph{Owner}, iteramos pela ``Queue'', em que o ``WaiterChan'' de cada \emph{Node}
-aponta para/indica qual o próximo elemento da \emph{Queue}, e a iteração termina quando o \emph{Node} atual da iteração tem o ``WaiterChan'' vazio, ou seja, já não há mais elementos na ``Queue''.
+Na implementação da secção seguinte foi usado um ``Map'' (não concurrente) que guarda informação dos \emph{Nodes} que já estão numa fila, ``NodesInQueues'', e uma lista bidimensional que armazena as várias \emph{Queues} com os seus elementos, ``Queues''.
+Será feita uma descrição da informação que é possível retirar de cada tipo de \emph{Node}.
 
-\begin{lstlisting}[caption={Iteração pela ``Queue'', usando o ``WaiterChan'' dos \emph{Nodes}},language=Go]
-	for currentNode.WaiterChan != "" {
-		nextNode = Nodes[re.ReplaceAllString(currentNode.WaiterChan, ``)]
-		response.QueueNodes = append(response.QueueNodes, nextNode.MyAddress)
-		currentNode = nextNode
+
+% MUDAR ORDEM, para ficar igual a outros sítios
+\subsubsection*{\emph{Waiter Terminal}}
+Indica que há uma nova \emph{Queue} no diretório. \\
+
+Caso já exista um \emph{Node} \textbf{X},
+o qual o ``WaiterChan'' aponta para este, significa que esta atualização chegou depois da atualização do \emph{Node} que recebeu o pedido,
+logo podemos concatenar a nova \emph{Queue} com a \emph{Queue} que tem o \emph{Node} \textbf{X} como último elemento.
+
+Se o \emph{Node} já está em alguma \emph{Queue} ignoramos esta atualização, pois isto significa que esta já é desatualizada.\\
+Se o último elemento de alguma \emph{Queue} tem um ``waiterChan'' que aponta para o \emph{Node} que fez a atualização, significa que a atualização do \emph{Node} que recebeu o pedido realizado pelo \textbf{X} chegou primeiro, e então juntamos o \textbf{X} à \emph{Queue} do \emph{Node} que aponta para este.\\
+
+Se nenhum dos casos anteriores for verdadeiro, é adicionada uma nova \emph{Queue} à lista de \emph{Queues} com o \textbf{A} como único elemento.
+\begin{lstlisting}[caption={Alterações nas filas caso o \emph{Node} seja do tipo ``Waiter Terminal''},language=Go]
+
+		if _, isIn := NodesInQueues[update.MyAddress]; isIn {
+			return
+		}
+		NodesInQueues[update.MyAddress] = update.Type
+		for i, queue := range Queues {
+			if len(queue) == 0 {
+				continue
+			}
+			if queue[len(queue)-1].WaiterChan == update.MyAddress {
+				Queues[i] = append(Queues[i], update)
+				return
+			}
+		}
+		Queues = append(Queues, []elements.Node{update})
+
+		break
+
+\end{lstlisting}
+
+
+\subsubsection{ \emph{Waiter With Request} }
+Indica que houve uma concatenação entre a lista a qual o \emph{Node} da atualização, \textbf{A}, e a \emph{Queue} do \emph{Node} para o qual o ``WaiterChan'' do \textbf{A} pertence. 
+Designamos o \emph{Node} que fez a atualização que se está a processar de \textbf{A}, e o \emph{Node} para o qual o ``WaiterChan'' do \emph{Node} \textbf{A} aponta de \textbf{B}.\\
+
+É possível garantir que esta ligação é verdadeira, no entanto é possível que tanto o \emph{Node} \textbf{A} como o \textbf{B} ainda não esteja em qualquer uma das \emph{Queues}, pois a sua atualização ainda não chegou.\\
+
+O \emph{Node} \textbf{A}, caso se esteja em alguma fila, este é o último elemento da fila,
+o \emph{Node} \textbf{B}, caso se esteja em alguma fila, este é o primeiro elemento da fila.\\
+
+Caso os dois já estão em filas, é feita uma concatenação das filas onde estes estão.
+\begin{lstlisting}[caption={Alterações nas filas caso o \emph{Node} seja do tipo ``Waiter With Request'' e ambos os \emph{Nodes} \textbf{A} e \textbf{B} se apresentam em filas },language=Go]
+
+firstQueue := -1 //fila onde se apresenta o \emph{Node} \textbf{A}
+secondQueue := -1 //fila onde se apresenta o \emph{Node} \textbf{A}
+
+
+//Procura das filas onde cada \emph{Node} esta
+for i, queue := range Queues {
+	if queue[len(queue)-1].MyAddress == update.MyAddress {
+		firstQueue = i
+	} else if queue[0].MyAddress == update.WaiterChan {
+		secondQueue = i
 	}
+}
+
+
+//Se nao foi possivel encontrar uma das filas, ignoramos, pois as filas ja se encontram juntas
+if secondQueue == -1 || firstQueue == -1 {
+	return
+}
+
+//Concatenacao das duas \emph{Queues}
+Queues[firstQueue] = append(Queues[firstQueue], Queues[secondQueue]...)
+
+//Remocao da \emph{Queue} onde o \textbf{B} se apresenta
+removeFromQueues(secondQueue)
+\end{lstlisting}//
+
+
+
+Caso o \emph{Node} \textbf{A} esteja numa fila mas o \textbf{B} não, adicionamos o \textbf{B} ao final da fila onde o \textbf{A} se encontra, e
+caso o \emph{Node} \textbf{B} esteja numa fila mas o \textbf{A} não, adicionamos o \textbf{A} ao início da fila onde o \textbf{B} se encontra.
+\begin{lstlisting}[caption={Alterações nas filas caso o \emph{Node} seja do tipo ``Waiter With Request'' e pelo menos um se apresenta numa fila. },language=Go]
+
+//Caso o \textbf{A} se encontra mas o \textbf{B} nao.
+if IsNodeAIn && !IsNodeBIn {
+	for i, queue := range Queues {
+		if queue[len(queue)-1].MyAddress == update.MyAddress {
+			Queues[i] = append(Queues[i], nextNode)
+			return
+		}
+	}
+}
+
+//Caso o \textbf{B} se encontra mas o \textbf{A} nao.
+if !IsNodeAIn && IsNodeBIn {
+	for i, queue := range Queues {
+		if queue[0].MyAddress == update.WaiterChan {
+			Queues[i] = append([]elements.Node{update}, Queues[i]...)
+			return
+		}
+	}
+}
+
+
+\end{lstlisting}//
+
+
+Caso nenhum deles se encontra em filas, e como referido anteriormente, é garantido que há uma ligação entre os dois \emph{Nodes}, logo temos a informação que há uma \emph{Queue} em que os seus dois elementos são o \textbf{A} e o \textbf{B}, por esta ordem.
+
+No entanto, ainda é possível saber se esta \emph{Queue} já está ligada a outra, pois se existir uma \emph{Queue} cujo o ``WaiterChan'' do último \emph{Node} aponta para o \textbf{A} ou o ``WaiterChan'' do \emph{Node} \textbf{B} aponta para o primeiro elemento de um fila, ou ambos.
+
+
+
+\begin{lstlisting}[caption={Alterações nas filas caso o \emph{Node} seja do tipo ``Waiter With Request'' nem o \textbf{A} nem o \textbf{B} estão em filas. },language=Go]
+//Formacao da \emph{Queue} com os elementos \textbf{A} (update) e o \textbf{B} (nextNode)
+currentQueue := []elements.Node{update, nextNode}
+
+currentQueueLocation := -1 //Localizacao desta \emph{Queue}
+// -1 significa que ainda nao foi concatendada com nenhuma outra \emph{Queue}
+
+for i, queue := range Queues {
+
+
+	//Se o ultimo \emph{Node} de uma fila aponta para o \textbf{A}
+	if queue[len(queue)-1].WaiterChan == update.MyAddress {
+
+		// Caso a ``currentQueueu'' ainda nao foi concatenada
+		if currentQueueLocation == -1 {
+
+			//E concatenda a \emph{queue} 
+			Queues[i] = append(Queues[i], currentQueue...)
+
+			//Armazenamos nova posicao da ``currentQueue''
+			currentQueueLocation = i
+
+		// Caso a ``currentQueue'' ja foi concatenada
+		} else {
+
+			//Concatenamos a \emph{Queue} com a \emph{Queue} onde a ``currentQueue'' se encontra
+			Queues[i] = append(Queues[i], Queues[currentQueueLocation]...)
+
+			//Removemos a \emph{Queue} onde a ``currentQueue'' se encontra
+			removeFromQueues(currentQueueLocation)
+		}
+
+	//Se o ``WaiterChan'' do \emph{Node} \textbf{B} (nextNode) apontar para o primeiro de uma \emph{Queue}
+	} else if nextNode.WaiterChan == queue[0].MyAddress {
+
+		// Caso a ``currentQueueu'' ainda nao foi concatenada
+		if currentQueueLocation == -1 {
+
+			// Concatenamos a \emph{Queue} encontrada a ``currentQueue'', que passa a estar na mesma posicao (substitui)
+			Queues[i] = append(currentQueue, Queues[i]...)
+
+			//Armazenamos nova posicao da ``currentQueue''
+			currentQueueLocation = i
+
+		// Caso a ``currentQueueu'' ja foi concatenada
+		} else {
+			//Concatenamos a \emph{Queue} encontrada a \emph{Queue} onde a ``currentQueue'' se encontra
+			Queues[currentQueueLocation] = append(Queues[currentQueueLocation], Queues[i]...)
+
+			//Removemos a \emph{Queue} encontrada
+			removeFromQueues(i)
+		}
+	}
+
+}
+//Se nao mudou de sitio entao acrescentamos a queue a lista 
+if currentQueueLocation == -1 {
+	Queues = append(Queues, currentQueue)
+}
+
+
+\end{lstlisting}//
+
+
+
+
+\subsubsection*{\emph{Owner Terminal}}
+Indica que uma \emph{Queue} será removida da lista de \emph{Queues} e indica qual o atual \emph{Owner} do sistema.\\
+Caso a \emph{Queue} a ser removida tem mais elementos para além do \emph{Node} que fez a atualização, isto indica que até à chegada desta atualização houveram \emph{Queues} a concatenar com a \emph{Queue} one o \emph{Owner Terminal} se encontra, e que esta atualização é desatualizada. Então nesse caso só é removido o \emph{Node} da atualização da \emph{Queue}.\\
+Caso o \emph{Node} que fez a atualização não se encontra em nenhuma \emph{Queue}, isto significa que uma atualização da transformação do \emph{Node} para \emph{Owner With Request} chegou antes desta atualização, e que esta informação deverá ser ignorada.
+
+\begin{lstlisting}[caption={Alterações nas filas caso o \emph{Node} seja do tipo ``Owner Terminal''},language=Go]
+
+// Se o \emph{Node} esta em alguma \emph{Queue}
+foundNodeQueue := -1
+
+
+//Indicacao que este \emph{Node} e o atual Owner
+currentOwner = update
+
+
+//Procura da \emph{Queue} cujo o primeiro element e o \emph{Node} que fez a atualizacao
+for i, queue := range Queues {
+	if queue[0].MyAddress == update.MyAddress {
+		foundNodeQueue = i
+	}
+}
+
+//Se ja nao se apresenta em alguma \emph{Queue} entao ignora-se a atualizacao
+if foundNodeQueue == -1 {
+	return
+}
+
+// Se so tiver um unico elemento (o \emph{Node} que fez a atualizacao) 
+if len(Queues[foundNodeQueue]) == 1 {
+
+	// Eliminacao da \emph{Queue} encontrada
+	removeFromQueues(foundNodeQueue)
+//Se tem mais elementos
+} else {
+	//Removemos o primeiro elemento (o \emph{Node} que fez a atualizacao)
+	Queues[foundNodeQueue] = Queues[foundNodeQueue][1:]
+}
+
+//Eliminacao do \emph{Node} da lista de \emph{Nodes} que estao e \emph{Queues}
+delete(NodesInQueues, update.MyAddress)
+
+
+\end{lstlisting}
+
+
+\subsubsection*{\emph{Owner With Request}}
+Indica que chegou um pedido ao atual \emph{Owner} ou que o \emph{Node} para qual o ``WaiterChan'' do anterior \emph{Owner} apontava (ou o primeiro da \emph{Queue} ``Principal'').
+Para além disso indica qual é a \emph{Queue} ``Principal''.//
+
+Caso o \emph{Node} é o primeiro de uma \emph{Queue}, indica que o tipo anterior deste \emph{Node} (conhecido) era ``Waiter With Request'', e o \emph{Node} é removido da \emph{Queue}.//
+Caso o ``WaiterChan'' do \emph{Node} da atualização aponte para o primeiro elemento de uma \emph{Queue}, isto indica que essa \emph{Queue} é a \emph{Queue} ``Principal''.
+
+
+\begin{lstlisting}[caption={ Alterações nas filas caso o \emph{Node} seja do tipo ``Owner With Request'' },language=Go]
+delete(NodesInQueues, update.MyAddress)
+currentOwner = update
+for i, queue := range Queues {
+
+
+	// O \emph{Node} e o primeiro elemento de uma \emph{Queue} 
+	if queue[0].MyAddress == update.MyAddress {
+		if len(queue) > 1 {
+
+
+			// Remocao do primeiro elemento da \emph{Queue}
+			Queues[i] = Queues[i][1:]
+
+			// Indicacao que esta \emph{Queue} e a ``Principal''
+			temp := queue[1:]
+			Queues[i] = Queues[0]
+			Queues[0] = temp
+			return
+		} else {
+			removeFromQueues(i)
+		}
+
+	//caso o \emph{Node} aponte para o primeiro elemento de uma \emph{Queue}
+	} else if queue[0].MyAddress == update.WaiterChan {
+		// Indicacao que esta \emph{Queue} e a ``Principal''
+		temp := queue
+		Queues[i] = Queues[0]
+		Queues[0] = temp
+	}
+}
+
 
 \end{lstlisting}
 
