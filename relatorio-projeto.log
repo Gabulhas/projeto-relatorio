@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.2.10)  11 MAR 2021 19:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.3.18)  19 MAR 2021 11:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -917,33 +917,34 @@ LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
 
 Package acronym Warning: Acronym `CSV' is not defined on input line 56.
 
-) [2] (./motivacao.tex
+[2]) [3] [4
+
+
+
+
+] (./motivacao.tex
 Overfull \hbox (7.34254pt too wide) in paragraph at lines 24--25
 []\T1/futs/m/n/12 Os sis-te-mas dis-tri-buí-dos per-mi-tem que se au-mente
  []
 
-[3
-
-
-
-
+[5
 
 
 ]
 
 Package acronym Warning: Acronym `MST' is not defined on input line 52.
 
-[4]
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
-<um_pedido_1.png, id=397, 342.27875pt x 101.37875pt>
+<um_pedido_1.png, id=405, 342.27875pt x 101.37875pt>
 File: um_pedido_1.png Graphic file (type png)
 <use um_pedido_1.png>
 Package pdftex.def Info: um_pedido_1.png  used on input line 86.
 (pdftex.def)             Requested size: 250.0pt x 74.04918pt.
-<um_pedido_2.png, id=398, 342.27875pt x 101.37875pt>
+<um_pedido_2.png, id=406, 342.27875pt x 101.37875pt>
 File: um_pedido_2.png Graphic file (type png)
 <use um_pedido_2.png>
 Package pdftex.def Info: um_pedido_2.png  used on input line 97.
@@ -953,13 +954,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
 
  []
 
-[5 <./um_pedido_1.png>]
-<dois_pedidos_1.png, id=405, 342.27875pt x 101.37875pt>
+[7 <./um_pedido_1.png>]
+<dois_pedidos_1.png, id=414, 342.27875pt x 101.37875pt>
 File: dois_pedidos_1.png Graphic file (type png)
 <use dois_pedidos_1.png>
 Package pdftex.def Info: dois_pedidos_1.png  used on input line 117.
 (pdftex.def)             Requested size: 250.0pt x 74.04918pt.
-<dois_pedidos_2.png, id=406, 352.31625pt x 101.37875pt>
+<dois_pedidos_2.png, id=415, 352.31625pt x 101.37875pt>
 File: dois_pedidos_2.png Graphic file (type png)
 <use dois_pedidos_2.png>
 Package pdftex.def Info: dois_pedidos_2.png  used on input line 128.
@@ -969,8 +970,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
-[6 <./um_pedido_2.png> <./dois_pedidos_1.png> <./dois_pedidos_2.png>]
-<dois_pedidos_3.png, id=414, 352.31625pt x 135.50626pt>
+[8 <./um_pedido_2.png> <./dois_pedidos_1.png> <./dois_pedidos_2.png>]
+<dois_pedidos_3.png, id=423, 352.31625pt x 135.50626pt>
 File: dois_pedidos_3.png Graphic file (type png)
 <use dois_pedidos_3.png>
 Package pdftex.def Info: dois_pedidos_3.png  used on input line 139.
@@ -980,41 +981,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 148--149
 
  []
 
-<fila.png, id=415, 352.31625pt x 140.525pt>
+<fila.png, id=424, 352.31625pt x 140.525pt>
 File: fila.png Graphic file (type png)
 <use fila.png>
 Package pdftex.def Info: fila.png  used on input line 164.
 (pdftex.def)             Requested size: 250.0pt x 99.71553pt.
-[7 <./dois_pedidos_3.png>]
+[9 <./dois_pedidos_3.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
 
 
-Package natbib Warning: Citation `Ivy' on page 8 undefined on input line 203.
+Package natbib Warning: Citation `Ivy' on page 10 undefined on input line 203.
 
 
-Package natbib Warning: Citation `Arvy' on page 8 undefined on input line 203.
+Package natbib Warning: Citation `Arvy' on page 10 undefined on input line 203.
 
-[8 <./fila.png>]) [9] [10
-
-
+[10 <./fila.png>]) [11] [12
 
 
-] (./especificacao.tex [11
 
 
-] [12] [13]
+] (./especificacao.tex [13
+
+
+] [14] [15]
 Overfull \hbox (5.70357pt too wide) in paragraph at lines 104--106
 \T1/futs/m/n/12 Este atri-buto re-pre-senta o \T1/futs/m/it/12 Chan-nel \T1/futs/m/n/12 do \T1/futs/m/it/12 Node \T1/futs/m/n/12 onde este re-cebe pe-di-dos de acesso
  []
 
-[14] [15] [16]
+[16] [17] [18]
 Overfull \hbox (1.66245pt too wide) in paragraph at lines 218--221
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
-[17]
+[19]
 Overfull \hbox (1.66245pt too wide) in paragraph at lines 248--251
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
@@ -1024,17 +1025,17 @@ Overfull \hbox (1.66245pt too wide) in paragraph at lines 271--272
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
-[18]
+[20]
 Overfull \hbox (1.66245pt too wide) in paragraph at lines 299--300
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
-) [19] [20
+) [21] [22
 
 
 
 
-] (./implementacao.tex [21
+] (./implementacao.tex [23
 
 
 ] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1045,7 +1046,7 @@ File: lstlang2.sty 2020/03/24 1.8d listings language file
 File: lstlang3.sty 2020/03/24 1.8d listings language file
 ) (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [22]
+) [24]
 Overfull \hbox (1.83641pt too wide) in paragraph at lines 105--106
 []\T1/futs/m/n/12 Na im-ple-men-ta-ção fez-se uso de ser-vi-do-res e pe-di-dos [][] que, por omis-
  []
@@ -1053,19 +1054,19 @@ Overfull \hbox (1.83641pt too wide) in paragraph at lines 105--106
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23]
+ [25]
 
 Package acronym Warning: Acronym `HTML' is not defined on input line 136.
 
-[24]
+[26]
 Overfull \hbox (1.72832pt too wide) in paragraph at lines 149--150
 []\T1/futs/m/n/12 No en-tanto, esta tec-no-lo-gia foi uti-li-zada para si-mu-lar uma rede dis-tri-buída,
  []
 
-[25] [26] [27]
+[27] [28] [29]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [28]
+ [30]
 Overfull \hbox (8.40034pt too wide) in paragraph at lines 340--342
 []\T1/futs/m/n/12 Na im-ple-men-ta-ção deste mé-todo, foi usada a es-tru-tura con-di-ci-o-nal ``Switch''
  []
@@ -1075,17 +1076,17 @@ Overfull \hbox (2.45155pt too wide) in paragraph at lines 347--350
 \T1/futs/m/n/12 novo ``Ac-ces-s-Re-quest'', caso o \T1/futs/m/it/12 Node \T1/futs/m/n/12 re-di-re-ci-one o pe-dido para o seu \T1/futs/m/it/12 Child Node\T1/futs/m/n/12 . 
  []
 
-[29]
+[31]
 Overfull \hbox (4.82753pt too wide) in paragraph at lines 377--379
 \T1/futs/m/n/12 Caso o tipo seja ``OW-NER_TERMINAL'', o \T1/futs/m/it/12 Node\T1/futs/m/n/12 , o mé-todo ``Ow-nerWith-Re-quest''
  []
 
-[30]
+[32]
 Overfull \hbox (16.1795pt too wide) in paragraph at lines 395--397
 \T1/futs/m/n/12 Caso o tipo seja ``OW-NER_WITH_REQUEST'', o Atri-buto ``Link'' do ob-jeto ``newAc-
  []
 
-[31]
+[33]
 Overfull \hbox (2.33144pt too wide) in paragraph at lines 440--442
 \T1/futs/m/n/12 Caso o tipo seja ``WAI-TER_TERMINAL'', o \T1/futs/m/it/12 Node \T1/futs/m/n/12 o mé-todo ``Wai-terWith-Re-quest''
  []
@@ -1110,8 +1111,8 @@ Overfull \hbox (73.10738pt too wide) in paragraph at lines 471--473
 \T1/futs/m/n/12 cess Re-quest'', este so-fre uma trans-for-ma-ção, muda de tipo para ``WAI-TER_WITH_REQUEST''
  []
 
-[32] [33] [34] [35] [36] [37]
-<state-diagram.png, id=862, 958.58125pt x 393.47pt>
+[34] [35] [36] [37] [38] [39]
+<state-diagram.png, id=870, 958.58125pt x 393.47pt>
 File: state-diagram.png Graphic file (type png)
 <use state-diagram.png>
 Package pdftex.def Info: state-diagram.png  used on input line 743.
@@ -1121,7 +1122,7 @@ Overfull \hbox (117.0pt too wide) in paragraph at lines 743--744
  [][] 
  []
 
-[38] [39 <./state-diagram.png>] [40]
+[40] [41 <./state-diagram.png>] [42]
 Overfull \hbox (4.4884pt too wide) in paragraph at lines 856--858
 []\T1/futs/m/n/12 No en-tanto, tam-bém fo-ram im-ple-men-ta-dos mé-to-dos para per-mi-tir ao \T1/futs/m/it/12 Node
  []
@@ -1131,22 +1132,22 @@ Overfull \hbox (36.42342pt too wide) in paragraph at lines 863--866
 \T1/futs/m/n/12 ter'' (ro-te-a-dor), no qual são re-gis-ta-dos os vá-rios ca-mi-nhos e \T1/futs/m/it/12 Han-dlers\T1/futs/m/n/12 (manipuladores)
  []
 
-[41] [42]
+[43] [44]
 Overfull \hbox (2.1795pt too wide) in paragraph at lines 946--950
 \T1/futs/m/n/12 ção). Quando um \T1/futs/m/it/12 Node \T1/futs/m/n/12 trans-mite um pe-dido de ``Gi-ve-Ac-cess'' para ou-tro \T1/futs/m/it/12 Node\T1/futs/m/n/12 ,
  []
 
-[43]
+[45]
 Overfull \hbox (8.85893pt too wide) in paragraph at lines 1010--1011
 \T1/futs/m/n/12 O \T1/futs/m/it/12 Node \T1/futs/m/n/12 tem a pos-si-bi-li-dade de re-a-li-zar pe-di-dos \T1/futs/m/it/12 HTTP\T1/futs/m/n/12 , to-dos eles do tipo ``POST''. 
  []
 
-[44]
+[46]
 Overfull \hbox (0.39574pt too wide) in paragraph at lines 1017--1018
 []\T1/futs/m/n/12 O pri-meiro pa-râ-me-tro é o [][] para o qual irá ser en-vi-ado o pe-dido ``POST''. 
  []
 
-[45] [46]
+[47] [48]
 Overfull \hbox (0.91243pt too wide) in paragraph at lines 1113--1114
 []\T1/futs/m/n/12 As ``Struct'' des-tes es-tão de-fi-ni-das no mó-dulo ``Chan-nels'', no fi-cheiro \T1/futs/b/n/12 chan-
  []
@@ -1156,17 +1157,17 @@ Overfull \hbox (8.41554pt too wide) in paragraph at lines 1118--1121
 \T1/futs/m/n/12 Esta classe en-cap-sula o \T1/futs/m/it/12 Chan-nel ``My-Chan'' \T1/futs/m/n/12 do \T1/futs/m/it/12 Node \T1/futs/m/n/12 re-a-li-zou o pe-dido de acesso.
  []
 
-[47] [48] [49]
+[49] [50] [51]
 Overfull \hbox (10.80344pt too wide) in paragraph at lines 1248--1250
 \T1/futs/m/n/12 ri-gido), ou seja, pa-res de en-de-re-ços, ``Source'' e ``Tar-get'' (classe ``ele-ments.Link''). 
  []
 
-[50] [51]
+[52] [53]
 Underfull \hbox (badness 10000) in paragraph at lines 1324--1325
 
  []
 
-[52]
+[54]
 Underfull \hbox (badness 10000) in paragraph at lines 1359--1360
 
  []
@@ -1176,7 +1177,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1365--1367
 
  []
 
-[53]
+[55]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
 (hyperref)                than one, level fixed on input line 1391.
@@ -1196,27 +1197,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 1397--1399
 
  []
 
-[54] [55]
+[56] [57]
 Underfull \vbox (badness 3746) has occurred while \output is active []
 
- [56] [57]
+ [58] [59]
 Overfull \hbox (0.56749pt too wide) in paragraph at lines 1580--1582
 \T1/futs/m/n/12 Caso o ``Wai-ter-Chan'' do \T1/futs/m/it/12 Node \T1/futs/m/n/12 da atu-a-li-za-ção aponte para o pri-meiro ele-mento
  []
 
-[58] [59] [60] [61]) [62] (./visualizacao.tex) [63
+[60] [61] [62] [63]) [64] (./visualizacao.tex) [65
 
 
 
 
-
-
-] [64
-
-
-
-
-] (./reflexao.tex) [65
 
 
 ] [66
@@ -1224,10 +1217,18 @@ Overfull \hbox (0.56749pt too wide) in paragraph at lines 1580--1582
 
 
 
-] (./conc-trab-futuro.tex) [67
+] (./reflexao.tex) [67
 
 
 ] [68
+
+
+
+
+] (./conc-trab-futuro.tex) [69
+
+
+] [70
 
 
 
@@ -1236,7 +1237,7 @@ Overfull \hbox (0.56749pt too wide) in paragraph at lines 1580--1582
 
 Package natbib Warning: There were undefined citations.
 
-[69
+[71
 
 
 ]
@@ -1252,18 +1253,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15506 strings out of 479383
- 220797 string characters out of 5875830
- 1094647 words of memory out of 5000000
+ 15508 strings out of 479383
+ 220811 string characters out of 5875830
+ 1094648 words of memory out of 5000000
  31258 multiletter control sequences out of 15000+600000
  500219 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,12n,72p,634b,2019s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
-Output written on relatorio-projeto.pdf (81 pages, 396935 bytes).
+Output written on relatorio-projeto.pdf (83 pages, 397924 bytes).
 PDF statistics:
- 1798 PDF objects out of 2073 (max. 8388607)
- 1676 compressed objects within 17 object streams
- 995 named destinations out of 1000 (max. 500000)
+ 1807 PDF objects out of 2073 (max. 8388607)
+ 1683 compressed objects within 17 object streams
+ 997 named destinations out of 1000 (max. 500000)
  497 words of extra memory for PDF output out of 10000 (max. 10000000)
 

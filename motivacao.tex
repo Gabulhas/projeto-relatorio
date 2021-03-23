@@ -200,9 +200,14 @@ Neste protocolo existem duas estruturas de dado o acesso ao objeto.
 
 \section{Trabalhos relacionados}
 %Ivy e Arvy
-De muitos algoritmos distribuídos e suas implementações, há dois trabalhos relacionados com o protocolo estudado neste projeto. Estes são, o \emph{Ivy} \cite{Ivy} e o \emph{Arvy} \cite{Arvy}.
-O \emph{Ivy} apresenta um funcionamento muito similar ao \emph{Arrow}, em que a origem do objeto muda com a posição atual deste, isto é, 
 
+% TODO: Explicar quais é que são os benefícios de usar cada um
+De muitos algoritmos distribuídos e suas implementações, há dois trabalhos relacionados com o protocolo estudado neste projeto. Estes são o \emph{Ivy} \cite{Ivy} e o \emph{Arvy} \cite{Arvy}, este sendo uma generalização de ambos o \emph{Ivy} e o algoritmo estudado (\acs{ADDP}). Este três algoritmos (ou classe de algoritmos) o acesso exclusivo ao objeto (ou o acesso a este).
+
+
+O \emph{Ivy} apresenta um funcionamento muito similar ao \emph{Arrow} (\acs*{ADDP}), em que o objeto (ou o acesso a este) varia de localização, mas destaca-se do \emph{Arrow} na formação das ligações, que, ao invés de as ligações por onde o pedido passa se inverterem, os \emph{Nodes} que recebem os pedidos passam a estar ligados ao \emph{Node} que realizou o pedido.
+
+Como referido anteriormente, o \emph{Arvy} é uma generalização de ambos. Neste algoritmo, quando um \emph{Node} recebe um pedido este pode ligar-se a qualquer \emph{Node} por onde atravessou o pedido.
 
 
 % comparar este algoritmo com outros (ver http://cs.brown.edu/people/mph/DemmerH98/disc.pdf)

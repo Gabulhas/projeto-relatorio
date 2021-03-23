@@ -7,52 +7,52 @@
 \contentsline {section}{\numberline {1.2}Objetivos}{1}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Resultados Atingidos}{2}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Organização do Documento}{2}{section.1.4}%
-\contentsline {chapter}{\chapternumberline {2}Motivação}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Introdução}{3}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Descrição do Protocolo}{4}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Trabalhos relacionados}{9}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Conclusões}{9}{section.2.4}%
-\contentsline {chapter}{\chapternumberline {3}Especificação}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Introdução}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2}\emph {Node}}{11}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Ligações}{12}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Atributos do \emph {Node}}{14}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Tipos de mensagens}{16}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Comportamentos dos \emph {Nodes}}{16}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Conclusões}{19}{section.3.7}%
-\contentsline {chapter}{\chapternumberline {4}Implementação}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Introdução}{21}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Linguagens de Programação}{21}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Ferramentas e Bibliotecas utilizadas}{24}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Classe \emph {Node}}{25}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Atributos da Classe}{25}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Inicialização do objeto ``Self Node''}{27}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Tipos de Nodes}{29}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Comportamentos}{29}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Transformações do \emph {Node}}{38}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Comunicação entre Nodes}{41}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{47}{section.4.11}%
-\contentsline {section}{\numberline {4.12}Implementação da Visualização}{47}{section.4.12}%
-\contentsline {subsubsection}{\numberline {4.12.0.1} \emph {Waiter With Request} }{54}{subsubsection.4.12.0.1}%
-\contentsline {section}{\numberline {4.13}Uso de \emph {containers Docker}}{60}{section.4.13}%
-\contentsline {section}{\numberline {4.14}Conclusões}{62}{section.4.14}%
-\contentsline {chapter}{\chapternumberline {5}Visualização}{63}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introdução}{63}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Atualização dos Dados}{63}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Representação da Rede}{63}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}\emph {Nodes}}{63}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}\emph {Links}}{63}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Fila}{63}{subsection.5.3.3}%
-\contentsline {subsection}{\numberline {5.3.4}Histórico de Pedidos}{63}{subsection.5.3.4}%
-\contentsline {subsection}{\numberline {5.3.5}Histórico de \emph {Owners}}{63}{subsection.5.3.5}%
-\contentsline {section}{\numberline {5.4}Conclusões}{63}{section.5.4}%
-\contentsline {chapter}{\chapternumberline {6}Reflexão Crítica}{65}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Introdução}{65}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Escolhas de Implementação}{65}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Detalhes de Implementação}{65}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Conclusões}{65}{section.6.4}%
-\contentsline {chapter}{\chapternumberline {7}Conclusões e Trabalho Futuro}{67}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Reflexao Crítica}{67}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Conclusões Principais}{67}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Trabalho Futuro}{67}{section.7.3}%
-\contentsline {chapter}{Bibliografia}{69}{chapter*.86}%
+\contentsline {chapter}{\chapternumberline {2}Motivação}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Introdução}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Descrição do Protocolo}{6}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Trabalhos relacionados}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Conclusões}{11}{section.2.4}%
+\contentsline {chapter}{\chapternumberline {3}Especificação}{13}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Introdução}{13}{section.3.1}%
+\contentsline {section}{\numberline {3.2}\emph {Node}}{13}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Ligações}{14}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Atributos do \emph {Node}}{16}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Tipos de mensagens}{18}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Comportamentos dos \emph {Nodes}}{18}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Conclusões}{21}{section.3.7}%
+\contentsline {chapter}{\chapternumberline {4}Implementação}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introdução}{23}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Linguagens de Programação}{23}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Ferramentas e Bibliotecas utilizadas}{26}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Classe \emph {Node}}{27}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Atributos da Classe}{27}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Inicialização do objeto ``Self Node''}{29}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Tipos de Nodes}{31}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Comportamentos}{31}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Transformações do \emph {Node}}{40}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Comunicação entre Nodes}{43}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{49}{section.4.11}%
+\contentsline {section}{\numberline {4.12}Implementação da Visualização}{49}{section.4.12}%
+\contentsline {subsubsection}{\numberline {4.12.0.1} \emph {Waiter With Request} }{56}{subsubsection.4.12.0.1}%
+\contentsline {section}{\numberline {4.13}Uso de \emph {containers Docker}}{62}{section.4.13}%
+\contentsline {section}{\numberline {4.14}Conclusões}{64}{section.4.14}%
+\contentsline {chapter}{\chapternumberline {5}Visualização}{65}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introdução}{65}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Atualização dos Dados}{65}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Representação da Rede}{65}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}\emph {Nodes}}{65}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}\emph {Links}}{65}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Fila}{65}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Histórico de Pedidos}{65}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Histórico de \emph {Owners}}{65}{subsection.5.3.5}%
+\contentsline {section}{\numberline {5.4}Conclusões}{65}{section.5.4}%
+\contentsline {chapter}{\chapternumberline {6}Reflexão Crítica}{67}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introdução}{67}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Escolhas de Implementação}{67}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Detalhes de Implementação}{67}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Conclusões}{67}{section.6.4}%
+\contentsline {chapter}{\chapternumberline {7}Conclusões e Trabalho Futuro}{69}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Reflexao Crítica}{69}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Conclusões Principais}{69}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Trabalho Futuro}{69}{section.7.3}%
+\contentsline {chapter}{Bibliografia}{71}{chapter*.86}%
