@@ -69,9 +69,9 @@ Quando um nó pretende aceder ao objeto, este envia um pedido de acesso pela sua
 
 
 
-Reconsideremos que a noção que o diretório é uma árvore de extensão mínima, e consideremos que o acesso ao objeto (ou o nó que o detém) está localizado na raíz da àrvore e as todas as ligações apontam em direção à raíz.
+Reconsideremos que a noção que o diretório é uma árvore de extensão mínima, e consideremos que o acesso ao objeto (ou o nó que o detém) está localizado na raiz da árvore e as todas as ligações apontam em direção à raiz.
 
-Quando é realizado um pedido, este irá chegar à raíz, pois todas as ligações apontam para esta. No final da circulação do pedido, todas as ligações por onde passou o pedido estam invertidas, para que estas passam a apontar para o nó que fez o pedido. \\
+Quando é realizado um pedido, este irá chegar à raiz, pois todas as ligações apontam para esta. No final da circulação do pedido, todas as ligações por onde passou o pedido estão invertidas, para que estas passem a apontar para o nó que fez o pedido.
 
 Caso um nó receba um pedido de acesso,a ligação deste passa a apontar para o nó vizinho que lhe fez chegar o pedido, ou seja, por onde passa o pedido há uma inversão do sentido da ligação.
 
@@ -191,11 +191,11 @@ O facto da origem do objeto estar em constante alteração garante que apenas um
 % O objeto move-se pelo diretório dependendo se houve pedidos por parte de Nodes
 
 \subsection*{Estruturas de Dados}
-Neste protocolo existem duas estruturas de dado o acesso ao objeto.
+Neste protocolo existem duas estruturas distribuídas, em que cada uma é formada por um tipo de ligação entre os nós.
 
-\begin{description}
-    \item [Grafo] 
-    \item [Fila] os vértices são todos os nós do sistema que esperam pelo acesso ao objeto (mudar porque podem haver nós que esperam mas não estão na fila) e as arestas são as ligações do tipo (tipo), pois neste circula o acesso ao objeto.
+\begin{description} 
+    \item [Grafo] os vértices são todos os nós do sistema, e as arestas são as ligações entre os nós utilizadas no envio de pedidos de acesso.
+    \item [Fila] os vértices são todos os nós do sistema que esperam pelo acesso ao objeto  e as arestas são as ligações entre os nós mas exterior ao diretório, pois neste circula o acesso ao objeto.
 \end{description}
 
 \section{Trabalhos relacionados}
@@ -225,3 +225,6 @@ Como referido anteriormente, o \emph{Arvy} é uma generalização de ambos. Nest
 
 \section{Conclusões}
 \label{chap2:sec:concs}
+%Mudar a palavra esclarecido
+Neste capítulo foi esclarecido ao aumento da necessidade de sistemas algoritmos e a complexidade de implementação dos mesmos. Foi também descrito o funcionamento global do algoritmo/sistema em questão no desenvolvimento deste projeto, com maior foco em como os comportamentos de cada nó altera o estado do sistema. Foram também mencionadas os dois tipos de estruturas de dados presentes no sistema, como o que cada uma representa. Por fim, foram referidos dois trabalhos relacionados com o algoritmo estudado.
+

@@ -35,23 +35,13 @@
 \BOOKMARK [2][-]{subsubsection.4.12.0.1}{ Waiter With Request }{section.4.12}% 35
 \BOOKMARK [1][-]{section.4.13}{Uso de containers Docker}{chapter.4}% 36
 \BOOKMARK [1][-]{section.4.14}{Conclus\365es}{chapter.4}% 37
-\BOOKMARK [0][-]{chapter.5}{Visualiza\347\343o}{}% 38
+\BOOKMARK [0][-]{chapter.5}{Valida\347\343o experimental, Simula\347\343o e Testes}{}% 38
 \BOOKMARK [1][-]{section.5.1}{Introdu\347\343o}{chapter.5}% 39
-\BOOKMARK [1][-]{section.5.2}{Atualiza\347\343o dos Dados}{chapter.5}% 40
-\BOOKMARK [1][-]{section.5.3}{Representa\347\343o da Rede}{chapter.5}% 41
-\BOOKMARK [2][-]{subsection.5.3.1}{Nodes}{section.5.3}% 42
-\BOOKMARK [2][-]{subsection.5.3.2}{Links}{section.5.3}% 43
-\BOOKMARK [2][-]{subsection.5.3.3}{Fila}{section.5.3}% 44
-\BOOKMARK [2][-]{subsection.5.3.4}{Hist\363rico de Pedidos}{section.5.3}% 45
-\BOOKMARK [2][-]{subsection.5.3.5}{Hist\363rico de Owners}{section.5.3}% 46
-\BOOKMARK [1][-]{section.5.4}{Conclus\365es}{chapter.5}% 47
-\BOOKMARK [0][-]{chapter.6}{Reflex\343o Cr\355tica}{}% 48
-\BOOKMARK [1][-]{section.6.1}{Introdu\347\343o}{chapter.6}% 49
-\BOOKMARK [1][-]{section.6.2}{Escolhas de Implementa\347\343o}{chapter.6}% 50
-\BOOKMARK [1][-]{section.6.3}{Detalhes de Implementa\347\343o}{chapter.6}% 51
-\BOOKMARK [1][-]{section.6.4}{Conclus\365es}{chapter.6}% 52
-\BOOKMARK [0][-]{chapter.7}{Conclus\365es e Trabalho Futuro}{}% 53
-\BOOKMARK [1][-]{section.7.1}{Reflexao Cr\355tica}{chapter.7}% 54
-\BOOKMARK [1][-]{section.7.2}{Conclus\365es Principais}{chapter.7}% 55
-\BOOKMARK [1][-]{section.7.3}{Trabalho Futuro}{chapter.7}% 56
-\BOOKMARK [0][-]{chapter*.86}{Bibliografia}{}% 57
+\BOOKMARK [1][-]{section.5.2}{Constru\347\343o do Sistema}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.3}{Simula\347\343o}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.4}{Conclus\365es}{chapter.5}% 42
+\BOOKMARK [0][-]{chapter.6}{Conclus\365es e Trabalho Futuro}{}% 43
+\BOOKMARK [1][-]{section.6.1}{Reflexao Cr\355tica}{chapter.6}% 44
+\BOOKMARK [1][-]{section.6.2}{Conclus\365es Principais}{chapter.6}% 45
+\BOOKMARK [1][-]{section.6.3}{Trabalho Futuro}{chapter.6}% 46
+\BOOKMARK [0][-]{chapter*.87}{Bibliografia}{}% 47

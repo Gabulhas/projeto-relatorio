@@ -5,7 +5,7 @@
 \label{chap4:sec:intro}
 
 Neste capítulo serão descritos todos os elementos envolvidos na implementação do protocolo,
-como as tecnologias utilizadas, em que é feita uma descirção da razão de escolha de cada uma destas
+como as tecnologias utilizadas, em que é feita uma descrição da razão de escolha de cada uma destas
 a implementação do \emph{Node} do sistema
 o foco deste capítulo é atribuído ao processo de desenvolvimento dos \emph{Nodes} do sistemas, ou o programa que define um \emph{Node}, pois o conjunto destes descreve o protocolo em questão, e por último a implementação da visualização, mais especificamente o tratamento de informação que estará disponível neste componente. 
 
@@ -217,7 +217,7 @@ pois este é usado na inicialização do servidor \acs{HTTP} do \emph{Node}.
 O atributo \textbf{``VisAddress''} é o \acs{URL} usado para a atualização do estado do \emph{Node} na visualização.
 
 O atributo \textbf{``Obj''} apenas indica se o \emph{Node} tem acesso ou não ao objeto.
-Este atributo é redundante, pois a mesma informação pode ser adquirida a partir do tipo do node (``Type''), 
+Este atributo é redundante, pois a mesma informação pode ser adquirida a partir do tipo do \emph{Node} (``Type''), 
 em que, caso o \emph{Node} seja do tipo \emph{OwnerTerminal} ou \emph{OwnerWithRequest}, este tem o acesso ao objeto.
 
 
@@ -1678,6 +1678,7 @@ atualizações que se façam na parte gráfica terão que demonstrar que as liga
 % como o histórico é formado
 
 
+% TODO: Possivelmente Remover
 \section{Uso de \emph{containers Docker}}
 
 Na implementação deste projeto foi necessário testar os \emph{Nodes} num contexto distribuído.
@@ -1705,7 +1706,7 @@ CMD ./node --address=$address --type=$type --link=$link --requests=$requests --v
 
 \end{lstlisting}
 
-\subsection*{docker-compose.yml}
+\subsection*{docker-compose}
 
 Foram criadas várias topologias de redes (por exemplo rede em Anel, Estrela, etc) para demonstrar e testar o diretório.
 Estes exemplos estão no formato ``YML'', mais precisamente, no formato de um ficheiro ``docker-compose.yml'' para que este possa ser lido pelo programa ``docker-compose'', um \emph{script} que permite a execução de múltiplos \emph{containers} com apenas um ficheiro e um comando.

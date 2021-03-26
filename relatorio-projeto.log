@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.3.18)  19 MAR 2021 11:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.3.18)  26 MAR 2021 12:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -717,7 +717,7 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count339
 \l__pdf_internal_box=\box58
-) (./relatorio-projeto.aux (./capa.aux) (./agradecimentos.aux) (./acronimos.aux) (./introducao.aux) (./motivacao.aux) (./especificacao.aux) (./implementacao.aux) (./visualizacao.aux) (./reflexao.aux) (./conc-trab-futuro.aux))
+) (./relatorio-projeto.aux (./capa.aux) (./agradecimentos.aux) (./acronimos.aux) (./introducao.aux) (./motivacao.aux) (./especificacao.aux) (./implementacao.aux) (./validacao.aux) (./conc-trab-futuro.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 125.
 LaTeX Font Info:    ... okay on input line 125.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 125.
@@ -797,7 +797,7 @@ LaTeX Info: Redefining \nameref on input line 125.
 (./relatorio-projeto.out) (./relatorio-projeto.out)
 \@outlinefile=\write4
  (./capa.tex
-<ubi-fe-di.png, id=233, 111.0549pt x 107.6823pt>
+<ubi-fe-di.png, id=192, 111.0549pt x 107.6823pt>
 File: ubi-fe-di.png Graphic file (type png)
 <use ubi-fe-di.png>
 Package pdftex.def Info: ubi-fe-di.png  used on input line 20.
@@ -935,16 +935,12 @@ Overfull \hbox (7.34254pt too wide) in paragraph at lines 24--25
 Package acronym Warning: Acronym `MST' is not defined on input line 52.
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
-
- []
-
-<um_pedido_1.png, id=405, 342.27875pt x 101.37875pt>
+<um_pedido_1.png, id=355, 342.27875pt x 101.37875pt>
 File: um_pedido_1.png Graphic file (type png)
 <use um_pedido_1.png>
 Package pdftex.def Info: um_pedido_1.png  used on input line 86.
 (pdftex.def)             Requested size: 250.0pt x 74.04918pt.
-<um_pedido_2.png, id=406, 342.27875pt x 101.37875pt>
+<um_pedido_2.png, id=356, 342.27875pt x 101.37875pt>
 File: um_pedido_2.png Graphic file (type png)
 <use um_pedido_2.png>
 Package pdftex.def Info: um_pedido_2.png  used on input line 97.
@@ -955,12 +951,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
  []
 
 [7 <./um_pedido_1.png>]
-<dois_pedidos_1.png, id=414, 342.27875pt x 101.37875pt>
+<dois_pedidos_1.png, id=364, 342.27875pt x 101.37875pt>
 File: dois_pedidos_1.png Graphic file (type png)
 <use dois_pedidos_1.png>
 Package pdftex.def Info: dois_pedidos_1.png  used on input line 117.
 (pdftex.def)             Requested size: 250.0pt x 74.04918pt.
-<dois_pedidos_2.png, id=415, 352.31625pt x 101.37875pt>
+<dois_pedidos_2.png, id=365, 352.31625pt x 101.37875pt>
 File: dois_pedidos_2.png Graphic file (type png)
 <use dois_pedidos_2.png>
 Package pdftex.def Info: dois_pedidos_2.png  used on input line 128.
@@ -970,18 +966,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 132--133
 
  []
 
-[8 <./um_pedido_2.png> <./dois_pedidos_1.png> <./dois_pedidos_2.png>]
-<dois_pedidos_3.png, id=423, 352.31625pt x 135.50626pt>
+<dois_pedidos_3.png, id=366, 352.31625pt x 135.50626pt>
 File: dois_pedidos_3.png Graphic file (type png)
 <use dois_pedidos_3.png>
 Package pdftex.def Info: dois_pedidos_3.png  used on input line 139.
 (pdftex.def)             Requested size: 250.0pt x 96.15427pt.
-
+[8 <./um_pedido_2.png> <./dois_pedidos_1.png> <./dois_pedidos_2.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 148--149
 
  []
 
-<fila.png, id=424, 352.31625pt x 140.525pt>
+<fila.png, id=374, 352.31625pt x 140.525pt>
 File: fila.png Graphic file (type png)
 <use fila.png>
 Package pdftex.def Info: fila.png  used on input line 164.
@@ -992,12 +987,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 176--177
  []
 
 
-Package natbib Warning: Citation `Ivy' on page 10 undefined on input line 203.
+Package natbib Warning: Citation `Ivy' on page 10 undefined on input line 205.
 
 
-Package natbib Warning: Citation `Arvy' on page 10 undefined on input line 203.
+Package natbib Warning: Citation `Arvy' on page 10 undefined on input line 205.
 
-[10 <./fila.png>]) [11] [12
+
+Package acronym Warning: Acronym `ADDP' is not defined on input line 205.
+
+[10 <./fila.png>]
+
+Package acronym Warning: Acronym `ADDP' is not defined on input line 208.
+
+
+Overfull \hbox (2.75238pt too wide) in paragraph at lines 210--211
+[]\T1/futs/m/n/12 Como re-fe-rido an-te-ri-or-mente, o \T1/futs/m/it/12 Arvy \T1/futs/m/n/12 é uma ge-ne-ra-li-za-ção de am-bos. Neste
+ []
+
+) [11] [12
 
 
 
@@ -1006,36 +1013,38 @@ Package natbib Warning: Citation `Arvy' on page 10 undefined on input line 203.
 
 
 ] [14] [15]
-Overfull \hbox (5.70357pt too wide) in paragraph at lines 104--106
+Overfull \hbox (5.70357pt too wide) in paragraph at lines 106--108
 \T1/futs/m/n/12 Este atri-buto re-pre-senta o \T1/futs/m/it/12 Chan-nel \T1/futs/m/n/12 do \T1/futs/m/it/12 Node \T1/futs/m/n/12 onde este re-cebe pe-di-dos de acesso
  []
 
 [16] [17] [18]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 218--221
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 220--223
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
 [19]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 248--251
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 250--253
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
 
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 271--272
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 273--274
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
 [20]
-Overfull \hbox (1.66245pt too wide) in paragraph at lines 299--300
+Overfull \hbox (1.66245pt too wide) in paragraph at lines 301--302
 []\T1/futs/m/n/12 Este en-via pelo \T1/futs/b/it/12 Link \T1/futs/m/n/12 o \T1/futs/b/it/12 Wai-ter-Chan \T1/futs/m/n/12 do pe-dido \T1/futs/b/it/12 Ac-cess Re-quest \T1/futs/m/n/12 e o seu \T1/futs/m/it/12 Chan-
  []
 
-) [21] [22
+
+Underfull \vbox (badness 2020) has occurred while \output is active []
+
+ [21]) [22] (./implementacao.tex [23
 
 
 
 
-] (./implementacao.tex [23
 
 
 ] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1112,7 +1121,7 @@ Overfull \hbox (73.10738pt too wide) in paragraph at lines 471--473
  []
 
 [34] [35] [36] [37] [38] [39]
-<state-diagram.png, id=870, 958.58125pt x 393.47pt>
+<state-diagram.png, id=820, 958.58125pt x 393.47pt>
 File: state-diagram.png Graphic file (type png)
 <use state-diagram.png>
 Package pdftex.def Info: state-diagram.png  used on input line 743.
@@ -1205,27 +1214,28 @@ Overfull \hbox (0.56749pt too wide) in paragraph at lines 1580--1582
 \T1/futs/m/n/12 Caso o ``Wai-ter-Chan'' do \T1/futs/m/it/12 Node \T1/futs/m/n/12 da atu-a-li-za-ção aponte para o pri-meiro ele-mento
  []
 
-[60] [61] [62] [63]) [64] (./visualizacao.tex) [65
+[60] [61] [62] [63]) [64] (./validacao.tex [65
 
 
 
 
 
 
-] [66
+]
+Overfull \hbox (2.86833pt too wide) in paragraph at lines 33--34
+[]\T1/futs/m/n/12 Para a exe-cu-ção de \T1/futs/m/it/12 Con-tai-ners \T1/futs/m/n/12 que exe-cu-tam o pro-grama do \T1/futs/m/it/12 Node \T1/futs/m/n/12 foi usado
+ []
+
+
+Overfull \hbox (2.86833pt too wide) in paragraph at lines 44--45
+[]\T1/futs/m/n/12 Para a exe-cu-ção de \T1/futs/m/it/12 Con-tai-ners \T1/futs/m/n/12 que exe-cu-tam o pro-grama do \T1/futs/m/it/12 Node \T1/futs/m/n/12 foi usado
+ []
+
+[66] [67]) [68] (./conc-trab-futuro.tex) [69
 
 
 
 
-] (./reflexao.tex) [67
-
-
-] [68
-
-
-
-
-] (./conc-trab-futuro.tex) [69
 
 
 ] [70
@@ -1244,27 +1254,27 @@ Package natbib Warning: There were undefined citations.
 \tf@toc=\write5
 \tf@lof=\write6
 \tf@lot=\write7
- (./relatorio-projeto.aux (./capa.aux) (./agradecimentos.aux) (./acronimos.aux) (./introducao.aux) (./motivacao.aux) (./especificacao.aux) (./implementacao.aux) (./visualizacao.aux) (./reflexao.aux) (./conc-trab-futuro.aux))
+ (./relatorio-projeto.aux (./capa.aux) (./agradecimentos.aux) (./acronimos.aux) (./introducao.aux) (./motivacao.aux) (./especificacao.aux) (./implementacao.aux) (./validacao.aux) (./conc-trab-futuro.aux))
 Package rerunfilecheck Info: File `relatorio-projeto.out' has not changed.
-(rerunfilecheck)             Checksum: 50AFD15C6F5C12597E74D55F5C4A7FB0;3710.
+(rerunfilecheck)             Checksum: DDE1E5582C5C8B0E4A3B11C58D64D869;3068.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15508 strings out of 479383
- 220811 string characters out of 5875830
- 1094648 words of memory out of 5000000
- 31258 multiletter control sequences out of 15000+600000
+ 15624 strings out of 479383
+ 222266 string characters out of 5875830
+ 1093430 words of memory out of 5000000
+ 31319 multiletter control sequences out of 15000+600000
  500219 words of font info for 104 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,12n,72p,634b,2019s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,12n,72p,634b,2021s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
-Output written on relatorio-projeto.pdf (83 pages, 397924 bytes).
+Output written on relatorio-projeto.pdf (83 pages, 412347 bytes).
 PDF statistics:
- 1807 PDF objects out of 2073 (max. 8388607)
- 1683 compressed objects within 17 object streams
- 997 named destinations out of 1000 (max. 500000)
- 497 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1843 PDF objects out of 2073 (max. 8388607)
+ 1718 compressed objects within 18 object streams
+ 1059 named destinations out of 1200 (max. 500000)
+ 417 words of extra memory for PDF output out of 10000 (max. 10000000)
 
