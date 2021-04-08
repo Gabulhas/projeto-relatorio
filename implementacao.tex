@@ -7,7 +7,8 @@
 Neste capítulo serão descritos todos os elementos envolvidos na implementação do protocolo,
 como as tecnologias utilizadas, em que é feita uma descrição da razão de escolha de cada uma destas
 a implementação do \emph{Node} do sistema
-o foco deste capítulo é atribuído ao processo de desenvolvimento dos \emph{Nodes} do sistemas, ou o programa que define um \emph{Node}, pois o conjunto destes descreve o protocolo em questão, e por último a implementação da visualização, mais especificamente o tratamento de informação que estará disponível neste componente. 
+o foco deste capítulo é atribuído ao processo de desenvolvimento dos \emph{Nodes} do sistema, ou o programa que define um \emph{Node}, pois o conjunto destes descreve o protocolo em questão, e por último a implementação da visualização, mais especificamente o tratamento de informação que estará disponível neste componente. 
+Este Sistema é executado num contexto distribuído, isto é, várias instâncias do programa que define o \emph{Node} podem ser executadas em várias máquinas diferentes, sendo que é necessário a comunicação entre os \emph{Nodes} para o funcionamento do sistema.
 
 
 \section{Linguagens de Programação}
@@ -1676,74 +1677,6 @@ atualizações que se façam na parte gráfica terão que demonstrar que as liga
 % como os dados são demonstrados no grafo
 % como a queue é formada
 % como o histórico é formado
-
-
-% TODO: Possivelmente Remover
-\section{Uso de \emph{containers Docker}}
-
-Na implementação deste projeto foi necessário testar os \emph{Nodes} num contexto distribuído.
-Para tal, em vez de correr várias instâncias do programa em várias máquinas diferentes (mas que podessem comunciar entre si), fez-se uso de \emph{containers Docker} para criar o mesmo efeito.
-
-Além disso, o uso desta ferramenta provou-se útil como ferramenta de execução de multiplas instâncias do programa, não apenas como ``Máquinas Virtuais''.
-
-Para a criação e execução de \emph{containers} foram necessários dois tipos de ficheiros, \textbf{Dockerfile} \textbf{docker-compose.yml}.
-
-
-
-\subsection*{Dockerfile}
-
-Na criação de um \emph{container} é necessário um ficheiro ``Dockerfile'', que descreve o processo de inicialização do \emph{container}, como que Sistema Operativo/imagem irá usar, a cópia de ficheiros para o \emph{container}, que comandos deve executar e por último que programa deverá executar.
-
-
-\begin{lstlisting}[caption={Iteração pelo ``Map'' ``Nodes'', instanciação do objeto e adicionado à lista },language=C]
-FROM golang # que sistema ou imagem ira usar, neste caso e usado a imagem ``golang''
-WORKDIR /src  # em que diretorio, no container, os seguintes comandos irao ser executados
-COPY . .
-RUN go build -o node # compilacao do programa
-
-# execucao da instancia, as variaveis de ambiente sao marcadas com $, no entanto serao descritas a sua origem de seguida
-CMD ./node --address=$address --type=$type --link=$link --requests=$requests --visualization=$VIS_ADDRESS
-
-\end{lstlisting}
-
-\subsection*{docker-compose}
-
-Foram criadas várias topologias de redes (por exemplo rede em Anel, Estrela, etc) para demonstrar e testar o diretório.
-Estes exemplos estão no formato ``YML'', mais precisamente, no formato de um ficheiro ``docker-compose.yml'' para que este possa ser lido pelo programa ``docker-compose'', um \emph{script} que permite a execução de múltiplos \emph{containers} com apenas um ficheiro e um comando.
-
-No entanto estes ficheiros apenas declaram os atributos de cada \emph{container}, como o nome, o endereço \acs{IP}, os \emph{Ports} que esta necessita para o funcionamento, e no contexto deste projeto, os artibutos iniciais de cada \emph{Node}, como o ``Type'', o 
-``Link'' e o enderço do \emph{Node} de visualização, visto que cada \emph{container} executará uma instância do programa, isto é, cada \emph{container} é um \emph{Node}. Os atributos do \emph{Node} são definidos usando as variáveis de sistema.
-
-
-\begin{lstlisting}[caption={Iteração pelo ``Map'' ``Nodes'', instanciação do objeto e adicionado à lista },language=C]
-  # nome do container
-  node_0:
-    tty: true
-    stdin_open: true
-
-    # indicacao da localizacao do ficheiro Dockerfile
-    build:
-      context: ./src
-      dockerfile: Dockerfile
-
-    # definicao dos atributos do node como variaveis de ambiente
-    environment:
-      address: 127.0.0.1:8001
-      type: 2 
-      link: 127.0.0.1:8005
-      VIS_ADDRESS: 127.0.0.1:8000/updateState
-      requests: "true"
-
-    # Ports necessarios para o funcionamento do Container
-    ports:
-      - "8001:8001"
-    # Indicacao que este container sera executado na mesma rede que o Host, isto para que seja
-    # possivel a realizacao de pedidos remotos atraes da visualizacao
-    network_mode: host
-\end{lstlisting}
-
-
-
-
-
 \section{Conclusões}
+
+

@@ -3,6 +3,15 @@
 \section{Introdução}
 \label{chap5:sec:intro}
 
+\section{Requisitos do Sistema}
+\begin{comment}
+    artigo do sistema
+    explicar que é uma simulação distribuída em vez de multithreaded (problemas de rede, etc)
+    arquitetura do sistema
+    engenharia de software
+
+\end{comment}
+
 \section{Construção do Sistema}
 \begin{comment}
 - Explicação dos elementos do deploy - Makefile, Dockerfile, Docker-compose, 
@@ -23,6 +32,8 @@ Na execução deste sistema para testes fez-se uso de três sistemas de constru�
 
 Com o uso de estes sistemas de construção apenas é necessário executar o comando ``make run'' para executar um sistema com um \emph{Node} de visualização e um número arbitrário (mas definido num ficheiro ``docker-compose.yml'', ver capítulo seguinte) de \emph{containers} que executam o programa do \emph{Node}.
 
+
+Como referido no capítulo anterior, o \emph{Node} de visualização faz uso de uma página \emph{Web} para demonstrar o estado (conhecido) do sistema. O endereço desta página depende do ficheiro ``Dockerfile'' (ver subsecção seguinte).
 
 
 \subsection*{docker}
@@ -133,44 +144,68 @@ run:
 \end{lstlisting}
 
 
+\section{Interface de Visualização}
+Para demonstrar o funcionamento e o estado do sistema, foi desenvolvida uma interface gráfica. Nesta secção serão descritos os componentes apresentados na interface de visualização.
 
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=300pt]{relatorio_overview.png}
+\caption{Visão geral da interface.}
+\end{figure}
 
-\section{Simulação}
-\begin{comment}
-- Explicação dos elementos da visualização
->
->
->
->
->
-- Screenshots
->
->
->
->
->
-- Visualização
->
->
->
->
->
-\end{commet}
+Esta interface contém a informação sobre as duas estruturas de dados presentes no sistema, tabelas que contêm o histórico de vários eventos no sistema, e botões para interagir com o sistema e a visualização.
+
+% TODO: Pôr uma introdução aqui.
+
+\subsection*{Representação das Estruturas de Dados}
+Na parte central da interface está apresentado um grafo, no qual os círculos representam os \emph{Nodes} e as setas representam os \emph{Links}. Também está presente uma etiqueta que indica qual o tipo do \emph{Node} corresponde à cor de um \emph{Node}. As ligações (\emph{Links}) e as cores dos \emph{Nodes} são atualizadas dependendo do estado conhecido do sistema.
+É possível saber mais informação sobre cada \emph{Node}, deixando o ponteiro do rato por cima de um \emph{Node} e é possível forçar um \emph{Node} a realizar um pedido ao clicar neste.
+Existe também o modo de filas/\emph{Queue}, que após pressionar o botão \emph{Queue Mode} (ver subsecção seguinte) as setas entre nós passam a demonstrar as ligações de filas/\emph{Queues} entre os \emph{Nodes}, ao invés das ligações do diretório.
+
+Também estão apresentadas duas tabelas ao lado direito, com os títulos \emph{Queue} e \emph{Owner}, que representam a \emph{Queue} ``Principal'' e o atual \emph{Owner} conhecido.
+
+\subsection*{Históricos}
+Na parte inferior da interface estão apresentadas 3 tabelas que contém informação sobre os seguintes históricos:
+\begin{description}
+    \item [\emph{Request History}] Histórico dos pedidos realizados pelos \emph{Nodes}.
+    \item [\emph{Owner History}] Histórico dos \emph{Nodes} que tiveram o acesso ao objeto.
+    \item [\emph{Queue History}] Histórico dos \emph{Nodes} da fila principal, isto é, a ordem da futura chegada do objeto aos \emph{Nodes}.
+\end{description}
+
+Esta informação não representa o estado da rede, mas é utilizada em testes. No entanto, o seu uso será descrito na secção seguinte.
+% o grafo que representa o grafo distribuído/diretório e uma tabela que representa a fila/lista de espera ``Principal'' (que está diretamente ligada ao atual \emph{Owner}), 
+
+\subsection*{Botões}
+Na interface estão disponíveis 5 botões diferentes que permitem a iteração com o sistema e a visualização. A funcionalidade de cada botão é a seguinte:
+\begin{description}
+    \item [Remote Request All] - Força todos os \emph{Nodes} conhecidos a realizarem pedidos. Usado para testes.
+    \item [Freeze] - Para qualquer atualização da interface de visualização.
+    \item [Clear History] - Apaga as tabelas de histórico.
+    \item [Toggle Movement] - Bloqueia o movimento de todos os círculos que representam os \emph{Nodes} no grafo.
+    \item [Queue Mode] - Ativa o modo de demonstração das filas.
+
+\end{description}
 
 \section{Testes}
-\begin{comment}
-    - Explicar as tabelas
->
->
->
->
->
-    - Explicar o uso das tabelas como prova, visto que não podemos comparar com outras implementações
->
->
->
->
->
-\end{comment}
+No desenvolvimento foi necessário testar a implementação e também provar o bom funcionamento deste, no entanto não foi possível possível fazer-se uso de métodos formais de prova deste sistema, nem de comparar esta implementação com outra existente, visto que, até à data do desenvolvimento deste documento não existe qualquer outra implementação de uma simulação.
+						%mudar "histórico VVVVV"
+Ainda assim é possível testar o bom funcionamento do sistema fazendo o uso dos elementos presentes na interface gráfica disponibilizada.
+% Talvez especificar todas as questões de bom funcionamento?
+
+Nem todos os elementos da visualização estão corretos em qualquer momento, por exemplo, ambos o grafo e as tabelas da fila ``Principal'' podem estar em desacordo com o estado real do diretório, pois ambos dependem da última informação conhecida pelo \emph{Node} de visualização, que pode ter um \emph{Delay} causado tanto pela atualização (ou \emph{Refresh Rate}) da interface, a rede usada para comunicação, a sincronização da chegada de informação, etc., mas ao longo do decorrer do sistema, estes serão corrigidos.
+
+
+É possível, na demonstração gráfica do diretório (o grafo) ser mostrado um estado impossível, como, por exemplo, mostrar vários \emph{Owners}, sendo que na realidade só existe um único, ou uma ligação em falta, porém, a implementação estaria errada caso um \emph{Node} se ligar a um \emph{Node} que previamente não era seu vizinho, pois, como definido no protocolo estudado, os vizinhos de um \emph{Node} são sempre as mesmos, apenas as ligações entre estes é que são alteradas (invertidas).
+
+No entanto, o uso mais indicado do grafo e das tabelas da fila e atual \emph{Owner} é de visualização e demonstração de como funciona o sistema/protocolo, e não como prova, devido aos problemas de atualização presentes. 
+
+Para uma prova mais rigorosa, fez-se uso das 3 tabelas dos históricos. 
+Como referido anteriormente, a tabela \emph{Queue History} mostra o histórico dos \emph{Nodes} que entraram na fila ``Principal'', e a passagem do acesso ao objeto tem de seguir a ordem dessa fila, e a ordem por onde circula o objeto é mostrado na tabela \emph{Owner History}, logo, caso as tabelas \emph{Queue History} e \emph{Owner History} demonstrem os \emph{Nodes} com ordens diferentes, o sistema está errado.
+
+A tabela \emph{Request History} tem apenas demonstra que a ordem pela qual os \emph{Nodes} realizam pedidos ou que a ordem que \emph{Node} de visualização recebe a atualização de que esses \emph{Nodes} realizaram pedidos pode ser diferente da ordem na file ``Principal''.
+
+
+
 
 \section{Conclusões}
+APAGAR
