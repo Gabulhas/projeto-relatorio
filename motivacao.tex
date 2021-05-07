@@ -1,9 +1,9 @@
 % porque
 \chapter{Motivação}
-\label{chap:estado-da-arte}
+\label{chap:motivacao}
 
 \section{Introdução}
-\label{chap2:sec:intro}
+\label{motivacao:sec:introducao}
 
 
 
@@ -11,7 +11,7 @@
 % aumento de cores no CPU
 % aumento da infraestruturas das grandes empresas
 % A internet é cada vez mais global, logo é necessário distribuir os sistemas por várias partes do mundo
-Atendendo à crescente utilização de grandes infraestruturas, como em redes sociais, grandes empresas e a demanda de maior capacidade de processamento, como por exemplo, o aumento do número de núcleos nos processadores ou a conveniência de várias máquinas trabalharem em conjunto, a necessidade do uso de sistemas distribuídos tem vindo a aumentar ao longo dos anos.
+Atendendo à crescente utilização de grandes infraestruturas, em redes sociais, grandes empresas e a demanda de maior capacidade de processamento, como por exemplo, o aumento do número de núcleos nos processadores ou a conveniência de várias máquinas trabalharem em conjunto, a necessidade do uso de sistemas distribuídos tem vindo a aumentar ao longo dos anos.
 %https://www.oreilly.com/content/distributed-systems-a-quick-and-simple-definition/
 % maior runtime
 % fault tolearnce
@@ -30,7 +30,7 @@ Das várias vantagens no uso de sistemas distribuídos, as que mais se destacam 
 
 \end{description}
 
-No entanto, os sistemas distribuídos, que inerentemente são concorrentes, têm uma complexidade maior no desenvolvimento em comparação com sistemas e programas sequenciais.
+No entanto, os sistemas distribuídos, que inerentemente são concorrentes, têm uma complexidade maior no desenvolvimento em comparação com sistemas/programas sequenciais.
 A falta de um relógio central, a possibilidade de vários processos necessitarem de aceder ao mesmo recurso ao mesmo tempo, ordem indeterminada de quais quer pedidos, a necessidade de se usar uma rede para comunicar informação entre os nós e dificuldade de controlar os vários sistemas independentes pertencentes ao sistema distribuídos são alguns dos fatores para esta complexidade.
 
 Um dos tópicos relacionado com o protocolo estudado neste relatório é o acesso ao mesmo recurso por vários processos.
@@ -38,18 +38,23 @@ Um dos tópicos relacionado com o protocolo estudado neste relatório é o acess
 Por exemplo, as máquinas numa rede têm a possibilidade de aceder a um ficheiro, tanto para fazer uma leitura como uma escrita.
 Duas máquinas (ou processos) pretendem fazer alterações num ficheiro na rede, ambas começam por fazer uma leitura do ficheiro, e após essa leitura, uma das máquinas escreve as alterações, e logo de seguida a outra máquina escreve as alterações. A falha nesta ocorrência foi que a última máquina a escrever as alterações sobrescreveu totalmente as a alterações da primeira, visto que ambas leram o mesmo estado do ficheiro mas a uma das máquinas escreveu após a escrita da outra.
 
-Este é um dos vários problemas do acesso não exclusivo por parte de vários processos, denominado como falha de condição de corrida/\emph{Race Condition}.
+Este é um dos vários problemas do acesso não exclusivo por parte de vários processos, denominado como falha de condição de corrida/\emph{Race Condition}, e é importante evitar estas falhas, pois podem causar catástrofes. 
+
+% Melhorar
+Um exemplo catastrófico foi o ``Apagão de 2003'' que afetou os Estados Unidos da América e Canada. Ao falharem 3 linhas de eletricidade, foram enviados 3 pedidos ao ``Mesmo Tempo'', que provocou uma \emph{Race Condition} na escrita de uma Estrutura de Dados comum no Servidor Central, deixando assim essa Estrutura de Dados num estado corrupto/errado. Essa corrupção levou a que o sistema de alarme entrasse em Ciclo Infinito.
 
 No protocolo estudado, estes problemas são evitados através da criação de uma fila, esta distribuída, que ordena/sincroniza o acesso ao objeto por parte dos vários nós do sistema.
-A formação desta fila é descrita com maior pormenor na secção seguinte. 
+A formação desta fila é descrita com maior pormenor na secção \ref{motivacao:sec:descricao_protocolo}. 
 
 \section{Descrição do Protocolo}
+\label{motivacao:sec:descricao_protocolo}
 
 Nesta secção será descrito o funcionamento e estrutura do \textit{Arrow Distributed Directory Protocol} (\emph{Arrow}) \cite{Arrow}. 
 
 Este sistema consiste numa rede, que permite o envio assíncrono de mensagens (ou a comunicação) entre os nós, e um diretório, que permite localizar um objeto na rede e garantir o acesso exclusivo a este. 
 
-O diretório pode ser considerado como um grafo ou uma árvore de extensão mínima (\acs{MST}).
+O diretório pode ser considerado como um grafo, em que os Nós do Grafo são os vários elementos que pertencem ao sistema (por exemplo, várias instâncias de um programa) e as arestas são as várias ligações no diretório entre os vários Nós.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{comment}
@@ -69,7 +74,7 @@ Quando um nó pretende aceder ao objeto, este envia um pedido de acesso pela sua
 
 
 
-Reconsideremos que a noção que o diretório é uma árvore de extensão mínima, e consideremos que o acesso ao objeto (ou o nó que o detém) está localizado na raiz da árvore e as todas as ligações apontam em direção à raiz.
+Consideremos que a noção que o diretório é uma árvore de extensão mínima, e consideremos que o acesso ao objeto (ou o nó que o detém) está localizado na raiz da árvore e todas as ligações apontam em direção à raiz.
 
 Quando é realizado um pedido, este irá chegar à raiz, pois todas as ligações apontam para esta. No final da circulação do pedido, todas as ligações por onde passou o pedido estão invertidas, para que estas passem a apontar para o nó que fez o pedido.
 
@@ -79,25 +84,27 @@ Caso um nó receba um pedido de acesso,a ligação deste passa a apontar para o 
 
 \subsection*{Exemplo da organização das ligações}
 
-Vejamos o seguinte exemplo da rede, em que o (acesso ao) objeto se encontra atualmente no nó \textbf{H}.
+Vejamos o seguinte exemplo da rede \ref{motivacao:img:estado_inicial}, em que o (acesso ao) objeto se encontra atualmente no nó \textbf{H}.
+
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=250pt]{um_pedido_1.png}
 \caption{Estado inicial do diretório}
+\label{motivacao:img:estado_inicial}
 \end{figure}
 
 O nó \textbf{A} pretende obter o acesso ao objeto, e para tal envia um pedido através da sua ligação (para o nó \textbf{B}).
 O pedido passará pelos nós \textbf{B}, \textbf{F} e \textbf{H}, por esta ordem.
 
-Vejamos o estado após o pedido chegar ao nó \textbf{F}:
+Vejamos o estado após o pedido chegar ao nó \textbf{F}, como demonstrado na imagem \ref{motivacao:img:apos_chegar_f}:
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=250pt]{um_pedido_2.png}
 \caption{Estado do diretório após o pedido chegar ao nó \textbf{F}}
 Note que as ligações por onde o pedido do nó \textbf{A} passou inverteram-se.
-
+\label{motivacao:img:apos_chegar_f}
 \end{figure}
 
 
@@ -105,7 +112,7 @@ Quando o nó \textbf{A} faz o pedido e este chega ao \textbf{H} este passa a ser
 
 
 
-Vejamos agora outro exemplo, em que exploramos o caso de existirem mais do que uma mensagem a circular no diretório:
+Vejamos agora outro exemplo \ref{motivacao:img:apos_chegar_f_etiquetas}, em que exploramos o caso de existirem mais do que uma mensagem a circular no diretório:
 
 Consideremos que cada passo é uma transmissão de pedidos entre nós, e que os passos que cada pedido executa são sincronizados com os restantes, algo que não é garantido na rede, mas que temos em conta para se demonstrar com maior simplicidade este processo.
 
@@ -116,34 +123,36 @@ Consideremos o mesmo estado anteriormente referido, o estado do diretório após
 \centering
 \includegraphics[width=250pt]{dois_pedidos_1.png}
 \caption{Estado do diretório após o pedido do nó \textbf{A} chegar ao nó \textbf{F}, as etiquetas com ``Pedido'' indicam onde o pedido de cada nó se encontra no atual estado.}
-
+\label{motivacao:img:apos_chegar_f_etiquetas}
 \end{figure}
 
 Como o nó \textbf{F} aponta/está ligado ao nó \textbf{B}, o pedido do nó \textbf{D} será então transmitido para este ao invés do \textbf{H}.
-Vejamos o passo seguinte deste estado:
+Vejamos o passo seguinte deste estado na imagem \ref{motivacao:img:d_chega_f}:
 
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=250pt]{dois_pedidos_2.png}
 \caption{Estado do diretório após o pedido do nó \textbf{D} chegar ao nó \textbf{F}}
+\label{motivacao:img:d_chega_f}
 \end{figure}
 
-\textbf{Nota:} Caso os dois pedidos chegassem ao mesmo tempo ao nó \textbf{F}, este nó teria que decidir qual deles processar primeiro. Se o pedido do nó \textbf{A} fosse o primeiro a ser processado, este seria transmitido para o \textbf{H} e o pedido do \textbf{D} continuava a circulação em direção ao \textbf{A} e vice-versa. \\
+\textbf{Nota:} Caso os dois pedidos chegassem ao nó \textbf{F}, e que nenhum dos dois ainda não foi tratado, os pedidos terão de ser tratados de cada vez. Se o pedido do nó \textbf{A} fosse o primeiro a ser processado, este seria transmitido para o \textbf{H} e o pedido do \textbf{D} continuava a circulação em direção ao \textbf{A} e vice-versa. \\
 
-No passo seguinte, o pedido do \textbf{D} encontra-se no nó \textbf{B}:
+No passo seguinte \ref{motivacao:img:d_chega_b}, o pedido do \textbf{D} encontra-se no nó \textbf{B}:
 
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=250pt]{dois_pedidos_3.png}
 \caption{Estado do diretório após o pedido do nó \textbf{D} chegar ao nó \textbf{B}}
+\label{motivacao:img:d_chega_b}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Numa vista global sobre a rede, quando um nó realiza um pedido, as ligações dos nós por onde esse pedido passou passam a indicar onde é que futuramente estará o objeto, ou seja, na direção do nó que fez o pedido e que espera pelo acesso ao objeto.
-Qualquer outra ``sobreposição'' das alterações nas ligações fará com que as ligações apontem em direção dos nós que realizaram os pedidos que passaram por essas ligações, isto é, independentemente da quantidade de pedidos a circular na rede, se seguirmos as direções das ligações em qualquer estado da rede estas aponta sempre para um nó que detém ou espera pelo acesso ao objeto.
+Qualquer outra ``sobreposição'' das alterações nas ligações fará com que as ligações apontem em direção dos nós que realizaram os pedidos que passaram por essas ligações, isto é, independentemente da quantidade de pedidos a circular na rede, se seguirmos as direções das ligações em qualquer estado da rede estas apontam sempre para um nó que detém ou espera pelo acesso ao objeto.
 
 Esta inversão das ligações permite que, o nó apenas detendo uma ligação, faça chegar o seu pedido ao nó que detém o objeto ou a um nó que deterá o objeto mas que espera por ele. \\
 
@@ -152,17 +161,18 @@ Esta inversão das ligações permite que, o nó apenas detendo uma ligação, f
 
 Caso um nó que espera pelo objeto, quer porque o seu pedido ainda está em circulação na rede ou o nó detentor do objeto ainda não o cedeu, receba um pedido de acesso de outro nó, então este armazena uma ligação com o nó que realizou o pedido.
 
-Quando o nó detém o objeto,se recebe um pedido ou tem em espera um outro nó, o objeto é cedido através de uma ligação direta entre dois nós, evitando a passagem do objeto pelo diretório.
+Quando o nó detém o objeto, se recebe um pedido ou tem em espera um outro nó, o objeto é cedido através de uma ligação direta entre dois nós, evitando a passagem do objeto pelo diretório.
 
 
 \subsection*{Exemplo da formação de uma fila de espera}
 
-Continuando o exemplo anterior. Vejamos um passo seguinte, em que o pedido do nó \textbf{D} chega ao nó \textbf{A}, o nó \textbf{H} ainda não cedeu o acesso ao nó \textbf{A}, e o nó \textbf{C} decidiu realizar um pedido que atualmente se encontra no nó \textbf{D}, que também está à espera do acesso ao objeto. 
+Continuando o exemplo anterior. Vejamos um passo seguinte, em que o pedido do nó \textbf{D} chega ao nó \textbf{A}, o nó \textbf{H} ainda não cedeu o acesso ao nó \textbf{A}, e o nó \textbf{C} decidiu realizar um pedido que atualmente se encontra no nó \textbf{D}, que também está à espera do acesso ao objeto. Vejamos a imagem \ref{motivacao:img:3_pedidos}
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=250pt]{fila.png}
 \caption{Estado do diretório com 3 pedidos em circulação.}
+\label{motivacao:img:3_pedidos}
 \textbf{Nota:} As ligações a tracejado representam as ligações entre os nós fora do diretório, usadas para a transmissão do acesso ao objeto.
 \end{figure}
 
@@ -180,7 +190,7 @@ Ou seja, a ordem de chegada e fila do acesso de pedidos será a \textbf{A},\text
 
 A particularidade deste protocolo deve-se à mudança tanto da localização do objeto como a sua origem, pois esta muda-se para o nó que tem o acesso ao objeto, e não há um único nó que detém a localização atual do objeto, mas a disposição de todas as ligações permite a localização do objeto por todos os nós.
 
-O facto da origem do objeto estar em constante alteração garante que apenas um nó detenha o acesso ao objeto (acesso exclusivo), e que nenhum nó se torne num foco, isto é, que nenhum nó receba demasiados pedidos em relação a outros nós, provocado um engarrafamento/\emph{bottleneck} no acesso ao objeto.
+O facto da ``Casa'' do objeto estar em constante alteração garante que apenas um nó detenha o acesso ao objeto (acesso exclusivo), e que o único detentor do objeto se torne num foco, isto é, que nenhum nó receba demasiados pedidos em relação a outros nós, provocado um engarrafamento/\emph{bottleneck} no acesso ao objeto.
 
 % notas paper
 % explicar o nome
@@ -199,6 +209,7 @@ Neste protocolo existem duas estruturas distribuídas, em que cada uma é formad
 \end{description}
 
 \section{Trabalhos relacionados}
+\label{motivacao:sec:trabalhos_relacionados}
 %Ivy e Arvy
 
 % TODO: Explicar quais é que são os benefícios de usar cada um
@@ -224,7 +235,7 @@ Como referido anteriormente, o \emph{Arvy} é uma generalização de ambos. Nest
 % quais os desafios/interesses ao fazer o projeto
 
 \section{Conclusões}
-\label{chap2:sec:concs}
+\label{motivacao:sec:conclusao}
 %Mudar a palavra esclarecido
-Neste capítulo foi esclarecido ao aumento da necessidade de sistemas algoritmos e a complexidade de implementação dos mesmos. Foi também descrito o funcionamento global do algoritmo/sistema em questão no desenvolvimento deste projeto, com maior foco em como os comportamentos de cada nó altera o estado do sistema. Foram também mencionadas os dois tipos de estruturas de dados presentes no sistema, como o que cada uma representa. Por fim, foram referidos dois trabalhos relacionados com o algoritmo estudado.
+Neste capítulo foi descrito o aumento da necessidade de sistema e algoritmos distribuídos e a complexidade de implementação dos mesmos. Foi também descrito o funcionamento global do algoritmo/sistema em questão no desenvolvimento deste projeto, com um maior foco alterações provocadas pelos comportamentos dos nós. Foram também mencionadas os dois tipos de estruturas de dados presentes no sistema, como o que cada uma representa. Por fim, foram referidos dois trabalhos relacionados com o algoritmo estudado, como as suas semelhanças e diferenças, em comparação com o algoritmo estudado.
 

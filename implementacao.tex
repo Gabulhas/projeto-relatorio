@@ -1,18 +1,18 @@
 \chapter{Implementação}
-\label{chap:imp}
+\label{chap:implementacao}
 
 \section{Introdução}
-\label{chap4:sec:intro}
+\label{implementacao:sec:introducao}
 
 Neste capítulo serão descritos todos os elementos envolvidos na implementação do protocolo,
 como as tecnologias utilizadas, em que é feita uma descrição da razão de escolha de cada uma destas
 a implementação do \emph{Node} do sistema
 o foco deste capítulo é atribuído ao processo de desenvolvimento dos \emph{Nodes} do sistema, ou o programa que define um \emph{Node}, pois o conjunto destes descreve o protocolo em questão, e por último a implementação da visualização, mais especificamente o tratamento de informação que estará disponível neste componente. 
-Este Sistema é executado num contexto distribuído, isto é, várias instâncias do programa que define o \emph{Node} podem ser executadas em várias máquinas diferentes, sendo que é necessário a comunicação entre os \emph{Nodes} para o funcionamento do sistema.
+Este sistema é executado num contexto distribuído, isto é, várias instâncias do programa que define o \emph{Node} podem ser executadas em várias máquinas diferentes, sendo que é necessário a comunicação entre os \emph{Nodes} para o funcionamento do sistema.
 
 
 \section{Linguagens de Programação}
-\label{chap3:linguagens}
+\label{implementacao:sec:linguagens}
 Tal como o título deste projeto sugere, \textbf{\emph{Go}} (frequentemente referido como \emph{Golang}) é a linguagem usada na implementação do protocolo. Para além de \emph{Go}, também foi utilizada \textbf{\emph{JavaScript}} como linguagem de implementação da visualização.
 
 De seguida serão descritas as razões de utilização da linguagem Go e brevemente detalhes sobre o uso de \emph{JavaScript}:
@@ -103,7 +103,7 @@ A concorrência é inerente aos sistemas distribuídos, visto que os vários ele
 
 Um exemplo relacionado com o tema deste projeto seria o caso em que um \emph{Node} recebe vários pedidos de outros \emph{Nodes}. De forma a manter o sistema (ou o diretório) consistente , o \emph{Node} que recebeu os pedidos terá de os tratar de forma sincronizada, isto é, tem de endereçar um pedido de cada vez.
 
-Na implementação fez-se uso de servidores e pedidos \acs{HTTP} que, por omissão, todos os pedidos \acs{HTTP} que o servidor recebe são tratados em \emph{goroutines} diferente, de forma concorrente, o que permite a receção de vários pedidos e para a sincronização das \emph{goroutines} usou-se um ``Mutex'' proveniente da biblioteca ``sync''.
+Na implementação fez-se uso de servidores e pedidos \acs{HTTP} que, por omissão, todos os pedidos \acs{HTTP} que o servidor recebe são tratados em \emph{goroutines} diferentes, de forma concorrente, o que permite a receção de vários pedidos e para a sincronização das \emph{goroutines} usou-se um ``Mutex'' proveniente da biblioteca ``sync''.
 
 
 \subsection*{\emph{JavaScript}}
@@ -114,6 +114,7 @@ Esta linguagem permite que a informação de páginas \emph{Web} seja alterada a
 
 
 \section{Ferramentas e Bibliotecas utilizadas}
+\label{implementacao:sec:ferramentas_bibliotecas}
 \subsection*{Ferramentas}
 As ferramentas usadas durante a implentação deste projeto foram:
 \begin{description}
@@ -147,7 +148,7 @@ Docker é uma plataforma aberta/ferramenta construída de forma a tornar mais ac
 Estes \emph{containers} podem ser comparados com \emph{Virtual Machines}, ambos tendo o mesmo propósito, mas os \emph{containers} \emph{Docker} são mais leves, mais rápidos e portáveis.
 
 
-No entanto, esta tecnologia foi utilizada para simular uma rede distribuída, em que cada \emph{container} simula um \emph{Node} ou uma máquina que cada um tem uma instância do programa a correr, o seu próprio endereço \acs{IP} e que podem comunicar entre si.
+No entanto, esta tecnologia foi utilizada para simular uma rede distribuída, em que cada \emph{container} pode ser considerado \emph{Node} do sistema ou uma máquina que cada um tem uma instância do programa a correr, o seu próprio endereço \acs{IP} e que podem comunicar entre si.
 
 
 
@@ -161,6 +162,7 @@ No entanto, esta tecnologia foi utilizada para simular uma rede distribuída, em
 
 
 \section{Classe \emph{Node}}
+\label{implementacao:sec:classe_node}
 A Classe \emph{Node} desempenha a função de armazenar o estado atual do próprio \emph{Node}, define os métodos/procedimentos que este pode executar, e uma enumeração dos 5 diferentes tipos de \emph{Nodes}.
 
 
@@ -176,8 +178,9 @@ Nesta Implementação, esta classe está incluída num módulo \emph{Go} ``Nodes
 \end{description} 
 
 
-\section{Atributos da Classe}
-Como referido no capítulo de Especificação, um \emph{Node} tem, no máximo 5 atributos, no entanto, na sua implementação este incluí no total 8, tendo a mais os atributos ``MyAddress'', ``Type'' e ``VisAddress''.
+\section{Atributos da Classe \emph{Node}}
+\label{implementacao:sec:atributos_class}
+Como referido no capítulo \ref{chap:especificacao}, um \emph{Node} tem, no máximo 5 atributos, no entanto, na sua implementação este incluí no total 8, tendo a mais os atributos ``MyAddress'', ``Type'' e ``VisAddress''.
 Esta é a definição da \emph{Struct} dos atributos do \emph{Node}.
 
 
@@ -223,6 +226,7 @@ em que, caso o \emph{Node} seja do tipo \emph{OwnerTerminal} ou \emph{OwnerWithR
 
 
 \section{Inicialização do objeto ``Self Node''}
+\label{implementacao:sec:inicializacao}
 
 Nesta secção será descrito o processo de inicialização do objeto ``Self Node'', 
 isto é, a definição dos atributos do \emph{Node} que o programa irá definir.
@@ -238,8 +242,8 @@ que foi usada para garantir que a inicialização do \emph{Node} esteja completa
 Nesta função, é instanciado o objeto ``selfNode'' da classe ``Node'', e é armazenado o ponteiro para o mesmo, para que possa haver alteração do mesmo
 por parte dos seus métodos.
 
-Os argumentos da linha de comandos são analisados/\emph{Parsed} e transformados/\emph{Casted} de texto para o tipo
-correspondente ao do atributo (por exemplo, o tipo é \emph{Casted} de texto para um inteiro), sendo que 
+Os argumentos da linha de comandos são analisados/\emph{Parsed} e transformados de texto para o tipo
+correspondente ao do atributo (por exemplo, o tipo é transformado de texto para um inteiro), sendo que 
 os únicos atributos não opcionais são o endereço (``MyAddress'') do \emph{Node} e o seu tipo.
 
 
@@ -262,7 +266,7 @@ os únicos atributos não opcionais são o endereço (``MyAddress'') do \emph{No
 No entanto, atributos como ``Link'', ``MyChan'', ``Find'', e ``Type'' que dependem do endereço dos \emph{Nodes},
 que apenas são formados se o \emph{Parsing} for bem sucedido.
 
-Dependendo do tipo do \emph{Node}, irão ser executas instruções para garantir o bom funcionamento do diretório/simulação,
+Dependendo do tipo do \emph{Node}, irão ser executas instruções para garantir o bom funcionamento do diretório,
 como por exemplo, caso o \emph{Node} seja do tipo ``OWNER'', é definido que este tem o objeto implicitamente, ou
 caso seja do tipo ``IDLE'' irá ser inicializada uma \emph{goroutine} que executará o método ``AutoRequest'' do \emph{Node},
 para que este tenha a possibilidade de realizar pedidos automáticamente/aleatoriamente.
@@ -304,7 +308,7 @@ para que este tenha a possibilidade de realizar pedidos automáticamente/aleator
 
 
 \section{Tipos de Nodes}
-\label{chap:imp:node:tipos}
+\label{implementacao:sec:tipos_node}
 % Pouco informativo
 
 Os 5 tipos de \emph{Nodes} foram definidos em uma enumeração de constantes inteiras.
@@ -323,7 +327,8 @@ const (
 \end{lstlisting}
 
 \section{Comportamentos}
-Como referido no capítulo de Especificação \ref{especificacao:atr:section}, 
+\label{implementacao:sec:comportamentos}
+Como referido no capítulo \ref{chap:especificacao}, 
 o \emph{Node} pode ter vários comportamentos, 
 que dependem do seu tipo e de fatores que os desencadeiam, como por exemplo receber um pedido de acesso ou o acesso ao objeto e 
 o próprio \emph{Node} (no caso desta implementação) tomar decisões, como ceder o acesso ao objeto ou pedir o mesmo.
@@ -470,7 +475,8 @@ node.WaiterWithRequest(accessRequest.Link, node.WaiterChan) //transformacao do N
 
 \subsection*{Cedência do Objeto}
 No caso do \emph{Node} ser do tipo ``WAITER\textunderscore TERMINAL'' e receber um pedido ``Access Request'', 
-este sofre uma transformação, muda de tipo para ``WAITER\textunderscore WITH\textunderscore REQUEST'' e passou a deter o atributo ``WaiterChan'' (``MyChan'' do \emph{Node} que fez o pedido).
+este sofre uma transformação, muda de tipo para ``WAITER\textunderscore WITH\textunderscore REQUEST''
+e passou a deter o atributo ``WaiterChan'' (``MyChan'' do \emph{Node} que fez o pedido).
 
 % forma como esta frase está construída pode não estar bem
 Esta secção de código é executada concorrentemente (numa \emph{goroutine}) com qualquer outras \emph{goroutines} 
@@ -482,7 +488,7 @@ enquanto este espera para ceder o acesso, isto é, enquanto que o \emph{Node} é
 
 Referente a um caso real, o \emph{Node} transmitiria o objeto pelo \emph{Channel ``WaiterChan''}, quando, por exemplo, 
 o acesso a este não fosse mais necessário.
-No entanto, por questões de se pretender criar uma simulação deste protocolo, o \emph{Node} decide ceder o acesso ao objeto após um tempo aleatório (entre 1 a 2 segundos)
+Como se prentende simular o funcionamento deste protocolo, o \emph{Node} decide ceder o acesso ao objeto após um tempo aleatório (entre 1 a 2 segundos)
 depois de receber o pedido para o seu acesso.
 
 É executada a primitiva ``defer'' com o método ``Unlock'' do objeto ``Mutex'' para,
@@ -518,7 +524,6 @@ do tipo ``IDLE'', mantendo o ``Link''.
 Como o \emph{Node} transformou-se em ``IDLE'', é inicializada uma \emph{goroutine} que executará o método ``AutoRequest''.
 Este método desempenha a função de decidir se o \emph{Node} faz um pedido de acesso. 
 %Referir mais à frente o autoRequest
-No entanto, este é descrito num capítulo diferente.
 
 De seguida, o procedimento a ser executado neste método é o método ``UpdateVisualization'' da classe ``Node'',
 em uma nova \emph{goroutine}.
@@ -608,9 +613,11 @@ func (node *Node) Request() {
 ``Shell'' que é iniciada com o programa,
 ou através da visualização, ao clicar duas vezes no \emph{Node} do grafo correspondente ao \emph{Node} em questão.
 
-No entanto, por questões de simulação do diretório, caso o estado inicial do \emph{Node}
+Como pretendemos demonstrar o protocolo em funcionamento sem necessidade de interação humana,
+caso o estado inicial do \emph{Node}
 ou este mude de tipo para ``IDLE'', 
-é iniciada uma \emph{goroutine} que executa o método ``AutoRequest'' da classe \emph{Node}.
+é iniciada uma \emph{goroutine} que executa o método ``AutoRequest'' da classe \emph{Node}, 
+para que os \emph{Nodes} decidam fazer pedidos automaticamente.
 
 Neste método existe um ciclo ``infinito'', cuja a única condição de saída é o \emph{Node} realizar o pedido.
 
@@ -654,8 +661,8 @@ func (node *Node) AutoRequest() {
 
 }
 \end{lstlisting}
-Este método permite que \emph{Node} realize pedidos em tempo aleatório com uma chance de 50\%,
-ou seja, há a possibilidade de o \emph{Node} não realizar um pedido.
+Este método permite que \emph{Node} realize pedidos em tempo aleatório com uma probabilidade de 50\%,
+ou seja, é possível o \emph{Node} não realizar um pedido durante algum tempo.
 
 
 \subsection*{Receção acesso ao objeto}
@@ -692,7 +699,7 @@ Com o \emph{Node} tem outro \emph{Node} à espera do acesso, é inicializada uma
 que irá executar o método ``releaseObj'' da classe \emph{Node}.
 
 
-Ao final, é inicializada uma \emph{goroutine} que executará 
+No final, é inicializada uma \emph{goroutine} que executará 
 o método ``UpdateVisualization'', para que o estado do \emph{Node}
 seja atualizado na visualização.
 
@@ -722,13 +729,14 @@ func (node *Node) ReceiveObj(giveAccess Channels.GiveAccess) {
 \end{lstlisting}
 
 \section{Transformações do \emph{Node}}
+\label{implementacao:sec:transformacoes}
 
 % possivelmente adicionar diagrama para ficar mais completo
 % por exemplo, IDLE -> recebeu pedido -> IDLE (mas muda o LINK)
 % ou, OWNER -> cedeu o objeto -> IDLE(deixou de ter WaiterChan)
 
 
-Neste capítulo serão descritas as transformações que o \emph{Node}
+Nesta secção serão descritas as transformações que o \emph{Node}
 pode sofrer, tais como as suas implementações.
 
 
@@ -737,6 +745,7 @@ O \emph{Node} sofre transformações quando este executa qualquer comportamento,
 no entanto, uma transformação não significa uma mudança de tipo,
 mas uma mudança de estado.
 
+As possíveis transformações são demonstradas na imagem 
 Estas são as possíveis transformações que o \emph{Node} pode sofrer:
 
 \begin{figure}[!htb]
@@ -744,6 +753,7 @@ Estas são as possíveis transformações que o \emph{Node} pode sofrer:
 \includegraphics[width=500pt]{state-diagram.png}
 \caption{Diagrama de Estados do \emph{Node}}
 Nota: O estado inicial do \emph{Node} não está presente porque este pode começar em qualquer estado/tipo.
+\label{}
 \end{figure}
 
 
@@ -847,11 +857,12 @@ e não ao
 \end{lstlisting}
 
 \section{Comunicação entre Nodes}
+\label{implementacao:sec:comunicacao}
 % Explicar o uso de HTTP - industry standard
 
-Neste capítulo serão tratadas as conexões que os \emph{Nodes} fazem entre si,
+Nesta secção serão tratadas as conexões que os \emph{Nodes} fazem entre si,
 Como referido anteriormente, é feito uso do protocolo \acs{HTTP} nas ligação/pedidos entre \emph{Nodes}, pois este é um ``industry standard'' (ou seja, o protocolo mais usado neste tipo de sistemas).
-Para tal, cada \emph{Node} inicia um servidor \acs{HTTP} que espera pela entrada de pedidos de HTTP, isto é, espera que outros \emph{Nodes} transmitam pedidos do tipo ``AccessRequest'' e ``GiveAccess''.
+Para tal, cada \emph{Node} inicia um servidor \acs{HTTP} que espera pela entrada de pedidos de \acs{HTTP}, isto é, espera que outros \emph{Nodes} transmitam pedidos do tipo ``AccessRequest'' e ``GiveAccess''.
 A implementação do servidor \acs{HTTP} está presente no módulo ``controller'' (no ficheiro ``controller.go'').
 
 No entanto, também foram implementados métodos para permitir ao \emph{Node} a realização de pedidos, ou seja, de poder enviar informação para outros \emph{Nodes}.
@@ -861,8 +872,10 @@ A implementação destes pedidos \acs{HTTP} está presente no módulo ``Node'' (
 % acrescentar aqui mais alguma coisa
 
 \subsection*{Servidor \acs{HTTP}}
+\label{implementacao:sec:servidor_http}
 Após a inicialização do programa do \emph{Node}, é inicializado o servidor \acs{HTTP}, executando a função ``StartServer'', em que é criado um objeto do tipo ``Router'' (roteador),  
-no qual são registados os vários caminhos e \emph{Handlers}(manipuladores) destes caminhos. Isto é, são registados os métodos deste servidor e as funções que serão executadas
+no qual são registados os vários caminhos e \emph{Handlers}
+(manipuladores) destes caminhos. Isto é, são registados os métodos deste servidor e as funções que serão executadas
 caso sejam feitos pedidos em cada um desses métodos.
 
 Os métodos e \emph{Handlers} registados são:
@@ -1108,8 +1121,9 @@ func (node *Node) UpdateVisualization(){
 
 
 \section{Classes de \emph{Channels}}
+\label{implementacao:sec:class_channels}
 % Melhorar a introdução
-Neste capítulo serão descritos os ``Channels''/Pedidos utilizados pelos \emph{Nodes}, sendo estes ``AccessRequest'' e ``GiveAccess''.
+Nesta secção serão descritos os ``Channels''/Pedidos utilizados pelos \emph{Nodes}, sendo estes ``AccessRequest'' e ``GiveAccess''.
 
 As ``Struct'' destes estão definidas no módulo ``Channels'', no ficheiro \textbf{channels.go}.
 
@@ -1147,6 +1161,7 @@ type AccessRequest struct {
 
 
 \section{Implementação da Visualização}
+\label{implementacao:sec:implementacao_visualizacao}
 Na implementação deste protocolo a visualização serviu de auxílio na depuração do diretório e testar o seu funcionamento.
 Cada \emph{Node}, quando sofre qualquer alteração de estado, este transmite o seu estado atual para um \emph{Node} especial da visualização.
 
@@ -1156,15 +1171,16 @@ Esta informação armazenada é depois usada na visualização do diretório.
 Para a parte gráfica desta secção fez-se uso de uma página \emph{Web}, que é atualizada usando \emph{JavaScript} e 
 pedidos \emph{HTTP} feitos ao \emph{Node} da visualização, que devolve a informação do diretório.
 
-A componente da visualização, mesmo que útil, a sua implementação é de pouca relevância ao contexto do projeto, ou seja, a parte do projeto implementada em \emph{JavaScript}.
-Por isso serão apenas tratados os conteúdo de maior interesse, como os métodos/caminhos do servidor \acs{HTTP} do \emph{Node} de visualização e como cada um processa a informação necessária, como, por exemplo, o \emph{Node} de visualização tem acesso à informação atual do diretório e a formação da ``Queue''.
+A componente da visualização, mesmo que útil, os detalhes desta não são centrais ao conceito do projeto, então não serão apresentados. 
+
+Por isso serão apenas tratados os conteúdo de maior interesse desta parte da implementação, como os métodos/caminhos do servidor \acs{HTTP} do \emph{Node} de visualização e como cada um processa a informação necessária, como, por exemplo, o \emph{Node} de visualização tem acesso à informação atual do diretório e a formação da ``Queue''.
 
 
 
 \subsection*{Servidor \acs{HTTP}}
 % referir o Servidor HTTP do Node
-Como na secção de inicialização do servidor \acs{HTTP} dos \emph{Nodes}, são registados 
-multiplos caminhos e handlers neste servidor.
+Tal como descrito na secção de inicialização do servidor \acs{HTTP} dos \emph{Nodes} (\ref{implementacao:sec:servidor_http}), são registados 
+múltiplos caminhos e handlers neste servidor.
 
 Os caminhos, handlers, tipos e as suas funcionalidades são:
 \begin{description}
@@ -1175,12 +1191,12 @@ Os caminhos, handlers, tipos e as suas funcionalidades são:
 \item [/requestAll] requestAll \\Utilizado para forçar todos os \emph{Idle Nodes} a realizar pedidos de acesso.
 \end{description}
 
-No entanto, esta implementação tem defeitos. 
+No entanto, esta implementação tem limitações. 
 \begin{itemize}
 	\item 
 A atualização por parte dos \emph{Nodes} não garante a ordem de chegada da informação, pois a rede (não o diretório) usada
 na comunicação de pedidos \acs{HTTP} não garante a ordem de, por exemplo, o tempo de chegada de um pedido ao \emph{Node} de visualização
-pode variar entre \emph{Nodes}, e se há muita informação a circular na rede pode haver um constragimento no envio de atualizações.
+pode variar entre \emph{Nodes}, e se há muita informação a circular na rede pode haver um engarrafamento na chegada de atualizações.
 
 	\item 
 O método de atualiação dos \emph{Nodes} é executada numa \emph{goroutine}, o que não garante que a execução deste método 
@@ -1191,7 +1207,7 @@ Com todos os contragimentos referidos anteriormente é necessário sincronizar a
 
 \end{itemize}
 
-Mesmo com os defeitos referidos, é possível apresentar uma aproximação do estado da rede, usando vários mecanismos, que serão retratados nos subcapítulos seguintes.
+Mesmo com as limitações referidas, é possível apresentar uma aproximação do estado da rede, usando vários mecanismos, que serão retratados nas subsecções seguintes.
 
 \subsection*{Atualização da visualização}
 %Alterar caso a implementação mude
@@ -1247,7 +1263,8 @@ Durante o correr da visualização, a atualização do grafo que representa o di
 pedidos constantes efetuados ao caminho \textbf{/data} do servidor \acs{HTTP}.
 
 Este devolve duas listas, uma contendo o estado de todos os \emph{Nodes} armazenados no \emph{Node} de visualização, 
-outra contendo todos os arcos do grafo (dirigido), ou seja, pares de endereços, ``Source'' e ``Target'' (classe ``elements.Link''). 
+outra contendo todos os arcos do grafo (dirigido), ou seja, pares de endereços, ``Source'' e ``Target'' 
+(classe ``elements.Link''). 
 
 É feita uma iteração pelo ``Map'', em que caso um \emph{Node} tenha uma ligação, seja esta uma ligação no diretório ou na fila, é instanciado 
 um objeto do tipo 
@@ -1293,13 +1310,13 @@ Esta informação é serializada para o formato ``JSON'', que é enviada como re
 Este método é utilizado pela página \emph{Web} para obter os dados a mostrar.
 
 \subsection*{Queue}
-A implementação desta secção tem falhas, tais como as referidas na introdução desta secção.
+A implementação desta secção tem limitações, tais como as referidas na introdução desta secção.
 pois a qualquer momento não é possível saber com exatidão quais os verdadeiros estados dos \emph{Nodes},
 logo não é possível saber o estado atual da \emph{Queue}.
 
-Há duas soluções para o cálculo da fila, sendo que essas soluções têm os seus problemas, provocados pelos defeitos da atualização dos estados do \emph{Nodes} referidos na introdução deste capítulo.
+Há duas soluções para o cálculo da fila, sendo que essas soluções têm os seus problemas, provocados pelos limitações da atualização dos estados do \emph{Nodes} referidos na introdução desta secção.
 
-As duas soluções (cada uma com os seus defeitos) são:
+As duas soluções (cada uma com as suas limitações) são:
 
 \subsubsection*{Através do estado atual conhecido.}
 
@@ -1322,7 +1339,7 @@ Esta é a informação que é possível retirar a partir de cada tipo de \emph{N
 \end{comment}
 
 
-Porém, o traço conhecido pelo \emph{Node} da visualização poderá estar momentaneamente desatualizado, e mesmo sendo mais preciso que a solução anterior, a ``Queue'' demonstrada não estará de acordo com o grafo que demonstra o diretório. Além disso é necessário a implementação de mecanismos para garantir que a desordenação da chegada dos dados não reconstrua as várias \emph{Queues} de forma errada, e estes mecanismos podem não assegurar que uma grande discrepância na chegada de uma atualização não terá consequências no seu funcionamento.\\
+Porém, o traço conhecido pelo \emph{Node} da visualização poderá estar momentaneamente desatualizado, e mesmo sendo mais preciso que a solução anterior, a ``Queue'' demonstrada não estará de acordo com o grafo que demonstra o diretório. Além disso é necessário a implementação de mecanismos para garantir que a falta de uma ordem da chegada dos dados não reconstrua as várias \emph{Queues} de forma errada, e estes mecanismos podem não assegurar que uma grande discrepância na chegada de uma atualização não terá consequências no seu funcionamento.\\
 
 
 No entanto, fez-se uso desta última solução, pois é a que demonstra a informação mas precisa.
@@ -1389,7 +1406,7 @@ Se nenhum dos casos anteriores for verdadeiro, é adicionada uma nova \emph{Queu
 \end{lstlisting}
 
 
-\subsubsection{ \emph{Waiter With Request} }
+\subsubsection*{ \emph{Waiter With Request} }
 Indica que houve uma concatenação entre a lista a qual o \emph{Node} da atualização, \textbf{A}, e a \emph{Queue} do \emph{Node} para o qual o ``WaiterChan'' do \textbf{A} pertence. 
 Designamos o \emph{Node} que fez a atualização que se está a processar de \textbf{A}, e o \emph{Node} para o qual o ``WaiterChan'' do \emph{Node} \textbf{A} aponta de \textbf{B}.\\
 
@@ -1425,7 +1442,7 @@ Queues[firstQueue] = append(Queues[firstQueue], Queues[secondQueue]...)
 
 //Remocao da \emph{Queue} onde o \textbf{B} se apresenta
 removeFromQueues(secondQueue)
-\end{lstlisting}//
+\end{lstlisting}
 
 
 
@@ -1454,7 +1471,7 @@ if !IsNodeAIn && IsNodeBIn {
 }
 
 
-\end{lstlisting}//
+\end{lstlisting}
 
 
 Caso nenhum deles se encontra em filas, e como referido anteriormente, é garantido que há uma ligação entre os dois \emph{Nodes}, logo temos a informação que há uma \emph{Queue} em que os seus dois elementos são o \textbf{A} e o \textbf{B}, por esta ordem.
@@ -1524,14 +1541,14 @@ if currentQueueLocation == -1 {
 }
 
 
-\end{lstlisting}//
+\end{lstlisting}
 
 
 
 
 \subsubsection*{\emph{Owner Terminal}}
 Indica que uma \emph{Queue} será removida da lista de \emph{Queues} e indica qual o atual \emph{Owner} do sistema.\\
-Caso a \emph{Queue} a ser removida tem mais elementos para além do \emph{Node} que fez a atualização, isto indica que até à chegada desta atualização houveram \emph{Queues} a concatenar com a \emph{Queue} one o \emph{Owner Terminal} se encontra, e que esta atualização é desatualizada. Então nesse caso só é removido o \emph{Node} da atualização da \emph{Queue}.\\
+Caso a \emph{Queue} a ser removida tem mais elementos para além do \emph{Node} que fez a atualização, isto indica que até à chegada desta atualização houve \emph{Queues} a concatenar com a \emph{Queue one} o \emph{Owner Terminal} se encontra, e que esta atualização é desatualizada. Então nesse caso só é removido o \emph{Node} da atualização da \emph{Queue}.\\
 Caso o \emph{Node} que fez a atualização não se encontra em nenhuma \emph{Queue}, isto significa que uma atualização da transformação do \emph{Node} para \emph{Owner With Request} chegou antes desta atualização, e que esta informação deverá ser ignorada.
 
 \begin{lstlisting}[caption={Alterações nas filas caso o \emph{Node} seja do tipo ``Owner Terminal''},language=Go]
@@ -1576,9 +1593,9 @@ delete(NodesInQueues, update.MyAddress)
 
 \subsubsection*{\emph{Owner With Request}}
 Indica que chegou um pedido ao atual \emph{Owner} ou que o \emph{Node} para qual o ``WaiterChan'' do anterior \emph{Owner} apontava (ou o primeiro da \emph{Queue} ``Principal'').
-Para além disso indica qual é a \emph{Queue} ``Principal''.//
+Para além disso indica qual é a \emph{Queue} ``Principal''.
 
-Caso o \emph{Node} é o primeiro de uma \emph{Queue}, indica que o tipo anterior deste \emph{Node} (conhecido) era ``Waiter With Request'', e o \emph{Node} é removido da \emph{Queue}.//
+Caso o \emph{Node} é o primeiro de uma \emph{Queue}, indica que o tipo anterior deste \emph{Node} (conhecido) era ``Waiter With Request'', e o \emph{Node} é removido da \emph{Queue}.
 Caso o ``WaiterChan'' do \emph{Node} da atualização aponte para o primeiro elemento de uma \emph{Queue}, isto indica que essa \emph{Queue} é a \emph{Queue} ``Principal''.
 
 
@@ -1665,7 +1682,7 @@ func remoteRequest(address string, wg *sync.WaitGroup) {
 
 \end{lstlisting}
 
-Mesmo que a visualização pode não ser a atual, o estado da rede terá de se manter, isto é, as seguintes 
+Mesmo que o representado na visualização possa não ser o mais atual, o estado da rede terá de se manter, isto é, as seguintes 
 atualizações que se façam na parte gráfica terão que demonstrar que as ligações entre \emph{Nodes} se mantiveram (mesmo que invertidas), que existe apenas um único \emph{Owner} e que qualquer outro estado não possível não é demonstrado.
 
 
@@ -1678,5 +1695,9 @@ atualizações que se façam na parte gráfica terão que demonstrar que as liga
 % como a queue é formada
 % como o histórico é formado
 \section{Conclusões}
+Neste capítulo foi apresentado todo o processo que envolveu a implementação deste projeto, desde as tecnologias, como a implementação do programa do \emph{Node} e da visualização.
+Das linguagens utilizadas, foi explicado a razão a qual a linguagem ``Go'' é uma boa opção para implementar este tipo de programas. Foi descrito a implementação do \emph{Node}, tal como foi descrito no capítulo de Especificação. 
+Na implementação da interface, explicou-se a dificuldade na representação do estado da rede e da formação dos dados apresentados, devido, principalmente, ao facto das atualizações de cada \emph{Node} não chegam ao \emph{Node} de visualização por ordem de acontecimento. 
+% A utilidade desta será apresentada no capítulo \ref{chap:validacao}.
 
 

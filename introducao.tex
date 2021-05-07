@@ -1,5 +1,5 @@
 \chapter{Introdução}
-\label{chap:intro}
+\label{chap:introducao}
 % explicar que o mundo cada vez mais requer programas distribuídos devido à escalabilidade destes
 % aumento de cores no CPU
 % aumento da infraestruturas das grandes empresas
@@ -8,7 +8,7 @@
 % contra failures
 % A internet é cada vez mais global, logo é necessário distribuir os sistemas por várias partes do mundo
 \section{Enquadramento}
-\label{sec:amb} 
+\label{introducao:sec:enquadramento}
 % foco do trabalho -> Estruturas de dados (queue, MST, Nodes), Concurrência, Rede distribuida (principal),
 
 
@@ -17,12 +17,12 @@
 Este projeto envolve o estudo e implementação de um protocolo para sistemas distribuídos, o \textit{Arrow Distributed Directory Protocol} (ADDP) \cite{Arrow}. 
 A realização deste compreende os tópicos de programação em Linguagem \emph{Go}, Estruturas de Dados, concorrência, sistemas e algoritmos distribuídos.
 
-A elaboração deste projeto decorreu-se na unidade de projeto de final de curso da Licenciatura em Engenharia Informática.
+A elaboração deste projeto decorreu na unidade de projeto de final de curso da Licenciatura em Engenharia Informática.
 
 
 
 \section{Objetivos}
-\label{sec:obj}
+\label{introducao:sec:objetivos}
 Inicialmente foram estabelecidos objetivos, no entanto durante a implementação do projeto, o tema distanciou-se do inicialmente proposto. 
 Os objetivos no desenvolvimento do projeto foram:
 
@@ -38,6 +38,7 @@ Os objetivos no desenvolvimento do projeto foram:
 \end{itemize}
 
 \section{Resultados Atingidos}
+\label{introducao:sec:resultados}
 Serão descritos os resultados atingidos no desenvolvimento do projeto.
 
 \begin{itemize}
@@ -51,9 +52,9 @@ Serão descritos os resultados atingidos no desenvolvimento do projeto.
 	\item Definição das mensagens transmitidas entre os nós.
     \end{itemize}
 
-\item Implementação de uma visualização gráfica das estruturas de dados distribuídas presentes na rede, como um grafo que representa o diretório da rede e uma tabela que representa a fila de chegada do acesso.
-\item O uso da ferramenta \emph{Docker} para a execução de várias instâncias do programa dos nós de forma automática e distribuída.
-\item A implementação de uma ferramenta de auxílio para a transformação de uma topologia/definição de uma rede no formato \acs{CSV} para o formato ``docker-compose.yml'', usado como ficheiro de execução da ferramenta \emph{Docker}.
+    \item Implementação de uma visualização gráfica das estruturas de dados distribuídas presentes na rede, como um grafo que representa o diretório da rede e uma tabela que representa a fila de chegada do acesso.
+    \item O uso da ferramenta \emph{Docker} para a execução de várias instâncias do programa dos nós de forma automática e distribuída.
+    \item A implementação de uma ferramenta de auxílio para a transformação de uma topologia/definição de uma rede no formato \acs{CSV} para o formato ``docker-compose.yml'', usado como ficheiro de execução da ferramenta \emph{Docker}.
 
 \end{itemize}
 
@@ -61,14 +62,16 @@ Serão descritos os resultados atingidos no desenvolvimento do projeto.
 
 
 \section{Organização do Documento}
-\label{sec:organ}
-%alterar
+\label{introducao:sec:organizacao}
+%alterar ãos
 Este documento está organizado da seguinte forma:
+
 \begin{enumerate}
     \item \textbf{Introdução} - Citação do artigo de referência usado para a implementação, os objetivos do projeto e os resultados atingidos no mesmo.
-    \item \textbf{Motivação} - Apresentação das vantages do uso de sistema distribuídos, tais como complexidade do desenvolvimento dos mesmos. Descrição do protocolo de referência e citação de trabalhos relacionados.
+    \item \textbf{Motivação} - Apresentação das vantagens e a necessidade de utilização de sistema distribuídos, tais como complexidade do desenvolvimento dos mesmos. Descrição do protocolo de referência e citação de trabalhos relacionados.
     \item \textbf{Especificação} - Descrição ao pormenor de todos os elementos que pertencem ao sistema, incluindo os seus atributos e comportamentos.
     \item \textbf{Implementação} - Descrição de todo o processo de implementação, como linguagens, ferramentas e bibliotecas utilizadas, a implementação de todos os elementos descritos na especificação e implementação da visualização do sistema.
+    \item \textbf{Validação experimental, Simulação e Testes} - Explicação de como é possível construir o sistema, como a interface funciona e de como testes foram feitos.
+    \item \textbf{Conclusão} - Conclusão final do projeto.
 
-\item 
 \end{enumerate}

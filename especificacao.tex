@@ -4,12 +4,13 @@
 \section{Introdução}
 \label{especificacao:sec:intro}
 Neste capítulo é apresentado a especificação de todos os elementos pertencentes ao sistema. Este sistema é formado por vários \textbf{nós} (\emph{Nodes}), que comunicam entre si através de \textbf{ligações}, pelas quais são transferidas mensagens. 
-Ao contrário do capítulo anterior, este capítulo foca-se nas alterações de cada elemento, ao invés da alteração do sistema ``num todo''.
+Ao contrário do que foi descrito no capítulo \ref{chap:motivacao}, este capítulo foca-se nas alterações de cada elemento, ao invés da alteração do sistema ``num todo''.
 Será feita uma descrição dos vários tipos de \emph{Nodes}, os seus comportamentos e atributos, os diferentes tipos de ligações entre estes e o tipo de mensagens enviadas entre estas ligações.
 
 
 
 \section{\emph{Node}}
+\label{especificacao:sec:node}
 
 Neste diretório existe apenas um \emph{Node} que detém o acesso ao objeto, pois um dos propósitos deste protocolo é garantir o acesso exclusivo a este. 
 
@@ -49,8 +50,9 @@ A partir da combinação destes fatores temos os seguintes tipos de \emph{Nodes}
 
 
 \section{Ligações}
+\label{especificacao:sec:ligacoes}
 
-Os \emph{Nodes} têm a possibilidade de comunicar entre si, quer através das ligações o diretório (grafo), quando estes pretendem pedir o acesso ao objeto, ou diretamente, sem recurso às ligações do diretório, quando estes transmitem o acesso ao objeto para outro \emph{Node}.
+Os \emph{Nodes} têm a possibilidade de comunicar entre si, quer através das ligações o diretório (grafo), quando estes pretendem pedir o acesso ao objeto, ou através das ligações da fila (exteriores ao diretório), quando estes transmitem o acesso ao objeto para outro \emph{Node}.
 
 As ligações (ou comunicações) entre os \emph{Nodes} são feitas a partir de \emph{Channels} (canais). Estes \emph{Channels} funcionam como caixa de entrada ou endereços dos \emph{Nodes}, que podem ser enviados para outros \emph{Nodes}, e que, caso um \emph{Node} decide transmitir alguma mensagem para o outro \emph{Node}, esta é feita usando um \emph{Channel} do \emph{Node} de destino.
 
@@ -59,7 +61,7 @@ Uma outra forma de definir o uso dos \emph{Channels} seria que este é formado p
 
 \subsection*{Ligações no diretório}
 
-Como referido no capítulo anterior, o diretório é um grafo (mais especificamente uma árvore de extensão mínima), em que os vértices são os \emph{Nodes} e as arestas são as ligações, e cada ligação é um conjunto de uma entrada (no transmissor) e uma saída (no recetor), o que indica que este grafo é dirigido, visto que há uma direção pela qual cada mensagem (pedido de acesso) é transmitida por um \emph{Channel} (da entrada para a saída).
+Como referido no capítulo \ref{chap:motivacao}, o diretório é um grafo (mais especificamente uma árvore de extensão mínima), em que os vértices são os \emph{Nodes} e as arestas são as ligações, e cada ligação é um conjunto de uma entrada (no transmissor) e uma saída (no recetor), o que indica que este grafo é dirigido, visto que há uma direção pela qual cada mensagem (pedido de acesso) é transmitida por um \emph{Channel} (da entrada para a saída).
 
 Neste tipo de ligação no diretório foram definidas duas partes nas ligações. Denominamos de  ``Link'' a parte de entrada da ligação que está presente no transmissor e denominamos de ``Find'' a parte da saída das mensagens.
 
@@ -99,7 +101,7 @@ A cabeça desta fila será \emph{Node} ao qual o detentor do objeto está ligado
 
 \section{Atributos do \emph{Node}}
 \label{especificacao:atr:section}
-Neste secção serão descritos os atributos que podem constituir um \emph{Node}.
+Nesta secção serão descritos os atributos que podem constituir um \emph{Node}.
 
 \subsection*{Find}
 \label{especificacao:atr:Find}
@@ -165,7 +167,7 @@ Neste subcapítulo serão definidos os atributos que cada tipo de \emph{Node} ap
 
 
 \section{Tipos de mensagens}
-\label{especificacao:sec:Channels}
+\label{especificacao:sec:tipos_mensagem}
 Nesta especificação foram apenas definidos dois \emph{Channels}. A comunicação entre os \emph{Nodes} é feita por canais, pelos quais são comunicados canais (as mensagens).
 
 
@@ -184,6 +186,7 @@ No entanto, há um tipo de \emph{Channel} que é usado para ceder o acesso ao ob
 
 
 \section{Comportamentos dos \emph{Nodes}}
+\label{especificacao:sec:comportamentos_nodes}
 %-------------------------
 
 Neste capítulo serão descritos os comportamentos que os \emph{Nodes} podem ter, tais como as razões que despoletam estes comportamentos.
@@ -218,7 +221,7 @@ O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Chann
 que foi remetido pelo seu \emph{Child Node}.
 
 Este envia pelo \textbf{\emph{Link}} o \textbf{\emph{WaiterChan}} do pedido \emph{\textbf{Access Request}} e o seu \emph{Channel \textbf{Find}}.
-É enviado o ``Find'' para que o seu \emph{Parent Node} tenha a possibilidade de inverter a sua ligação, ou seja, para que possa haver um arco do \emph{TEMP Node} para o \emph{Node}, 
+É enviado o ``Find'' para que o seu \emph{Parent Node} tenha a possibilidade de inverter a sua ligação, 
 e o ``WaiterChan'' para que se faça chegar o \emph{MyChan} do \emph{Node} que fez o pedido a um \emph{Node} \emph{Waiter} ou \emph{Owner}.
 
 Como o \emph{Node} já tem em espera um pedido de acesso, este mantém-se como \emph{\textbf{Owner With Request}},
@@ -247,8 +250,8 @@ mantém o \emph{Find}, o \emph{MyChan} e o \emph{Link}.
 \subsubsection*{Receção de um pedido Access Request}
 O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Channel \textbf{Find}}, que foi remetido pelo seu \emph{Child Node}.
 
-Este envia pelo \textbf{\emph{Link}} o \textbf{\emph{WaiterChan}} do pedido \emph{\textbf{Access Request}} e o seu \emph{Channel \textbf{Find}}.a
-É enviado o ``Find'' para que o seu \emph{Parent Node} tenha a possibilidade de inverter a sua ligação, ou seja, para que possa haver um arco do \emph{TEMP Node} para o \emph{Node}, 
+Este envia pelo \textbf{\emph{Link}} o \textbf{\emph{WaiterChan}} do pedido \emph{\textbf{Access Request}} e o seu \emph{Channel \textbf{Find}}.
+É enviado o ``Find'' para que o seu \emph{Parent Node} tenha a possibilidade de inverter a sua ligação, 
 e o ``WaiterChan'' para que se faça chegar o \emph{MyChan} do \emph{Node} que fez o pedido a um \emph{Node} \emph{Waiter} ou \emph{Owner}.
 
 Como o \emph{Node} não tem o acesso ao objeto, este mantém-se como \emph{\textbf{Idle}}, e atualiza o \textbf{\emph{Link}} (para \textbf{\emph{NewLink}}), que aponta para o \textbf{Find} do seu \emph{Child Node}.
@@ -272,7 +275,7 @@ O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Chann
 
 Este envia pelo \textbf{\emph{Link}} o \textbf{\emph{WaiterChan}} do pedido \emph{\textbf{Access Request}} e o seu \emph{Channel \textbf{Find}}.
 
-É enviado o ``Find'' para que o seu \emph{Parent Node} tenha a possibilidade de inverter a sua ligação, ou seja, para que possa haver um arco do \emph{TEMP Node} para o \emph{Node}, 
+É enviado o ``Find'' para que o seu \emph{Parent Node} tenha a possibilidade de inverter a sua ligação, 
 e o ``WaiterChan'' para que se faça chegar o \emph{MyChan} do \emph{Node} que fez o pedido a um \emph{Node} \emph{Waiter} ou \emph{Owner}.
 
 
@@ -300,7 +303,7 @@ O \emph{Node} recebe um pedido \emph{\textbf{Access Request}} no seu \emph{Chann
 
 Este envia pelo \textbf{\emph{Link}} o \textbf{\emph{WaiterChan}} do pedido \emph{\textbf{Access Request}} e o seu \emph{Channel \textbf{Find}}.
 
-É enviado o ``Find'' para que o seu \emph{Parent Node} tenha a possibilidade de inverter a sua ligação, ou seja, para que possa haver um arco do \emph{TEMP Node} para o \emph{Node}, 
+É enviado o ``Find'' para que o seu \emph{Parent Node} tenha a possibilidade de inverter a sua ligação, 
 e o ``WaiterChan'' para que se faça chegar o \emph{MyChan} do \emph{Node} que fez o pedido a um \emph{Node} \emph{Waiter} ou \emph{Owner}.
 
 Como o \emph{Node} não tem o acesso ao objeto, aguarda pelo acesso ao objeto e tem um pedido em espera, este mantém-se como \emph{\textbf{Waiter With Request}},
@@ -315,5 +318,6 @@ Como o \emph{Node} tem pedidos, este transforma-se em \textbf{\emph{Owner With R
 
 
 \section{Conclusões}
+\label{especificacao:sec:conclusao}
 Neste capítulo foram descritos todas as alterações em cada elemento após vários acontecimentos, tais como quando um \emph{Node} recebe um pedido ou quando um \emph{Node} recebe ou cede o acesso ao objeto.
 A separação das várias propriedades destes elementos definidas na descrição serviu de base para a implementação deste, com principal destaque ao comportamento de cada tipo de nó e a mudança de estado após inicialização deste.  

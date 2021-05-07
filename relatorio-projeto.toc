@@ -25,25 +25,24 @@
 \contentsline {section}{\numberline {4.2}Linguagens de Programação}{23}{section.4.2}%
 \contentsline {section}{\numberline {4.3}Ferramentas e Bibliotecas utilizadas}{26}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Classe \emph {Node}}{27}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Atributos da Classe}{27}{section.4.5}%
+\contentsline {section}{\numberline {4.5}Atributos da Classe \emph {Node}}{27}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Inicialização do objeto ``Self Node''}{29}{section.4.6}%
 \contentsline {section}{\numberline {4.7}Tipos de Nodes}{31}{section.4.7}%
 \contentsline {section}{\numberline {4.8}Comportamentos}{31}{section.4.8}%
 \contentsline {section}{\numberline {4.9}Transformações do \emph {Node}}{40}{section.4.9}%
 \contentsline {section}{\numberline {4.10}Comunicação entre Nodes}{43}{section.4.10}%
 \contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{49}{section.4.11}%
-\contentsline {section}{\numberline {4.12}Implementação da Visualização}{49}{section.4.12}%
+\contentsline {section}{\numberline {4.12}Implementação da Visualização}{50}{section.4.12}%
 \contentsline {subsubsection}{\numberline {4.12.0.1} \emph {Waiter With Request} }{56}{subsubsection.4.12.0.1}%
-\contentsline {section}{\numberline {4.13}Conclusões}{62}{section.4.13}%
-\contentsline {chapter}{\chapternumberline {5}Validação experimental, Simulação e Testes}{63}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introdução}{63}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Requisitos do Sistema}{63}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Construção do Sistema}{63}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Interface de Visualização}{66}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Testes}{68}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Conclusões}{68}{section.5.6}%
-\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{69}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Reflexao Crítica}{69}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Conclusões Principais}{69}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Trabalho Futuro}{69}{section.6.3}%
-\contentsline {chapter}{Bibliografia}{71}{chapter*.88}%
+\contentsline {section}{\numberline {4.13}Conclusões}{63}{section.4.13}%
+\contentsline {chapter}{\chapternumberline {5}Validação experimental, Simulação e Testes}{65}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introdução}{65}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Construção do Sistema}{65}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Interface de Visualização}{68}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Testes}{70}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Conclusões}{71}{section.5.5}%
+\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{73}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusões Principais}{73}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Escolhas de Implementação}{73}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Trabalho Futuro}{74}{section.6.3}%
+\contentsline {chapter}{Bibliografia}{75}{chapter*.87}%

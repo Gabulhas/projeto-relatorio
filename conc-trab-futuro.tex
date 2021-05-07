@@ -1,16 +1,41 @@
 \chapter{Conclusões e Trabalho Futuro}
 \label{chap:conc-trab-futuro}
 
-\section{Reflexao Crítica}
-\subsection*{Escolhas de Implementação}
 \section{Conclusões Principais}
 \label{sec:conc-princ}
+% falar que o projeto é diferente do enunciado
+% falar que foi possível fazer um trabalho distribuído ao invés de apenas concorrente
+% foi possível fazer uma implementação que não exisitia e distribuído
 
 % Esta secção contém a resposta à questão: \\
 % \emph{Quais foram as conclusões princípais a que o(a) aluno(a) chegou no fim deste trabalho?}
+Neste trabalho foi possível estudar e implementar o protocolo/algoritmo ``Arrow Distributed Directory Protocol'', sendo que no desenvolvimento deste foi decidido implementar-se num paradigma diferente ao descrito no enunciado deste projeto, isto é, o sistema funciona num contexto distribuído, e não apenas concorrente e numa só máquina. Esta implementação é também a única do protocolo (conhecido) até à data deste protocolo. 
+A implementação da componente gráfica teve a utilidade na compreensão do algoritmo, e facilitou a visualização e teste da implementação do programa \emph{Node}. Com esta é possível observar num único sítio/numa única interface e reconstruir o estado de um sistema distribuído desenvolvido através de apenas das atualização de cada nó do sistema.
+
+
+%\section{Reflexão Crítica}
+% falar de como o trabalho foi difícil de implementar por ser distribuído/concorrente 
+% falar de como a implementação podia ter sido doutra forma, principalmente a visualização
+
+
+%TODO: remover?
+\section{Escolhas de Implementação}
+\label{sec:escolhas-implementacao}
+Como referido na secção \ref{sec:conc-princ}, escolheu-se fazer uma implementação distribuída, ao contrário do decidido inicialmente, porque este seria o contexto onde este algoritmo seria aplicado e também tornaria a realização deste projeto mais interessante e desafiante.
+Quanto à visualização, optou-se por se usar uma página \emph{Web}, pois é a forma mais indicada de renderizar o sistema caso o \emph{Node} de visualização estivesse a ser executado numa máquina remota e possivelmente sem monitor, que é o esperado para este sistema.
+% explicar o porquê de se ter implementado distribuído ao invés de cocncorrente
+% explicar o uso de uma interface gráfica **e** numa págian web
+
 
 \section{Trabalho Futuro}
 \label{sec:trab-futuro}
+% TODO: mudar "parte"
+A parte gráfica desenvolvida neste trabalho poderia ser utilizada na visualização de outros algoritmos como, por exemplo, os trabalhos referidos na secção \ref{motivacao:sec:trabalhos_relacionados}
+, o ``Ivy'' e ``Arvy'', pois esta foi implementada de uma forma independente do algoritmo ``Arrow'', e assim também seria interessante implementar esses mesmos algoritmos e fazer comparações entre estes.
+O programa do \emph{Node} poderia ser alterado de forma a ser utilizado como uma biblioteca externa, e aplicado em Sistemas de Ficheiros Distribuídos ou Bases de Dados Distribuídas, em que as várias Bases de Dados partilhariam documentos/informações fazendo seguindo o protocolo estudado, permitindo o acesso exclusivo a um documento/informação e evitando que algumas das Bases de Dados se tornassem em ``Hotpots''.
+% era possível pegar na parte gráfica e implementar outros algoritmos do género
+% aplicar o algoritmo num contexto real, como uma database ou um filesystem distribuídos,
+
 
 % Esta secção responde a questões como:\\
 % \emph{O que é que ficou por fazer, e porque?}\\
