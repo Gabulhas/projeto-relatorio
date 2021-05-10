@@ -3,8 +3,16 @@
 
 \section{Introdução}
 \label{validacao:sec:introducao}
-
 \begin{comment}
+
+
+    Referir que usámos a visualização em vez de métodos formais
+\begin{comment}
+
+
+
+
+
 \section{Requisitos do Sistema}
     artigo do sistema
     explicar que é uma simulação distribuída em vez de multithreaded (problemas de rede, etc)
@@ -214,7 +222,7 @@ Nem todos os elementos da visualização estão atualizados em qualquer momento,
 
 No entanto, o uso mais indicado do grafo e das tabelas da fila e atual \emph{Owner} é de visualização e demonstração de como funciona o sistema/protocolo, e não como prova, devido aos problemas de atualização presentes. 
 
-Para se testar de uma forma mais rigorosa, fez-se uso das 3 tabelas dos históricos. 
+Para uma evidência mais forte, fez-se uso das 3 tabelas dos históricos. 
 Como referido anteriormente, a tabela \emph{Queue History} mostra o histórico dos \emph{Nodes} que entraram na fila ``Principal'', e a passagem do acesso ao objeto tem de seguir a ordem dessa fila, e a ordem por onde circula o objeto é mostrado na tabela \emph{Owner History}, logo, caso as tabelas \emph{Queue History} e \emph{Owner History} demonstrem os \emph{Nodes} com ordens diferentes, o sistema está errado.
 
 A tabela \emph{Request History} tem apenas demonstra que a ordem pela qual os \emph{Nodes} realizam pedidos ou que a ordem que \emph{Node} de visualização recebe a atualização de que esses \emph{Nodes} realizaram pedidos pode ser diferente da ordem na file ``Principal''.
