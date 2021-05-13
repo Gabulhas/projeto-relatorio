@@ -20,28 +20,28 @@
 \contentsline {section}{\numberline {3.5}Tipos de mensagens}{18}{section.3.5}%
 \contentsline {section}{\numberline {3.6}Comportamentos dos \emph {Nodes}}{19}{section.3.6}%
 \contentsline {section}{\numberline {3.7}Conclusões}{22}{section.3.7}%
-\contentsline {chapter}{\chapternumberline {4}Implementação}{23}{chapter.4}%
+\contentsline {chapter}{\chapternumberline {4}Validação experimental, Simulação e Testes}{23}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introdução}{23}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Linguagens de Programação}{23}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Ferramentas e Bibliotecas utilizadas}{26}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Classe \emph {Node}}{27}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Atributos da Classe \emph {Node}}{27}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Inicialização do objeto ``Self Node''}{29}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Tipos de Nodes}{31}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Comportamentos}{31}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Transformações do \emph {Node}}{40}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Comunicação entre Nodes}{44}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{50}{section.4.11}%
-\contentsline {section}{\numberline {4.12}Implementação da Visualização}{50}{section.4.12}%
-\contentsline {section}{\numberline {4.13}Conclusões}{63}{section.4.13}%
-\contentsline {chapter}{\chapternumberline {5}Validação experimental, Simulação e Testes}{65}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introdução}{65}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Construção do Sistema}{65}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Interface de Visualização}{68}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Testes}{70}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Conclusões}{71}{section.5.5}%
-\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{73}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Conclusões Principais}{73}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Escolhas de Implementação}{73}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Trabalho Futuro}{74}{section.6.3}%
-\contentsline {chapter}{Bibliografia}{75}{chapter*.88}%
+\contentsline {section}{\numberline {4.2}Interface de Visualização}{23}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Testes}{25}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Conclusões}{26}{section.4.4}%
+\contentsline {chapter}{\chapternumberline {5}Implementação}{27}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introdução}{27}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Linguagens de Programação}{27}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Ferramentas e Bibliotecas utilizadas}{30}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Construção do Sistema}{31}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Classe \emph {Node}}{34}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Atributos da Classe \emph {Node}}{35}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Inicialização do objeto ``Self Node''}{36}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Tipos de Nodes}{38}{section.5.8}%
+\contentsline {section}{\numberline {5.9}Comportamentos}{38}{section.5.9}%
+\contentsline {section}{\numberline {5.10}Transformações do \emph {Node}}{47}{section.5.10}%
+\contentsline {section}{\numberline {5.11}Comunicação entre Nodes}{51}{section.5.11}%
+\contentsline {section}{\numberline {5.12}Classes de \emph {Channels}}{57}{section.5.12}%
+\contentsline {section}{\numberline {5.13}Implementação da Visualização}{57}{section.5.13}%
+\contentsline {section}{\numberline {5.14}Conclusões}{70}{section.5.14}%
+\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{71}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conclusões Principais}{71}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Escolhas de Implementação}{71}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Trabalho Futuro}{72}{section.6.3}%
+\contentsline {chapter}{Bibliografia}{73}{chapter*.88}%

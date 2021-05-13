@@ -4,140 +4,6 @@
 \section{Introdução}
 \label{validacao:sec:introducao}
 
-\section{Construção do Sistema}
-\label{validacao:sec:construcao}
-\begin{comment}
-- Explicação dos elementos do deploy - Makefile, Dockerfile, Docker-compose, 
-> Explicar como funciona um Dockerfile
-> "                         Dockercompose
-> "             para que serve o Make.
-- Explicar outra vez, mas resumidamente, a atualização da parte da visualização (não do estado no Node de visualização)
-- Como dar deploy
-\end{comment}
-
-% Mudar palavras
-Na implementação deste projeto foi necessário testar os \emph{Nodes} num contexto distribuído, no entanto, para que não seja necessário a execução de várias instâncias do programa em várias máquinas diferentes, fez-se uso de \emph{containers Docker} para se obter o mesmo efeito.
-
-Além disso, o uso desta ferramenta provou-se útil na execução de múltiplas instâncias do programa, não apenas como ``Máquinas Virtuais'', de forma rápida e simples.
-
-Na execução deste sistema para testes fez-se uso de três sistemas de construção, sendo estes ``docker'', ``docker-compose'' e ``Make'', cada um dependendo do anterior, por esta ordem.
-
-Com o uso de estes sistemas de construção apenas é necessário executar o comando ``make run'' para executar um sistema com um \emph{Node} de visualização e um número arbitrário (mas definido num ficheiro ``docker-compose.yml'', ver capítulo seguinte) de \emph{containers} que executam o programa do \emph{Node}.
-
-Como referido no capítulo anterior, o \emph{Node} de visualização faz uso de uma página \emph{Web} para demonstrar o estado (conhecido) do sistema. O endereço desta página depende do ficheiro ``Dockerfile'' (ver subsecção 
-\ref{validacao:subsec:docker}
-).
-
-
-\subsection*{docker}
-\label{validacao:subsec:docker}
-Este sistema é usado na criação de \emph{docker containers} a partir da leitura de um ficheiro ``Dockerfile'', que descreve o processo de inicialização do \emph{container}, como que Sistema Operativo/imagem irá usar, a cópia de ficheiros para o \emph{container}, que comandos deve executar e por último que programa deverá executar.
-
-
-% TODO: explicar melhor esta parte
-Para a execução de \emph{Containers} que executam o programa do \emph{Node} foi usado o seguinte ``Dockerfile''.
-\begin{lstlisting}[caption={``Dockerfile'' do \emph{Node}},language=C]
-FROM golang # que sistema ou imagem ira usar, neste caso e usado a imagem ``golang''
-WORKDIR /src  # em que diretorio, no container, os seguintes comandos irao ser executados
-COPY . .
-RUN go build -o node # compilacao do programa
-
-# execucao da instancia, as variaveis de ambiente sao marcadas com $, no entanto serao descritas a sua origem de seguida
-CMD ./node --address=$address --type=$type --link=$link --requests=$requests --visualization=$VIS_ADDRESS
-\end{lstlisting}
- 
-Para a execução de \emph{Containers} que executam o programa do \emph{Node} foi usado o seguinte ``Dockerfile''.
-\begin{lstlisting}[caption={``Dockerfile'' do \emph{Node}},language=C]
-FROM golang # que sistema ou imagem ira usar, neste caso e usado a imagem ``golang''
-WORKDIR /src  # em que diretorio, no container, os seguintes comandos irao ser executados
-COPY . .
-
-# compilacao do programa do \emph{Node} de visualizacao
-RUN go build -o vis
-
-# execucao da instancia do \emph{Node} de visualizacao
-CMD ./vis
-
-\end{lstlisting}
-
-\subsection*{docker-compose}
-
-Foram criadas várias tipologias de redes (por exemplo rede em Anel, Estrela, etc) para demonstrar e testar o diretório.
-Estes exemplos estão no formato ``YML'', mais precisamente, no formato de um ficheiro ``docker-compose.yml'' para que este possa ser lido pelo programa ``docker-compose'', um \emph{script} que permite a execução de múltiplos \emph{containers} com apenas um ficheiro e um comando, sendo que este ficheiro faz uso de ficheiros ``Dockerfile''.
-
-No entanto estes ficheiros apenas declaram os atributos de cada \emph{container}, como o nome, o endereço \acs{IP}, os \emph{Ports} que esta necessita para o funcionamento, e no contexto deste projeto, os atributos iniciais de cada \emph{Node}, como o ``Type'', o 
-``Link'' e o enderço do \emph{Node} de visualização, visto que cada \emph{container} executará uma instância do programa, isto é, cada \emph{container} é um \emph{Node}. Os atributos do \emph{Node} são definidos usando as variáveis de sistema.
-
-
-\begin{lstlisting}[caption={Ficheiro docker-compose.yml},language=C]
-  # nome do container
-  node_0:
-    tty: true
-    stdin_open: true
-
-    # indicacao da localizacao do ficheiro Dockerfile
-    build:
-      context: ./src
-      dockerfile: Dockerfile
-
-    # definicao dos atributos do node como variaveis de ambiente
-    environment:
-      address: 127.0.0.1:8001
-      type: 2 
-      link: 127.0.0.1:8005
-      VIS_ADDRESS: 127.0.0.1:8000/updateState
-      requests: "true"
-
-    # Ports necessarios para o funcionamento do Container
-    ports:
-      - "8001:8001"
-    # Indicacao que este container sera executado na mesma rede que o Host, isto para que seja
-    # possivel a realizacao de pedidos remotos atraves da visualizacao
-    network_mode: host
-\end{lstlisting}
-
-
-\subsection*{Make}
-
-% Melhorar frase introdutória
-Na execução do sistema foi usado o sistema ``Make'', que executa comandos do Sistema Operativo. Para tal é necessário um ficheiro ``Makefile'' onde são descritos os vários comandos que serão executados ao executarmos o comando ``make''.
-
-Por exemplo, caso se pretenda executar todo o sistema, apenas é necessário executar o comando ``make'' com o argumento (ou regra) ``start'', ou seja, ``make start'', invés de se executarem 7 comandos.
-
-
-O ``Makefile'' usado neste projeto é o seguinte:
-
-\begin{lstlisting}[caption={Ficheiro ``Makefile''}]
-
-# constroi a imagem do \emph{Node} de visualizacao
-build_viz:
-	docker build -t vis ./visualization
-
-# comeca o \emph{container} que executa o \emph{Node} de visualizacao
-start_viz:
-	-docker stop vis
-	-docker rm vis
-	docker run -it --net=host --env   address=:8000 --publish 8000:8000 --detach --name vis vis:latest
-
-# comeca os \emph{containers} que executam os varios \emph{Nodes}
-start_containers:
-	-docker-compose stop
-	docker-compose up --build --force-recreate -d
-
-# Para a execucao de todos os \emph{containers} usados pelo sistema
-stop_all:
-	-docker stop vis
-	-docker-compose stop
-
-
-# Executa todas as regras necessarias para a execucao do sistema
-run:
-	$(MAKE) stop_all
-	$(MAKE) start_viz
-	$(MAKE) start_containers
-\end{lstlisting}
-
-
 \section{Interface de Visualização}
 \label{validacao:sec:interface}
 Para demonstrar o funcionamento e o estado do sistema, foi desenvolvida uma interface gráfica. Nesta secção serão descritos os componentes apresentados na interface de visualização.
@@ -207,7 +73,7 @@ No entanto, o uso mais indicado do grafo e das tabelas da fila e atual \emph{Own
 Para uma evidência mais forte, fez-se uso das 3 tabelas dos históricos. 
 Como referido anteriormente, a tabela \emph{Queue History} mostra o histórico dos \emph{Nodes} que entraram na fila ``Principal'', e a passagem do acesso ao objeto tem de seguir a ordem dessa fila, e a ordem por onde circula o objeto é mostrado na tabela \emph{Owner History}, logo, caso as tabelas \emph{Queue History} e \emph{Owner History} demonstrem os \emph{Nodes} com ordens diferentes, o sistema está errado.
 
-A tabela \emph{Request History} tem apenas demonstra que a ordem pela qual os \emph{Nodes} realizam pedidos ou que a ordem que \emph{Node} de visualização recebe a atualização de que esses \emph{Nodes} realizaram pedidos pode ser diferente da ordem na file ``Principal''.
+A tabela \emph{Request History} demonstra que a ordem pela qual os \emph{Nodes} realizam pedidos ou que a ordem que \emph{Node} de visualização recebe a atualização de que esses \emph{Nodes} realizaram pedidos pode ser diferente da ordem na file ``Principal''.
 
 
 
