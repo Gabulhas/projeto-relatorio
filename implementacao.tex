@@ -5,10 +5,9 @@
 \label{implementacao:sec:introducao}
 
 Neste capítulo serão descritos todos os elementos envolvidos na implementação do protocolo,
-como as tecnologias utilizadas, em que é feita uma descrição da razão de escolha de cada uma destas
-a implementação do \emph{Node} do sistema
-o foco deste capítulo é atribuído ao processo de desenvolvimento dos \emph{Nodes} do sistema, ou o programa que define um \emph{Node}, pois o conjunto destes descreve o protocolo em questão, e por último a implementação da visualização, mais especificamente o tratamento de informação que estará disponível neste componente. 
-Este sistema é executado num contexto distribuído, isto é, várias instâncias do programa que define o \emph{Node} podem ser executadas em várias máquinas diferentes, sendo que é necessário a comunicação entre os \emph{Nodes} para o funcionamento do sistema.
+como as tecnologias utilizadas, a razão pela sua escolha. É feita a descrição dos pontos de maior interesse da implementação do \emph{Node} do sistema, que foi desenvolvida após a escrita da Especificação (\ref{chap:especificacao}). 
+Esta parte da implementação foi dividida em vários pontos de interesse, sendo estes: a classe \emph{Node} e os seus atributos, os comportamentos dos \emph{Nodes}, as suas transformações entre os cinco possíveis tipos e a comunicação entre os \emph{Nodes}.
+Também é descrita a implementação de um \emph{Node} especial, usado para a visualização, para o qual são enviadas atualizações dos \emph{Nodes} que existem no sistema, que são usadas para a renderização da visualização e reconstrução das estruturas de dados distribuídas, estas que também são demonstradas na visualização.
 
 
 \section{Linguagens de Programação}
@@ -21,7 +20,7 @@ De seguida serão descritas as razões de utilização da linguagem Go e breveme
 
 \subsection*{\emph{Go}}
 
-A implementação de \textbf{sistemas concorrentes} em \emph{Go} é \textbf{simples}, sendo a razão príncipal para a utilização desta tecnologia. 
+A implementação de \textbf{sistemas concorrentes} em \emph{Go} é \textbf{simples}, sendo a razão principal para a utilização desta tecnologia. 
 Adicionando a palavra ``\emph{go}'' antes de qualquer procedimento, esse procedimento irá correr em uma nova \emph{Goroutine}, de forma concorrente em relação a todas as outras \emph{Goroutines} já em execução.
 Uma ``Goroutine'' é um \emph{lightweight \textbf{thread}} gerido pelo \emph{runtime} do \emph{Go}.
 
@@ -56,7 +55,6 @@ func count(wg *sync.WaitGroup, goroutineName string) {
 }
 \end{lstlisting}
 
-% adicionar à biografia https://www.tutorialspoint.com/java/java_multithreading.htm
 
 \begin{lstlisting}[caption={Exemplo em \emph{Java}, usando a \emph{interface} ``Runnable'' e uma classe``RunnableDemo'' para começar \emph{threads}.},language=Java]
 class RunnableDemo implements Runnable {
@@ -745,15 +743,14 @@ O \emph{Node} sofre transformações quando este executa qualquer comportamento,
 no entanto, uma transformação não significa uma mudança de tipo,
 mas uma mudança de estado.
 
-As possíveis transformações são demonstradas na imagem 
-Estas são as possíveis transformações que o \emph{Node} pode sofrer:
+As possíveis transformações são demonstradas na imagem \ref{implementacao:img:state_diagram}.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 \centering
-\includegraphics[width=500pt]{state-diagram.png}
+\includegraphics[width=1.0\textwidth]{state-diagram.png}
 \caption{Diagrama de Estados do \emph{Node}}
 Nota: O estado inicial do \emph{Node} não está presente porque este pode começar em qualquer estado/tipo.
-\label{}
+\label{implementacao:img:state_diagram}
 \end{figure}
 
 
@@ -1314,9 +1311,9 @@ A implementação desta secção tem limitações, tais como as referidas na int
 pois a qualquer momento não é possível saber com exatidão quais os verdadeiros estados dos \emph{Nodes},
 logo não é possível saber o estado atual da \emph{Queue}.
 
-Há duas soluções para o cálculo da fila, sendo que essas soluções têm os seus problemas, provocados pelos limitações da atualização dos estados do \emph{Nodes} referidos na introdução desta secção.
+Há duas soluções para o cálculo da fila, sendo que essas soluções têm as suas desvantagens.
+Serão apresentadas as duas possíveis soluções:
 
-As duas soluções (cada uma com as suas limitações) são:
 
 \subsubsection*{Através do estado atual conhecido.}
 
@@ -1331,12 +1328,6 @@ no estado armazenado, caso a atualização de um \emph{Node} que se transformou 
 A atualização dos \emph{Nodes} permite a reconstrução das \emph{Queues} existentes no sistema, apenas usando o estado da atualização.
 
 Esta é a informação que é possível retirar a partir de cada tipo de \emph{Node} das atualizações, como por exemplo, a formação de novas \emph{Queues}, a concatenação de duas \emph{Queues} usando a informação do ``WaiterChan'' da atualização e a remoção de \emph{Nodes} da \emph{Queue} ``Principal'', quando o \emph{Node} se transforma em \emph{Owner}.
-
-
-
-\begin{comment}
-
-\end{comment}
 
 
 Porém, o traço conhecido pelo \emph{Node} da visualização poderá estar momentaneamente desatualizado, e mesmo sendo mais preciso que a solução anterior, a ``Queue'' demonstrada não estará de acordo com o grafo que demonstra o diretório. Além disso é necessário a implementação de mecanismos para garantir que a falta de uma ordem da chegada dos dados não reconstrua as várias \emph{Queues} de forma errada, e estes mecanismos podem não assegurar que uma grande discrepância na chegada de uma atualização não terá consequências no seu funcionamento.\\
@@ -1695,9 +1686,10 @@ atualizações que se façam na parte gráfica terão que demonstrar que as liga
 % como a queue é formada
 % como o histórico é formado
 \section{Conclusões}
-Neste capítulo foi apresentado todo o processo que envolveu a implementação deste projeto, desde as tecnologias, como a implementação do programa do \emph{Node} e da visualização.
+
+Neste capítulo foi apresentado todo o processo que envolveu a implementação deste projeto, desde as tecnologias, à implementação do \emph{Node} e do \emph{Node} de visualização.
 Das linguagens utilizadas, foi explicado a razão a qual a linguagem ``Go'' é uma boa opção para implementar este tipo de programas. Foi descrito a implementação do \emph{Node}, tal como foi descrito no capítulo de Especificação. 
-Na implementação da interface, explicou-se a dificuldade na representação do estado da rede e da formação dos dados apresentados, devido, principalmente, ao facto das atualizações de cada \emph{Node} não chegam ao \emph{Node} de visualização por ordem de acontecimento. 
+Na implementação da interface, explicou-se a dificuldade da reconstrução do estado da rede e da formação dos dados apresentados, devido, principalmente, ao facto das atualizações de cada \emph{Node} não chegam ao \emph{Node} de visualização por ordem de acontecimento. 
 % A utilidade desta será apresentada no capítulo \ref{chap:validacao}.
 
 

@@ -30,8 +30,8 @@
 \contentsline {section}{\numberline {4.7}Tipos de Nodes}{31}{section.4.7}%
 \contentsline {section}{\numberline {4.8}Comportamentos}{31}{section.4.8}%
 \contentsline {section}{\numberline {4.9}Transformações do \emph {Node}}{40}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Comunicação entre Nodes}{43}{section.4.10}%
-\contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{49}{section.4.11}%
+\contentsline {section}{\numberline {4.10}Comunicação entre Nodes}{44}{section.4.10}%
+\contentsline {section}{\numberline {4.11}Classes de \emph {Channels}}{50}{section.4.11}%
 \contentsline {section}{\numberline {4.12}Implementação da Visualização}{50}{section.4.12}%
 \contentsline {section}{\numberline {4.13}Conclusões}{63}{section.4.13}%
 \contentsline {chapter}{\chapternumberline {5}Validação experimental, Simulação e Testes}{65}{chapter.5}%

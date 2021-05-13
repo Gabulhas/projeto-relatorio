@@ -3,9 +3,10 @@
 
 \section{Introdução}
 \label{especificacao:sec:intro}
-Neste capítulo é apresentado a especificação de todos os elementos pertencentes ao sistema. Este sistema é formado por vários \textbf{nós} (\emph{Nodes}), que comunicam entre si através de \textbf{ligações}, pelas quais são transferidas mensagens. 
+Neste capítulo é apresentado a especificação de todos os elementos pertencentes ao sistema. Este sistema é formado por vários \textbf{nós} (\emph{Nodes}), estes podendo ter vários comportamentos que alteram o seu estado (atributos).
+Os \textbf{nós} comunicam entre si através de \textbf{ligações}, pelas quais são transferidas dois tipos de mensagens, que contém a informação necessária para fazer chegar pedidos ou o acesso ao objeto aos \textbf{nós}.
+Estas mesmas ligações formam as várias estruturas distribuídas existentes no diretório. 
 Ao contrário do que foi descrito no capítulo \ref{chap:motivacao}, este capítulo foca-se nas alterações de cada elemento, ao invés da alteração do sistema ``num todo''.
-Será feita uma descrição dos vários tipos de \emph{Nodes}, os seus comportamentos e atributos, os diferentes tipos de ligações entre estes e o tipo de mensagens enviadas entre estas ligações.
 
 
 
