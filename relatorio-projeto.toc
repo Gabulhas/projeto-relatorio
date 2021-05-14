@@ -17,31 +17,39 @@
 \contentsline {section}{\numberline {3.2}\emph {Node}}{13}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Ligações}{14}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Atributos do \emph {Node}}{16}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Tipos de mensagens}{18}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Comportamentos dos \emph {Nodes}}{19}{section.3.6}%
-\contentsline {section}{\numberline {3.7}Conclusões}{22}{section.3.7}%
-\contentsline {chapter}{\chapternumberline {4}Validação experimental, Simulação e Testes}{23}{chapter.4}%
+\contentsline {section}{\numberline {3.5}Tipos de mensagens}{17}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Comportamentos dos \emph {Nodes}}{18}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Conclusões}{21}{section.3.7}%
+\contentsline {chapter}{\chapternumberline {4}Engenharia de Software}{23}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Introdução}{23}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Interface de Visualização}{23}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Testes}{25}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Conclusões}{26}{section.4.4}%
-\contentsline {chapter}{\chapternumberline {5}Implementação}{27}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introdução}{27}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Linguagens de Programação}{27}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Ferramentas e Bibliotecas utilizadas}{30}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Construção do Sistema}{31}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Classe \emph {Node}}{34}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Atributos da Classe \emph {Node}}{35}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Inicialização do objeto ``Self Node''}{36}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Tipos de Nodes}{38}{section.5.8}%
-\contentsline {section}{\numberline {5.9}Comportamentos}{38}{section.5.9}%
-\contentsline {section}{\numberline {5.10}Transformações do \emph {Node}}{47}{section.5.10}%
-\contentsline {section}{\numberline {5.11}Comunicação entre Nodes}{51}{section.5.11}%
-\contentsline {section}{\numberline {5.12}Classes de \emph {Channels}}{57}{section.5.12}%
-\contentsline {section}{\numberline {5.13}Implementação da Visualização}{57}{section.5.13}%
-\contentsline {section}{\numberline {5.14}Conclusões}{70}{section.5.14}%
-\contentsline {chapter}{\chapternumberline {6}Conclusões e Trabalho Futuro}{71}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Conclusões Principais}{71}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Escolhas de Implementação}{71}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Trabalho Futuro}{72}{section.6.3}%
-\contentsline {chapter}{Bibliografia}{73}{chapter*.88}%
+\contentsline {section}{\numberline {4.2}Sistema Distribuído}{23}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Linguagens Go}{23}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Visualização do Sistema}{25}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Comunicação entre os \emph {Nodes}}{26}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Uso de \emph {Docker}}{26}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Modelo do Sistema}{27}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Conclusão}{27}{section.4.8}%
+\contentsline {chapter}{\chapternumberline {5}Implementação}{29}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introdução}{29}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Ferramentas e Bibliotecas utilizadas}{29}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Construção do Sistema}{30}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Classe \emph {Node}}{33}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Atributos da Classe \emph {Node}}{34}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Inicialização do objeto ``Self Node''}{35}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Tipos de Nodes}{37}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Comportamentos}{37}{section.5.8}%
+\contentsline {section}{\numberline {5.9}Transformações do \emph {Node}}{46}{section.5.9}%
+\contentsline {section}{\numberline {5.10}Comunicação entre Nodes}{50}{section.5.10}%
+\contentsline {section}{\numberline {5.11}Classes de \emph {Channels}}{56}{section.5.11}%
+\contentsline {section}{\numberline {5.12}Implementação da Visualização}{56}{section.5.12}%
+\contentsline {section}{\numberline {5.13}Conclusões}{69}{section.5.13}%
+\contentsline {chapter}{\chapternumberline {6}Validação experimental, Simulação e Testes}{71}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introdução}{71}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Interface de Visualização}{71}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Testes}{73}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Conclusões}{74}{section.6.4}%
+\contentsline {chapter}{\chapternumberline {7}Conclusões e Trabalho Futuro}{75}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Conclusões Principais}{75}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Escolhas de Implementação}{75}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Trabalho Futuro}{76}{section.7.3}%
+\contentsline {chapter}{Bibliografia}{77}{chapter*.80}%

@@ -7,8 +7,9 @@ A level-1 auxiliary file: acronimos.aux
 A level-1 auxiliary file: introducao.aux
 A level-1 auxiliary file: motivacao.aux
 A level-1 auxiliary file: especificacao.aux
-A level-1 auxiliary file: validacao.aux
+A level-1 auxiliary file: engenharia.aux
 A level-1 auxiliary file: implementacao.aux
+A level-1 auxiliary file: validacao.aux
 A level-1 auxiliary file: conc-trab-futuro.aux
 The style file: unsrt.bst
 Database file #1: bibliografia.bib
@@ -16,7 +17,7 @@ Warning--I didn't find a database entry for "Ivy"
 Warning--I didn't find a database entry for "Arvy"
 You've used 1 entry,
             1791 wiz_defined-function locations,
-            466 strings with 3849 characters,
+            467 strings with 3863 characters,
 and the built_in function-call counts, 392 in all, are:
 = -- 41
 > -- 8

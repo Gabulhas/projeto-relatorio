@@ -10,107 +10,6 @@ Esta parte da implementação foi dividida em vários pontos de interesse, sendo
 Também é descrita a implementação de um \emph{Node} especial, usado para a visualização, para o qual são enviadas atualizações dos \emph{Nodes} que existem no sistema, que são usadas para a renderização da visualização e reconstrução das estruturas de dados distribuídas, estas que também são demonstradas na visualização.
 
 
-\section{Linguagens de Programação}
-\label{implementacao:sec:linguagens}
-Tal como o título deste projeto sugere, \textbf{\emph{Go}} (frequentemente referido como \emph{Golang}) é a linguagem usada na implementação do protocolo. Para além de \emph{Go}, também foi utilizada \textbf{\emph{JavaScript}} como linguagem de implementação da visualização.
-
-De seguida serão descritas as razões de utilização da linguagem Go e brevemente detalhes sobre o uso de \emph{JavaScript}:
-
-
-
-\subsection*{\emph{Go}}
-
-A implementação de \textbf{sistemas concorrentes} em \emph{Go} é \textbf{simples}, sendo a razão principal para a utilização desta tecnologia. 
-Adicionando a palavra ``\emph{go}'' antes de qualquer procedimento, esse procedimento irá correr em uma nova \emph{Goroutine}, de forma concorrente em relação a todas as outras \emph{Goroutines} já em execução.
-Uma ``Goroutine'' é um \emph{lightweight \textbf{thread}} gerido pelo \emph{runtime} do \emph{Go}.
-
-
-% Mudar, pouco informativo
-%Outras razões são:
-%\begin{description}
-    %\item [Simplicidade] Desenhada para ter o mínimo de funcionalidades (apenas as necessárias) e ser fácil de ler
-    %\item [Rapidez] o código é compilado em código de máquina.
-%\end{description}
-
-
-Por exemplo, comparando (parcialmente) dois programas concorrentes, um em \emph{Go} e outro em \emph{Java}, que mostram os números inteiros de 0 a 10:
-\begin{lstlisting}[caption={Exemplo em \emph{Go}, usando a \emph{keyword} ``go'' para começar uma \emph{Goroutine}.},language=Go]
-func main() {
-	var wg sync.WaitGroup
-	wg.Add(2)
-
-	go count(&wg, "Goroutine-1")
-	go count(&wg, "Goroutine-2")
-
-
-	wg.Wait()
-}
-
-func count(wg *sync.WaitGroup, goroutineName string) {
-	defer wg.Done()
-	for i := 0; i < 10; i++ {
-		fmt.Printf("Thread %s, %d\n", goroutineName, i)
-		time.Sleep(time.Second * 40)
-	}
-}
-\end{lstlisting}
-
-
-\begin{lstlisting}[caption={Exemplo em \emph{Java}, usando a \emph{interface} ``Runnable'' e uma classe``RunnableDemo'' para começar \emph{threads}.},language=Java]
-class RunnableDemo implements Runnable {
-   private Thread t;
-   private String threadName;
-   
-   RunnableDemo( String name) {
-      threadName = name;
-   }
-   public void run() {
-      try {
-         for(int i = 10; i < 10; i++) {
-            System.out.println("Thread: " + threadName + ", " + i);
-            Thread.sleep(40);
-         }
-      } catch (InterruptedException e) {
-         System.out.println("Thread " +  threadName + " interrupted.");
-      }
-   }
-   public void start () {
-      if (t == null) {
-         t = new Thread (this, threadName);
-         t.start ();
-      }
-   }
-}
-
-public class TestThread {
-
-   public static void main(String args[]) {
-      RunnableDemo R1 = new RunnableDemo( "Thread-1");
-      R1.start();
-      
-      RunnableDemo R2 = new RunnableDemo( "Thread-2");
-      R2.start();
-   }   
-}
-
-\end{lstlisting}
-
-Além da simplicidade de especificação de procedimentos concorrentes, a linguagem oferece bibliotecas de apoio a programas concorrentes, como a biblioteca ``sync'' que disponibiliza primitivas de sincronização simples (como por exemplo \emph{WaitGroups} e \emph{Mutex Locks}), e canais que permitem a comunicação e partilha de dados entre \emph{Goroutines}.
-
-A concorrência é inerente aos sistemas distribuídos, visto que os vários elementos do sistema executam de forma independente e em simultâneo.
-
-Um exemplo relacionado com o tema deste projeto seria o caso em que um \emph{Node} recebe vários pedidos de outros \emph{Nodes}. De forma a manter o sistema (ou o diretório) consistente , o \emph{Node} que recebeu os pedidos terá de os tratar de forma sincronizada, isto é, tem de endereçar um pedido de cada vez.
-
-Na implementação fez-se uso de servidores e pedidos \acs{HTTP} que, por omissão, todos os pedidos \acs{HTTP} que o servidor recebe são tratados em \emph{goroutines} diferentes, de forma concorrente, o que permite a receção de vários pedidos e para a sincronização das \emph{goroutines} usou-se um ``Mutex'' proveniente da biblioteca ``sync''.
-
-
-\subsection*{\emph{JavaScript}}
-Para a implementação da visualização foi usado \textbf{JavaScript}.
-Esta linguagem permite que a informação de páginas \emph{Web} seja alterada após o seu carregamento.
-É usado no desenho de grafos e alteração de tabelas que dispõem a informação da visualização da rede.
-
-
-
 \section{Ferramentas e Bibliotecas utilizadas}
 \label{implementacao:sec:ferramentas_bibliotecas}
 \subsection*{Ferramentas}
@@ -134,20 +33,6 @@ A biblioteca \emph{D3.JS}, em que \emph{D3} significa ``\emph{\textbf{D}ata-\tex
 No contexto deste projeto, esta é utilizada para a visualização da rede que estamos a testar, sendo que esta é representada como um grafo.
 Esta biblioteca permite a atualização periódica da representação do estado da rede de forma simples.
 Faz uso do elemento \emph{\acs{SVG}} do \emph{\acs{HTML}}, que é um \emph{Standard}, o que permite a funcionalidade desta em grande maioria dos \emph{Browsers} modernos, e é ``leve'', a qual nos possibilita uma grande taxa de atualização do grafo com dados mais recentes.
-
-\subsection*{Outras Tecnologias}
-\label{chap3:outras_tecnologias}
-\subsubsection*{\emph{Docker}}
-
-Docker é uma plataforma aberta/ferramenta construída de forma a tornar mais acessível a criação e execução de programas  usando \emph{containers}.
-
-% explicar melhor containers
-
-Estes \emph{containers} podem ser comparados com \emph{Virtual Machines}, ambos tendo o mesmo propósito, mas os \emph{containers} \emph{Docker} são mais leves, mais rápidos e portáveis.
-
-
-No entanto, esta tecnologia foi utilizada para simular uma rede distribuída, em que cada \emph{container} pode ser considerado \emph{Node} do sistema ou uma máquina que cada um tem uma instância do programa a correr, o seu próprio endereço \acs{IP} e que podem comunicar entre si.
-
 
 
 

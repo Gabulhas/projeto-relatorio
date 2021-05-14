@@ -129,43 +129,29 @@ Este atributo representa a ligação do \emph{Node} para o ``Find'' de um outro 
 
 
 \subsection*{Atributos de cada tipo de \emph{Node}}
-Neste subcapítulo serão definidos os atributos que cada tipo de \emph{Node} apresenta.
+Neste subsecção serão definidos os atributos que cada tipo de \emph{Node} apresenta.
+Os atributos de cada \emph{Node} estão apresentados na tabela \ref{especificacao:tbl:atributos}
 
 
-\subsubsection*{\emph{Owner Terminal}}
-\begin{itemize}
-    \item Find
-    \item MyChan
-    \item Obj
-\end{itemize}
-\subsubsection*{\emph{Owner With Request}}
-\begin{itemize}
-    \item Find
-    \item MyChan
-    \item Link
-    \item Obj
-    \item WaiterChan
-\end{itemize}
-\subsubsection*{\emph{Idle}}
-\begin{itemize}
-    \item Find
-    \item MyChan
-    \item Link
-\end{itemize}
-\subsubsection*{\emph{Waiter Terminal}}
-\begin{itemize}
-    \item Find
-    \item MyChan
-\end{itemize}
-\subsubsection*{\emph{Waiter With Request}}
-\begin{itemize}
-    \item Find 
-    \item MyChan 
-    \item Link 
-    \item WaiterChan 
-\end{itemize}
-
-
+\begin{table}
+\label{especificacao:tbl:atributos}
+\centering
+\begin{tabular}{|l|l|l|l|l|l|} 
+\hline
+\rowcolor{black}                                 & \textcolor{white}{Owner Terminal} & \textcolor{white}{Owner With Request} & \textcolor{white}{Idle} & \textcolor{white}{Waiter Terminal} & \textcolor{white}{Waiter With Request}  \\ 
+\hline
+{\cellcolor{black}}\textcolor{white}{Find}       & X                                & X                                    & X                      & X                                 & X                                      \\ 
+\hline
+{\cellcolor{black}}\textcolor{white}{MyChan}     & X                                & X                                    & X                      & X                                 & X                                      \\ 
+\hline
+{\cellcolor{black}}\textcolor{white}{Link}       &                                   & X                                    & X                      &                                    &                                         \\ 
+\hline
+{\cellcolor{black}}\textcolor{white}{Obj}        & X                                & X                                    &                         &                                    &                                         \\ 
+\hline
+{\cellcolor{black}}\textcolor{white}{WaiterChan} &                                   & X                                    &                         &                                    & X                                      \\
+\hline
+\end{tabular}
+\end{table}
 
 \section{Tipos de mensagens}
 \label{especificacao:sec:tipos_mensagem}
@@ -293,8 +279,6 @@ Como o \emph{Node} é detentor do objeto, deixam de existir ligações a partir 
 
 
 
-
-%-------------------------
 \subsection*{\emph{Waiter With Request}}
 \label{especificacao:nodes:waiter_with_request}
 
