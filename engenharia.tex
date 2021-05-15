@@ -3,6 +3,12 @@
 
 \section{Introdução}
 \label{engenharia:sec:introducao}
+Neste capítulo irá ser descrito o planeamento da implementação do projeto, e decisões tomadas antes de qualquer desenvolvimento.
+É feita uma descrição da mudança do projeto de um programa concorrente para um sistema distribuído e as alterações que essa decisão implicou no trajeto do projeto,
+os motivos que levaram à escolha da Linguagem \emph{Go}, o planeamento de uma visualização do protocolo e do sistema em execução e de como seria implementada essa
+mesma interface, o uso da ferramenta/tecnologia \emph{Docker} para o \emph{Deploy} do sistema, a escolha do método de comunicação entre os \emph{Nodes} e o modelo
+do funcionamento do sistema.
+
 
 \section{Sistema Distribuído}
 \label{engenharia:sec:sistema}
@@ -28,7 +34,6 @@ e optou-se por-se usar outra tecnologia que garantisse a comunicação remota en
 
 \section{Linguagens Go}
 \label{engenharia:sec:go}
-
 
 A linguagem \emph{Go} facilita o desenvolvimento de sistemas concorrentes, pois, nativamente, oferece várias ferramentas para o desenvolvimento deste tipo de sistema.
 
@@ -137,7 +142,7 @@ Como referido em na secção \ref{engenharia:sec:sistema}, o facto de se ter pla
 em vez de um programa concorrente, tornou-se impossível o uso de comunicações por canais do \emph{Go}, 
 e para a comunicação seria necessário um método de comunicação por rede.
 
-Inicialmente procurou-se reproduzir o conceito de comunicação por canais da linguagem \emph{Go}, mas que esta fosse por rede, ou seja, algo que possívelmente
+Inicialmente procurou-se reproduzir o conceito de comunicação por canais da linguagem \emph{Go}, mas que esta fosse por rede, ou seja, algo que possivelmente
 usa-se uma sintaxe ou conceitos semelhantes, sendo que as únicas soluções encontradas ou já não estavam em desenvolvimento, ou seja, possivelmente existiriam \emph{Bugs}, 
 ou a biblioteca nativa \emph{netchan}, que se encontrava descontinuada(\emph{deprecated}). 
 Também seria possível obter o mesmo efeito através de \emph{RPC}, para o qual seria necessário bibliotecas externas, 
@@ -151,18 +156,32 @@ pela qual são enviadas mensagens com o formato \acs*{JSON}, uma vez que, tanto 
 \section{Uso de \emph{Docker}}
 Docker é uma plataforma aberta/ferramenta construída de forma a tornar mais acessível a criação e execução de programas  usando \emph{containers}.
 
-Estes \emph{containers} podem ser comparados com \emph{Virtual Machines}, ambos tendo o mesmo propósito, mas os \emph{containers} \emph{Docker} são mais leves, mais rápidos e portáveis.
+Estes \emph{containers} podem ser comparados com \emph{Virtual Machines}, mas os \emph{containers} \emph{Docker} são mais leves, mais rápidos e portáveis.
 
 No entanto, esta tecnologia foi utilizada para \textbf{simular} uma rede distribuída,
 em que cada \emph{container} pode ser considerado \emph{Node} do sistema ou uma máquina que cada um tem uma instância do programa a correr,
 o seu próprio endereço \acs{IP} e que podem comunicar entre si.
 
 A implementação deste programa permite a execução de um serviço distribuído sem o uso desta ferramenta, pois esta foi
-usado apenas para o \emph{Deploy} para testes.
+usado apenas para o \emph{Deploy} mais rápido e simples para testar durante o desenvolvimento do projeto.
 
 \section{Modelo do Sistema}
 
+Há vários Nodes, que são instâncias do programa \emph{Node}, estes que usam ligações numa rede.
 
+As ligações feitas entre entre os \emph{Nodes} do sistema usam o protocolo \acs*{HTTP}, pelas quais são
+enviadas mensagens no formato \acs*{JSON}.
+
+Para ser possível a visualização do estado da rede, cada \emph{Node} envia regularmente a informação do
+seu próprio estado para um \emph{Node} especial, este que também pertence à mesma rede.
+
+Quando se pretende visualizar a informação que se encontra no \emph{Node} de visualização, faz-se uso de
+uma página \emph{Web}, a qual faz pedidos constantes dessa mesma informação e a dispõe numa animação que 
+vai evoluindo com a alteração do estado da rede.
+
+Este sistema é feito das várias ligações entre os vários componentes do sistema, isto é,
+ligações entre \emph{Nodes}, ligações entre os \emph{Nodes} e um \emph{Node} de visualização 
+e entre o \emph{Node} de visualização e uma página \emph{Web}.
 
 
 \section{Conclusão}

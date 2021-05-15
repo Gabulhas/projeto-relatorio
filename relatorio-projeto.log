@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.4.29)  14 MAY 2021 20:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.4.29)  15 MAY 2021 10:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1120,18 +1120,21 @@ Overfull \hbox (1.66245pt too wide) in paragraph at lines 289--290
 
 
 
-] (./engenharia.tex (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+] (./engenharia.tex [23
+
+
+] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty
 File: lstlang2.sty 2020/03/24 1.8d listings language file
 ) (/usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
 File: lstlang3.sty 2020/03/24 1.8d listings language file
-) [23
-
-
-] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
+) (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [24] [25] [26]) [27] [28
+) [24] [25]
+Underfull \vbox (badness 2065) has occurred while \output is active []
+
+ [26]) [27] [28
 
 
 
@@ -1202,7 +1205,7 @@ Overfull \hbox (73.10738pt too wide) in paragraph at lines 496--499
  []
 
 [41] [42] [43] [44] [45]
-<state-diagram.png, id=971, 485.815pt x 482.80376pt>
+<state-diagram.png, id=974, 485.815pt x 482.80376pt>
 File: state-diagram.png Graphic file (type png)
 <use state-diagram.png>
 Package pdftex.def Info: state-diagram.png  used on input line 771.
@@ -1292,7 +1295,7 @@ Overfull \hbox (0.56749pt too wide) in paragraph at lines 1610--1612
 
 
 ] (./validacao.tex
-<relatorio_overview.png, id=1622, 733.99219pt x 636.87938pt>
+<relatorio_overview.png, id=1625, 733.99219pt x 636.87938pt>
 File: relatorio_overview.png Graphic file (type png)
 <use relatorio_overview.png>
 Package pdftex.def Info: relatorio_overview.png  used on input line 13.
@@ -1339,7 +1342,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  16211 strings out of 479383
  229445 string characters out of 5875830
- 1109516 words of memory out of 5000000
+ 1110228 words of memory out of 5000000
  31889 multiletter control sequences out of 15000+600000
  502144 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1347,10 +1350,10 @@ Here is how much of TeX's memory you used:
 pdfTeX warning (dest): name{JSON} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
-Output written on relatorio-projeto.pdf (89 pages, 466642 bytes).
+Output written on relatorio-projeto.pdf (89 pages, 468471 bytes).
 PDF statistics:
- 1894 PDF objects out of 2073 (max. 8388607)
- 1762 compressed objects within 18 object streams
+ 1897 PDF objects out of 2073 (max. 8388607)
+ 1765 compressed objects within 18 object streams
  1036 named destinations out of 1200 (max. 500000)
  478 words of extra memory for PDF output out of 10000 (max. 10000000)
 
