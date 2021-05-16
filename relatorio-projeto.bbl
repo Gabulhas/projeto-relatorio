@@ -6,4 +6,34 @@ Michael~J Demmer and Maurice~P Herlihy.
 \newblock In {\em International Symposium on Distributed Computing}, pages
   119--133. Springer, 1998.
 
+\bibitem{blackout}
+SecurityFocus Kevin~Poulsen.
+\newblock {Tracking the blackout bug}, 2004.
+\newblock [Online] \url{https://www.securityfocus.com/news/8412}. Último
+  acesso a 15 de maio de 2021.
+
+\bibitem{Ivy}
+Kai Li.
+\newblock Ivy: A shared virtual memory system for parallel computing.
+\newblock {\em ICPP (2)}, 88:94, 1988.
+
+\bibitem{Arvy}
+Pankaj Khanchandani and Roger Wattenhofer.
+\newblock The arvy distributed directory protocol.
+\newblock In {\em The 31st ACM Symposium on Parallelism in Algorithms and
+  Architectures}, SPAA '19, page 225–235, New York, NY, USA, 2019.
+  Association for Computing Machinery.
+
+\bibitem{aleph}
+Maurice Herlihy.
+\newblock {Aleph Toolkit}, 1999.
+\newblock [Online] \url{https://www.securityfocus.com/news/8412}. Último
+  acesso a 15 de maio de 2021.
+
+\bibitem{bully}
+Timothee Tosi.
+\newblock {bully-algorithm}, 2019.
+\newblock [Online] \url{https://github.com/TimTosi/bully-algorithm}. Último
+  acesso a 15 de maio de 2021.
+
 \end{thebibliography}

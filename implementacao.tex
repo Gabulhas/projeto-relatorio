@@ -1709,8 +1709,26 @@ atualizações que se façam na parte gráfica terão que demonstrar que as liga
 \section{Conclusões}
 
 Neste capítulo foi apresentado todo o processo que envolveu a implementação deste projeto, desde as tecnologias, à implementação do \emph{Node} e do \emph{Node} de visualização.
-Das linguagens utilizadas, foi explicado a razão a qual a linguagem ``Go'' é uma boa opção para implementar este tipo de programas. Foi descrito a implementação do \emph{Node}, tal como foi descrito no capítulo de Especificação. 
-Na implementação da interface, explicou-se a dificuldade da reconstrução do estado da rede e da formação dos dados apresentados, devido, principalmente, ao facto das atualizações de cada \emph{Node} não chegam ao \emph{Node} de visualização por ordem de acontecimento. 
+A implementação deste projeto segue uma interpretação da Especificação (\ref{chap:especificacao}) na Linguagem Go, em que é possível executar um sistema distribuído.
+Existe um maior foco na implementação dos comportamentos dos \emph{Nodes} visto que estes alteram o estado global do sistema. Foram também apresentados os desafios nesta implementação,
+principalmente no desenvolvimento da Visualização, provocados pela falta de um Relógio Global e o uso de uma Rede Assíncrona, na qual não é possível garantir a sincronia/sequência dos eventos dos \emph{Nodes}.
+
+
 % A utilidade desta será apresentada no capítulo \ref{chap:validacao}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -3,22 +3,13 @@
 
 \section{Introdução}
 \label{engenharia:sec:introducao}
-Neste capítulo irá ser descrito o planeamento da implementação do projeto, e decisões tomadas antes de qualquer desenvolvimento.
-É feita uma descrição da mudança do projeto de um programa concorrente para um sistema distribuído e as alterações que essa decisão implicou no trajeto do projeto,
-os motivos que levaram à escolha da Linguagem \emph{Go}, o planeamento de uma visualização do protocolo e do sistema em execução e de como seria implementada essa
-mesma interface, o uso da ferramenta/tecnologia \emph{Docker} para o \emph{Deploy} do sistema, a escolha do método de comunicação entre os \emph{Nodes} e o modelo
-do funcionamento do sistema.
-
+Neste capítulo irá ser descrito o planeamento da implementação do projeto, e decisões tomadas antes de qualquer desenvolvimento, sendo o facto de se planear implementar um sistema distribuído ao invés de 
+apenas concorrente o fator que mais influenciou essas decisões.
+Estas decisões incluem a Linguagem usada na Implementação, o método usado para testar o funcionamento da implementação,
+o método de comunicação entre os Nós visto que se optou por um implementação distribuída e o modelo do sistema.
 
 \section{Sistema Distribuído}
 \label{engenharia:sec:sistema}
-\begin{comment}
-- Inicialmente Concorrente
-- O Algoritmo foi definido para sistemas distribuídos
-- Mais interessante e abrange os dois temas ao mesmo tempo
-- Não se fez uso dos canais do Go, mas fez-se uso de ligações HTTP
-\end{comment}
-
 Como referido no capítulo \ref{chap:introducao}, a proposta inicial consistia em simular o protocolo num único programa,
 mas o desenvolvimento de um sistema distribuído 
 provaria-se uma implementação de maior interesse do algoritmo e ``fiel'', pois o \acs*{ADDP} foi desenvolvido para esse mesmo contexto.
@@ -27,12 +18,10 @@ Também foi ponderada a utilização de uma linguagem que fornecesse comunicaç�
 visto que seria a noção mais próxima da comunicação entre os \emph{Nodes} tal como foi definida no \emph{paper} de referência, na qual se
 escolheu a Linguagem \emph{Go} (ver \label{implementacao:subsec:go}), pois seria necessária a comunicação entre vários \emph{Threads}, estes simulando \emph{Nodes}.
 No entanto, devido à alteração do contexto da implementação de Concorrente para Distribuído, não foi possível fazer uso deste tipo de canais, 
-e optou-se por-se usar outra tecnologia que garantisse a comunicação remota entre os vários \emph{Nodes}.
+e optou-se por usar outra tecnologia que garantisse a comunicação remota entre os vários \emph{Nodes}.
 
 
-
-
-\section{Linguagens Go}
+\section{Linguagem Go}
 \label{engenharia:sec:go}
 
 A linguagem \emph{Go} facilita o desenvolvimento de sistemas concorrentes, pois, nativamente, oferece várias ferramentas para o desenvolvimento deste tipo de sistema.
@@ -66,24 +55,24 @@ func count(wg *sync.WaitGroup, goroutineName string) {
 class RunnableDemo implements Runnable {
    private Thread t;
    private String threadName;
-   
+
    RunnableDemo( String name) {
       threadName = name;
    }
    public void run() {
       try {
-         for(int i = 10; i < 10; i++) {
-            System.out.println("Thread: " + threadName + ", " + i);
-            Thread.sleep(40);
-         }
+	 for(int i = 10; i < 10; i++) {
+	    System.out.println("Thread: " + threadName + ", " + i);
+	    Thread.sleep(40);
+	 }
       } catch (InterruptedException e) {
-         System.out.println("Thread " +  threadName + " interrupted.");
+	 System.out.println("Thread " +  threadName + " interrupted.");
       }
    }
    public void start () {
       if (t == null) {
-         t = new Thread (this, threadName);
-         t.start ();
+	 t = new Thread (this, threadName);
+	 t.start ();
       }
    }
 }
@@ -91,10 +80,10 @@ class RunnableDemo implements Runnable {
 public class TestThread {
 
    public static void main(String args[]) {
-      RunnableDemo R1 = new RunnableDemo( "Thread-1");
+      RunnableDemo R1 = new RunnableDemo("Thread-1");
       R1.start();
-      
-      RunnableDemo R2 = new RunnableDemo( "Thread-2");
+
+      RunnableDemo R2 = new RunnableDemo("Thread-2");
       R2.start();
    }   
 }
@@ -107,7 +96,7 @@ como a biblioteca ``sync'' que disponibiliza primitivas de sincronização simpl
 A concorrência é inerente aos sistemas distribuídos, visto que os vários elementos do sistema executam de forma independente e em simultâneo.
 
 Um exemplo relacionado com o tema deste projeto seria o caso em que um \emph{Node} recebe vários pedidos de outros \emph{Nodes}.
-De forma a manter o sistema (ou o diretório) consistente ,
+De forma a manter o sistema (ou o diretório) consistente,
 o \emph{Node} que recebe os pedidos terá de os tratar de forma sincronizada, isto é, tem de endereçar um pedido de cada vez.
 
 Na implementação fez-se uso de servidores e pedidos \acs{HTTP} (ver \ref{engenharia:sec:comunicação}) que, por omissão,
@@ -177,13 +166,51 @@ seu próprio estado para um \emph{Node} especial, este que também pertence à m
 
 Quando se pretende visualizar a informação que se encontra no \emph{Node} de visualização, faz-se uso de
 uma página \emph{Web}, a qual faz pedidos constantes dessa mesma informação e a dispõe numa animação que 
-vai evoluindo com a alteração do estado da rede.
+vai evoluindo com a alteração do estado da rede. Usando esta página é também possível forçar um ou vários \emph{Nodes}
+a realizar um pedido de acesso, em que a página envia um pedido (para cada \emph{Node} a forçar) para o \emph{Node} de visualização.
+Este \emph{Node} depois enviará os pedidos aos \emph{Nodes}. Os possíveis casos de uso da interface estão descritos no diagrama \ref{engenharia:img:casos_de_uso}
 
 Este sistema é feito das várias ligações entre os vários componentes do sistema, isto é,
 ligações entre \emph{Nodes}, ligações entre os \emph{Nodes} e um \emph{Node} de visualização 
-e entre o \emph{Node} de visualização e uma página \emph{Web}.
+e entre o \emph{Node} de visualização e uma página \emph{Web}. As interações e elementos do sistema estão ilustrados no diagrama \ref{engenharia:img:arquitetura}.
+
+
+O próprio \emph{Node} para além de possuir os atributos descritos no capítulo \ref{especificacao:atr:section}, este também possui um Tipo e o endereço do \emph{Node} de visualização para que 
+seja possível a atualização do seu estado na interface.
+O \emph{Node} pode sofrer transformações, receber pedidos de acesso ou o acesso ao objeto, realizar um pedido de acesso, que, para que não seja necessária a intervenção
+do utilizador, este último comportamento pode ocorrer de forma automática.
+Estes comportamentos foram descritos no capítulo \ref{especificacao:sec:comportamentos_nodes}, e para tal foi desenvolvida uma classe ``\emph{Node}'' tendo como atributos os atributos do \emph{Node}
+e os comportamentos como os seus métodos. O diagrama de classe do \emph{Node} está apresentado na ilustração \ref{engenharia:img:classe}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=250pt]{use_case_diagram.png}
+\caption{Diagrama de Casos de Uso da Interface de Visualização.}
+\label{engenharia:img:casos_de_uso}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=400pt]{arquitetura.png}
+\caption{Arquitetura do Sistema.}
+\label{engenharia:img:arquitetura}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=400pt]{node_class_diagram.png}
+\caption{Diagrama da Classe ``\emph{Node}''.}
+\label{engenharia:img:classe}
+\end{figure}
+
+
 
 
 \section{Conclusão}
-\label{engenharia:sec:introducao}
+\label{engenharia:sec:conclusão} recebem o acesso ao objeto.
+Neste capítulo foi exposta a o porquê da da mudança do projeto de um programa concorrente para um sistema distribuído e as alterações que essa decisão implicou no trajeto do projeto,
+os motivos que levaram à escolha da Linguagem \emph{Go}, o planeamento de uma visualização do protocolo e do sistema em execução para uma prova parcial
+e de como seria implementada essa
+mesma interface, o uso da ferramenta/tecnologia \emph{Docker} para o \emph{Deploy} do sistema, a escolha do método de comunicação entre os \emph{Nodes} e o modelo
+do funcionamento do sistema.
 

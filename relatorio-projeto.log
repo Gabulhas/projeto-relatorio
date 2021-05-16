@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.4.29)  15 MAY 2021 10:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.4.29)  16 MAY 2021 21:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -763,11 +763,7 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 \l__kernel_color_stack_int=\count339
 \l__pdf_internal_box=\box58
-) (./relatorio-projeto.aux (./capa.aux) (./agradecimentos.aux) (./acronimos.aux) (./introducao.aux) (./motivacao.aux) (./especificacao.aux) (./engenharia.aux
-
-LaTeX Warning: Label `engenharia:sec:introducao' multiply defined.
-
-) (./implementacao.aux) (./validacao.aux) (./conc-trab-futuro.aux))
+) (./relatorio-projeto.aux (./capa.aux) (./agradecimentos.aux) (./acronimos.aux) (./introducao.aux) (./motivacao.aux) (./especificacao.aux) (./engenharia.aux) (./implementacao.aux) (./validacao.aux) (./conc-trab-futuro.aux))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 132.
 LaTeX Font Info:    ... okay on input line 132.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 132.
@@ -849,7 +845,7 @@ LaTeX Info: Redefining \nameref on input line 132.
 LaTeX Font Info:    Redeclaring math accent \widehat on input line 132.
 LaTeX Font Info:    Redeclaring math accent \widetilde on input line 132.
  (./capa.tex
-<ubi-fe-di.png, id=221, 111.0549pt x 107.6823pt>
+<ubi-fe-di.png, id=213, 111.0549pt x 107.6823pt>
 File: ubi-fe-di.png Graphic file (type png)
 <use ubi-fe-di.png>
 Package pdftex.def Info: ubi-fe-di.png  used on input line 20.
@@ -918,56 +914,59 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 ] [6
 
 
-] (./relatorio-projeto.lot) [7] [8
-
-
 ] (./acronimos.tex
 
-LaTeX Warning: Hyper reference `acro:HTTP' on page ix undefined on input line 5.
+LaTeX Warning: Hyper reference `acro:ADDP' on page vii undefined on input line 5.
 
 
-LaTeX Warning: Hyper reference `acro:HTTP' on page ix undefined on input line 5.
+LaTeX Warning: Hyper reference `acro:ADDP' on page vii undefined on input line 5.
 
 
-LaTeX Warning: Hyper reference `acro:ADDP' on page ix undefined on input line 6.
+LaTeX Warning: Hyper reference `acro:CSV' on page vii undefined on input line 6.
 
 
-LaTeX Warning: Hyper reference `acro:ADDP' on page ix undefined on input line 6.
+LaTeX Warning: Hyper reference `acro:CSV' on page vii undefined on input line 6.
 
 
-LaTeX Warning: Hyper reference `acro:IP' on page ix undefined on input line 7.
+LaTeX Warning: Hyper reference `acro:HTML' on page vii undefined on input line 7.
 
 
-LaTeX Warning: Hyper reference `acro:IP' on page ix undefined on input line 7.
+LaTeX Warning: Hyper reference `acro:HTML' on page vii undefined on input line 7.
 
 
-LaTeX Warning: Hyper reference `acro:URL' on page ix undefined on input line 8.
+LaTeX Warning: Hyper reference `acro:HTTP' on page vii undefined on input line 8.
 
 
-LaTeX Warning: Hyper reference `acro:URL' on page ix undefined on input line 8.
+LaTeX Warning: Hyper reference `acro:HTTP' on page vii undefined on input line 8.
 
 
-LaTeX Warning: Hyper reference `acro:IDE' on page ix undefined on input line 9.
+LaTeX Warning: Hyper reference `acro:IDE' on page vii undefined on input line 9.
 
 
-LaTeX Warning: Hyper reference `acro:IDE' on page ix undefined on input line 9.
+LaTeX Warning: Hyper reference `acro:IDE' on page vii undefined on input line 9.
 
 
-LaTeX Warning: Hyper reference `acro:SVG' on page ix undefined on input line 10.
+LaTeX Warning: Hyper reference `acro:IP' on page vii undefined on input line 10.
 
 
-LaTeX Warning: Hyper reference `acro:SVG' on page ix undefined on input line 10.
+LaTeX Warning: Hyper reference `acro:IP' on page vii undefined on input line 10.
 
 
-LaTeX Warning: Hyper reference `acro:CSV' on page ix undefined on input line 11.
+LaTeX Warning: Hyper reference `acro:SVG' on page vii undefined on input line 14.
 
 
-LaTeX Warning: Hyper reference `acro:CSV' on page ix undefined on input line 11.
-
-) [9
+LaTeX Warning: Hyper reference `acro:SVG' on page vii undefined on input line 14.
 
 
-] [10
+LaTeX Warning: Hyper reference `acro:URL' on page vii undefined on input line 16.
+
+
+LaTeX Warning: Hyper reference `acro:URL' on page vii undefined on input line 16.
+
+) [7
+
+
+] [8
 
 
 
@@ -986,7 +985,7 @@ LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
 
 
 ] [2]
-Overfull \hbox (7.26237pt too wide) in paragraph at lines 79--80
+Overfull \hbox (7.26237pt too wide) in paragraph at lines 80--81
 []\T1/futs/b/n/12 Implementação \T1/futs/m/n/12 - Des-cri-ção de todo o pro-cesso de im-ple-men-ta-ção, como
  []
 
@@ -996,7 +995,7 @@ Overfull \hbox (7.26237pt too wide) in paragraph at lines 79--80
 
 
 ] (./motivacao.tex
-Overfull \hbox (7.34254pt too wide) in paragraph at lines 45--46
+Overfull \hbox (7.34254pt too wide) in paragraph at lines 18--19
 []\T1/futs/m/n/12 Os sis-te-mas dis-tri-buí-dos per-mi-tem que se au-mente
  []
 
@@ -1004,77 +1003,75 @@ Overfull \hbox (7.34254pt too wide) in paragraph at lines 45--46
 
 
 ]
-Overfull \hbox (7.32045pt too wide) in paragraph at lines 57--58
+Overfull \hbox (7.32045pt too wide) in paragraph at lines 30--31
 []\T1/futs/m/n/12 Um dos tó-pi-cos re-la-ci-o-nado com o pro-to-colo es-tu-dado é o acesso ao mesmo
  []
 
 
-Overfull \hbox (9.96034pt too wide) in paragraph at lines 69--71
+Overfull \hbox (9.96034pt too wide) in paragraph at lines 41--43
 []\T1/futs/m/n/12 Após fa-lha-rem 3 li-nhas de ele-tri-ci-dade, fo-ram en-vi-a-dos 3 pe-di-dos ao ``mesmo
  []
 
 [6]
-<um_pedido_1.png, id=399, 342.27875pt x 101.37875pt>
+<um_pedido_1.png, id=391, 342.27875pt x 101.37875pt>
 File: um_pedido_1.png Graphic file (type png)
 <use um_pedido_1.png>
-Package pdftex.def Info: um_pedido_1.png  used on input line 118.
+Package pdftex.def Info: um_pedido_1.png  used on input line 90.
 (pdftex.def)             Requested size: 250.0pt x 74.04918pt.
  [7 <./um_pedido_1.png>]
-<um_pedido_2.png, id=408, 342.27875pt x 101.37875pt>
+<um_pedido_2.png, id=399, 342.27875pt x 101.37875pt>
 File: um_pedido_2.png Graphic file (type png)
 <use um_pedido_2.png>
-Package pdftex.def Info: um_pedido_2.png  used on input line 130.
+Package pdftex.def Info: um_pedido_2.png  used on input line 102.
 (pdftex.def)             Requested size: 250.0pt x 74.04918pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--138
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
 
  []
 
-<dois_pedidos_1.png, id=410, 342.27875pt x 101.37875pt>
+<dois_pedidos_1.png, id=401, 342.27875pt x 101.37875pt>
 File: dois_pedidos_1.png Graphic file (type png)
 <use dois_pedidos_1.png>
-Package pdftex.def Info: dois_pedidos_1.png  used on input line 150.
+Package pdftex.def Info: dois_pedidos_1.png  used on input line 122.
 (pdftex.def)             Requested size: 250.0pt x 74.04918pt.
-<dois_pedidos_2.png, id=412, 352.31625pt x 101.37875pt>
+<dois_pedidos_2.png, id=403, 352.31625pt x 101.37875pt>
 File: dois_pedidos_2.png Graphic file (type png)
 <use dois_pedidos_2.png>
-Package pdftex.def Info: dois_pedidos_2.png  used on input line 161.
+Package pdftex.def Info: dois_pedidos_2.png  used on input line 133.
 (pdftex.def)             Requested size: 250.0pt x 71.93764pt.
 [8 <./um_pedido_2.png> <./dois_pedidos_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
 
-<dois_pedidos_3.png, id=420, 352.31625pt x 135.50626pt>
+<dois_pedidos_3.png, id=411, 352.31625pt x 135.50626pt>
 File: dois_pedidos_3.png Graphic file (type png)
 <use dois_pedidos_3.png>
-Package pdftex.def Info: dois_pedidos_3.png  used on input line 173.
+Package pdftex.def Info: dois_pedidos_3.png  used on input line 145.
 (pdftex.def)             Requested size: 250.0pt x 96.15427pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
 
 [9 <./dois_pedidos_2.png> <./dois_pedidos_3.png>]
-<fila.png, id=428, 352.31625pt x 140.525pt>
+<fila.png, id=420, 352.31625pt x 140.525pt>
 File: fila.png Graphic file (type png)
 <use fila.png>
-Package pdftex.def Info: fila.png  used on input line 199.
+Package pdftex.def Info: fila.png  used on input line 171.
 (pdftex.def)             Requested size: 250.0pt x 99.71553pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--213
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
 
 [10 <./fila.png>]
-
-Package natbib Warning: Citation `Ivy' on page 11 undefined on input line 242.
-
-
-Package natbib Warning: Citation `Arvy' on page 11 undefined on input line 242.
+Overfull \hbox (0.91557pt too wide) in paragraph at lines 214--222
+\T1/futs/m/n/12 Existem dois al-go-rit-mos cujo o seu fun-ci-o-na-mento é se-me-lhante com o [].
+ []
 
 
-Overfull \hbox (2.75238pt too wide) in paragraph at lines 247--248
+Overfull \hbox (2.75238pt too wide) in paragraph at lines 223--225
 []\T1/futs/m/n/12 Como re-fe-rido an-te-ri-or-mente, o \T1/futs/m/it/12 Arvy \T1/futs/m/n/12 é uma ge-ne-ra-li-za-ção de am-bos. Neste
  []
 
@@ -1120,7 +1117,10 @@ Overfull \hbox (1.66245pt too wide) in paragraph at lines 289--290
 
 
 
-] (./engenharia.tex [23
+] (./engenharia.tex
+Underfull \vbox (badness 3343) has occurred while \output is active []
+
+ [23
 
 
 ] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1134,19 +1134,40 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) [24] [25]
 Underfull \vbox (badness 2065) has occurred while \output is active []
 
- [26]) [27] [28
+ [26] [27]
+<use_case_diagram.png, id=616, 382.42876pt x 763.85374pt>
+File: use_case_diagram.png Graphic file (type png)
+<use use_case_diagram.png>
+Package pdftex.def Info: use_case_diagram.png  used on input line 187.
+(pdftex.def)             Requested size: 250.0pt x 499.34297pt.
+<arquitetura.png, id=617, 579.16376pt x 433.62pt>
+File: arquitetura.png Graphic file (type png)
+<use arquitetura.png>
+Package pdftex.def Info: arquitetura.png  used on input line 194.
+(pdftex.def)             Requested size: 400.0pt x 299.48264pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 194--195
+ [][] 
+ []
+
+<node_class_diagram.png, id=618, 1011.78pt x 483.8075pt>
+File: node_class_diagram.png Graphic file (type png)
+<use node_class_diagram.png>
+Package pdftex.def Info: node_class_diagram.png  used on input line 201.
+(pdftex.def)             Requested size: 400.0pt x 191.26796pt.
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 201--202
+ [][] 
+ []
+
+) [28] [29 <./use_case_diagram.png>] [30 <./arquitetura.png> <./node_class_diagram.png>] (./implementacao.tex [31
 
 
 
 
-] (./implementacao.tex [29
 
 
-]
-
-Package acronym Warning: Acronym `HTML' is not defined on input line 35.
-
-[30]
+] [32]
 Overfull \hbox (2.86833pt too wide) in paragraph at lines 79--80
 []\T1/futs/m/n/12 Para a exe-cu-ção de \T1/futs/m/it/12 Con-tai-ners \T1/futs/m/n/12 que exe-cu-tam o pro-grama do \T1/futs/m/it/12 Node \T1/futs/m/n/12 foi usado
  []
@@ -1156,7 +1177,7 @@ Overfull \hbox (2.86833pt too wide) in paragraph at lines 90--91
 []\T1/futs/m/n/12 Para a exe-cu-ção de \T1/futs/m/it/12 Con-tai-ners \T1/futs/m/n/12 que exe-cu-tam o pro-grama do \T1/futs/m/it/12 Node \T1/futs/m/n/12 foi usado
  []
 
-[31] [32] [33] [34] [35] [36] [37]
+[33] [34] [35] [36] [37] [38] [39]
 Overfull \hbox (8.40034pt too wide) in paragraph at lines 365--367
 []\T1/futs/m/n/12 Na im-ple-men-ta-ção deste mé-todo, foi usada a es-tru-tura con-di-ci-o-nal ``Switch''
  []
@@ -1174,12 +1195,12 @@ Overfull \hbox (4.82753pt too wide) in paragraph at lines 402--404
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [38]
+ [40]
 Overfull \hbox (16.1795pt too wide) in paragraph at lines 420--422
 \T1/futs/m/n/12 Caso o tipo seja ``OW-NER_WITH_REQUEST'', o Atri-buto ``Link'' do ob-jeto ``newAc-
  []
 
-[39]
+[41]
 Overfull \hbox (2.33144pt too wide) in paragraph at lines 465--467
 \T1/futs/m/n/12 Caso o tipo seja ``WAI-TER_TERMINAL'', o \T1/futs/m/it/12 Node \T1/futs/m/n/12 o mé-todo ``Wai-terWith-Re-quest''
  []
@@ -1199,13 +1220,13 @@ Overfull \hbox (0.42369pt too wide) in paragraph at lines 484--488
 []\T1/futs/m/n/12 Por úl-timo, este so-fre uma trans-for-ma-ção. O mé-todo ``Wai-terWith-Re-quest''
  []
 
-[40]
+[42]
 Overfull \hbox (73.10738pt too wide) in paragraph at lines 496--499
 \T1/futs/m/n/12 cess Re-quest'', este so-fre uma trans-for-ma-ção, muda de tipo para ``WAI-TER_WITH_REQUEST''
  []
 
-[41] [42] [43] [44] [45]
-<state-diagram.png, id=974, 485.815pt x 482.80376pt>
+[43] [44] [45] [46] [47]
+<state-diagram.png, id=996, 485.815pt x 482.80376pt>
 File: state-diagram.png Graphic file (type png)
 <use state-diagram.png>
 Package pdftex.def Info: state-diagram.png  used on input line 771.
@@ -1213,17 +1234,17 @@ Package pdftex.def Info: state-diagram.png  used on input line 771.
 
 Underfull \vbox (badness 2126) has occurred while \output is active []
 
- [46] [47 <./state-diagram.png>] [48] [49]
+ [48] [49 <./state-diagram.png>] [50] [51]
 Overfull \hbox (4.4884pt too wide) in paragraph at lines 886--888
 []\T1/futs/m/n/12 No en-tanto, tam-bém fo-ram im-ple-men-ta-dos mé-to-dos para per-mi-tir ao \T1/futs/m/it/12 Node
  []
 
-[50] [51]
+[52] [53]
 Overfull \hbox (2.1795pt too wide) in paragraph at lines 978--982
 \T1/futs/m/n/12 ção). Quando um \T1/futs/m/it/12 Node \T1/futs/m/n/12 trans-mite um pe-dido de ``Gi-ve-Ac-cess'' para ou-tro \T1/futs/m/it/12 Node\T1/futs/m/n/12 ,
  []
 
-[52]
+[54]
 Overfull \hbox (8.85893pt too wide) in paragraph at lines 1042--1043
 \T1/futs/m/n/12 O \T1/futs/m/it/12 Node \T1/futs/m/n/12 tem a pos-si-bi-li-dade de re-a-li-zar pe-di-dos \T1/futs/m/it/12 HTTP\T1/futs/m/n/12 , to-dos eles do tipo ``POST''. 
  []
@@ -1233,10 +1254,10 @@ Overfull \hbox (0.39574pt too wide) in paragraph at lines 1049--1050
 []\T1/futs/m/n/12 O pri-meiro pa-râ-me-tro é o [][] para o qual irá ser en-vi-ado o pe-dido ``POST''. 
  []
 
-[53]
+[55]
 Underfull \vbox (badness 3271) has occurred while \output is active []
 
- [54] [55]
+ [56] [57]
 Overfull \hbox (0.91243pt too wide) in paragraph at lines 1146--1147
 []\T1/futs/m/n/12 As ``Struct'' des-tes es-tão de-fi-ni-das no mó-dulo ``Chan-nels'', no fi-cheiro \T1/futs/b/n/12 chan-
  []
@@ -1246,17 +1267,17 @@ Overfull \hbox (8.41554pt too wide) in paragraph at lines 1151--1154
 \T1/futs/m/n/12 Esta classe en-cap-sula o \T1/futs/m/it/12 Chan-nel ``My-Chan'' \T1/futs/m/n/12 do \T1/futs/m/it/12 Node \T1/futs/m/n/12 re-a-li-zou o pe-dido de acesso.
  []
 
-[56] [57] [58]
+[58] [59] [60]
 Overfull \hbox (10.80344pt too wide) in paragraph at lines 1283--1286
 \T1/futs/m/n/12 ri-gido), ou seja, pa-res de en-de-re-ços, ``Source'' e ``Tar-get'' (classe ``ele-ments.Link''). 
  []
 
-[59] [60]
+[61] [62]
 Underfull \hbox (badness 10000) in paragraph at lines 1354--1355
 
  []
 
-[61]
+[63]
 Underfull \hbox (badness 10000) in paragraph at lines 1389--1390
 
  []
@@ -1266,7 +1287,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1395--1397
 
  []
 
-[62]
+[64]
 Underfull \hbox (badness 10000) in paragraph at lines 1422--1424
 
  []
@@ -1281,43 +1302,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 1427--1429
 
  []
 
-[63] [64]
+[65] [66]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [65] [66]
+ [67] [68]
 Overfull \hbox (0.56749pt too wide) in paragraph at lines 1610--1612
 \T1/futs/m/n/12 Caso o ``Wai-ter-Chan'' do \T1/futs/m/it/12 Node \T1/futs/m/n/12 da atu-a-li-za-ção aponte para o pri-meiro ele-mento
  []
 
-[67] [68]) [69] [70
+[69] [70]) [71] [72
 
 
 
 
 ] (./validacao.tex
-<relatorio_overview.png, id=1625, 733.99219pt x 636.87938pt>
+<relatorio_overview.png, id=1648, 733.99219pt x 636.87938pt>
 File: relatorio_overview.png Graphic file (type png)
 <use relatorio_overview.png>
-Package pdftex.def Info: relatorio_overview.png  used on input line 13.
+Package pdftex.def Info: relatorio_overview.png  used on input line 21.
 (pdftex.def)             Requested size: 300.0pt x 260.30592pt.
- [71
+
+Underfull \vbox (badness 3049) has occurred while \output is active []
+
+ [73
 
 
-] [72 <./relatorio_overview.png (PNG copy)>] [73]) [74] (./conc-trab-futuro.tex
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [75
-
-
+] [74 <./relatorio_overview.png (PNG copy)>] [75]) [76] [77] [78
 
 
 
 
-]) [76] (./relatorio-projeto.bbl)
+] (./conc-trab-futuro.tex [79
 
-Package natbib Warning: There were undefined citations.
 
-[77
+]) [80] (./relatorio-projeto.bbl
+LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 12.
+ (/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Underfull \hbox (badness 4556) in paragraph at lines 28--32
+[]\T1/futs/m/n/12 Maurice Her-lihy.  Aleph To-ol-kit, 1999.  [On-line] []$\T1/lmtt/m/n/12 https : / / www .
+ []
+
+) [81
 
 
 
@@ -1327,33 +1354,29 @@ Package natbib Warning: There were undefined citations.
 ]
 \tf@toc=\write5
 \tf@lof=\write6
-\tf@lot=\write7
  (./relatorio-projeto.aux (./capa.aux) (./agradecimentos.aux) (./acronimos.aux) (./introducao.aux) (./motivacao.aux) (./especificacao.aux) (./engenharia.aux) (./implementacao.aux) (./validacao.aux) (./conc-trab-futuro.aux))
 Package rerunfilecheck Info: File `relatorio-projeto.out' has not changed.
-(rerunfilecheck)             Checksum: 3BA138E472D5FD959D83230B853B5CA6;3510.
+(rerunfilecheck)             Checksum: 3DE1A5FB95FF52B9B11DE97D6E29CD04;3378.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 16211 strings out of 479383
- 229445 string characters out of 5875830
- 1110228 words of memory out of 5000000
- 31889 multiletter control sequences out of 15000+600000
- 502144 words of font info for 112 fonts, out of 8000000 for 9000
+ 16293 strings out of 479383
+ 230776 string characters out of 5875830
+ 1110421 words of memory out of 5000000
+ 31956 multiletter control sequences out of 15000+600000
+ 502462 words of font info for 113 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,12n,72p,910b,2022s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,12n,72p,638b,2022s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{JSON} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
-Output written on relatorio-projeto.pdf (89 pages, 468471 bytes).
+{/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
+Output written on relatorio-projeto.pdf (91 pages, 635929 bytes).
 PDF statistics:
- 1897 PDF objects out of 2073 (max. 8388607)
- 1765 compressed objects within 18 object streams
- 1036 named destinations out of 1200 (max. 500000)
- 478 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1944 PDF objects out of 2073 (max. 8388607)
+ 1802 compressed objects within 19 object streams
+ 1046 named destinations out of 1200 (max. 500000)
+ 477 words of extra memory for PDF output out of 10000 (max. 10000000)
 

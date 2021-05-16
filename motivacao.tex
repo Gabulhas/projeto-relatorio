@@ -7,37 +7,10 @@
 
 
 
-% explicar que o mundo cada vez mais requer programas distribuídos devido à escalabilidade destes
-% aumento de cores no CPU
-% aumento da infraestruturas das grandes empresas
-% A internet é cada vez mais global, logo é necessário distribuir os sistemas por várias partes do mundo
-
-
-
-
-\begin{comment}
-    - aumento de utilizadores
-	- por causa de Smartphones, Tablets, acesso mais barato à internet
-    - necessidades
-	- Disponibilidade
-	- Evitar erros
-	- Escalabilidade 
-	- Ter os serviços distribuídos pelo mundo
-
-\end{comment}
-
-
 Ao longo dos anos, o crescimento da utilização de serviços informáticos, de dispositivos mais acessíveis à população mundial e uma maior cobertura de serviços de Internet, 
 tem levado ao aumento da necessidade de serviços com uma maior escalabilidade, para garantir o acesso a mais utilizadores, com uma maior disponibilidade, pois erros ou \emph{Downtime} torna-se uma inconveniência para os utilizadores,
 e distribuídos geograficamente, para garantir o acesso mais rápido ao serviço.
 Também o aumento do número de núcleos nos processadores ou a conveniência e eficiência de várias máquinas trabalharem em conjunto, tem vindo a aumentar a utilização de programas concorrentes e sistemas distribuídos.
-
-
-%https://www.oreilly.com/content/distributed-systems-a-quick-and-simple-definition/
-% maior runtime
-% fault tolearnce
-% mais baratos porque escabilidade horizontal
-% mais eficientes, porque é possivel várias máquinas trabalharem
 
 Das várias vantagens no uso de sistemas distribuídos, as que mais se destacam são as seguintes.
 % remover, demasiada informação desnecessária, não o ponto principal da motivação
@@ -63,8 +36,7 @@ Este tipo de ocorrências são denominadas de falha de Condição de Corrida ou 
 que por último podem levar a grandes catástrofes.
 
 % Melhorar
-Um exemplo catastrófico foi o ``Apagão de 2003'' que afetou os Estados Unidos da América e Canada. 
-
+Um exemplo catastrófico foi o ``Apagão de 2003'' \cite{blackout} que afetou os Estados Unidos da América e Canada. 
 
 Após falharem 3 linhas de eletricidade, foram enviados 3 pedidos ao ``mesmo tempo'', que provocou uma \emph{Race Condition} na escrita de nova informação num servidor central, deixando assim o servidor num estado corrupto/errado.
 Essa corrupção levou a que o sistema de alarme entrasse em Ciclo Infinito, fazendo com que não fosse possível receber novos avisos de outras linhas.
@@ -239,29 +211,38 @@ Neste protocolo existem duas estruturas distribuídas, em que cada uma é formad
 %Ivy e Arvy
 
 % TODO: Explicar quais é que são os benefícios de usar cada um
-De muitos algoritmos distribuídos e suas implementações, há dois trabalhos relacionados com o protocolo estudado neste projeto. Estes são o \emph{Ivy} \cite{Ivy} e o \emph{Arvy} \cite{Arvy}, este sendo uma generalização de ambos o \emph{Ivy} e o algoritmo estudado (\acs{ADDP}). Este três algoritmos (ou classe de algoritmos) o acesso exclusivo ao objeto (ou o acesso a este).
+Existem dois algoritmos cujo o seu funcionamento é semelhante com o \acs*{ADDP}.
+Estes são o \emph{Ivy} \cite{Ivy} e o \emph{Arvy} \cite{Arvy}, este último sendo uma generalização de ambos o \emph{Ivy} e o algoritmo estudado (\acs{ADDP}).
+Este três algoritmos (ou classe de algoritmos) garantem o acesso exclusivo ao objeto (ou o acesso a este) devido ao mecanismo de mudança de ligações.
+O \emph{Ivy} apresenta um funcionamento muito similar ao \emph{Arrow} (\acs*{ADDP}),
+em que o objeto (ou o acesso a este) varia de localização,
+mas destaca-se do \emph{Arrow} na formação das ligações, que,
+ao invés de as ligações por onde o pedido passa se inverterem,
+os \emph{Nodes} que recebem os pedidos passam a estar ligados ao \emph{Node} que realizou o pedido.
+
+Como referido anteriormente, o \emph{Arvy} é uma generalização de ambos.
+Neste algoritmo, quando um \emph{Node} recebe um pedido este pode ligar-se a qualquer \emph{Node} por onde atravessou o pedido.
 
 
-O \emph{Ivy} apresenta um funcionamento muito similar ao \emph{Arrow} (\acs*{ADDP}), em que o objeto (ou o acesso a este) varia de localização, mas destaca-se do \emph{Arrow} na formação das ligações, que, ao invés de as ligações por onde o pedido passa se inverterem, os \emph{Nodes} que recebem os pedidos passam a estar ligados ao \emph{Node} que realizou o pedido.
+Quanto a implementações, existem três relacionadas com a desenvolvida neste projeto. 
+Estas são, o \emph{Aleph Toolkit}\cite{aleph}, a qual é a única implementação conhecida do \acs*{ADDP}, mas esta é muito diferente da obtida no decorrer deste projeto, 
+a implementação do \emph{Arvy}, a qual já foi referida, 
+e uma implementação do \emph{Bully Algorithm} \cite{bully}, que inspirou o uso de uma Página \emph{Web}, esta que comunica com um Nó de Visualização para a visualização do sistema distribuído, e 
+também inspirou o uso do \emph{Docker} para o \emph{Deploy}/execução do sistema, no entanto este tópico será exposto num capítulo seguinte (Capítulo \ref{chap:engenharia}).
 
-Como referido anteriormente, o \emph{Arvy} é uma generalização de ambos. Neste algoritmo, quando um \emph{Node} recebe um pedido este pode ligar-se a qualquer \emph{Node} por onde atravessou o pedido.
 
-
-% comparar este algoritmo com outros (ver http://cs.brown.edu/people/mph/DemmerH98/disc.pdf)
-
-% saber explicar as dificuldades da implementação do AADP (não a minha em específico, mas em geral), os seus usos e 
-% porque é que é um problema relevante
-% explicar benefícios da visualiazção (ponto importante, que até está no nome do AADP, as Setas)
-% motivação do trabalho, porque é que é giro de se fazer
-% explicar a utilidade/problemas resolvidos com este protocolo
-% que problemas estamos a resolver
-  % definição do problema
-  % a forma como vamos resolver os problemas
-% Qual é o interesse em fazer este trabalho
-% quais os desafios/interesses ao fazer o projeto
 
 \section{Conclusões}
 \label{motivacao:sec:conclusao}
+
 %Mudar a palavra esclarecido
-Neste capítulo foi descrito o aumento da necessidade de sistema e algoritmos distribuídos e a complexidade de implementação dos mesmos. Foi também descrito o funcionamento global do algoritmo/sistema em questão no desenvolvimento deste projeto, com um maior foco alterações provocadas pelos comportamentos dos nós. Foram também mencionadas os dois tipos de estruturas de dados distribuídas presentes no sistema. Por último, fez-se uma comparação do \acs*{ADDP} com dois algoritmos relacionados, em que a maior diferença entre estes é a formação das novas ligações por parte do \emph{Node}, em que, no \acs*{ADDP}, o \emph{Node} liga-se ao \emph{Node} que lhe fez chegar o pedido, no \emph{Ivy}, liga-se ao \emph{Node} que realizou o pedido e no \emph{Arvy} liga-se a qualquer um dos \emph{Nodes} por onde passou o pedido.
+Neste capítulo foi descrito o aumento da necessidade de sistemas e algoritmos distribuídos bem construídos, tal como a complexidade de implementação dos mesmos.
+No contexto deste projeto, das falhas que ocorrem somente em sistemas concorrentes (e por sua vez, distribuídos), a que se pretende evitar (principalmente)
+é a Condição de Corrida/\emph{Race Condition},
+pois este tipo de falhas provoca resultados/estados inesperados de sistemas e informação, por vezes provocando catástrofes ou grandes problemas.
+O protocolo em questão evita este tipo de falhas ao garantir que, a qualquer momento, apenas um elemento detém o (acesso ao) objeto.
+Na descrição desenvolvida sobre este algoritmo há uma maior ênfase na mudança das ligações entre os nós e o que esta mudança provoca no sistema numa vista global,
+pois este é o mecanismo que evita o acesso concorrente ao objeto, que, após um primeiro pedido chegar ao atual detentor do objeto, o detentor cederá o objeto ao autor do pedido,
+e os subsequente pedidos de acesso serão redireccionados em direção a um futuro detentor.
+Foram também referidos dois trabalhos relacionados com o \acs*{ADDP}, os quais diferem principalmente na formação das novas ligações após a recepção de pedidos de acesso.
 

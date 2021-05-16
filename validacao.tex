@@ -3,6 +3,14 @@
 
 \section{Introdução}
 \label{validacao:sec:introducao}
+Neste capítulo será apresentada a interface fornecida na implementação tal como a sua utilidade tanto
+durante o desenvolvimento do projeto como para uma possível prova parcial do bom funcionamento deste.
+Irá ser feita uma descrição de como é disposta a informação da rede/sistema, como são representados os
+nós, as estruturas de dados distribuídas e do histórico de acontecimentos na rede.
+Este histórico será o elemento principal na prova parcial da implementação, pois para o bom funcionamento 
+do sistema é necessário que dois tipos de eventos tenham a mesma ordem, estes sendo, as entradas dos \emph{Node} 
+na fila principal (que está diretamente ligada ao atual detentor do objeto) têm de seguir a mesma ordem que a chegada do
+acesso do objeto aos \emph{Nodes} que o pediram o acesso a este.
 
 \section{Interface de Visualização}
 \label{validacao:sec:interface}
@@ -58,7 +66,7 @@ Na interface estão disponíveis 5 botões diferentes que permitem a iteração 
 \section{Testes}
 \label{validacao:sec:testes}
 %TODO: explicar o quão diferente é a única implementação conhecida
-No desenvolvimento foi necessário testar a implementação e também provar o seu bom funcionamento, no entanto não foi possível fazer-se uso de métodos formais de prova deste sistema, nem de comparar esta implementação com outra existente, visto que, a implementação feita no decorrer deste projeto é muito diferente da única conhecida.
+No desenvolvimento foi necessário testar a implementação e também provar o seu bom funcionamento, no entanto não foi possível fazer-se uso de métodos formais de prova deste sistema, nem de comparar esta implementação com outra existente, visto que, a implementação feita no decorrer deste projeto é muito diferente da única conhecida \cite{aleph}.
 						%mudar "histórico VVVVV"
 Ainda assim é possível testar o bom funcionamento do sistema fazendo o uso dos elementos presentes na interface gráfica disponibilizada.
 % Talvez especificar todas as questões de bom funcionamento?
@@ -71,12 +79,23 @@ Nem todos os elementos da visualização estão atualizados em qualquer momento,
 No entanto, o uso mais indicado do grafo e das tabelas da fila e atual \emph{Owner} é de visualização e demonstração de como funciona o sistema/protocolo, e não como prova, devido aos problemas de atualização presentes. 
 
 Para uma evidência mais forte, fez-se uso das 3 tabelas dos históricos. 
-Como referido anteriormente, a tabela \emph{Queue History} mostra o histórico dos \emph{Nodes} que entraram na fila ``Principal'', e a passagem do acesso ao objeto tem de seguir a ordem dessa fila, e a ordem por onde circula o objeto é mostrado na tabela \emph{Owner History}, logo, caso as tabelas \emph{Queue History} e \emph{Owner History} demonstrem os \emph{Nodes} com ordens diferentes, o sistema está errado.
+Como referido anteriormente, a tabela \emph{Queue History} mostra o histórico dos \emph{Nodes} que entraram na fila ``Principal'', e a passagem do acesso ao objeto tem de seguir a ordem dessa fila, e a ordem por onde circula o objeto é mostrado na tabela \emph{Owner History}, logo, caso as tabelas \emph{Queue History} e \emph{Owner History} demonstrem os \emph{Nodes} com ordens diferentes, o sistema está errado, visto que o objeto não ``seguiu'' a ordem esperada.
 
-A tabela \emph{Request History} demonstra que a ordem pela qual os \emph{Nodes} realizam pedidos ou que a ordem que \emph{Node} de visualização recebe a atualização de que esses \emph{Nodes} realizaram pedidos pode ser diferente da ordem na file ``Principal''.
+A tabela \emph{Request History} demonstra que a ordem pela qual os \emph{Nodes} realizam pedidos ou que a ordem
+que \emph{Node} de visualização recebe a atualização de que esses \emph{Nodes} realizaram pedidos pode ser diferente da ordem na fila ``Principal''.
+Esta pode ser apresentada com uma ordem dos \emph{Nodes} diferente à apresentada nas outras tabelas, visto que, caso um \emph{Node} realize um pedido, este pedido pode demorar mais tempo a chegar a um \emph{Node Terminal} do que, por exemplo, um \emph{Node} que realize mais tarde um pedido e que esteja diretamente ligado ao \emph{Node Terminal}.
 
+É possível observar este fenómeno quando há \emph{Nodes} muito distantes de um \emph{Waiter Terminal} ou quando há um grande número de pedidos a circular na rede,
+que pode ser demonstrado usando o botão ``Request All'' disponível na interface.
 
 
 \section{Conclusões}
 \label{validacao:sec:conclusoes}
-Neste capítulo foi feita uma descrição do funcionamento do sistema usado para a visualização e teste do programa \emph{Node}, sendo este um dos pontos de maior interesse deste projeto. O uso de ferramentas de construção provou-se útil na execução do sistema num contexto distribuído, de forma fácil, rápida, que pode ser usada para replicar a construção deste sem ter conhecimento da implementação do programa. Foi também uma explicação do funcionamento da interface e como se testou o sistema e demonstrou o bom funcionamento deste.
+Neste capítulo foi esclarecida a representação dos vários elementos do sistema, em que se dispõe um
+grafo para representar as várias ligações entre os nós, quer estas sejam ligações do diretório ou das filas, 
+uma tabela que contém os endereços dos \emph{Nodes} que estam presentes na fila ``Principal''.
+Foram apresentados os usos do botão, estes que servem para a interação com a interface ou até mesmo com o sistema.
+A secção de maior interesse para este projeto é a secção de Testes, pois, recurreu-se ao uso do histórico dos eventos para 
+se provar parcialmente o bom funcionamento da implementação conseguida no projeto, em que, para que o sistema não apresente falhas
+é necessário que a ordem de ``chegada'' dos \emph{Nodes} à fila ``Principal'' (esta é a fila que tem o atual \emph{Owner} como cabeça de fila)
+seja a mesma que os \emph{Nodes} recebem o acesso ao objeto.
