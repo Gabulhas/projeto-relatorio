@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.4.29)  19 MAY 2021 18:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.4.29)  19 MAY 2021 22:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1343,39 +1343,37 @@ Underfull \vbox (badness 3049) has occurred while \output is active []
 
 
 ] (./conc-trab-futuro.tex
-Overfull \hbox (1.49155pt too wide) in paragraph at lines 33--35
+Overfull \hbox (1.49155pt too wide) in paragraph at lines 33--39
 \T1/futs/m/n/12 Este pro-jeto teve como ob-je-tivo prin-ci-pal o es-tudo e im-ple-men-ta-ção do [][],
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--35
+Underfull \vbox (badness 2932) has occurred while \output is active []
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--39
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 55--59
-
- []
-
-[81
+ [81
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 60--64
+Underfull \hbox (badness 10000) in paragraph at lines 69--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--70
+Underfull \hbox (badness 10000) in paragraph at lines 74--78
 
  []
 
-) [82] (./relatorio-projeto.bbl
+[82]
+Underfull \hbox (badness 10000) in paragraph at lines 79--84
+
+ []
+
+) [83] [84
+
+
+
+
+] (./relatorio-projeto.bbl
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 12.
  (/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1389,11 +1387,7 @@ Underfull \hbox (badness 4872) in paragraph at lines 34--38
 []\T1/futs/m/n/12 Silvan Mos-ber-ger.  arvy, 2019.  [On-line] []$\T1/lmtt/m/n/12 https : / / github . com /
  []
 
-) [83
-
-
-
-
+) [85
 
 
 ]
@@ -1408,8 +1402,8 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 16299 strings out of 479383
- 230851 string characters out of 5875830
+ 16301 strings out of 479383
+ 230865 string characters out of 5875830
  1110436 words of memory out of 5000000
  31959 multiletter control sequences out of 15000+600000
  502462 words of font info for 113 fonts, out of 8000000 for 9000
@@ -1418,10 +1412,10 @@ Here is how much of TeX's memory you used:
 pdfTeX warning (dest): name{JSON} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putbi8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/share/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/share/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
-Output written on relatorio-projeto.pdf (93 pages, 639565 bytes).
+Output written on relatorio-projeto.pdf (95 pages, 642779 bytes).
 PDF statistics:
- 1960 PDF objects out of 2073 (max. 8388607)
- 1816 compressed objects within 19 object streams
- 1049 named destinations out of 1200 (max. 500000)
+ 1969 PDF objects out of 2073 (max. 8388607)
+ 1823 compressed objects within 19 object streams
+ 1051 named destinations out of 1200 (max. 500000)
  477 words of extra memory for PDF output out of 10000 (max. 10000000)
 

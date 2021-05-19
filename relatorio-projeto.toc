@@ -49,5 +49,5 @@
 \contentsline {section}{\numberline {6.4}Conclusões}{78}{section.6.4}%
 \contentsline {chapter}{\chapternumberline {7}Conclusões e Trabalho Futuro}{81}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Conclusões Principais}{81}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Trabalho Futuro}{81}{section.7.2}%
-\contentsline {chapter}{Bibliografia}{83}{chapter*.79}%
+\contentsline {section}{\numberline {7.2}Trabalho Futuro}{82}{section.7.2}%
+\contentsline {chapter}{Bibliografia}{85}{chapter*.79}%

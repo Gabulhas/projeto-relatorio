@@ -30,23 +30,37 @@
 \end{comment}
 
 
-Este projeto teve como objetivo principal o estudo e implementação do \acs{ADDP}, um protocolo que permite a partilha de um objeto móvel, sem ser necessário
-que todos os nós do sistema detenham da infomação da localizam deste e que garante o acesso mutuamente exclusivo a este. \\
+Este projeto teve como objetivo principal o estudo e implementação do \acs{ADDP}, um protocolo que permite a partilha de um objeto móvel através de um diretório, 
+sem que todos os elementos detenham a localização deste
+e que garante o acesso mutuamente exclusivo a este. 
+Num sistema distribuído definido por este protocolo, os vários nós que o formam têm a possibilidade de requisitar o acesso (exclusivo) a um objeto,
+fazendo uso das ligações a outros nós, as quais são invertidas após serem usadas na transmissão dos pedidos. Este mecanismo de inversão garante que a direção de qualquer
+ligação indique a atual ou futura localização do objeto (ou o acesso a este), evitando a necessidade de os nós difundirem a sua localização.
 
+Esta característica garante uma maior escalabilidade do sistema, pois não é necessário que os nós transmitam a informação a todos os outros nós no sistema sobre a localização
+do objeto, e garantindo o acesso exclusivo a este ao enviá-lo ao nó ao qual o primeiro pedido a ser processado pertence, fazendo com que os seguintes pedidos sejam redirecionados
+ao futuro detentor.
+As várias ligações entre os nós e a informação pelas quais é transferida definem duas estruturas de dados distribuídas, sendo estas um grafo, mais especificamente uma árvore de extensão mínima
+formada pelas ligações de diretório onde são transmitidos os pedidos de acesso ao objeto, e uma fila formada pelas ligações exteriores ao diretório pelo qual circula o acesso ao objeto.
 
-Foi possível a exploração de vários tópicos como concorrência, protocolos de diretórios, objetos móveis, sincronização de processos concorrentes,
-sistemas e estruturas de dados distribuídas, e exclusão mútua distribuída. \\
+Após a leitura e estudo do artigo que introduz o \acs{ADDP} \cite{Arrow}, foi realizada uma especificação de todos os elementos que pertencem ao sistema, nomeadamente os vários nós, os seus atributos,
+as ligações entre estes, os tipos de mensagem que por estas circulam e os comportamentos do nó, que serviu de base para a implementação. 
 
-Após um estudo do o artigo que introduz o \acs{ADDP} \cite{Arrow}, que permitiu a realização de uma especificação dos elementos que pertencem ao sistema definido por o protocolo estudado,
-esta que foi usada como base no planeamento e implementação do projeto.
-No desenvolvimento do programa executado no sistema distribuído, foi possível praticar o uso de mecanismos de sincronização e concorrentes, estes oferecidos pela Linguagem \emph{Go},
-a linguagem escolhida para a implementação.
-Para além da implementação do programa distribuído, foi desenvolvida uma interface, que permitiu visualizar o protocolo em ação, testar a implementação, e provar (parcialmente) o seu
-bom funcionamento e fidelidade com o descrito na Especificação.
+Foi realizada uma implementação na Linguagem \emph{Go} do protocolo, na qual foi possível explorar conceitos de concorrência, comunicação por canais, sincronização e exclusão mútua,
+na qual foi possível obter um programa que é executado num sistema distribuído. 
+Para a visualização deste sistema, foi desenvolvido o programa de um nó especial com o propósito de reconstruir o estado do sistema. 
+Através de atualizações que cada nó envia periodicamente a este, este nó é capaz de reconstruir o grafo que representa o diretório, as filas existentes no sistema e, sem uso de \emph{timestamps},
+reconstruir a ordem dos eventos ocorridos, usando regras do protocolo para obter a sequência. 
+Estas atualizações são depois solicitas por uma página \emph{Web} desenvolvida para a visualização da informação que se encontra no nó de visualização, as quais são usadas para
+o desenho de um grafo que representa o diretório e tabelas que dispõem a ordem das tabelas e dos elementos das filas. 
+Para além de dispor o estado do sistema, esta página é também interativa, na qual é possível forçar \emph{Nodes} do sistema a realizar pedidos de acesso, ou controlar a animação.
 
-
-% Esta secção contém a resposta à questão: \\
-% \emph{Quais foram as conclusões principais a que o(a) aluno(a) chegou no fim deste trabalho?}
+Por fim, ordem de reconstrução dos eventos foi necessária para provar (parcialmente) o funcionamento da implementação feita.
+Neste sistema existem dois tipos de acontecimento no sistema que têm de seguir a mesma ordem, estes sendo,
+a entrada de um nó na fila ``Principal'', fila de espera que está ligada ao nó detentor do objeto, e a chegada do objeto a um nó e foi necessário
+reconstruir esses mesmos acontecimentos usando apenas as atualizações, estas que não seguiam a ordem de acontecimento nem faziam uso de \emph{timestamps} para as sincronizar. 
+Então foi necessário usar outros fatores no qual há a certeza da ordem, como a mudança do tipo de um nó, ou o facto de se conhecer que um nó está à espera de outro para obter o acesso
+ao objeto para ser possível a reconstrução da ordem pela qual os nós entram na fila e a ordem que o (acesso ao) objeto segue.
 
 
 \section{Trabalho Futuro}
