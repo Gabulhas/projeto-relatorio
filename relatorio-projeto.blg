@@ -13,44 +13,44 @@ A level-1 auxiliary file: validacao.aux
 A level-1 auxiliary file: conc-trab-futuro.aux
 The style file: unsrt.bst
 Database file #1: bibliografia.bib
-You've used 6 entries,
+You've used 7 entries,
             1791 wiz_defined-function locations,
-            494 strings with 4495 characters,
-and the built_in function-call counts, 1328 in all, are:
-= -- 132
-> -- 32
+            499 strings with 4618 characters,
+and the built_in function-call counts, 1455 in all, are:
+= -- 142
+> -- 36
 < -- 2
-+ -- 14
-- -- 8
-* -- 43
-:= -- 184
-add.period$ -- 20
-call.type$ -- 6
-change.case$ -- 6
++ -- 16
+- -- 9
+* -- 44
+:= -- 203
+add.period$ -- 23
+call.type$ -- 7
+change.case$ -- 7
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 76
-empty$ -- 144
-format.name$ -- 8
-if$ -- 329
+cite$ -- 7
+duplicate$ -- 81
+empty$ -- 162
+format.name$ -- 9
+if$ -- 359
 int.to.chr$ -- 0
-int.to.str$ -- 6
+int.to.str$ -- 7
 missing$ -- 3
-newline$ -- 33
-num.names$ -- 6
-pop$ -- 32
+newline$ -- 38
+num.names$ -- 7
+pop$ -- 39
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 57
+skip$ -- 60
 stack$ -- 0
 substring$ -- 56
-swap$ -- 35
+swap$ -- 36
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 11
-width$ -- 7
-write$ -- 69
+while$ -- 12
+width$ -- 8
+write$ -- 79

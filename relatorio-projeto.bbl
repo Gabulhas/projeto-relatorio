@@ -30,6 +30,12 @@ Maurice Herlihy.
 \newblock [Online] \url{https://www.securityfocus.com/news/8412}. Último
   acesso a 15 de maio de 2021.
 
+\bibitem{ArvyImpl}
+Silvan Mosberger.
+\newblock {arvy}, 2019.
+\newblock [Online] \url{https://github.com/Infinisil/arvy}. Último acesso a 18
+  de maio de 2021.
+
 \bibitem{bully}
 Timothee Tosi.
 \newblock {bully-algorithm}, 2019.

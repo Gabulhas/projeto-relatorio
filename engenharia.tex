@@ -166,13 +166,48 @@ seu próprio estado para um \emph{Node} especial, este que também pertence à m
 
 Quando se pretende visualizar a informação que se encontra no \emph{Node} de visualização, faz-se uso de
 uma página \emph{Web}, a qual faz pedidos constantes dessa mesma informação e a dispõe numa animação que 
-vai evoluindo com a alteração do estado da rede. Usando esta página é também possível forçar um ou vários \emph{Nodes}
+vai evoluindo com a alteração do estado da rede.
+Usando esta página é também possível forçar um ou vários \emph{Nodes}
 a realizar um pedido de acesso, em que a página envia um pedido (para cada \emph{Node} a forçar) para o \emph{Node} de visualização.
-Este \emph{Node} depois enviará os pedidos aos \emph{Nodes}. Os possíveis casos de uso da interface estão descritos no diagrama \ref{engenharia:img:casos_de_uso}
+Este \emph{Node} depois enviará os pedidos aos \emph{Nodes}. 
+
+Vejamos os casos de uso descritos no diagrama de casos de uso \ref{engenharia:img:casos_de_uso}, 
+no qual é possível observar que o utilizador tem a possibilidade de interagir com o sistema, ao ter a poder forçar
+um \emph{Node} em específico ou todos ao mesmo tempo a realizar um pedido de acesso, também pode consultar várias informações do sistema,
+como as diferentes estruturas de dados distribuídas e históricos de eventos e também tem a possibilidade de interagir com a interface, 
+quando decide parar as atualizações da interface ou ativar/desativar o modo de filas, no qual passa a mostrar as ligações das filas ao invés
+das do diretório.
+
+
+Os possíveis casos de uso da interface estão descritos no diagrama \ref{engenharia:img:casos_de_uso}.
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=250pt]{use_case_diagram.png}
+\caption{Diagrama de Casos de Uso da Interface de Visualização.}
+\label{engenharia:img:casos_de_uso}
+\end{figure}
+
 
 Este sistema é feito das várias ligações entre os vários componentes do sistema, isto é,
 ligações entre \emph{Nodes}, ligações entre os \emph{Nodes} e um \emph{Node} de visualização 
-e entre o \emph{Node} de visualização e uma página \emph{Web}. As interações e elementos do sistema estão ilustrados no diagrama \ref{engenharia:img:arquitetura}.
+e entre o \emph{Node} de visualização e uma página \emph{Web}. No diagrama \ref{engenharia:img:arquitetura} é possível
+observar que cada nó se pode ligar no máximo a um único nó, mas que vários nós podem ligar-se ao mesmo e que o envio de pedidos
+ou do acesso ao objeto pela rede formada por estas ligações pode ser feito nos dois sentidos.
+Também é possível observar que cada nó comunica com um nó de visualização, este que recebe atualizações de estado dos nós, 
+e também tem a possibilidade de forçar um ou todos os nós caso o utilizador o pretenda fazer. 
+É possível observar que o nó de visualização serve de nó intermédio na atualização da interface a partir das atualizações que recebe dos nós.
+
+
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=400pt]{arquitetura.png}
+\caption{Arquitetura do Sistema.}
+\label{engenharia:img:arquitetura}
+\end{figure}
 
 
 O próprio \emph{Node} para além de possuir os atributos descritos no capítulo \ref{especificacao:atr:section}, este também possui um Tipo e o endereço do \emph{Node} de visualização para que 
@@ -180,23 +215,16 @@ seja possível a atualização do seu estado na interface.
 O \emph{Node} pode sofrer transformações, receber pedidos de acesso ou o acesso ao objeto, realizar um pedido de acesso, que, para que não seja necessária a intervenção
 do utilizador, este último comportamento pode ocorrer de forma automática.
 Estes comportamentos foram descritos no capítulo \ref{especificacao:sec:comportamentos_nodes}, e para tal foi desenvolvida uma classe ``\emph{Node}'' tendo como atributos os atributos do \emph{Node}
-e os comportamentos como os seus métodos. O diagrama de classe do \emph{Node} está apresentado na ilustração \ref{engenharia:img:classe}.
+e os comportamentos como os seus métodos. O diagrama de classe do \emph{Node} está apresentado na ilustração \ref{engenharia:img:classe}, no qual é possível observar
+que a classe ``Node'' implementa os métodos de transformação, de comunicação através das ligações, ``SendThroughLink'' e ``SendObjectAccess'', métodos de realização de pedidos, o ``Request'', 
+e como referido anteriormente, o nó tem a possibilidade de realizar um pedido automaticamente, fazendo uso do método ``AutoRequest'', e por último implementa dois métodos que revela informação sobre o nó, estes sendo o ``OutputState'', que escreve na consola no qual o programa se encontra em execução e e ``UpdateVisualization'' que é utilizado quando o nó pretende atualizar
+o seu estado atual no nó da visualização.
+Também está definido um ``Enum'',  que representa os vários nós como descrito na secção
+\ref{especificacao:sec:node} e duas classes que representam os dois tipos de \emph{Channels} que podem ser comunicados entre os nós.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=250pt]{use_case_diagram.png}
-\caption{Diagrama de Casos de Uso da Interface de Visualização.}
-\label{engenharia:img:casos_de_uso}
-\end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=400pt]{arquitetura.png}
-\caption{Arquitetura do Sistema.}
-\label{engenharia:img:arquitetura}
-\end{figure}
 
-\begin{figure}[ht]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=400pt]{node_class_diagram.png}
 \caption{Diagrama da Classe ``\emph{Node}''.}
@@ -207,7 +235,7 @@ e os comportamentos como os seus métodos. O diagrama de classe do \emph{Node} e
 
 
 \section{Conclusão}
-\label{engenharia:sec:conclusão} recebem o acesso ao objeto.
+\label{engenharia:sec:conclusão} 
 Neste capítulo foi exposta a o porquê da da mudança do projeto de um programa concorrente para um sistema distribuído e as alterações que essa decisão implicou no trajeto do projeto,
 os motivos que levaram à escolha da Linguagem \emph{Go}, o planeamento de uma visualização do protocolo e do sistema em execução para uma prova parcial
 e de como seria implementada essa

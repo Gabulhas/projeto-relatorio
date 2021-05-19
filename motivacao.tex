@@ -15,7 +15,8 @@ Também o aumento do número de núcleos nos processadores ou a conveniência e 
 Das várias vantagens no uso de sistemas distribuídos, as que mais se destacam são as seguintes.
 % remover, demasiada informação desnecessária, não o ponto principal da motivação
 \begin{description}
-    \item [Escalabilidade Horizontal] Os sistemas distribuídos permitem que se aumente a capacidade de processamento e armazenamento ao introduzir máquinas no sistema, ao invés de melhorar uma única máquina.
+    \item [Escalabilidade Horizontal] Os sistemas distribuídos permitem que se aumente a capacidade de processamento
+	e armazenamento ao introduzir máquinas no sistema, ao invés de melhorar uma única máquina.
 	
     \item [Maior tolerância a erros]Quando o processamento está distribuído por vários nós, a falha de um único nó não levará a que o sistema num todo falhe.
 
@@ -24,15 +25,21 @@ Das várias vantagens no uso de sistemas distribuídos, as que mais se destacam 
 
 \end{description}
 
-No entanto, os sistemas distribuídos, que inerentemente são concorrentes, têm uma complexidade maior no desenvolvimento em comparação com sistemas/programas sequenciais/de um único processo.
-A falta de um relógio central, a possibilidade de vários processos necessitarem de aceder ao mesmo recurso ao mesmo tempo, ordem indeterminada de quais quer pedidos, a necessidade de se usar uma rede para comunicar informação entre os nós e dificuldade de controlar os vários sistemas independentes pertencentes ao sistema distribuídos são alguns dos fatores para esta complexidade.
+No entanto, os sistemas distribuídos, que inerentemente são concorrentes,
+têm uma complexidade maior no desenvolvimento em comparação com sistemas/programas sequenciais/de um único processo.
+A falta de um relógio central,
+a possibilidade de vários processos necessitarem de aceder ao mesmo recurso ao mesmo tempo,
+ordem indeterminada de quais quer pedidos,
+a necessidade de se usar uma rede para comunicar informação entre os nós e dificuldade de controlar 
+os vários sistemas independentes pertencentes ao sistema distribuídos são alguns dos fatores para esta complexidade.
 
 Um dos tópicos relacionado com o protocolo estudado é o acesso ao mesmo recurso por vários processos.
 
 Por exemplo, várias máquinas numa rede têm a possibilidade de aceder a um ficheiro, tanto para fazer uma leitura como uma escrita.
 Duas máquinas (ou processos) pretendem fazer alterações num ficheiro na rede, ambas começam por fazer uma leitura do ficheiro, e após essa leitura, uma das máquinas escreve as alterações, e logo de seguida a outra máquina escreve as alterações. A falha nesta ocorrência foi que a última máquina a escrever sobrescreveu totalmente as a alterações da primeira, visto que ambas leram o mesmo estado do ficheiro mas a uma das máquinas escreveu após a escrita da outra.
 
-Este tipo de ocorrências são denominadas de falha de Condição de Corrida ou \emph{Race Condition}, que podem levar a estados inesperados de qualquer elemento se possa ser alterado (como ficheiros, estruturas de dados, etc), 
+Este tipo de ocorrências são denominadas de falha de Condição de Corrida ou \emph{Race Condition},
+que podem levar a estados inesperados de qualquer elemento se possa ser alterado (como ficheiros, estruturas de dados, etc),
 que por último podem levar a grandes catástrofes.
 
 % Melhorar
@@ -53,11 +60,6 @@ Este sistema consiste numa rede, que permite o envio assíncrono de mensagens (o
 
 O diretório pode ser considerado como um grafo, em que os Nós do Grafo são os vários elementos que pertencem ao sistema (por exemplo, várias instâncias de um programa) e as arestas são as várias ligações no diretório entre os vários Nós.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{comment}
-Rever pois isto não é bem verdade. o facto de ser “móvel” ou não depende do objecto em si, aquilo que é “móvel” pode ser simplesmente o “canal” de acesso ao objecto (imóvel). Trata-se de uma abstracção e se quiser pode explicar como tal “Consideremos que… para abstrair …” 
-\end{comment}
 
 Consideramos que o objeto é ``móvel'', no entanto esta é uma abstração do \textbf{acesso} ao objeto, e este acesso tem a possibilidade de se movimentar na rede entre os nós.
 
@@ -65,9 +67,6 @@ O objeto pode ser um processo, um ficheiro ou qualquer outra estrutura de dados.
 
 Cada nó tem uma só ligação, deste para outro nó, no entanto podem existir vários nós com ligação a um único nó.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Quando um nó pretende aceder ao objeto, este envia um pedido de acesso pela sua ligação. 
 
 
@@ -106,15 +105,21 @@ Note que as ligações por onde o pedido do nó \textbf{A} passou inverteram-se.
 \end{figure}
 
 
-Quando o nó \textbf{A} faz o pedido e este chega ao \textbf{H} este passa a ser a raiz da árvore, e os seguintes pedidos serão direcionados até ao \textbf{A}.\\
+Quando o nó \textbf{A} faz o pedido e este chega ao \textbf{H} este passa a ser a raiz da árvore,
+e os seguintes pedidos serão direcionados até ao \textbf{A}.\\
 
 
 
-Vejamos agora outro exemplo \ref{motivacao:img:apos_chegar_f_etiquetas}, em que exploramos o caso de existirem mais do que uma mensagem a circular no diretório:
+Vejamos agora outro exemplo \ref{motivacao:img:apos_chegar_f_etiquetas},
+em que exploramos o caso de existirem mais do que uma mensagem a circular no diretório:
 
-Consideremos que cada passo é uma transmissão de pedidos entre nós, e que os passos que cada pedido executa são sincronizados com os restantes, algo que não é garantido na rede, mas que temos em conta para se demonstrar com maior simplicidade este processo.
+Consideremos que cada passo é uma transmissão de pedidos entre nós, e que os passos que cada pedido executa são sincronizados com os restantes,
+algo que não é garantido na rede, mas que temos em conta para se demonstrar com maior simplicidade este processo.
 
-Consideremos o mesmo estado anteriormente referido, o estado do diretório após o pedido do nó \textbf{A} chegar ao nó \textbf{F}, e que ao mesmo tempo o nó \textbf{D} pretende obter o acesso, que para tal este enviou um pedido de acesso que atualmente se encontra no nó \textbf{E}.
+Consideremos o mesmo estado anteriormente referido,
+o estado do diretório após o pedido do nó \textbf{A} chegar ao nó \textbf{F}, 
+e que ao mesmo tempo o nó \textbf{D} pretende obter o acesso,
+que para tal este enviou um pedido de acesso que atualmente se encontra no nó \textbf{E}.
 
 
 \begin{figure}[!htb]
@@ -186,7 +191,7 @@ Ou seja, a ordem de chegada e fila do acesso de pedidos será a \textbf{A},\text
 
  
 
-A particularidade deste protocolo deve-se à mudança tanto da localização do objeto como a sua origem, pois esta muda-se para o nó que tem o acesso ao objeto, e não há um único nó que detém a localização atual do objeto, mas a disposição de todas as ligações permite a localização do objeto por todos os nós.
+\noindent A particularidade deste protocolo deve-se à mudança tanto da localização do objeto como a sua origem, pois esta muda-se para o nó que tem o acesso ao objeto, e não há um único nó que detém a localização atual do objeto, mas a disposição de todas as ligações permite a localização do objeto por todos os nós.
 
 O facto da ``Casa'' do objeto estar em constante alteração garante que apenas um nó detenha o acesso ao objeto (acesso exclusivo), e que o único detentor do objeto se torne num foco, isto é, que nenhum nó receba demasiados pedidos em relação a outros nós, provocado um engarrafamento/\emph{bottleneck} no acesso ao objeto.
 
@@ -206,7 +211,7 @@ Neste protocolo existem duas estruturas distribuídas, em que cada uma é formad
     \item [Fila] os vértices são todos os nós do sistema que esperam pelo acesso ao objeto  e as arestas são as ligações entre os nós mas exterior ao diretório, pois neste circula o acesso ao objeto.
 \end{description}
 
-\section{Trabalhos relacionados}
+\section{Trabalhos Relacionados}
 \label{motivacao:sec:trabalhos_relacionados}
 %Ivy e Arvy
 
@@ -226,7 +231,7 @@ Neste algoritmo, quando um \emph{Node} recebe um pedido este pode ligar-se a qua
 
 Quanto a implementações, existem três relacionadas com a desenvolvida neste projeto. 
 Estas são, o \emph{Aleph Toolkit}\cite{aleph}, a qual é a única implementação conhecida do \acs*{ADDP}, mas esta é muito diferente da obtida no decorrer deste projeto, 
-a implementação do \emph{Arvy}, a qual já foi referida, 
+a implementação do \emph{Arvy} \cite{ArvyImpl}, a qual já foi referida, 
 e uma implementação do \emph{Bully Algorithm} \cite{bully}, que inspirou o uso de uma Página \emph{Web}, esta que comunica com um Nó de Visualização para a visualização do sistema distribuído, e 
 também inspirou o uso do \emph{Docker} para o \emph{Deploy}/execução do sistema, no entanto este tópico será exposto num capítulo seguinte (Capítulo \ref{chap:engenharia}).
 

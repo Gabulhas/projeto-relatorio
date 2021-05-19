@@ -9,7 +9,7 @@
 \contentsline {chapter}{\chapternumberline {2}Motivação}{5}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Introdução}{5}{section.2.1}%
 \contentsline {section}{\numberline {2.2}Descrição do Protocolo}{6}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Trabalhos relacionados}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.3}Trabalhos Relacionados}{11}{section.2.3}%
 \contentsline {section}{\numberline {2.4}Conclusões}{12}{section.2.4}%
 \contentsline {chapter}{\chapternumberline {3}Especificação}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Introdução}{13}{section.3.1}%
@@ -27,27 +27,27 @@
 \contentsline {section}{\numberline {4.5}Comunicação entre os \emph {Nodes}}{26}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Uso de \emph {Docker}}{27}{section.4.6}%
 \contentsline {section}{\numberline {4.7}Modelo do Sistema}{27}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Conclusão}{28}{section.4.8}%
-\contentsline {chapter}{\chapternumberline {5}Implementação}{31}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Introdução}{31}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Ferramentas e Bibliotecas utilizadas}{31}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Construção do Sistema}{32}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Classe \emph {Node}}{35}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Atributos da Classe \emph {Node}}{36}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Inicialização do objeto ``Self Node''}{37}{section.5.6}%
-\contentsline {section}{\numberline {5.7}Tipos de Nodes}{39}{section.5.7}%
-\contentsline {section}{\numberline {5.8}Comportamentos}{39}{section.5.8}%
-\contentsline {section}{\numberline {5.9}Transformações do \emph {Node}}{48}{section.5.9}%
-\contentsline {section}{\numberline {5.10}Comunicação entre Nodes}{52}{section.5.10}%
-\contentsline {section}{\numberline {5.11}Classes de \emph {Channels}}{58}{section.5.11}%
-\contentsline {section}{\numberline {5.12}Implementação da Visualização}{58}{section.5.12}%
-\contentsline {section}{\numberline {5.13}Conclusões}{71}{section.5.13}%
-\contentsline {chapter}{\chapternumberline {6}Validação experimental, Simulação e Testes}{73}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Introdução}{73}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Interface de Visualização}{73}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Testes}{75}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Conclusões}{76}{section.6.4}%
-\contentsline {chapter}{\chapternumberline {7}Conclusões e Trabalho Futuro}{79}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Conclusões Principais}{79}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Trabalho Futuro}{79}{section.7.2}%
-\contentsline {chapter}{Bibliografia}{81}{chapter*.79}%
+\contentsline {section}{\numberline {4.8}Conclusão}{30}{section.4.8}%
+\contentsline {chapter}{\chapternumberline {5}Implementação}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introdução}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Ferramentas e Bibliotecas utilizadas}{33}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Construção do Sistema}{34}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Classe \emph {Node}}{37}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Atributos da Classe \emph {Node}}{38}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Inicialização do objeto ``Self Node''}{39}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Tipos de Nodes}{41}{section.5.7}%
+\contentsline {section}{\numberline {5.8}Comportamentos}{41}{section.5.8}%
+\contentsline {section}{\numberline {5.9}Transformações do \emph {Node}}{50}{section.5.9}%
+\contentsline {section}{\numberline {5.10}Comunicação entre Nodes}{54}{section.5.10}%
+\contentsline {section}{\numberline {5.11}Classes de \emph {Channels}}{60}{section.5.11}%
+\contentsline {section}{\numberline {5.12}Implementação da Visualização}{60}{section.5.12}%
+\contentsline {section}{\numberline {5.13}Conclusões}{73}{section.5.13}%
+\contentsline {chapter}{\chapternumberline {6}Validação experimental, Simulação e Testes}{75}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introdução}{75}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Interface de Visualização}{75}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Testes}{77}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Conclusões}{78}{section.6.4}%
+\contentsline {chapter}{\chapternumberline {7}Conclusões e Trabalho Futuro}{81}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Conclusões Principais}{81}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Trabalho Futuro}{81}{section.7.2}%
+\contentsline {chapter}{Bibliografia}{83}{chapter*.79}%

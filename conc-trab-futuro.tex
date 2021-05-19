@@ -15,17 +15,29 @@
     - o que é em geral este trabalho/implementação
     - possível implementação moderna com visualização do algoritmo 
 
+    Neste trabalho foi possível estudar e implementar o sistema concorrente e distribuído, que faz uso do ``Arrow Distributed Directory Protocol''.
+    O que torna notável este protocolo é o mecanismo de inversão ou troca de ligações, que mesmo sendo simples,
+    evita que mais que um elemento no sistema tenha acesso a um objeto que pretendemos ter o acesso exclusivo, isto é, evita falhas de Condições de Corrida.
+    Este tipo de falhas pode ter grande impacto no bom funcionamento de programas concorrentes, pois a leitura e/ou escrita concorrente de 
+    informação pode levar a resultados imprevisíveis. 
+
+    Após um estudo do o artigo que introduz o \acs{ADDP} \cite{Arrow}, que permitiu a realização de uma especificação dos elementos que pertencem ao sistema definido por o protocolo estudado,
+    esta que foi usada como base no planeamento e implementação do projeto.
+    No desenvolvimento do programa executado no sistema distribuído, foi possível praticar o uso de mecanismos de sincronização e concorrentes, estes oferecidos pela Linguagem \emph{Go},
+    a linguagem escolhida para a implementação.
+    Para além da implementação do programa distribuído, foi desenvolvida uma interface, que permitiu visualizar o protocolo em ação, testar a implementação, e provar (parcialmente) o seu
+    bom funcionamento e fidelidade com o descrito na Especificação.
 \end{comment}
 
 
-% Esta secção contém a resposta à questão: \\
-% \emph{Quais foram as conclusões principais a que o(a) aluno(a) chegou no fim deste trabalho?}
-Neste trabalho foi possível estudar e implementar o sistema concorrente e distribuído, que faz uso do ``Arrow Distributed Directory Protocol''.
-O que torna notável este protocolo é o mecanismo de inversão ou troca de ligações, que mesmo sendo simples,
-evita que mais que um elemento no sistema tenha acesso a um objeto que pretendemos ter o acesso exclusivo, isto é, evita falhas de Condições de Corrida.
-Este tipo de falhas pode ter grande impacto no bom funcionamento de programas concorrentes, pois a leitura e/ou escrita concorrente de 
-informação pode levar a resultados imprevisíveis. 
-Após um estudo do \emph{Paper} de referência \cite{Arrow}, que permitiu a realização de uma especificação dos elementos que pertencem ao sistema definido por o protocolo estudado,
+Este projeto teve como objetivo principal o estudo e implementação do \acs{ADDP}, um protocolo que permite a partilha de um objeto móvel, sem ser necessário
+que todos os nós do sistema detenham da infomação da localizam deste e que garante o acesso mutuamente exclusivo a este. \\
+
+
+Foi possível a exploração de vários tópicos como concorrência, protocolos de diretórios, objetos móveis, sincronização de processos concorrentes,
+sistemas e estruturas de dados distribuídas, e exclusão mútua distribuída. \\
+
+Após um estudo do o artigo que introduz o \acs{ADDP} \cite{Arrow}, que permitiu a realização de uma especificação dos elementos que pertencem ao sistema definido por o protocolo estudado,
 esta que foi usada como base no planeamento e implementação do projeto.
 No desenvolvimento do programa executado no sistema distribuído, foi possível praticar o uso de mecanismos de sincronização e concorrentes, estes oferecidos pela Linguagem \emph{Go},
 a linguagem escolhida para a implementação.
@@ -33,22 +45,27 @@ Para além da implementação do programa distribuído, foi desenvolvida uma int
 bom funcionamento e fidelidade com o descrito na Especificação.
 
 
+% Esta secção contém a resposta à questão: \\
+% \emph{Quais foram as conclusões principais a que o(a) aluno(a) chegou no fim deste trabalho?}
+
+
 \section{Trabalho Futuro}
 \label{sec:trab-futuro}
 % TODO: mudar "parte"
 A parte gráfica desenvolvida neste trabalho poderia ser utilizada na visualização de outros algoritmos como,
 por exemplo, os trabalhos referidos na secção \ref{motivacao:sec:trabalhos_relacionados}
-, o ``Ivy'' e ``Arvy'', pois esta foi implementada de uma forma independente do algoritmo ``Arrow'',
-e assim também seria interessante implementar esses mesmos algoritmos e fazer comparações entre estes.
-O programa do \emph{Node} poderia ser alterado de forma a ser utilizado como uma biblioteca externa,
+, o ``Ivy'' e ``Arvy'', pois esta foi implementada de mode a ser independente do algoritmo ``Arrow'',
+e assim também seria interessante implementar esses mesmos algoritmos e fazer comparações entre estes. \\
+
+\noindent O programa do \emph{Node} poderia ser alterado de modo a ser utilizado como uma biblioteca externa,
 e aplicado em Sistemas de Ficheiros Distribuídos ou Bases de Dados Distribuídas,
 em que as várias Bases de Dados partilhariam documentos/informações fazendo seguindo o protocolo estudado,
-permitindo o acesso exclusivo a um documento/informação e evitando que algumas das Bases de Dados se tornassem em ``Hotspots''.
+permitindo o acesso exclusivo a um documento/informação e evitando que algumas das Bases de Dados se tornassem em ``Hotspots''. \\
+
+\noindent Também seria interessante a adaptar o trabalho atual para, ao invés de ser partilhado apenas um objeto, fosse possível que existissem vários diretórios, 
+e que para tal seria necessário que as ligações entre os nós fossem formadas através de um algoritmo,
+pois seria trabalhoso especificar manualmente as ligações para cada diretório. \\
 % era possível pegar na parte gráfica e implementar outros algoritmos do género
 % aplicar o algoritmo num contexto real, como uma database ou um filesystem distribuídos,
 
 
-% Esta secção responde a questões como:\\
-% \emph{O que é que ficou por fazer, e porque?}\\
-% \emph{O que é que seria interessante fazer, mas não foi feito por não ser exatamente o objetivo deste trabalho?}\\
-%  \emph{Em que outros casos ou situações ou cenários -- que não foram estudados no contexto deste projeto por não ser seu objetivo -- é que o trabalho aqui descrito pode ter aplicações interessantes e porque?}
