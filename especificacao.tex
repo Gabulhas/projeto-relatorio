@@ -20,9 +20,9 @@ No entanto podem existir outros \emph{Nodes} que pretendem ter acesso ao objeto,
 
 É possível que \emph{Nodes} detenham ou que esperam pelo acesso ao objeto, recebam um pedido de acesso de outro \emph{Node}, ou seja, os \emph{Nodes} podem ter pedidos em espera.
 
-Ou seja, é possível que um \emph{Node} detenha o acesso ao objeto ou futuramente deterá e ter um outro \emph{Node} à espera que este ceda o acesso.
+Então é possível que um \emph{Node} detenha o acesso ao objeto ou futuramente deterá e ter um outro \emph{Node} à espera que este ceda o acesso.
 
-Por último, podem existir \emph{Nodes} que nem detenham o acesso ao objeto nem estejam à espera deste, e então reencaminham os pedidos. Estes são os únicos \emph{Nodes} que podem pedir o acesso ao objeto.
+Por último, podem existir \emph{Nodes} que nem detenham o acesso ao objeto nem estejam à espera deste, e então apenas reencaminham os pedidos. Estes são os únicos \emph{Nodes} que podem pedir o acesso ao objeto.
 
 Estes fatores diferenciam os vários \emph{Nodes} no diretório,
 e de seguida será feita uma enumeração destes fatores, sendo que estes podem coexistir:
@@ -38,7 +38,7 @@ e de seguida será feita uma enumeração destes fatores, sendo que estes podem 
 \end{itemize}
 
 
-A partir da combinação destes fatores temos os seguintes tipos de \emph{Nodes}:
+\noindent A partir da combinação destes fatores temos os seguintes tipos de \emph{Nodes}:
 
 \begin{description}
     \item [Owner Terminal] - \\ \emph{Node} que detém o acesso ao objeto e não tem pedidos em espera.
@@ -53,7 +53,7 @@ A partir da combinação destes fatores temos os seguintes tipos de \emph{Nodes}
 \section{Ligações}
 \label{especificacao:sec:ligacoes}
 
-Os \emph{Nodes} têm a possibilidade de comunicar entre si, quer através das ligações o diretório (grafo), quando estes pretendem pedir o acesso ao objeto, ou através das ligações da fila (exteriores ao diretório), quando estes transmitem o acesso ao objeto para outro \emph{Node}.
+Os \emph{Nodes} têm a possibilidade de comunicar entre si, quer através das ligações do diretório (grafo), quando estes pretendem pedir o acesso ao objeto, ou através das ligações da fila (exteriores ao diretório), quando estes transmitem o acesso ao objeto para outro \emph{Node}.
 
 As ligações (ou comunicações) entre os \emph{Nodes} são feitas a partir de \emph{Channels} (canais). Estes \emph{Channels} funcionam como caixa de entrada ou endereços dos \emph{Nodes}, que podem ser enviados para outros \emph{Nodes}, e que, caso um \emph{Node} decide transmitir alguma mensagem para o outro \emph{Node}, esta é feita usando um \emph{Channel} do \emph{Node} de destino.
 
@@ -88,7 +88,7 @@ Estes dois tópicos serão retratados em subcapítulos seguintes, mas é necess�
 
 % ou exterior
 \subsection*{Ligação na fila}
-Um \emph{Node} que seja o detentor do acesso ao objeto ou que espera por este pode receber um pedido de acesso. Quando isto acontece, o \emph{Node} que realizou o pedido de acesso aguarda que o \emph{Node} que recebeu o pedido lhe transmita o acesso, passando a haver uma ligação direta entre estes (sem fazendo uso do diretório).
+Um \emph{Node} que seja o detentor do acesso ao objeto ou que espera por este pode receber um pedido de acesso. Quando isto acontece, o \emph{Node} que realizou o pedido de acesso aguarda que o \emph{Node} que recebeu o pedido lhe transmita o acesso, passando a haver uma ligação direta entre estes (sem fazer uso do diretório).
 
 Neste tipo de ligação no diretório foram definidas duas partes nas ligações. Denominamos de  ``WaiterChan'' a parte de entrada da ligação que está presente no transmissor e denominamos de ``MyChan'' a parte da saída do acesso ao objeto, que está presente no recetor.
 
@@ -132,26 +132,40 @@ Este atributo representa a ligação do \emph{Node} para o ``Find'' de um outro 
 Neste subsecção serão definidos os atributos que cada tipo de \emph{Node} apresenta.
 Os atributos de cada \emph{Node} estão apresentados na tabela \ref{especificacao:tbl:atributos}
 
+\subsubsection*{\emph{Owner Terminal}}
+\begin{itemize}
+    \item Find
+    \item MyChan
+    \item Obj
+\end{itemize}
+\subsubsection*{\emph{Owner With Request}}
+\begin{itemize}
+    \item Find
+    \item MyChan
+    \item Link
+    \item Obj
+    \item WaiterChan
+\end{itemize}
+\subsubsection*{\emph{Idle}}
+\begin{itemize}
+    \item Find
+    \item MyChan
+    \item Link
+\end{itemize}
+\subsubsection*{\emph{Waiter Terminal}}
+\begin{itemize}
+    \item Find
+    \item MyChan
+\end{itemize}
+\subsubsection*{\emph{Waiter With Request}}
+\begin{itemize}
+    \item Find 
+    \item MyChan 
+    \item Link 
+    \item WaiterChan 
+\end{itemize}
 
-\begin{table}
-\label{especificacao:tbl:atributos}
-\centering
-\begin{tabular}{|l|l|l|l|l|l|} 
-\hline
-\rowcolor{black}                                 & \textcolor{white}{Owner Terminal} & \textcolor{white}{Owner With Request} & \textcolor{white}{Idle} & \textcolor{white}{Waiter Terminal} & \textcolor{white}{Waiter With Request}  \\ 
-\hline
-{\cellcolor{black}}\textcolor{white}{Find}       & X                                & X                                    & X                      & X                                 & X                                      \\ 
-\hline
-{\cellcolor{black}}\textcolor{white}{MyChan}     & X                                & X                                    & X                      & X                                 & X                                      \\ 
-\hline
-{\cellcolor{black}}\textcolor{white}{Link}       &                                   & X                                    & X                      &                                    &                                         \\ 
-\hline
-{\cellcolor{black}}\textcolor{white}{Obj}        & X                                & X                                    &                         &                                    &                                         \\ 
-\hline
-{\cellcolor{black}}\textcolor{white}{WaiterChan} &                                   & X                                    &                         &                                    & X                                      \\
-\hline
-\end{tabular}
-\end{table}
+
 
 \section{Tipos de mensagens}
 \label{especificacao:sec:tipos_mensagem}

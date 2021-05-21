@@ -1115,6 +1115,11 @@ INPUT ./implementacao.tex
 INPUT implementacao.tex
 INPUT ./implementacao.tex
 INPUT implementacao.tex
+INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
+INPUT /usr/share/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm
 INPUT ./state-diagram.png
 INPUT ./state-diagram.png
 INPUT state-diagram.png
@@ -1157,11 +1162,6 @@ INPUT ./relatorio-projeto.bbl
 INPUT relatorio-projeto.bbl
 INPUT ./relatorio-projeto.bbl
 INPUT relatorio-projeto.bbl
-INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT /usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
-INPUT /usr/share/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm
 OUTPUT relatorio-projeto.toc
 OUTPUT relatorio-projeto.lof
 INPUT relatorio-projeto.aux

@@ -24,7 +24,7 @@ e optou-se por usar outra tecnologia que garantisse a comunicação remota entre
 \section{Linguagem Go}
 \label{engenharia:sec:go}
 
-A linguagem \emph{Go} facilita o desenvolvimento de sistemas concorrentes, pois, nativamente, oferece várias ferramentas para o desenvolvimento deste tipo de sistema.
+A linguagem \emph{Go} facilitou o desenvolvimento de sistemas concorrentes, pois, nativamente, oferece várias ferramentas para o desenvolvimento deste tipo de sistema, como a \emph{Keyword ``go''}.
 
 Adicionando a palavra ``\emph{go}'' antes de qualquer procedimento, esse procedimento irá correr em uma nova \emph{Goroutine},
 de forma concorrente em relação a todas as outras \emph{Goroutines} já em execução.
@@ -110,10 +110,10 @@ para a sincronização das \emph{goroutines} usou-se um ``Mutex'' proveniente da
 
 \section{Visualização do Sistema}
 Foi decidida a implementação de uma visualização do sistema. 
-Esta visualização permitiria a testagem da programa durante a implementação do sistema,
+Esta visualização permitiria a realização de testes durante a implementação do sistema,
 tornaria mais fácil a compreensão do funcionamento do sistema e possivelmente provar o seu bom funcionamento.
 
-Surgiram várias hipótese de implementação, como a utilização de bibliotecas de bibliotecas gráficas para desenvolver a interface de visualização,
+Surgiram várias hipótese de implementação, como a utilização de bibliotecas gráficas para desenvolver a interface de visualização,
 no entanto o suporte destas bibliotecas na Linguagem \emph{Go} não era o desejado, ficando então decidido o uso de uma página \emph{Web}.
 
 Mesmo que a atualização da interface numa página \emph{Web} não fosse tão eficiente como a de uma biblioteca gráfica, esta provou-se útil 
@@ -137,9 +137,8 @@ ou a biblioteca nativa \emph{netchan}, que se encontrava descontinuada(\emph{dep
 Também seria possível obter o mesmo efeito através de \emph{RPC}, para o qual seria necessário bibliotecas externas, 
 ou \emph{Sockets}.
 
-No entanto usou-se comunicação por \acs*{HTTP}, visto que este protocolo iria também ser usado na visualização,
-pela qual são enviadas mensagens com o formato \acs*{JSON}, uma vez que, tanto a linguagem \emph{Go} como a linguagem 
-\emph{JavaScript} fornecem mecanismos de serialização de mensangens deste formato nativamente.
+No entanto usou-se comunicação por \acs*{HTTP}, visto que este protocolo iria também ser usado na visualização, em que são enviadas mensagens com o formato \acs*{JSON}, uma vez que, tanto a linguagem \emph{Go} como a linguagem 
+\emph{JavaScript} fornecem mecanismos de serialização de mensagens deste formato nativamente.
 
 
 \section{Uso de \emph{Docker}}
@@ -171,7 +170,7 @@ Usando esta página é também possível forçar um ou vários \emph{Nodes}
 a realizar um pedido de acesso, em que a página envia um pedido (para cada \emph{Node} a forçar) para o \emph{Node} de visualização.
 Este \emph{Node} depois enviará os pedidos aos \emph{Nodes}. 
 
-Vejamos os casos de uso descritos no diagrama de casos de uso \ref{engenharia:img:casos_de_uso}, 
+Vejamos os casos de uso descritos no diagrama \ref{engenharia:img:casos_de_uso}, 
 no qual é possível observar que o utilizador tem a possibilidade de interagir com o sistema, ao ter a poder forçar
 um \emph{Node} em específico ou todos ao mesmo tempo a realizar um pedido de acesso, também pode consultar várias informações do sistema,
 como as diferentes estruturas de dados distribuídas e históricos de eventos e também tem a possibilidade de interagir com a interface, 

@@ -5,7 +5,8 @@
 \label{implementacao:sec:introducao}
 
 Neste capítulo serão descritos todos os elementos envolvidos na implementação do protocolo,
-como as tecnologias utilizadas, a razão pela sua escolha. É feita a descrição dos pontos de maior interesse da implementação do \emph{Node} do sistema, que foi desenvolvida após a escrita da Especificação (\ref{chap:especificacao}). 
+como as tecnologias utilizadas e a razão pela sua escolha.
+É feita a descrição dos pontos de maior interesse da implementação do \emph{Node} do sistema, que foi desenvolvida após a escrita da Especificação (\ref{chap:especificacao}). 
 Esta parte da implementação foi dividida em vários pontos de interesse, sendo estes: a classe \emph{Node} e os seus atributos, os comportamentos dos \emph{Nodes}, as suas transformações entre os cinco possíveis tipos e a comunicação entre os \emph{Nodes}.
 Também é descrita a implementação de um \emph{Node} especial, usado para a visualização, para o qual são enviadas atualizações dos \emph{Nodes} que existem no sistema, que são usadas para a renderização da visualização e reconstrução das estruturas de dados distribuídas, estas que também são demonstradas na visualização.
 
@@ -13,7 +14,7 @@ Também é descrita a implementação de um \emph{Node} especial, usado para a v
 \section{Ferramentas e Bibliotecas utilizadas}
 \label{implementacao:sec:ferramentas_bibliotecas}
 \subsection*{Ferramentas}
-As ferramentas usadas durante a implentação deste projeto foram:
+As ferramentas usadas durante a implementação deste projeto foram:
 \begin{description}
     \item [GoLand] \acs{IDE} especializado para \emph{Go}. Inclui \emph{Plugins} de \emph{Debugging}, sugestão de código, etc.
     \item [VIM] Editor de texto/conjunto de atalhos de teclado. Permite escrever texto de forma eficiente e apenas usando o teclado. Pode ser usado como \emph{Plugin} no \acs{IDE} \emph{GoLand}.
@@ -26,7 +27,7 @@ As ferramentas usadas durante a implentação deste projeto foram:
 Nesta secção irão ser referidas bibliotecas utilizadas na implementação e as suas funcionalidades.
 
 \subsubsection*{\emph{gorilla/mux}}
-Multiplexador de pedidos \acs{HTTP}. Esta biblioteca da linguagem \emph{Go} foi utilizada para simplificar a declaração de caminhos do servidor \acs{HTTP}. É usada nos \emph{Nodes} e no servidor \acs{HTTP} da visualização.
+\emph{Multiplexer} de pedidos \acs{HTTP}. Esta biblioteca da linguagem \emph{Go} foi utilizada para simplificar a declaração de caminhos do servidor \acs{HTTP}. É usada nos \emph{Nodes} e no servidor \acs{HTTP} da visualização.
 
 \subsubsection*{\emph{D3.JS}}
 A biblioteca \emph{D3.JS}, em que \emph{D3} significa ``\emph{\textbf{D}ata-\textbf{D}riven \textbf{D}ocuments}'', em português, ``documentos dirigidos em dados'', é usada para a representar gráficamente dados.
@@ -40,23 +41,12 @@ Faz uso do elemento \emph{\acs{SVG}} do \emph{\acs{HTML}}, que é um \emph{Stand
 %\label{chap4:escolhas_implementacao}
 % Explicar o uso das bibliotecas
 % Explicar a necessidade da visualização
-% Explicar o uso de pedidos HTTP (por ser um contexto distribuido, e HTTP ser um dos protocolos mais usados
 % Explicar uso de Containers Docker
 
 
 %-------------------- PARTE NOVA ---------------------------%
 \section{Construção do Sistema}
 \label{validacao:sec:construcao}
-\begin{comment}
-- Explicação dos elementos do deploy - Makefile, Dockerfile, Docker-compose, 
-> Explicar como funciona um Dockerfile
-> "                         Dockercompose
-> "             para que serve o Make.
-- Explicar outra vez, mas resumidamente, a atualização da parte da visualização (não do estado no Node de visualização)
-- Como dar deploy
-\end{comment}
-
-% Mudar palavras
 Na implementação deste projeto foi necessário testar os \emph{Nodes} num contexto distribuído, no entanto, para que não seja necessário a execução de várias instâncias do programa em várias máquinas diferentes, fez-se uso de \emph{containers Docker} para se obter o mesmo efeito.
 
 Além disso, o uso desta ferramenta provou-se útil na execução de múltiplas instâncias do programa, não apenas como ``Máquinas Virtuais'', de forma rápida e simples.
@@ -64,6 +54,8 @@ Além disso, o uso desta ferramenta provou-se útil na execução de múltiplas 
 Na execução deste sistema para testes fez-se uso de três sistemas de construção, sendo estes ``docker'', ``docker-compose'' e ``Make'', cada um dependendo do anterior, por esta ordem.
 
 Com o uso de estes sistemas de construção apenas é necessário executar o comando ``make run'' para executar um sistema com um \emph{Node} de visualização e um número arbitrário (mas definido num ficheiro ``docker-compose.yml'', ver capítulo seguinte) de \emph{containers} que executam o programa do \emph{Node}.
+
+É possível observar o uso deste sistema de construção no seguinte vídeo que se encontra disponibilizado na plataforma \emph{YouTube}. \url{https://youtu.be/D1UuCL_JIBI}
 
 Como referido no capítulo \ref{chap:engenharia}, o \emph{Node} de visualização faz uso de uma página \emph{Web} para demonstrar o estado (conhecido) do sistema. O endereço desta página depende do ficheiro ``Dockerfile'' (ver subsecção 
 \ref{validacao:subsec:docker}
@@ -366,7 +358,7 @@ Na implementação deste método, foi usada a estrutura condicional ``Switch'' p
 dependendo do tipo atual do ``selfNode''.
 
 % Referir a outra secção
-O acesso à secção crítica deste método é sincronizada com o uso do \emph{Mutex} ``Mutex'', isto é,
+O acesso à secção crítica deste método é sincronizado com o uso do \emph{Mutex} ``Mutex'', isto é,
 o acesso ao estado atual do ``selfNode'' só é adquirido por uma \emph{goroutine} de cada vez.
 
 O pedido de \emph{Access Request} recebido, ``accessRequest'' é copiado para um novo objeto ``newAccessRequest'',
@@ -445,7 +437,7 @@ o Atributo ``Link'' do objeto ``newAccessRequest'' será substituído pelo ``Fin
 
 Após feita esta alteração do objeto, o \emph{Node} envia o objeto ``newAccessRequest'' pelo seu ``Link'' para o seu \emph{Child Node}.
 
-Por último,  método ``Idle'' da classe \emph{Node} irá ser executado, que mantém o tipo do \emph{Node}, mas
+Por último, o método ``Idle'' da classe \emph{Node} irá ser executado, que mantém o tipo do \emph{Node}, mas
 é feita a alteração do seu ``Link'' para o ``Find'' que provêm do pedido ``Access Request'' que recebeu, ou seja, para o ``Find'' do seu \emph{Parent Node}, 
 que inverte a ligação.
 
@@ -530,7 +522,7 @@ através do ``WaiterChan''.
 
 Este método (``releaseObj''), contém uma secção crítica,
 pois acede ao objeto ``selfNode''. 
-O acesso à secção crítica deste método é sincronizada com o uso do \emph{Mutex} ``Mutex'', ou seja,
+O acesso à secção crítica deste método é sincronizado com o uso do \emph{Mutex} ``Mutex'', ou seja,
 o acesso ao estado atual do ``selfNode'' só é adquirido por uma \emph{goroutine} de cada vez, para prevenir a alteração do estado
 enquanto que o \emph{Node} transmite o acesso ao objeto, 
 e para que a transformação (método ``Idle'') ocorra de seguida ao \emph{Node} deixar de ter o acesso ao objeto.
@@ -696,7 +688,7 @@ num objeto do tipo ``GiveAccess''.
 
 
 Como neste método, é feito um acesso ao estado atual do \emph{Node} e há transformações, 
-o acesso a esta secção crítica é sincronizada com o uso de um \emph{Mutex}.
+o acesso a esta secção crítica é sincronizado com o uso de um \emph{Mutex}.
 Para tal, é executado o método ``Lock'' do objeto ``Mutex''.
 No fim da execução deste método é necessário desbloquear o ``Mutex'', para tal 
 a primitiva ``defer'' é usada, que executará o método ``Unlock'' do objeto ``Mutex''.
@@ -787,7 +779,7 @@ O novo ``Link'' (``NewLink'') é o parâmetro de entrada deste método.
 Se o \emph{Node} é do tipo ``OWNER\_WITH\_REQUEST'' mas cedeu o acesso ao objeto, visto que este já não o possui o \emph{Node}
 transforma-se em ``IDLE'', mas mantém o \emph{LINK}, isto é, o seu ``Link'' atual é usado como
 parâmetro de entrada deste método.
-
+     
 \begin{lstlisting}[caption={Método/transformação ``Idle''},language=Go]
 func (node *Node) Idle(newLink string) {
 	node.Type = IDLE    //Alteracao do tipo para ``IDLE''
@@ -935,7 +927,7 @@ Os parâmetros de entrada deste método são o endereço do \emph{Node} (``MyAdd
 De seguida, serão descritos os caminhos e as funções executadas:
 
 \subsubsection*{/find}
-Este método equivale à saída do channel ``Find'' (referido na Especificação).
+Este método equivale à saída do channel ``Find'' (referido no capítulo \ref{chap:especificacao}).
 Quando um \emph{Node} transmite um pedido de ``AccessRequest'' para outro \emph{Node},
 esta transmissão é feita através de um pedido \acs{HTTP} ``POST'', em que no corpo 
 do pedido está incluído a informação do pedido ``AccessRequest'', no formato ``JSON''.
@@ -975,7 +967,7 @@ func findRoute(w http.ResponseWriter, r *http.Request) {
 
 
 \subsubsection*{/myChan}
-Este método equivale à saída do channel ``MyChan'' (referido na Especificação).
+Este método equivale à saída do channel ``MyChan'' (como descrito no capítulo \ref{chap:especificacao}).
 Quando um \emph{Node} transmite um pedido de ``GiveAccess'' para outro \emph{Node},
 esta transmissão é feita através de um pedido \acs{HTTP} ``POST'', em que no corpo 
 do pedido está incluído a informação do pedido ``GiveAccess'', no formato ``JSON''.
@@ -1697,24 +1689,12 @@ func remoteRequest(address string, wg *sync.WaitGroup) {
 Mesmo que o representado na visualização possa não ser o mais atual, o estado da rede terá de se manter, isto é, as seguintes 
 atualizações que se façam na parte gráfica terão que demonstrar que as ligações entre \emph{Nodes} se mantiveram (mesmo que invertidas), que existe apenas um único \emph{Owner} e que qualquer outro estado não possível não é demonstrado.
 
-
-
-% Método Queue
-
-% como os dados são atualizados
-% como os dados são passados para a página
-% como os dados são demonstrados no grafo
-% como a queue é formada
-% como o histórico é formado
 \section{Conclusões}
 
 Neste capítulo foi apresentado todo o processo que envolveu a implementação deste projeto, desde as tecnologias, à implementação do \emph{Node} e do \emph{Node} de visualização.
 A implementação deste projeto segue uma interpretação da Especificação (\ref{chap:especificacao}) na Linguagem Go, em que é possível executar um sistema distribuído.
 Existe um maior foco na implementação dos comportamentos dos \emph{Nodes} visto que estes alteram o estado global do sistema. Foram também apresentados os desafios nesta implementação,
 principalmente no desenvolvimento da Visualização, provocados pela falta de um Relógio Global e o uso de uma Rede Assíncrona, na qual não é possível garantir a sincronia/sequência dos eventos dos \emph{Nodes}.
-
-
-% A utilidade desta será apresentada no capítulo \ref{chap:validacao}.
 
 
 
